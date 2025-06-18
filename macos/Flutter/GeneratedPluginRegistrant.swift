@@ -4,7 +4,6 @@
 
 import FlutterMacOS
 import Foundation
-
 import connectivity_plus
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
