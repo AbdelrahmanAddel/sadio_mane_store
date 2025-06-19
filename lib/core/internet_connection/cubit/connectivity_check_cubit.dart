@@ -2,10 +2,12 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
+
 part 'connectivity_check_state.dart';
 
 class ConnectivityCheckCubit extends Cubit<ConnectivityCheckState> {
   ConnectivityCheckCubit() : super(ConnectivityCheckInitial());
+
   StreamSubscription<InternetStatus>? _listener;
 
   void checkInternetConnectivity() {
@@ -15,9 +17,10 @@ class ConnectivityCheckCubit extends Cubit<ConnectivityCheckState> {
       switch (status) {
         case InternetStatus.connected:
           emit(InternetConnection());
-
+          break;
         case InternetStatus.disconnected:
           emit(NoInternetConnection());
+          break;
       }
     });
   }
