@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyDZAbplSvvl5u4L0b6C3CmJ2nbi3BVAJdA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>614601275460</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.sadiomanestore.sadioManeStore</string>
+	<key>PROJECT_ID</key>
+	<string>dalel-a7cf0</string>
+	<key>STORAGE_BUCKET</key>
+	<string>dalel-a7cf0.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:614601275460:ios:5263b1e52e61d28c3aa411</string>
+</dict>
+</plist>
