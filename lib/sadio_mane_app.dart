@@ -3,8 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadio_mane_store/core/app/env_variable.dart';
 import 'package:sadio_mane_store/core/constants/fonts_string.dart';
+import 'package:sadio_mane_store/core/helpers/navigation_extension.dart';
 import 'package:sadio_mane_store/core/internet_connection/cubit/internet_connection_cubit.dart';
 import 'package:sadio_mane_store/core/internet_connection/screen/no_internet_screen.dart';
+import 'package:sadio_mane_store/core/routes/app_routes.dart';
+import 'package:sadio_mane_store/core/routes/routes_string.dart';
 import 'package:sadio_mane_store/core/theme/font_weight_helper.dart';
 
 class SadioManeApp extends StatelessWidget {
@@ -23,6 +26,8 @@ class SadioManeApp extends StatelessWidget {
         minTextAdapt: true,
         splitScreenMode: true,
         child: MaterialApp(
+          onGenerateRoute: AppRoutes.generateRoute,
+
           debugShowCheckedModeBanner: EnvVariable.getInstance.isDev,
           home: BlocBuilder<InternetConnectionCubit, InternetConnectionState>(
             builder: (context, state) {
@@ -34,7 +39,7 @@ class SadioManeApp extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Sadio Mane",
+                            'Sadio Mane',
                             style: TextStyle(
                               fontFamily: FontsString.poppins,
                               fontWeight: FontWeightHelper.regular,
@@ -48,6 +53,15 @@ class SadioManeApp extends StatelessWidget {
                               fontWeight: FontWeightHelper.medium,
                               fontSize: 50,
                             ),
+                          ),
+                          MaterialButton(
+                            onPressed: () {
+                              context.pushReplacement(
+                                routeName:
+                                    RoutesString.noInternetConnectionScreen,
+                              );
+                            },
+                            child: const Icon(Icons.abc),
                           ),
                         ],
                       ),
