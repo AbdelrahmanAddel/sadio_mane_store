@@ -8,6 +8,8 @@ import 'package:sadio_mane_store/core/internet_connection/cubit/internet_connect
 import 'package:sadio_mane_store/core/internet_connection/screen/no_internet_screen.dart';
 import 'package:sadio_mane_store/core/routes/app_routes.dart';
 import 'package:sadio_mane_store/core/routes/routes_string.dart';
+import 'package:sadio_mane_store/core/theme/app_theme.dart';
+import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
 import 'package:sadio_mane_store/core/theme/font_weight_helper.dart';
 
 class SadioManeApp extends StatelessWidget {
@@ -26,6 +28,7 @@ class SadioManeApp extends StatelessWidget {
         minTextAdapt: true,
         splitScreenMode: true,
         child: MaterialApp(
+          theme: darkTheme,
           onGenerateRoute: AppRoutes.generateRoute,
 
           debugShowCheckedModeBanner: EnvVariable.getInstance.isDev,
@@ -38,12 +41,14 @@ class SadioManeApp extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          Image.asset(context.theme.appImage.primaryImage),
                           Text(
                             'Sadio Mane',
                             style: TextStyle(
                               fontFamily: FontsString.poppins,
                               fontWeight: FontWeightHelper.regular,
                               fontSize: 50,
+                              color: context.theme.appColors.primaryColor,
                             ),
                           ),
                           Text(
@@ -52,6 +57,7 @@ class SadioManeApp extends StatelessWidget {
                               fontFamily: FontsString.cairo,
                               fontWeight: FontWeightHelper.medium,
                               fontSize: 50,
+                              color: context.theme.appColors.primaryColor,
                             ),
                           ),
                           MaterialButton(
