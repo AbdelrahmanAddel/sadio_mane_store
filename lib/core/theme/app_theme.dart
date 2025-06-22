@@ -13,11 +13,11 @@ final ThemeData lightTheme = ThemeData(
   ],
 );
 
-final ThemeData darkTheme =ThemeData(
+final ThemeData darkTheme = ThemeData(
   useMaterial3: true,
   brightness: Brightness.dark,
-extensions: [
-  AppDarkModeColors.darkAppColors,
-  AppDarkModeImages.darkAppImages,
-]
+  extensions: [
+    AppDarkModeColors.darkAppColors,
+    AppDarkModeImages.darkAppImages,
+  ],
 );

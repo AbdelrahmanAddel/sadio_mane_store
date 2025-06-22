@@ -24,7 +24,7 @@ class ConnectionInternetScreen extends StatelessWidget {
                 fontFamily: FontsString.poppins,
                 fontWeight: FontWeightHelper.regular,
                 fontSize: 50,
-                color: context.theme.appColors.primaryColor,
+                color: context.theme.appColors.mainColor,
               ),
             ),
             Text(
@@ -33,7 +33,7 @@ class ConnectionInternetScreen extends StatelessWidget {
                 fontFamily: FontsString.cairo,
                 fontWeight: FontWeightHelper.medium,
                 fontSize: 50,
-                color: context.theme.appColors.primaryColor,
+                color: context.theme.appColors.mainColor,
               ),
             ),
             MaterialButton(
