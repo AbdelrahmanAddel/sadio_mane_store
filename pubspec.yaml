@@ -42,7 +42,9 @@ dependencies:
   flutter_bloc: ^9.1.1
   internet_connection_checker_plus: ^2.7.2
   flutter_native_splash: ^2.4.6
-
+  flutter_localizations:
+    sdk: flutter
+  equatable: ^2.0.7
 
 dev_dependencies:
   flutter_test:
@@ -57,7 +59,6 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 # The following section is specific to Flutter packages.
 flutter:
 
@@ -75,10 +76,8 @@ flutter:
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/to/asset-from-package
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
@@ -101,7 +100,6 @@ flutter:
           weight: 500
         - asset: assets/fonts/english/poppins/Poppins-Regular.ttf
           weight: 300
-  #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
 flutter_assets:
@@ -110,3 +108,5 @@ flutter_assets:
     - assets/images/svg/
   output_path: lib/core/constants/
   filename: images_string.dart
+flutter_intl:
+  enabled: true
