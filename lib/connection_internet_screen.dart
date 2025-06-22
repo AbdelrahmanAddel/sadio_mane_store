@@ -19,7 +19,7 @@ class ConnectionInternetScreen extends StatelessWidget {
           children: [
             Image.asset(context.theme.appImage.primaryImage),
             Text(
-              context.tr.hellow,
+              context.tr.app_name,
               style: TextStyle(
                 fontFamily: FontsString.poppins,
                 fontWeight: FontWeightHelper.regular,
@@ -28,7 +28,7 @@ class ConnectionInternetScreen extends StatelessWidget {
               ),
             ),
             Text(
-              context.tr.hellow,
+              context.tr.app_name,
               style: TextStyle(
                 fontFamily: FontsString.cairo,
                 fontWeight: FontWeightHelper.medium,
