@@ -78,7 +78,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Please Select Your Image Avatar",
     ),
     "welcome": MessageLookupByLibrary.simpleMessage(
-      "Welcome, Please enter your email and get started.",
+      "Welcome, Please enter your email and get \nstarted.",
     ),
     "yes": MessageLookupByLibrary.simpleMessage("Yes"),
     "you_have_account": MessageLookupByLibrary.simpleMessage(

@@ -74,10 +74,10 @@ class S {
     return Intl.message('Login', name: 'login', desc: '', args: []);
   }
 
-  /// `Welcome, Please enter your email and get started.`
+  /// `Welcome, Please enter your email and get \nstarted.`
   String get welcome {
     return Intl.message(
-      'Welcome, Please enter your email and get started.',
+      'Welcome, Please enter your email and get \nstarted.',
       name: 'welcome',
       desc: '',
       args: [],
