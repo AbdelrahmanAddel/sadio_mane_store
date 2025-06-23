@@ -8,7 +8,7 @@ part 'app_settings_state.dart';
 class AppSettingsCubit extends Cubit<AppSettingsState> {
   AppSettingsCubit()
     : super(
-        AppsettingsInitial(locale: const Locale('ar'), themeMode: darkTheme),
+        AppsettingsInitial(locale: const Locale('en'), themeMode: darkTheme),
       );
 
   void toggleAppTheme({required ThemeData theme}) {

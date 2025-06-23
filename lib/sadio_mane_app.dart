@@ -6,7 +6,6 @@ import 'package:sadio_mane_store/core/app/env_variable.dart';
 import 'package:sadio_mane_store/core/internet_connection/cubit/internet_connection_cubit.dart';
 import 'package:sadio_mane_store/core/routes/app_routes.dart';
 import 'package:sadio_mane_store/features/app_settings/cubit/app_settings_cubit.dart';
-import 'package:sadio_mane_store/features/sign_in/presentation/view/sign_in_view.dart';
 import 'package:sadio_mane_store/features/sign_up/presentation/view/sign_up_view.dart';
 import 'package:sadio_mane_store/generated/l10n.dart';
 

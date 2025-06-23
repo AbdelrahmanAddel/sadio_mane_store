@@ -10,6 +10,7 @@ void main() async {
   await ScreenUtil.ensureScreenSize();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
+    
   ]).then((_) {
     runApp(const SadioManeApp());
   });
