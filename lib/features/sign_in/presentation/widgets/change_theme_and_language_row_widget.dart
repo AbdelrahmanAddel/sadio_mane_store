@@ -1,4 +1,3 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -15,23 +14,15 @@ class ChangeThemeAndLanguageRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        FadeInRight(
-          duration: const Duration(milliseconds: 900),
-          child: CustomAppButton(
-            child: SvgPicture.asset(Assets.assetsImagesSvgDarkMode),
-          ),
+        CustomAppButton(
+          child: SvgPicture.asset(Assets.assetsImagesSvgDarkMode),
         ),
-        FadeInLeft(
-          duration: const Duration(milliseconds: 900),
-
-          child: CustomAppButton(
-            width: 100.w,
-            child: Text(
-              context.tr.language,
-              style: context.theme.textTheme.displaySmall!.copyWith(
-                fontSize: 19.sp,
-                
-              ),
+        CustomAppButton(
+          width: 100.w,
+          child: Text(
+            context.tr.language,
+            style: context.theme.textTheme.displaySmall!.copyWith(
+              fontSize: 19.sp,
             ),
           ),
         ),
