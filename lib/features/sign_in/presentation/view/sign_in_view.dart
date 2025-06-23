@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadio_mane_store/auth_custom_painter.dart';
+import 'package:sadio_mane_store/core/common/animation/animate_do.dart';
 import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
 import 'package:sadio_mane_store/features/sign_in/presentation/widgets/sign_in_body.dart';
 
@@ -30,7 +31,10 @@ class SignInView extends StatelessWidget {
           size: Size(double.infinity, 150.h),
         ),
         body: const SingleChildScrollView(
-          child: Column(children: [SafeArea(child: SignInBody())]),
+          child: CustomFadeInRight(
+            duration: 900,
+            child: Column(children: [SafeArea(child: SignInBody())]),
+          ),
         ),
       ),
     );

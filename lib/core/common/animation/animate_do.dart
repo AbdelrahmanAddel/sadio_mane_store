@@ -79,20 +79,20 @@ class CustomFadeInLeft extends StatelessWidget {
 class CustomFadeInRight extends StatelessWidget {
   const CustomFadeInRight({
     required this.child,
-    required this.duration,
+     this.duration,
     super.key,
   });
 
   final Widget child;
 
-  final int duration;
+  final int ? duration;
 
   @override
   Widget build(BuildContext context) {
     //TODO: sharePreferences
     return FadeInRight(
       delay: const Duration(milliseconds: 300),
-      duration: Duration(milliseconds: duration),
+      duration: Duration(milliseconds: duration ??800),
       child: child,
     );
     // return SharedPref().getString(PrefKeys.language) == 'ar'
