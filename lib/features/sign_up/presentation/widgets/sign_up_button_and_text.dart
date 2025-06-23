@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadio_mane_store/core/common/widget/custom_app_button.dart';
 import 'package:sadio_mane_store/core/helpers/extensions/localization_extension.dart';
 import 'package:sadio_mane_store/core/helpers/extensions/navigation_extension.dart';
-import 'package:sadio_mane_store/core/helpers/spacer/spacer_helper.dart';
+import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
 import 'package:sadio_mane_store/core/routes/routes_string.dart';
 import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
 
