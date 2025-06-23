@@ -32,7 +32,9 @@ class SignUpView extends StatelessWidget {
         backgroundColor: context.theme.appColors.mainColor,
         body: const SafeArea(
           child: SingleChildScrollView(
-            child: CustomFadeInRight(child: SignUpBody()),
+            child: CustomFadeInRight(
+              duration: 1000,
+              child: SignUpBody()),
           ),
         ),
       ),

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadio_mane_store/core/common/widget/change_theme_and_language_row_widget.dart';
-import 'package:sadio_mane_store/core/common/widget/custom_app_button.dart';
 import 'package:sadio_mane_store/core/helpers/extensions/localization_extension.dart';
 import 'package:sadio_mane_store/core/helpers/spacer/spacer_helper.dart';
 import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
+import 'package:sadio_mane_store/features/sign_in/presentation/widgets/sign_in_button_and_text.dart';
 import 'package:sadio_mane_store/features/sign_in/presentation/widgets/sign_in_text_form_fields.dart';
 
 class SignInBody extends StatelessWidget {
@@ -36,25 +36,7 @@ class SignInBody extends StatelessWidget {
           verticalSpace(40),
           const SignInTextFormFields(),
           verticalSpace(60),
-          CustomAppButton(
-            width: double.infinity,
-            height: 57,
-            child: Text(
-              context.tr.login,
-
-              style: context.theme.textTheme.displaySmall?.copyWith(
-                fontSize: 19.sp,
-              ),
-            ),
-          ),
-          verticalSpace(40),
-          Text(
-            context.tr.create_account,
-            style: context.theme.textTheme.displaySmall?.copyWith(
-              fontSize: 15.sp,
-              color: context.theme.appColors.bluePinkLight,
-            ),
-          ),
+          const SignInButtonAndText(),
         ],
       ),
     );

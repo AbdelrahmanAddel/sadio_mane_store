@@ -32,7 +32,7 @@ class SignInView extends StatelessWidget {
         ),
         body: const SingleChildScrollView(
           child: CustomFadeInRight(
-            duration: 900,
+            duration: 1000,
             child: Column(children: [SafeArea(child: SignInBody())]),
           ),
         ),
