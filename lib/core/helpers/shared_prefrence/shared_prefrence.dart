@@ -3,69 +3,61 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefHelper {
-  SharedPrefHelper._(); // Private constructor to prevent instantiation
+  SharedPrefHelper._(); // Prevent instantiation
 
   static const _secureStorage = FlutterSecureStorage();
+  static late SharedPreferences _prefs;
+
+  // ------------------- Initialization -------------------
+  static Future<void> init() async {
+    _prefs = await SharedPreferences.getInstance();
+    debugPrint('SharedPrefHelper: SharedPreferences initialized');
+  }
 
   // ------------------- SharedPreferences Methods -------------------
-
   static Future<void> setData(String key, dynamic value) async {
-    final prefs = await SharedPreferences.getInstance();
     debugPrint('SharedPrefHelper: setData → key: $key, value: $value');
-
     if (value is String) {
-      await prefs.setString(key, value);
+      await _prefs.setString(key, value);
     } else if (value is int) {
-      await prefs.setInt(key, value);
+      await _prefs.setInt(key, value);
     } else if (value is bool) {
-      await prefs.setBool(key, value);
+      await _prefs.setBool(key, value);
     } else if (value is double) {
-      await prefs.setDouble(key, value);
+      await _prefs.setDouble(key, value);
     } else {
       throw UnsupportedError('Type ${value.runtimeType} is not supported.');
     }
   }
 
-  static Future<String> getString(
-    String key, {
-    String defaultValue = '',
-  }) async {
-    final prefs = await SharedPreferences.getInstance();
+  static String getString(String key, {String defaultValue = ''}) {
     debugPrint('SharedPrefHelper: getString → key: $key');
-    return prefs.getString(key) ?? defaultValue;
+    return _prefs.getString(key) ?? defaultValue;
   }
 
-  static Future<int> getInt(String key, {int defaultValue = 0}) async {
-    final prefs = await SharedPreferences.getInstance();
+  static int getInt(String key, {int defaultValue = 0}) {
     debugPrint('SharedPrefHelper: getInt → key: $key');
-    return prefs.getInt(key) ?? defaultValue;
+    return _prefs.getInt(key) ?? defaultValue;
   }
 
-  static Future<bool> getBool(String key, {bool defaultValue = false}) async {
-    final prefs = await SharedPreferences.getInstance();
+  static bool getBool(String key, {bool defaultValue = false}) {
     debugPrint('SharedPrefHelper: getBool → key: $key');
-    return prefs.getBool(key) ?? defaultValue;
+    return _prefs.getBool(key) ?? defaultValue;
   }
 
-  static Future<double> getDouble(
-    String key, {
-    double defaultValue = 0.0,
-  }) async {
-    final prefs = await SharedPreferences.getInstance();
+  static double getDouble(String key, {double defaultValue = 0.0}) {
     debugPrint('SharedPrefHelper: getDouble → key: $key');
-    return prefs.getDouble(key) ?? defaultValue;
+    return _prefs.getDouble(key) ?? defaultValue;
   }
 
   static Future<void> removeData(String key) async {
-    final prefs = await SharedPreferences.getInstance();
     debugPrint('SharedPrefHelper: removeData → key: $key');
-    await prefs.remove(key);
+    await _prefs.remove(key);
   }
 
   static Future<void> clearAllData() async {
-    final prefs = await SharedPreferences.getInstance();
     debugPrint('SharedPrefHelper: clearAllData');
-    await prefs.clear();
+    await _prefs.clear();
   }
 
   // ------------------- FlutterSecureStorage Methods -------------------
@@ -75,10 +67,7 @@ class SharedPrefHelper {
     await _secureStorage.write(key: key, value: value);
   }
 
-  static Future<String> getSecuredString(
-    String key, {
-    String defaultValue = '',
-  }) async {
+  static Future<String> getSecuredString(String key, {String defaultValue = ''}) async {
     debugPrint('SecureStorage: get → key: $key');
     return await _secureStorage.read(key: key) ?? defaultValue;
   }

@@ -1,4 +1,4 @@
 class SharedPrefKey {
-  static const themeKey = 'Theme';
-  static const languageKey = 'Language';
+  static const isDarkMode = 'isDarkMode';
+  static const language = 'Language';
 }

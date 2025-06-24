@@ -3,10 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadio_mane_store/app/env_variable.dart';
+import 'package:sadio_mane_store/core/helpers/shared_prefrence/shared_pref_key.dart';
+import 'package:sadio_mane_store/core/helpers/shared_prefrence/shared_prefrence.dart';
 import 'package:sadio_mane_store/core/internet_connection/cubit/internet_connection_cubit.dart';
 import 'package:sadio_mane_store/core/routes/app_routes.dart';
+import 'package:sadio_mane_store/core/theme/app_theme.dart';
 import 'package:sadio_mane_store/features/app_settings/cubit/app_settings_cubit.dart';
-import 'package:sadio_mane_store/features/sign_up/presentation/view/sign_up_view.dart';
+import 'package:sadio_mane_store/features/app_settings/cubit/app_settings_state.dart';
+import 'package:sadio_mane_store/features/sign_in/presentation/view/sign_in_view.dart';
 import 'package:sadio_mane_store/generated/l10n.dart';
 
 class SadioManeApp extends StatelessWidget {
@@ -29,7 +33,11 @@ class SadioManeApp extends StatelessWidget {
             splitScreenMode: true,
             builder:
                 (_, child) => MaterialApp(
-                  locale: state.locale,
+                  locale:
+                      SharedPrefHelper.getBool(SharedPrefKey.language)
+                          ? Locale('ar')
+                          : Locale('en'),
+
                   localizationsDelegates: const [
                     S.delegate,
                     GlobalMaterialLocalizations.delegate,
@@ -37,7 +45,11 @@ class SadioManeApp extends StatelessWidget {
                     GlobalCupertinoLocalizations.delegate,
                   ],
                   supportedLocales: S.delegate.supportedLocales,
-                  theme: state.themeMode,
+                  theme:
+                      SharedPrefHelper.getBool(SharedPrefKey.isDarkMode)
+                          ? darkTheme
+                          : lightTheme,
+
                   onGenerateRoute: AppRoutes.generateRoute,
 
                   debugShowCheckedModeBanner: EnvVariable.getInstance.isDev,
@@ -47,8 +59,8 @@ class SadioManeApp extends StatelessWidget {
                   >(
                     builder: (context, state) {
                       return state is NoInternetConnectionState
-                          ? const SignUpView()
-                          : const SignUpView();
+                          ? const SignInView()
+                          : const SignInView();
                     },
                   ),
                 ),

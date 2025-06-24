@@ -1,21 +1,32 @@
-import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
-import 'package:sadio_mane_store/core/theme/app_theme.dart';
-
-part 'app_settings_state.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sadio_mane_store/core/helpers/shared_prefrence/shared_pref_key.dart';
+import 'package:sadio_mane_store/core/helpers/shared_prefrence/shared_prefrence.dart';
+import 'package:sadio_mane_store/features/app_settings/cubit/app_settings_state.dart';
 
 class AppSettingsCubit extends Cubit<AppSettingsState> {
-  AppSettingsCubit()
-    : super(
-        AppsettingsInitial(locale: const Locale('en'), themeMode: darkTheme),
-      );
+  AppSettingsCubit() : super(const AppSettingsState.initial());
 
-  void toggleAppTheme({required ThemeData theme}) {
-    emit(ToggleAppThemeState(themeMode: theme));
+  Future<void> changeLanguage() async {
+    await SharedPrefHelper.setData(
+      SharedPrefKey.language,
+      !SharedPrefHelper.getBool(SharedPrefKey.language),
+    );
+    emit(
+      AppSettingsState.changeLanguage(
+        isArabic: SharedPrefHelper.getBool(SharedPrefKey.language),
+      ),
+    );
   }
 
-  void changeAppLanguage(Locale locale) {
-    emit(ChangeAppLanguageState(locale: locale));
+  Future<void> changeAppThmem() async {
+    await SharedPrefHelper.setData(
+      SharedPrefKey.isDarkMode,
+      !SharedPrefHelper.getBool(SharedPrefKey.isDarkMode),
+    );
+    emit(
+      AppSettingsState.changeTheme(
+        isDarkMode: SharedPrefHelper.getBool(SharedPrefKey.isDarkMode),
+      ),
+    );
   }
 }

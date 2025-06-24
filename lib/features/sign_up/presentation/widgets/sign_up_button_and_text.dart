@@ -16,7 +16,7 @@ class SignUpButtonAndText extends StatelessWidget {
       children: [
         CustomAppButton(
           width: double.infinity,
-          height: 57,
+          height: 57.h,
           child: Text(
             context.tr.sign_up,
             style: context.theme.textTheme.displaySmall?.copyWith(

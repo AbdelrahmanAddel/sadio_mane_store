@@ -1,22 +1,13 @@
-part of 'app_settings_cubit.dart';
+// part of 'app_settings_cubit.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-sealed class AppSettingsState extends Equatable {
-  const AppSettingsState({required this.locale, required this.themeMode});
+part 'app_settings_state.freezed.dart';
 
-  final Locale? locale;
-  final ThemeData? themeMode;
-  @override
-  List<Object?> get props => [locale, themeMode];
-}
-
-class AppsettingsInitial extends AppSettingsState {
-  const AppsettingsInitial({required super.locale, required super.themeMode});
-}
-
-final class ToggleAppThemeState extends AppSettingsState {
-  const ToggleAppThemeState({required super.themeMode, super.locale});
-}
-
-final class ChangeAppLanguageState extends AppSettingsState {
-  const ChangeAppLanguageState({required super.locale, super.themeMode});
+@freezed
+class AppSettingsState with _$AppSettingsState {
+  const factory AppSettingsState.initial() = _Initial;
+  const factory AppSettingsState.changeTheme({required bool isDarkMode}) =
+      ChangeThemeState;
+  const factory AppSettingsState.changeLanguage({required bool isArabic}) =
+      ChangeLanguageState;
 }

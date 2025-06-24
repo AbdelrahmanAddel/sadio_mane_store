@@ -16,7 +16,7 @@ class SignInButtonAndText extends StatelessWidget {
       children: [
         CustomAppButton(
           width: double.infinity,
-          height: 57,
+          height: 57.h,
           child: Text(
             context.tr.login,
 
@@ -25,6 +25,7 @@ class SignInButtonAndText extends StatelessWidget {
             ),
           ),
         ),
+
         verticalSpace(40),
         GestureDetector(
           onTap: () => context.pushReplacement(routeName: RoutesString.signUp),
