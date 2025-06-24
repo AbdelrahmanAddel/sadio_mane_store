@@ -28,6 +28,8 @@ dependencies:
   dio: ^5.8.0+1
   json_annotation: ^4.9.0
   retrofit: ^4.4.2
+  pretty_dio_logger: ^1.4.0
+
 
 dev_dependencies:
   flutter_test:
@@ -40,7 +42,6 @@ dev_dependencies:
   json_serializable: ^6.9.5
   flutter_launcher_icons: ^0.14.4
   very_good_analysis: ^8.0.0
-  pretty_logger: ^1.0.0
 
 flutter:
   uses-material-design: true

@@ -717,14 +717,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.2"
-  pretty_logger:
-    dependency: "direct dev"
+  pretty_dio_logger:
+    dependency: "direct main"
     description:
-      name: pretty_logger
-      sha256: "90fa7ff9ee34ace7295521182a7b241c7104c59aaf894f55c06969f37fba24a5"
+      name: pretty_dio_logger
+      sha256: "36f2101299786d567869493e2f5731de61ce130faa14679473b26905a92b6407"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0"
+    version: "1.4.0"
   protobuf:
     dependency: transitive
     description:
