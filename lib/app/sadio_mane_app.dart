@@ -35,8 +35,8 @@ class SadioManeApp extends StatelessWidget {
                 (_, child) => MaterialApp(
                   locale:
                       SharedPrefHelper.getBool(SharedPrefKey.language)
-                          ? Locale('ar')
-                          : Locale('en'),
+                          ? const Locale('ar')
+                          : const Locale('en'),
 
                   localizationsDelegates: const [
                     S.delegate,
@@ -49,7 +49,6 @@ class SadioManeApp extends StatelessWidget {
                       SharedPrefHelper.getBool(SharedPrefKey.isDarkMode)
                           ? darkTheme
                           : lightTheme,
-
                   onGenerateRoute: AppRoutes.generateRoute,
 
                   debugShowCheckedModeBanner: EnvVariable.getInstance.isDev,

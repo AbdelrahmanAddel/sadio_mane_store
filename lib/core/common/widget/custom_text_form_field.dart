@@ -33,6 +33,7 @@ class CustomTextFormField extends StatelessWidget {
       validator: validator,
       obscureText: obscureText,
       decoration: InputDecoration(
+        hintStyle: context.theme.textTheme.displaySmall,
         suffixIcon: suffixIcon,
         hintText: hintText,
         labelText: labelText,

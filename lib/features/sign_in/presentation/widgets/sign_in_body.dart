@@ -21,7 +21,7 @@ class SignInBody extends StatelessWidget {
           verticalSpace(60),
           Text(
             context.tr.login,
-            style: context.theme.textTheme.displaySmall!.copyWith(
+            style: context.theme.textTheme.displaySmall?.copyWith(
               fontSize: 23.sp,
             ),
           ),
