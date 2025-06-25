@@ -1,0 +1,42 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sadio_mane_store/core/helpers/extensions/navigation_extension.dart';
+import 'package:sadio_mane_store/core/routes/routes_string.dart';
+import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
+import 'package:sadio_mane_store/features/sign_in/presentation/cubit/sign_in_cubit.dart';
+import 'package:sadio_mane_store/features/sign_in/presentation/cubit/sign_in_state.dart';
+
+class SignInBlocListener extends StatelessWidget {
+  const SignInBlocListener({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocListener<SignInCubit, SignInState>(
+      listenWhen: (previous, current) {
+        return current is SignInLoading ||
+            current is SignInSuccess ||
+            current is SignInFailure;
+      },
+      listener: (context, state) {
+        if (state is SignInSuccess) {
+          //TODO Make It Push Replacement
+          context
+            ..pop()
+            ..pushName(routeName: RoutesString.homeScreen);
+        } else if (state is SignInFailure) {
+        } else {
+          showDialog(
+            context: context,
+            builder:
+                (context) => Center(
+                  child: CircularProgressIndicator(
+                    color: context.theme.appColors.mainColor,
+                  ),
+                ),
+          );
+        }
+      },
+      child: const SizedBox.shrink(),
+    );
+  }
+}

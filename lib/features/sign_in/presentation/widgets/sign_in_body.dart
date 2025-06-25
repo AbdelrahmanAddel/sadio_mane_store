@@ -4,6 +4,7 @@ import 'package:sadio_mane_store/core/common/widget/change_theme_and_language_ro
 import 'package:sadio_mane_store/core/helpers/extensions/localization_extension.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
 import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
+import 'package:sadio_mane_store/features/sign_in/presentation/widgets/sign_in_bloc_listener.dart';
 import 'package:sadio_mane_store/features/sign_in/presentation/widgets/sign_in_button_and_text.dart';
 import 'package:sadio_mane_store/features/sign_in/presentation/widgets/sign_in_text_form_fields.dart';
 
@@ -37,6 +38,7 @@ class SignInBody extends StatelessWidget {
           const SignInTextFormFields(),
           verticalSpace(60),
           const SignInButtonAndText(),
+          const SignInBlocListener(),
         ],
       ),
     );

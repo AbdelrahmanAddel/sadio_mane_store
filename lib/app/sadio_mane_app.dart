@@ -7,10 +7,10 @@ import 'package:sadio_mane_store/core/helpers/shared_prefrence/shared_pref_key.d
 import 'package:sadio_mane_store/core/helpers/shared_prefrence/shared_prefrence.dart';
 import 'package:sadio_mane_store/core/internet_connection/cubit/internet_connection_cubit.dart';
 import 'package:sadio_mane_store/core/routes/app_routes.dart';
+import 'package:sadio_mane_store/core/routes/routes_string.dart';
 import 'package:sadio_mane_store/core/theme/app_theme.dart';
 import 'package:sadio_mane_store/features/app_settings/cubit/app_settings_cubit.dart';
 import 'package:sadio_mane_store/features/app_settings/cubit/app_settings_state.dart';
-import 'package:sadio_mane_store/features/sign_in/presentation/view/sign_in_view.dart';
 import 'package:sadio_mane_store/generated/l10n.dart';
 
 class SadioManeApp extends StatelessWidget {
@@ -33,6 +33,8 @@ class SadioManeApp extends StatelessWidget {
             splitScreenMode: true,
             builder:
                 (_, child) => MaterialApp(
+                  initialRoute: RoutesString.signIn,
+
                   locale:
                       SharedPrefHelper.getBool(SharedPrefKey.language)
                           ? const Locale('ar')
@@ -52,16 +54,6 @@ class SadioManeApp extends StatelessWidget {
                   onGenerateRoute: AppRoutes.generateRoute,
 
                   debugShowCheckedModeBanner: EnvVariable.getInstance.isDev,
-                  home: BlocBuilder<
-                    InternetConnectionCubit,
-                    InternetConnectionState
-                  >(
-                    builder: (context, state) {
-                      return state is NoInternetConnectionState
-                          ? const SignInView()
-                          : const SignInView();
-                    },
-                  ),
                 ),
           );
         },
