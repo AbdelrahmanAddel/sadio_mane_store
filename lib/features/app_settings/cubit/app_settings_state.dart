@@ -1,4 +1,3 @@
-// part of 'app_settings_cubit.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'app_settings_state.freezed.dart';
