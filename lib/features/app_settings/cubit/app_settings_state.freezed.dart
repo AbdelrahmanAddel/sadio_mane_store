@@ -1,4 +1,3 @@
-// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -10,200 +9,493 @@ part of 'app_settings_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
+
 /// @nodoc
 mixin _$AppSettingsState {
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AppSettingsState);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'AppSettingsState()';
-}
-
-
-}
-
-/// @nodoc
-class $AppSettingsStateCopyWith<$Res>  {
-$AppSettingsStateCopyWith(AppSettingsState _, $Res Function(AppSettingsState) __);
-}
-
-
-/// @nodoc
-
-
-class _Initial implements AppSettingsState {
-  const _Initial();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'AppSettingsState.initial()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
-class ChangeThemeState implements AppSettingsState {
-  const ChangeThemeState({required this.isDarkMode});
-  
-
- final  bool isDarkMode;
-
-/// Create a copy of AppSettingsState
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$ChangeThemeStateCopyWith<ChangeThemeState> get copyWith => _$ChangeThemeStateCopyWithImpl<ChangeThemeState>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeThemeState&&(identical(other.isDarkMode, isDarkMode) || other.isDarkMode == isDarkMode));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,isDarkMode);
-
-@override
-String toString() {
-  return 'AppSettingsState.changeTheme(isDarkMode: $isDarkMode)';
-}
-
-
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(bool isDarkMode) changeTheme,
+    required TResult Function(bool isArabic) changeLanguage,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(bool isDarkMode)? changeTheme,
+    TResult? Function(bool isArabic)? changeLanguage,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(bool isDarkMode)? changeTheme,
+    TResult Function(bool isArabic)? changeLanguage,
+    required TResult orElse(),
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(ChangeThemeState value) changeTheme,
+    required TResult Function(ChangeLanguageState value) changeLanguage,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(ChangeThemeState value)? changeTheme,
+    TResult? Function(ChangeLanguageState value)? changeLanguage,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(ChangeThemeState value)? changeTheme,
+    TResult Function(ChangeLanguageState value)? changeLanguage,
+    required TResult orElse(),
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $ChangeThemeStateCopyWith<$Res> implements $AppSettingsStateCopyWith<$Res> {
-  factory $ChangeThemeStateCopyWith(ChangeThemeState value, $Res Function(ChangeThemeState) _then) = _$ChangeThemeStateCopyWithImpl;
-@useResult
-$Res call({
- bool isDarkMode
-});
-
-
-
-
+abstract class $AppSettingsStateCopyWith<$Res> {
+  factory $AppSettingsStateCopyWith(
+    AppSettingsState value,
+    $Res Function(AppSettingsState) then,
+  ) = _$AppSettingsStateCopyWithImpl<$Res, AppSettingsState>;
 }
+
 /// @nodoc
-class _$ChangeThemeStateCopyWithImpl<$Res>
-    implements $ChangeThemeStateCopyWith<$Res> {
-  _$ChangeThemeStateCopyWithImpl(this._self, this._then);
+class _$AppSettingsStateCopyWithImpl<$Res, $Val extends AppSettingsState>
+    implements $AppSettingsStateCopyWith<$Res> {
+  _$AppSettingsStateCopyWithImpl(this._value, this._then);
 
-  final ChangeThemeState _self;
-  final $Res Function(ChangeThemeState) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
-/// Create a copy of AppSettingsState
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? isDarkMode = null,}) {
-  return _then(ChangeThemeState(
-isDarkMode: null == isDarkMode ? _self.isDarkMode : isDarkMode // ignore: cast_nullable_to_non_nullable
-as bool,
-  ));
+  /// Create a copy of AppSettingsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
+/// @nodoc
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+    _$InitialImpl value,
+    $Res Function(_$InitialImpl) then,
+  ) = __$$InitialImplCopyWithImpl<$Res>;
+}
 
+/// @nodoc
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$AppSettingsStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+    _$InitialImpl _value,
+    $Res Function(_$InitialImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of AppSettingsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
-class ChangeLanguageState implements AppSettingsState {
-  const ChangeLanguageState({required this.isArabic});
-  
+  @override
+  String toString() {
+    return 'AppSettingsState.initial()';
+  }
 
- final  bool isArabic;
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
+  }
 
-/// Create a copy of AppSettingsState
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$ChangeLanguageStateCopyWith<ChangeLanguageState> get copyWith => _$ChangeLanguageStateCopyWithImpl<ChangeLanguageState>(this, _$identity);
+  @override
+  int get hashCode => runtimeType.hashCode;
 
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(bool isDarkMode) changeTheme,
+    required TResult Function(bool isArabic) changeLanguage,
+  }) {
+    return initial();
+  }
 
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(bool isDarkMode)? changeTheme,
+    TResult? Function(bool isArabic)? changeLanguage,
+  }) {
+    return initial?.call();
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeLanguageState&&(identical(other.isArabic, isArabic) || other.isArabic == isArabic));
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(bool isDarkMode)? changeTheme,
+    TResult Function(bool isArabic)? changeLanguage,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(ChangeThemeState value) changeTheme,
+    required TResult Function(ChangeLanguageState value) changeLanguage,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(ChangeThemeState value)? changeTheme,
+    TResult? Function(ChangeLanguageState value)? changeLanguage,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(ChangeThemeState value)? changeTheme,
+    TResult Function(ChangeLanguageState value)? changeLanguage,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
 }
 
-
-@override
-int get hashCode => Object.hash(runtimeType,isArabic);
-
-@override
-String toString() {
-  return 'AppSettingsState.changeLanguage(isArabic: $isArabic)';
-}
-
-
+abstract class _Initial implements AppSettingsState {
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract mixin class $ChangeLanguageStateCopyWith<$Res> implements $AppSettingsStateCopyWith<$Res> {
-  factory $ChangeLanguageStateCopyWith(ChangeLanguageState value, $Res Function(ChangeLanguageState) _then) = _$ChangeLanguageStateCopyWithImpl;
-@useResult
-$Res call({
- bool isArabic
-});
-
-
-
-
+abstract class _$$ChangeThemeStateImplCopyWith<$Res> {
+  factory _$$ChangeThemeStateImplCopyWith(
+    _$ChangeThemeStateImpl value,
+    $Res Function(_$ChangeThemeStateImpl) then,
+  ) = __$$ChangeThemeStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isDarkMode});
 }
+
 /// @nodoc
-class _$ChangeLanguageStateCopyWithImpl<$Res>
-    implements $ChangeLanguageStateCopyWith<$Res> {
-  _$ChangeLanguageStateCopyWithImpl(this._self, this._then);
+class __$$ChangeThemeStateImplCopyWithImpl<$Res>
+    extends _$AppSettingsStateCopyWithImpl<$Res, _$ChangeThemeStateImpl>
+    implements _$$ChangeThemeStateImplCopyWith<$Res> {
+  __$$ChangeThemeStateImplCopyWithImpl(
+    _$ChangeThemeStateImpl _value,
+    $Res Function(_$ChangeThemeStateImpl) _then,
+  ) : super(_value, _then);
 
-  final ChangeLanguageState _self;
-  final $Res Function(ChangeLanguageState) _then;
-
-/// Create a copy of AppSettingsState
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? isArabic = null,}) {
-  return _then(ChangeLanguageState(
-isArabic: null == isArabic ? _self.isArabic : isArabic // ignore: cast_nullable_to_non_nullable
-as bool,
-  ));
+  /// Create a copy of AppSettingsState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? isDarkMode = null}) {
+    return _then(
+      _$ChangeThemeStateImpl(
+        isDarkMode:
+            null == isDarkMode
+                ? _value.isDarkMode
+                : isDarkMode // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
+  }
 }
 
+/// @nodoc
 
+class _$ChangeThemeStateImpl implements ChangeThemeState {
+  const _$ChangeThemeStateImpl({required this.isDarkMode});
+
+  @override
+  final bool isDarkMode;
+
+  @override
+  String toString() {
+    return 'AppSettingsState.changeTheme(isDarkMode: $isDarkMode)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeThemeStateImpl &&
+            (identical(other.isDarkMode, isDarkMode) ||
+                other.isDarkMode == isDarkMode));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isDarkMode);
+
+  /// Create a copy of AppSettingsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeThemeStateImplCopyWith<_$ChangeThemeStateImpl> get copyWith =>
+      __$$ChangeThemeStateImplCopyWithImpl<_$ChangeThemeStateImpl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(bool isDarkMode) changeTheme,
+    required TResult Function(bool isArabic) changeLanguage,
+  }) {
+    return changeTheme(isDarkMode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(bool isDarkMode)? changeTheme,
+    TResult? Function(bool isArabic)? changeLanguage,
+  }) {
+    return changeTheme?.call(isDarkMode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(bool isDarkMode)? changeTheme,
+    TResult Function(bool isArabic)? changeLanguage,
+    required TResult orElse(),
+  }) {
+    if (changeTheme != null) {
+      return changeTheme(isDarkMode);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(ChangeThemeState value) changeTheme,
+    required TResult Function(ChangeLanguageState value) changeLanguage,
+  }) {
+    return changeTheme(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(ChangeThemeState value)? changeTheme,
+    TResult? Function(ChangeLanguageState value)? changeLanguage,
+  }) {
+    return changeTheme?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(ChangeThemeState value)? changeTheme,
+    TResult Function(ChangeLanguageState value)? changeLanguage,
+    required TResult orElse(),
+  }) {
+    if (changeTheme != null) {
+      return changeTheme(this);
+    }
+    return orElse();
+  }
 }
 
-// dart format on
+abstract class ChangeThemeState implements AppSettingsState {
+  const factory ChangeThemeState({required final bool isDarkMode}) =
+      _$ChangeThemeStateImpl;
+
+  bool get isDarkMode;
+
+  /// Create a copy of AppSettingsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangeThemeStateImplCopyWith<_$ChangeThemeStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeLanguageStateImplCopyWith<$Res> {
+  factory _$$ChangeLanguageStateImplCopyWith(
+    _$ChangeLanguageStateImpl value,
+    $Res Function(_$ChangeLanguageStateImpl) then,
+  ) = __$$ChangeLanguageStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isArabic});
+}
+
+/// @nodoc
+class __$$ChangeLanguageStateImplCopyWithImpl<$Res>
+    extends _$AppSettingsStateCopyWithImpl<$Res, _$ChangeLanguageStateImpl>
+    implements _$$ChangeLanguageStateImplCopyWith<$Res> {
+  __$$ChangeLanguageStateImplCopyWithImpl(
+    _$ChangeLanguageStateImpl _value,
+    $Res Function(_$ChangeLanguageStateImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of AppSettingsState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? isArabic = null}) {
+    return _then(
+      _$ChangeLanguageStateImpl(
+        isArabic:
+            null == isArabic
+                ? _value.isArabic
+                : isArabic // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$ChangeLanguageStateImpl implements ChangeLanguageState {
+  const _$ChangeLanguageStateImpl({required this.isArabic});
+
+  @override
+  final bool isArabic;
+
+  @override
+  String toString() {
+    return 'AppSettingsState.changeLanguage(isArabic: $isArabic)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeLanguageStateImpl &&
+            (identical(other.isArabic, isArabic) ||
+                other.isArabic == isArabic));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isArabic);
+
+  /// Create a copy of AppSettingsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeLanguageStateImplCopyWith<_$ChangeLanguageStateImpl> get copyWith =>
+      __$$ChangeLanguageStateImplCopyWithImpl<_$ChangeLanguageStateImpl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(bool isDarkMode) changeTheme,
+    required TResult Function(bool isArabic) changeLanguage,
+  }) {
+    return changeLanguage(isArabic);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(bool isDarkMode)? changeTheme,
+    TResult? Function(bool isArabic)? changeLanguage,
+  }) {
+    return changeLanguage?.call(isArabic);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(bool isDarkMode)? changeTheme,
+    TResult Function(bool isArabic)? changeLanguage,
+    required TResult orElse(),
+  }) {
+    if (changeLanguage != null) {
+      return changeLanguage(isArabic);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(ChangeThemeState value) changeTheme,
+    required TResult Function(ChangeLanguageState value) changeLanguage,
+  }) {
+    return changeLanguage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(ChangeThemeState value)? changeTheme,
+    TResult? Function(ChangeLanguageState value)? changeLanguage,
+  }) {
+    return changeLanguage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(ChangeThemeState value)? changeTheme,
+    TResult Function(ChangeLanguageState value)? changeLanguage,
+    required TResult orElse(),
+  }) {
+    if (changeLanguage != null) {
+      return changeLanguage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeLanguageState implements AppSettingsState {
+  const factory ChangeLanguageState({required final bool isArabic}) =
+      _$ChangeLanguageStateImpl;
+
+  bool get isArabic;
+
+  /// Create a copy of AppSettingsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangeLanguageStateImplCopyWith<_$ChangeLanguageStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
