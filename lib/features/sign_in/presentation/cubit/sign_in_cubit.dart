@@ -30,7 +30,6 @@ class SignInCubit extends Cubit<SignInState> {
     responce.fold((failure) => emit(SignInFailure(error: failure)), (
       success,
     ) async {
-      
       await _saveUserToken(success.data?.login?.accessToken);
       await _checkUserRole();
     });
@@ -42,7 +41,6 @@ class SignInCubit extends Cubit<SignInState> {
   }
 
   Future<void> _saveUserToken(String? accessToken) async {
-    debugPrint('AccessToken =>>>>>>>>>>>>>>> $accessToken');
     await SharedPrefHelper.setData(SharedPrefKey.accessToken, accessToken);
   }
 
