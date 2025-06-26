@@ -30,6 +30,8 @@ dependencies:
   retrofit: ^4.4.2
   pretty_dio_logger: ^1.4.0
   freezed_annotation: ^2.4.4
+  dartz: ^0.10.1
+  fluttertoast: ^8.2.12
 
 
 
@@ -38,7 +40,7 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^5.0.0
   build_runner: ^2.5.4
-  retrofit_generator: '>=8.0.0 <10.0.0'
+  retrofit_generator: '9.2.0'
   freezed: ^2.4.1
   json_serializable: ^6.9.5
   flutter_launcher_icons: ^0.14.4

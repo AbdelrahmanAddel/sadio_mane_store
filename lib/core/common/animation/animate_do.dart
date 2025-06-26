@@ -58,18 +58,17 @@ class CustomFadeInLeft extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return SharedPrefHelper.getBool(SharedPrefKey.language)
         ? FadeInLeft(
-            delay: const Duration(milliseconds: 300),
-            duration: Duration(milliseconds: duration),
-            child: child,
-          )
+          delay: const Duration(milliseconds: 300),
+          duration: Duration(milliseconds: duration),
+          child: child,
+        )
         : FadeInRight(
-            delay: const Duration(milliseconds: 300),
-            duration: Duration(milliseconds: duration),
-            child: child,
-          );
+          delay: const Duration(milliseconds: 300),
+          duration: Duration(milliseconds: duration),
+          child: child,
+        );
   }
 }
 
