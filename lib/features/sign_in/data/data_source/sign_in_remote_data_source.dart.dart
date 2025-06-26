@@ -22,6 +22,9 @@ class SignInRemoteDataSourceImplemtation extends SignInRemoteDataSource {
       final responce = await signInApiService.signInWithEmailAndPassword(
         SignInQureys.signInQureys(signInRequestBody),
       );
+      if (responce.data == null) {
+        return const Left('Email Or Password Incorrect');
+      } else {}
       return Right(responce);
     } catch (error, stack) {
       debugPrint('error: $error');

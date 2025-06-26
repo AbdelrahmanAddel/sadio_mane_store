@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sadio_mane_store/core/common/functions/custom_flutter_toast.dart';
 import 'package:sadio_mane_store/core/helpers/extensions/navigation_extension.dart';
 import 'package:sadio_mane_store/core/routes/routes_string.dart';
 import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
@@ -19,24 +20,32 @@ class SignInBlocListener extends StatelessWidget {
       },
       listener: (context, state) {
         if (state is SignInSuccess) {
-          //TODO Make It Push Replacement
           context
             ..pop()
             ..pushName(routeName: RoutesString.homeScreen);
         } else if (state is SignInFailure) {
-        } else {
-          showDialog(
-            context: context,
-            builder:
-                (context) => Center(
-                  child: CircularProgressIndicator(
-                    color: context.theme.appColors.mainColor,
-                  ),
-                ),
+          context.pop();
+          customFlutterToast(
+            errorMessage: state.error,
+            backgroundColor: context.theme.appColors.bluePinkDark,
           );
+        } else {
+          _signInLoadingWidget(context);
         }
       },
       child: const SizedBox.shrink(),
+    );
+  }
+
+  void _signInLoadingWidget(BuildContext context) {
+    showDialog(
+      context: context,
+      builder:
+          (context) => Center(
+            child: CircularProgressIndicator(
+              color: context.theme.appColors.mainColor,
+            ),
+          ),
     );
   }
 }

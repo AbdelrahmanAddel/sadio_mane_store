@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sadio_mane_store/core/common/functions/text_form_field_validator.dart';
 import 'package:sadio_mane_store/core/common/widget/custom_text_form_field.dart';
 import 'package:sadio_mane_store/core/helpers/extensions/localization_extension.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
@@ -23,7 +24,7 @@ class SignInTextFormFields extends StatelessWidget {
           child: Column(
             children: [
               CustomTextFormField(
-                validator: signInCubit.textFormFieldValidator('email'),
+                validator: textFormFieldValidator(TextFormFieldEnums.email),
                 controller: signInCubit.emailController,
                 keyboardType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.next,
@@ -32,7 +33,7 @@ class SignInTextFormFields extends StatelessWidget {
               ),
               verticalSpace(40),
               CustomTextFormField(
-                validator: signInCubit.textFormFieldValidator('password'),
+                validator: textFormFieldValidator(TextFormFieldEnums.password),
 
                 controller: signInCubit.passwordController,
                 keyboardType: TextInputType.visiblePassword,

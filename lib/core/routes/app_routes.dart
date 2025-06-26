@@ -18,7 +18,7 @@ class AppRoutes {
       case RoutesString.noInternetConnectionScreen:
         return MaterialPageRoute(builder: (_) => const NoInternetScreen());
       case RoutesString.homeScreen:
-        return MaterialPageRoute(builder: (_) => const SadioManeApp());
+        return MaterialPageRoute(builder: (_) => const Placeholder());
       case RoutesString.signIn:
         return MaterialPageRoute(
           builder:
