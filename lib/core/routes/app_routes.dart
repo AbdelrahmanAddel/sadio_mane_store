@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sadio_mane_store/app/sadio_mane_app.dart';
 import 'package:sadio_mane_store/core/internet_connection/screen/no_internet_screen.dart';
 import 'package:sadio_mane_store/core/networking/dio_factory.dart';
 import 'package:sadio_mane_store/core/routes/routes_string.dart';
 import 'package:sadio_mane_store/features/sign_in/data/data_source/sign_in_api_service.dart';
 import 'package:sadio_mane_store/features/sign_in/data/data_source/sign_in_remote_data_source.dart.dart';
 import 'package:sadio_mane_store/features/sign_in/data/repository/sign_in_repository_implementation.dart';
+import 'package:sadio_mane_store/features/sign_in/logic/usecases/get_user_role_usecase.dart';
 import 'package:sadio_mane_store/features/sign_in/logic/usecases/sign_in_usecase.dart';
 import 'package:sadio_mane_store/features/sign_in/presentation/cubit/sign_in_cubit.dart';
 import 'package:sadio_mane_store/features/sign_in/presentation/view/sign_in_view.dart';
@@ -29,9 +29,15 @@ class AppRoutes {
                         signInRepository: SignInRepositoryImplementation(
                           signInRemoteDataSource:
                               SignInRemoteDataSourceImplemtation(
-                                signInApiService: SignInApiService(
-                                  DioFactory.getDio(),
-                                ),
+                                SignInApiService(DioFactory.getDio()),
+                              ),
+                        ),
+                      ),
+                      GetUserRoleUseCase(
+                        SignInRepositoryImplementation(
+                          signInRemoteDataSource:
+                              SignInRemoteDataSourceImplemtation(
+                                SignInApiService(DioFactory.getDio()),
                               ),
                         ),
                       ),

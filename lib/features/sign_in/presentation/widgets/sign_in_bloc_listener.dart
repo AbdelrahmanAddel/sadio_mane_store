@@ -20,13 +20,19 @@ class SignInBlocListener extends StatelessWidget {
       },
       listener: (context, state) {
         if (state is SignInSuccess) {
-          context
-            ..pop()
-            ..pushName(routeName: RoutesString.homeScreen);
+          if (state.useRole == 'admin') {
+            context
+              ..pop()
+              ..pushName(routeName: RoutesString.homeScreen);
+          } else {
+            context
+              ..pop()
+              ..pushName(routeName: RoutesString.signUp);
+          }
         } else if (state is SignInFailure) {
           context.pop();
           customFlutterToast(
-            errorMessage: state.error,
+            errorMessage: state.error ?? '',
             backgroundColor: context.theme.appColors.bluePinkDark,
           );
         } else {
@@ -38,6 +44,8 @@ class SignInBlocListener extends StatelessWidget {
   }
 
   void _signInLoadingWidget(BuildContext context) {
+    // ignor: document_ignores
+    // ignore: inference_failure_on_function_invocation
     showDialog(
       context: context,
       builder:

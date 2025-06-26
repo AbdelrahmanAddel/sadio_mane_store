@@ -9,4 +9,6 @@ class ApiEndPoints {
   static const graphQl = 'graphql';
   static const restApi = 'api/v1/auth/profile';
   static const baseUrl = 'https://api.escuelajs.co/';
+  static const profile = 'api/v1/auth/profile';
+
 }

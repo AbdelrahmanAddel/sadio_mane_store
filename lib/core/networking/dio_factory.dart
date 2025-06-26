@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:sadio_mane_store/core/helpers/shared_prefrence/shared_pref_key.dart';
+import 'package:sadio_mane_store/core/helpers/shared_prefrence/shared_prefrence.dart';
 
 class DioFactory {
   DioFactory._();
@@ -11,7 +13,11 @@ class DioFactory {
       prettyLoget();
       return _dioInstace!
         ..options.connectTimeout = time
-        ..options.receiveTimeout = time;
+        ..options.receiveTimeout = time
+        ..options.headers.addAll({
+          'Authorization':
+              'Bearer ${SharedPrefHelper.getString(SharedPrefKey.accessToken)}',
+        });
     } else {
       return _dioInstace!;
     }
