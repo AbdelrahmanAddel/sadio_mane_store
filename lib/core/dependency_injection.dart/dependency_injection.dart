@@ -1,8 +1,5 @@
-
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:sadio_mane_store/core/helpers/shared_prefrence/shared_pref_key.dart';
-import 'package:sadio_mane_store/core/helpers/shared_prefrence/shared_prefrence.dart';
 import 'package:sadio_mane_store/core/networking/dio_factory.dart';
 import 'package:sadio_mane_store/features/sign_in/data/data_source/sign_in_api_service.dart';
 import 'package:sadio_mane_store/features/sign_in/data/data_source/sign_in_remote_data_source.dart.dart';
@@ -15,26 +12,24 @@ import 'package:sadio_mane_store/features/sign_in/presentation/cubit/sign_in_cub
 final GetIt getIt = GetIt.instance;
 void setUpGetIt() {
   final dio = DioFactory.getDio();
-  final dio2 = Dio().options.headers.addAll({
-    'Authorization':
-        'Bearer ${SharedPrefHelper.getString(SharedPrefKey.accessToken)}'
-  }
-  );
-  getIt..registerFactory<SignInApiService>(() => SignInApiService(dio))
-  ..registerLazySingleton<SignInRemoteDataSource>(
-    () => SignInRemoteDataSourceImplemtation(getIt()),
-  )
-  ..registerLazySingleton<SignInRepository>(
-    () => SignInRepositoryImplementation(signInRemoteDataSource: getIt()),
-  )
-  ..registerLazySingleton<GetUserRoleUseCase>(
-    () => GetUserRoleUseCase(getIt()),
-  )
-  ..registerLazySingleton<SignInUsecase>(
-    () => SignInUsecase(signInRepository: getIt()),
-  )
 
-  ..registerFactory<SignInCubit>(() => SignInCubit(getIt(), getIt()));
+  _signIn(dio);
+}
 
-  // getIt.registerLazySingleton<SignInUsecase>(() => SignInUsecase(getIt()));
+void _signIn(Dio dio) {
+  getIt
+    ..registerFactory<SignInApiService>(() => SignInApiService(dio))
+    ..registerLazySingleton<SignInRemoteDataSource>(
+      () => SignInRemoteDataSourceImplemtation(getIt()),
+    )
+    ..registerLazySingleton<SignInRepository>(
+      () => SignInRepositoryImplementation(signInRemoteDataSource: getIt()),
+    )
+    ..registerLazySingleton<GetUserRoleUseCase>(
+      () => GetUserRoleUseCase(getIt()),
+    )
+    ..registerLazySingleton<SignInUsecase>(
+      () => SignInUsecase(signInRepository: getIt()),
+    )
+    ..registerFactory<SignInCubit>(() => SignInCubit(getIt(), getIt()));
 }
