@@ -50,4 +50,11 @@ class SignInCubit extends Cubit<SignInState> {
       emit(SignInSuccess(useRole: success.role));
     });
   }
+
+  @override
+  Future<void> close() {
+    emailController.dispose();
+    passwordController.dispose();
+    return super.close();
+  }
 }
