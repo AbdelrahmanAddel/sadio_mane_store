@@ -11,13 +11,12 @@ class DioFactory {
     if (_dioInstace == null) {
       _dioInstace = Dio();
       prettyLoget();
-      return _dioInstace!
+      _dioInstace!
         ..options.connectTimeout = time
-        ..options.receiveTimeout = time
-        ..options.headers.addAll({
-          'Authorization':
-              'Bearer ${SharedPrefHelper.getString(SharedPrefKey.accessToken)}',
-        });
+        ..options.receiveTimeout = time;
+      _saveUserToken();
+      _dioInterceptors();
+      return _dioInstace!;
     } else {
       return _dioInstace!;
     }
@@ -26,6 +25,27 @@ class DioFactory {
   static void prettyLoget() {
     _dioInstace!.interceptors.add(
       PrettyDioLogger(requestHeader: true, requestBody: true),
+    );
+  }
+
+  static void _saveUserToken() {
+    _dioInstace?.options.headers.addAll({
+      'Authorization':
+          'Bearer ${SharedPrefHelper.getString(SharedPrefKey.accessToken)}',
+    });
+  }
+
+  static void _dioInterceptors() {
+    _dioInstace?.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) {
+          final token = SharedPrefHelper.getString(SharedPrefKey.accessToken);
+          if (token.isNotEmpty) {
+            options.headers['Authorization'] = 'Bearer $token';
+          }
+          return handler.next(options);
+        },
+      ),
     );
   }
 }

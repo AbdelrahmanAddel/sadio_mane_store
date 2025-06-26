@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sadio_mane_store/core/dependency_injection.dart/dependency_injection.dart';
 import 'package:sadio_mane_store/core/internet_connection/screen/no_internet_screen.dart';
 import 'package:sadio_mane_store/core/networking/dio_factory.dart';
 import 'package:sadio_mane_store/core/routes/routes_string.dart';
@@ -24,24 +25,7 @@ class AppRoutes {
           builder:
               (_) => BlocProvider(
                 create:
-                    (context) => SignInCubit(
-                      SignInUsecase(
-                        signInRepository: SignInRepositoryImplementation(
-                          signInRemoteDataSource:
-                              SignInRemoteDataSourceImplemtation(
-                                SignInApiService(DioFactory.getDio()),
-                              ),
-                        ),
-                      ),
-                      GetUserRoleUseCase(
-                        SignInRepositoryImplementation(
-                          signInRemoteDataSource:
-                              SignInRemoteDataSourceImplemtation(
-                                SignInApiService(DioFactory.getDio()),
-                              ),
-                        ),
-                      ),
-                    ),
+                    (context) => getIt<SignInCubit>(),
                 child: const SignInView(),
               ),
         );
