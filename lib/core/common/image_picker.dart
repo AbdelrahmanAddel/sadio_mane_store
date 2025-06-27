@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
@@ -8,14 +7,14 @@ class ImagePickerClass {
   ImagePickerClass({required this.context});
   BuildContext context;
 
-  Future<File?> pickImage() async {
+  Future<XFile?> pickImage() async {
     final picker = ImagePicker();
     try {
       final image = await picker.pickImage(source: ImageSource.gallery);
 
       // ignore: unnecessary_null_comparison
       if (picker != null) {
-        return File(image!.path);
+        return XFile(image!.path);
       } else {
         return null;
       }

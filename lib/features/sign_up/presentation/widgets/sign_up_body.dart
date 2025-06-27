@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sadio_mane_store/core/common/image_picker.dart';
 import 'package:sadio_mane_store/core/common/widget/change_theme_and_language_row_widget.dart';
 import 'package:sadio_mane_store/core/helpers/extensions/localization_extension.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
@@ -38,9 +37,7 @@ class SignUpBody extends StatelessWidget {
           ),
           verticalSpace(10),
           GestureDetector(
-            onTap: () async {
-              await ImagePickerClass(context: context).pickImage();
-            },
+            onTap: () async {},
             child: const CircleAvatar(
               radius: 40,
               child: Icon(Icons.person, size: 50),
