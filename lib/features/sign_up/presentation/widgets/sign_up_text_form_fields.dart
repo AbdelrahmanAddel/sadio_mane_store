@@ -3,8 +3,8 @@ import 'package:sadio_mane_store/core/common/widget/custom_text_form_field.dart'
 import 'package:sadio_mane_store/core/helpers/extensions/localization_extension.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
 
-class SignUpTextFormFields extends StatelessWidget {
-  const SignUpTextFormFields({super.key});
+class TextFormFields extends StatelessWidget {
+  const TextFormFields({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -6,6 +6,7 @@ import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
 import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
 import 'package:sadio_mane_store/core/theme/font_weight_helper.dart';
 import 'package:sadio_mane_store/features/sign_up/presentation/widgets/sign_up_button_and_text.dart';
+import 'package:sadio_mane_store/features/sign_up/presentation/widgets/sign_up_circle_avatar.dart';
 import 'package:sadio_mane_store/features/sign_up/presentation/widgets/sign_up_text_form_fields.dart';
 
 class SignUpBody extends StatelessWidget {
@@ -36,18 +37,12 @@ class SignUpBody extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           verticalSpace(10),
-          GestureDetector(
-            onTap: () async {},
-            child: const CircleAvatar(
-              radius: 40,
-              child: Icon(Icons.person, size: 50),
-            ),
-          ),
+          const SignUpCircleAvatar(),
           verticalSpace(20),
 
-          const SignUpTextFormFields(),
+          const TextFormFields(),
           verticalSpace(12),
-          const SignUpButtonAndText(),
+          const ButtonAndText(),
         ],
       ),
     );

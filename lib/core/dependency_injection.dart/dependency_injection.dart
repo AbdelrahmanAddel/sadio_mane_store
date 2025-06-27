@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+
 import 'package:sadio_mane_store/core/networking/dio_factory.dart';
 import 'package:sadio_mane_store/features/sign_in/data/data_source/sign_in_api_service.dart';
 import 'package:sadio_mane_store/features/sign_in/data/data_source/sign_in_remote_data_source.dart.dart';
@@ -14,7 +15,22 @@ void setUpGetIt() {
   final dio = DioFactory.getDio();
 
   _signIn(dio);
+  // _uploadImage(dio);
 }
+
+// void _uploadImage(Dio dio) {
+//   getIt..registerLazySingleton<UploadImageApiServce>(()=>UploadImageApiServce(dio))
+//   ..registerLazySingleton<UploadImageRemoteDataSource>(()=>UploadImageRemoteDataSource(getIt()))
+//   ..registerLazySingleton<UploadImageRepository>(()=>UploadImageRepositoryImplmentation(getIt()))
+//   ..registerLazySingleton<UploadImageUsecase>(()=>UploadImageUsecase(getIt()))
+//   ..registerFactory(()=>UploadImageCubit(getIt(),ImagePickerClass(context: context)));
+// }
+
+
+
+
+
+
 
 void _signIn(Dio dio) {
   getIt

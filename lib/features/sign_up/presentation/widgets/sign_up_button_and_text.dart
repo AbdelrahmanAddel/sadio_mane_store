@@ -7,8 +7,8 @@ import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
 import 'package:sadio_mane_store/core/routes/routes_string.dart';
 import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
 
-class SignUpButtonAndText extends StatelessWidget {
-  const SignUpButtonAndText({super.key});
+class ButtonAndText extends StatelessWidget {
+  const ButtonAndText({super.key});
 
   @override
   Widget build(BuildContext context) {
