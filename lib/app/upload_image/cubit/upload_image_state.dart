@@ -1,25 +1,25 @@
 part of 'upload_image_cubit.dart';
 
-sealed class UploadImage {}
+sealed class UploadImageState {}
 
-class UploadImageInitialState extends UploadImage {}
+class UploadImageInitialState extends UploadImageState {}
 
-class UploadImageSuccessState extends UploadImage {
+class UploadImageSuccessState extends UploadImageState {
   UploadImageSuccessState(this.imageResponce);
 
   UploadImageResponceModel imageResponce;
 }
 
-class UploadImageLoadingState extends UploadImage {}
+class UploadImageLoadingState extends UploadImageState {}
 
-class UploadImageErrorState extends UploadImage {
+class UploadImageErrorState extends UploadImageState {
   UploadImageErrorState({required this.message});
   final String message;
 }
 
-class FailureToPickImageState extends UploadImage {
+class FailureToPickImageState extends UploadImageState {
   FailureToPickImageState({required this.message});
   final String message;
 }
 
-class PickImageSuccessState extends UploadImage {}
+class PickImageSuccessState extends UploadImageState {}

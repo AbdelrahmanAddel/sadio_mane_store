@@ -6,7 +6,7 @@ import 'package:sadio_mane_store/core/common/image_picker.dart';
 
 part 'upload_image_state.dart';
 
-class UploadImageCubit extends Cubit<UploadImage> {
+class UploadImageCubit extends Cubit<UploadImageState> {
   UploadImageCubit(this._imageUsecase, this.imagePickerClass)
     : super(UploadImageInitialState());
   final UploadImageUsecase _imageUsecase;
@@ -33,4 +33,6 @@ class UploadImageCubit extends Cubit<UploadImage> {
       emit(UploadImageSuccessState(success));
     });
   }
+
+  void deleteImage() => emit(UploadImageInitialState());
 }
