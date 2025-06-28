@@ -10,14 +10,18 @@ import 'package:sadio_mane_store/core/helpers/shared_prefrence/shared_prefrence.
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await _initApp();
+  Bloc.observer = AppBlocObserver();
+  await _lockOrientation();
+  runApp(const SadioManeApp());
+}
+
+Future<void> _lockOrientation() async =>
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
+Future<void> _initApp() async {
   await EnvVariable.getInstance.loadEnv(envType: EnvType.prod);
   await ScreenUtil.ensureScreenSize();
   await SharedPrefHelper.init();
   setUpGetIt();
-  Bloc.observer = AppBlocObserver();
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]).then((_) {
-    runApp(const SadioManeApp());
-  });
 }

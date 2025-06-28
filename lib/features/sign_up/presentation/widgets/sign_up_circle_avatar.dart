@@ -5,6 +5,7 @@ import 'package:sadio_mane_store/app/upload_image/cubit/upload_image_cubit.dart'
 import 'package:sadio_mane_store/core/common/functions/custom_flutter_toast.dart';
 import 'package:sadio_mane_store/core/common/widget/custom_circle_avatar_with_gesture_detector.dart';
 import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
+import 'package:sadio_mane_store/features/sign_up/presentation/cubit/sign_up_cubit.dart';
 
 class SignUpCircleAvatar extends StatelessWidget {
   const SignUpCircleAvatar({super.key});
@@ -12,11 +13,14 @@ class SignUpCircleAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final uploadImageCubit = context.read<UploadImageCubit>();
+    final signUpCubit = context.read<SignUpCubit>();
     return BlocConsumer<UploadImageCubit, UploadImageState>(
-      listenWhen: (previous, current) => current is UploadImageErrorState,
+      listenWhen: (previous, current) => current is UploadImageErrorState || current is UploadImageSuccessState,
       listener: (context, state) {
         if (state is UploadImageErrorState) {
           customFlutterToast(errorMessage: state.message);
+        } else if (state is UploadImageSuccessState) {
+          signUpCubit.urlImage = state.imageResponce.location!;
         }
       },
       buildWhen: (previous, current) {
@@ -34,6 +38,7 @@ class SignUpCircleAvatar extends StatelessWidget {
           UploadImageSuccessState() => _buildSuccessState(
             state,
             uploadImageCubit,
+            signUpCubit,
           ),
 
           UploadImageLoadingState() => _buildLoadingState(),
@@ -63,6 +68,7 @@ class SignUpCircleAvatar extends StatelessWidget {
   Widget _buildSuccessState(
     UploadImageSuccessState state,
     UploadImageCubit uploadImageCubit,
+    SignUpCubit signUpCubit,
   ) {
     return CustomCircleAvatarWithGestureDetector(
       backgroundImage: NetworkImage(state.imageResponce.location!),
@@ -73,6 +79,7 @@ class SignUpCircleAvatar extends StatelessWidget {
           icon: const Icon(Icons.delete, color: Colors.white, size: 30),
           onPressed: () {
             uploadImageCubit.deleteImage();
+            signUpCubit.urlImage = '';
           },
         ),
       ),

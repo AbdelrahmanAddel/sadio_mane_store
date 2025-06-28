@@ -12,6 +12,11 @@ import 'package:sadio_mane_store/core/networking/dio_factory.dart';
 import 'package:sadio_mane_store/core/routes/routes_string.dart';
 import 'package:sadio_mane_store/features/sign_in/presentation/cubit/sign_in_cubit.dart';
 import 'package:sadio_mane_store/features/sign_in/presentation/view/sign_in_view.dart';
+import 'package:sadio_mane_store/features/sign_up/data/data_source/sign_up_api_service.dart';
+import 'package:sadio_mane_store/features/sign_up/data/data_source/sign_up_remote_data_source.dart';
+import 'package:sadio_mane_store/features/sign_up/data/repository/sign_up_repository_imple.dart';
+import 'package:sadio_mane_store/features/sign_up/logic/usecase/sign_up_usecase.dart';
+import 'package:sadio_mane_store/features/sign_up/presentation/cubit/sign_up_cubit.dart';
 import 'package:sadio_mane_store/features/sign_up/presentation/view/sign_up_view.dart';
 
 class AppRoutes {
@@ -32,17 +37,34 @@ class AppRoutes {
       case RoutesString.signUp:
         return MaterialPageRoute(
           builder:
-              (_) => BlocProvider(
-                create: (context) => UploadImageCubit(
-                  UploadImageUsecase(
-                    UploadImageRepositoryImplmentation(
-                      UploadImageRemoteDataSource(
-                        UploadImageApiServce(DioFactory.getDio()),
-                      ),
-                    ),
+              (_) => MultiBlocProvider(
+                providers: [
+                  BlocProvider(
+                    create:
+                        (context) => SignUpCubit(
+                          SignUpUsecase(
+                            SignUpRepositoryImple(
+                              SignUpRemoteDataSourceImpl(
+                                SignUpApiService(DioFactory.getDio()),
+                              ),
+                            ),
+                          ),
+                        ),
                   ),
-                  ImagePickerClass(context: context),
-                ),
+                  BlocProvider(
+                    create:
+                        (context) => UploadImageCubit(
+                          UploadImageUsecase(
+                            UploadImageRepositoryImplmentation(
+                              UploadImageRemoteDataSource(
+                                UploadImageApiServce(DioFactory.getDio()),
+                              ),
+                            ),
+                          ),
+                          ImagePickerClass(context: context),
+                        ),
+                  ),
+                ],
                 child: const SignUpView(),
               ),
         );
