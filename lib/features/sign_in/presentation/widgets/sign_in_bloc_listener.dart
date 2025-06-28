@@ -23,11 +23,11 @@ class SignInBlocListener extends StatelessWidget {
           if (state.useRole == 'admin') {
             context
               ..pop()
-              ..pushName(routeName: RoutesString.homeScreen);
+              ..pushName(routeName: RoutesString.adminHome);
           } else {
             context
               ..pop()
-              ..pushName(routeName: RoutesString.signUp);
+              ..pushName(routeName: RoutesString.userHome);
           }
         } else if (state is SignInFailure) {
           context.pop();
