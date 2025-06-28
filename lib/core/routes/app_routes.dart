@@ -10,6 +10,8 @@ import 'package:sadio_mane_store/core/dependency_injection.dart/dependency_injec
 import 'package:sadio_mane_store/core/internet_connection/screen/no_internet_screen.dart';
 import 'package:sadio_mane_store/core/networking/dio_factory.dart';
 import 'package:sadio_mane_store/core/routes/routes_string.dart';
+import 'package:sadio_mane_store/features/home/admin_home_view.dart';
+import 'package:sadio_mane_store/features/home/customer_home_view.dart';
 import 'package:sadio_mane_store/features/sign_in/presentation/cubit/sign_in_cubit.dart';
 import 'package:sadio_mane_store/features/sign_in/presentation/view/sign_in_view.dart';
 import 'package:sadio_mane_store/features/sign_up/data/data_source/sign_up_api_service.dart';
@@ -24,8 +26,10 @@ class AppRoutes {
     switch (route.name) {
       case RoutesString.noInternetConnectionScreen:
         return MaterialPageRoute(builder: (_) => const NoInternetScreen());
-      case RoutesString.homeScreen:
-        return MaterialPageRoute(builder: (_) => const Placeholder());
+      case RoutesString.adminHome:
+        return MaterialPageRoute(builder: (_) => const AdminHomeView());
+      case RoutesString.userHome:
+        return MaterialPageRoute(builder: (_) => const CustomerHomeView());
       case RoutesString.signIn:
         return MaterialPageRoute(
           builder:

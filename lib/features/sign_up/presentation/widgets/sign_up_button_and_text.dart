@@ -22,8 +22,7 @@ class ButtonAndText extends StatelessWidget {
           onTap: () {
             if (signUpCubit.formKey.currentState!.validate() == false) {
               return;
-            } 
-            else if (signUpCubit.urlImage.isEmpty) {
+            } else if (signUpCubit.urlImage.isEmpty) {
               customFlutterToast(errorMessage: context.tr.valid_pick_image);
               return;
             }
