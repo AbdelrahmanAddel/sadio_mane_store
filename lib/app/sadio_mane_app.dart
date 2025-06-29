@@ -33,7 +33,7 @@ class SadioManeApp extends StatelessWidget {
             splitScreenMode: true,
             builder:
                 (_, child) => MaterialApp(
-                  initialRoute: RoutesString.signIn,
+                  initialRoute: getInitRoute(),
 
                   locale:
                       SharedPrefHelper.getBool(SharedPrefKey.language)
@@ -49,7 +49,7 @@ class SadioManeApp extends StatelessWidget {
                   supportedLocales: S.delegate.supportedLocales,
                   theme:
                       SharedPrefHelper.getBool(SharedPrefKey.isDarkMode)
-                          ? darkTheme
+                          ? lightTheme
                           : lightTheme,
                   onGenerateRoute: AppRoutes.generateRoute,
 
@@ -59,5 +59,15 @@ class SadioManeApp extends StatelessWidget {
         },
       ),
     );
+  }
+}
+
+String getInitRoute() {
+  final accessToken = SharedPrefHelper.getString(SharedPrefKey.accessToken);
+  final userRole = SharedPrefHelper.getString(SharedPrefKey.userRole);
+  if (accessToken != '') {
+    return userRole == 'admin' ? RoutesString.adminHome : RoutesString.userHome;
+  } else {
+    return RoutesString.signIn;
   }
 }

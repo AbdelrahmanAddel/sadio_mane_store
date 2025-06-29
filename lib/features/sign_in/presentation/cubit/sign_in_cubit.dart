@@ -46,7 +46,9 @@ class SignInCubit extends Cubit<SignInState> {
 
   Future<void> _checkUserRole() async {
     final responce = await _getUserRoleUseCase.call();
+
     responce.fold((error) => emit(SignInFailure(error: error)), (success) {
+      SharedPrefHelper.setData(SharedPrefKey.userRole, success.role);
       emit(SignInSuccess(useRole: success.role));
     });
   }
