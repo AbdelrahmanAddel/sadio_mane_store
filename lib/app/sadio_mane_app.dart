@@ -68,7 +68,7 @@ String getInitRoute() {
   if (accessToken != '') {
     return userRole == 'admin'
         ? RoutesString.adminHome
-        : RoutesString.userHome;
+        : RoutesString.adminHome;
   } else {
     return RoutesString.signIn;
   }

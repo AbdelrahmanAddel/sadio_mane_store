@@ -6,7 +6,7 @@ import 'package:sadio_mane_store/core/helpers/shared_prefrence/shared_prefrence.
 import 'package:sadio_mane_store/core/routes/routes_string.dart';
 import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
 import 'package:sadio_mane_store/features/admin/customer_home_view.dart';
-import 'package:sadio_mane_store/features/dashboard/presentation/view/dash_board_view.dart';
+import 'package:sadio_mane_store/features/dashboard/presentation/view/dashboard_view.dart';
 import 'package:sadio_mane_store/first_screen.dart';
 import 'package:sadio_mane_store/second_screen.dart';
 
