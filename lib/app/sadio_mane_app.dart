@@ -49,7 +49,7 @@ class SadioManeApp extends StatelessWidget {
                   supportedLocales: S.delegate.supportedLocales,
                   theme:
                       SharedPrefHelper.getBool(SharedPrefKey.isDarkMode)
-                          ? lightTheme
+                          ? darkTheme
                           : lightTheme,
                   onGenerateRoute: AppRoutes.generateRoute,
 
@@ -66,7 +66,9 @@ String getInitRoute() {
   final accessToken = SharedPrefHelper.getString(SharedPrefKey.accessToken);
   final userRole = SharedPrefHelper.getString(SharedPrefKey.userRole);
   if (accessToken != '') {
-    return userRole == 'admin' ? RoutesString.adminHome : RoutesString.userHome;
+    return userRole == 'admin'
+        ? RoutesString.adminHome
+        : RoutesString.userHome;
   } else {
     return RoutesString.signIn;
   }
