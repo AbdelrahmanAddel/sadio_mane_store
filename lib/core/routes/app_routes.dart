@@ -23,10 +23,7 @@ class AppRoutes {
               (_) => BlocProvider(
                 create:
                     (context) =>
-                        getIt<DashboardBloc>()
-                          ..add(GetProductsTotalLengthEvent())
-                          ..add(GetUsersTotalNumberEvent())
-                          ..add(GetCategoriesTotalNumberEvent()),
+                        getIt<DashboardBloc>()..add(GetAllDashboardDataEvent()),
                 child: const DashBoardView(),
               ),
         );

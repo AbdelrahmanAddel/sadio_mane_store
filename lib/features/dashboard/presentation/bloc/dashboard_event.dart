@@ -7,3 +7,4 @@ class GetProductsTotalLengthEvent extends DashboardEvent {}
 class GetUsersTotalNumberEvent extends DashboardEvent {}
 
 class GetCategoriesTotalNumberEvent extends DashboardEvent {}
+class GetAllDashboardDataEvent extends DashboardEvent {}
