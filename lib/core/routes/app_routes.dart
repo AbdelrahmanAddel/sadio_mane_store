@@ -10,8 +10,14 @@ import 'package:sadio_mane_store/core/dependency_injection.dart/dependency_injec
 import 'package:sadio_mane_store/core/internet_connection/screen/no_internet_screen.dart';
 import 'package:sadio_mane_store/core/networking/dio_factory.dart';
 import 'package:sadio_mane_store/core/routes/routes_string.dart';
-import 'package:sadio_mane_store/features/admin/admin_home_view.dart';
 import 'package:sadio_mane_store/features/admin/customer_home_view.dart';
+import 'package:sadio_mane_store/features/dashboard/data/data_source/dashboard_api_service.dart';
+import 'package:sadio_mane_store/features/dashboard/data/data_source/dashboard_remote_data_source.dart';
+import 'package:sadio_mane_store/features/dashboard/data/repository/dashboard_repository_implmentation.dart';
+import 'package:sadio_mane_store/features/dashboard/logic/usecase/get_products_length_usecase.dart';
+import 'package:sadio_mane_store/features/dashboard/logic/usecase/get_users_total_number_usecase.dart';
+import 'package:sadio_mane_store/features/dashboard/presentation/bloc/dashboard_bloc.dart';
+import 'package:sadio_mane_store/features/dashboard/presentation/view/dashboard_view.dart';
 import 'package:sadio_mane_store/features/sign_in/presentation/cubit/sign_in_cubit.dart';
 import 'package:sadio_mane_store/features/sign_in/presentation/view/sign_in_view.dart';
 import 'package:sadio_mane_store/features/sign_up/data/data_source/sign_up_api_service.dart';
@@ -27,7 +33,33 @@ class AppRoutes {
       case RoutesString.noInternetConnectionScreen:
         return MaterialPageRoute(builder: (_) => const NoInternetScreen());
       case RoutesString.adminHome:
-        return MaterialPageRoute(builder: (_) => const AdminHomeView());
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider(
+                lazy: false,
+                create:
+                    (context) =>
+                        DashboardBloc(
+                            GetProductsLengthUsecase(
+                              DashboardRepositoryImplmentation(
+                                DashboardRemoteDataSource(
+                                  DashboardApiService(DioFactory.getDio()),
+                                ),
+                              ),
+                            ),
+                            GetUsersTotalNumberUseCase(
+                              DashboardRepositoryImplmentation(
+                                DashboardRemoteDataSource(
+                                  DashboardApiService(DioFactory.getDio()),
+                                ),
+                              ),
+                            ),
+                          )
+                          ..add(GetProductsTotalLengthEvent())
+                          ..add(GetUsersTotalNumberEvent()),
+                child: const DashBoardView(),
+              ),
+        );
       case RoutesString.userHome:
         return MaterialPageRoute(builder: (_) => const CustomerHomeView());
       case RoutesString.signIn:

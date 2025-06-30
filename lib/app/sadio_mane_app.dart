@@ -33,7 +33,7 @@ class SadioManeApp extends StatelessWidget {
             splitScreenMode: true,
             builder:
                 (_, child) => MaterialApp(
-                  initialRoute: getInitRoute(),
+                  initialRoute: RoutesString.adminHome,
 
                   locale:
                       SharedPrefHelper.getBool(SharedPrefKey.language)
