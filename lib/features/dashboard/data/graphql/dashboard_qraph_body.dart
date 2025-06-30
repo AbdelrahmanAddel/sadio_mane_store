@@ -13,13 +13,26 @@ class DashboardQraphBody {
     };
   }
 
-static  Map<String, dynamic> getUsersTotalNumber() {
+  static Map<String, dynamic> getUsersTotalNumber() {
     return {
       'query': '''
 {
   users{
 		id
 
+  }
+}
+
+''',
+    };
+  }
+
+  static Map<String, dynamic> getCategoriesTotalNumber() {
+    return {
+      'query': '''
+{
+  categories{
+    id
   }
 }
 

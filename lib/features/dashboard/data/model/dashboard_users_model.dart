@@ -6,7 +6,7 @@ class DashboardUsersModel {
   DashboardUsersModel({this.data});
 
   factory DashboardUsersModel.fromJson(Map<String, dynamic> json) =>
-      _$DashBoardUsersModelFromJson(json);
+      _$DashboardUsersModelFromJson(json);
   final UserModel? data;
 }
 

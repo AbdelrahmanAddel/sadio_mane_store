@@ -86,6 +86,7 @@ List<DrawerItemModel> drawerItem(BuildContext context) {
     DrawerItemModel(
       icon: GestureDetector(
         onTap: () {
+          // ignore: inference_failure_on_function_invocation
           showDialog(
             context: context,
             builder: (BuildContext context) {

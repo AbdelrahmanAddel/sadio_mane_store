@@ -25,3 +25,13 @@ final class FailureGetTotalUsersNumberState extends DashboardState {
 
   final String errorMessage;
 }
+final class GetTotalCategoriesNumberState extends DashboardState {
+  GetTotalCategoriesNumberState({this.categoriesTotalLenght});
+
+  final int? categoriesTotalLenght;
+}
+final class FailureGetTotalCategoriesNumberState extends DashboardState {
+  FailureGetTotalCategoriesNumberState({required this.errorMessage});
+
+  final String errorMessage;
+}

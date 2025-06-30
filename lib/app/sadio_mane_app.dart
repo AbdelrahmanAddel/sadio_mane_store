@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadio_mane_store/app/env_variable.dart';
+import 'package:sadio_mane_store/core/dependency_injection.dart/dependency_injection.dart';
 import 'package:sadio_mane_store/core/helpers/shared_prefrence/shared_pref_key.dart';
 import 'package:sadio_mane_store/core/helpers/shared_prefrence/shared_prefrence.dart';
 import 'package:sadio_mane_store/core/internet_connection/cubit/internet_connection_cubit.dart';
@@ -32,8 +33,9 @@ class SadioManeApp extends StatelessWidget {
             minTextAdapt: true,
             splitScreenMode: true,
             builder:
-                (_, child) => MaterialApp(
-                  initialRoute: RoutesString.adminHome,
+                (context, child) => MaterialApp(
+                  navigatorKey: getIt<GlobalKey<NavigatorState>>(),
+                  initialRoute: RoutesString.signUp,
 
                   locale:
                       SharedPrefHelper.getBool(SharedPrefKey.language)

@@ -6,7 +6,7 @@ part of 'dashboard_users_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-DashboardUsersModel _$DashBoardUsersModelFromJson(Map<String, dynamic> json) =>
+DashboardUsersModel _$DashboardUsersModelFromJson(Map<String, dynamic> json) =>
     DashboardUsersModel(
       data:
           json['data'] == null
@@ -14,7 +14,7 @@ DashboardUsersModel _$DashBoardUsersModelFromJson(Map<String, dynamic> json) =>
               : UserModel.fromJson(json['data'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$DashBoardUsersModelToJson(
+Map<String, dynamic> _$DashboardUsersModelToJson(
   DashboardUsersModel instance,
 ) => <String, dynamic>{'data': instance.data};
 
