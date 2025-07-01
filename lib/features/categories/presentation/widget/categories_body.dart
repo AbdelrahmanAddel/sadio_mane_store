@@ -16,29 +16,35 @@ class CategoriesBody extends StatelessWidget {
           verticalSpace(20),
           const GetAllCategoriesAndAddCategoriesRow(),
           verticalSpace(25),
-          const ProductContainer(categoryName: 'Sadio Mane', categoryImage: 'https://upload.wikimedia.org/wikipedia/commons/e/e2/Sadio_Man%C3%A9_-_Persepolis_F.C._v_Al_Nassr_FC%2C_19_September_2023.jpg'),
-        
+
+          Expanded(
+            child: RefreshIndicator(
+              onRefresh: () async {},
+              child: CustomScrollView(
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: ListView.separated(
+                      physics: const BouncingScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: 10,
+
+                      itemBuilder:
+                          (context, index) => const ProductContainer(
+                            categoryName: 'Sadio Mane',
+                            categoryImage:
+                                'https://upload.wikimedia.org/wikipedia/commons/e/e2/Sadio_Man%C3%A9_-_Persepolis_F.C._v_Al_Nassr_FC%2C_19_September_2023.jpg',
+                          ),
+                      separatorBuilder: (BuildContext context, int index) {
+                        return verticalSpace(20);
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
-}
-Future<dynamic> bottomSheet(BuildContext context){
-  return showModalBottomSheet(
-    
-    isScrollControlled: true,
-    context: context, builder: 
-  (context) {
-    
-    return SingleChildScrollView(
-      child: Container(
-        child: Placeholder(),
-
-      ),
-    );
-
-
-  },
-  
-  );
 }
