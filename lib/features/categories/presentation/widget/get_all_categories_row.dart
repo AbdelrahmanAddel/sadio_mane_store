@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadio_mane_store/core/common/widget/custom_app_button.dart';
+import 'package:sadio_mane_store/core/common/widget/custom_show_modal_bottom_sheet.dart';
 import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
+import 'package:sadio_mane_store/features/categories/presentation/widget/modal_buttom_sheet_content.dart';
 
-class GetAllCategoriesRow extends StatelessWidget {
-  const GetAllCategoriesRow({super.key});
+class GetAllCategoriesAndAddCategoriesRow extends StatelessWidget {
+  const GetAllCategoriesAndAddCategoriesRow({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +20,11 @@ class GetAllCategoriesRow extends StatelessWidget {
           ),
         ),
         CustomAppButton(
+          onTap:
+              () => customShowModalBottomSheet(
+                context: context,
+                buttonWidget: const ModalBottomSheetContent(),
+              ),
           width: 100.sp,
           child: Text(
             'Add',

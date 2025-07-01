@@ -14,11 +14,31 @@ class CategoriesBody extends StatelessWidget {
       child: Column(
         children: [
           verticalSpace(20),
-          const GetAllCategoriesRow(),
+          const GetAllCategoriesAndAddCategoriesRow(),
           verticalSpace(25),
           const ProductContainer(categoryName: 'Sadio Mane', categoryImage: 'https://upload.wikimedia.org/wikipedia/commons/e/e2/Sadio_Man%C3%A9_-_Persepolis_F.C._v_Al_Nassr_FC%2C_19_September_2023.jpg'),
+        
         ],
       ),
     );
   }
+}
+Future<dynamic> bottomSheet(BuildContext context){
+  return showModalBottomSheet(
+    
+    isScrollControlled: true,
+    context: context, builder: 
+  (context) {
+    
+    return SingleChildScrollView(
+      child: Container(
+        child: Placeholder(),
+
+      ),
+    );
+
+
+  },
+  
+  );
 }
