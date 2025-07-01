@@ -11,6 +11,7 @@ class FirstScreen extends StatelessWidget {
       appBar: CustomAdminAppBar(
         backGrounfColor: Colors.black,
         title: 'First Screen',
+     
         isMain: true,
       ),
     );

@@ -12,6 +12,9 @@ class SecondScreen extends StatelessWidget {
         backGrounfColor: Colors.black,
         title: 'Second Screen',
         isMain: true,
+        
+
+
       ),
     );
   }

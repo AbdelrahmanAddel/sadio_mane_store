@@ -1,7 +1,23 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
+import 'package:sadio_mane_store/app/upload_image/cubit/upload_image_cubit.dart';
+import 'package:sadio_mane_store/app/upload_image/data/data_source/upload_image_api_servce.dart';
+import 'package:sadio_mane_store/app/upload_image/data/data_source/upload_image_remote_data_source.dart';
+import 'package:sadio_mane_store/app/upload_image/data/repository/upload_image_repository_implmentation.dart';
+import 'package:sadio_mane_store/app/upload_image/logic/repository/upload_image_repository.dart';
+import 'package:sadio_mane_store/app/upload_image/logic/usecase/upload_image_usecase.dart';
+import 'package:sadio_mane_store/core/common/image_picker.dart';
 
 import 'package:sadio_mane_store/core/networking/dio_factory.dart';
+import 'package:sadio_mane_store/features/dashboard/data/data_source/dashboard_api_service.dart';
+import 'package:sadio_mane_store/features/dashboard/data/data_source/dashboard_remote_data_source.dart';
+import 'package:sadio_mane_store/features/dashboard/data/repository/dashboard_repository_implmentation.dart';
+import 'package:sadio_mane_store/features/dashboard/logic/repository/dashboard_repository.dart';
+import 'package:sadio_mane_store/features/dashboard/logic/usecase/get_categories_length_usecase.dart';
+import 'package:sadio_mane_store/features/dashboard/logic/usecase/get_products_length_usecase.dart';
+import 'package:sadio_mane_store/features/dashboard/logic/usecase/get_users_total_number_usecase.dart';
+import 'package:sadio_mane_store/features/dashboard/presentation/bloc/dashboard_bloc.dart';
 import 'package:sadio_mane_store/features/sign_in/data/data_source/sign_in_api_service.dart';
 import 'package:sadio_mane_store/features/sign_in/data/data_source/sign_in_remote_data_source.dart';
 import 'package:sadio_mane_store/features/sign_in/data/repository/sign_in_repository_implementation.dart';
@@ -19,23 +35,65 @@ import 'package:sadio_mane_store/features/sign_up/presentation/cubit/sign_up_cub
 final GetIt getIt = GetIt.instance;
 void setUpGetIt() {
   final dio = DioFactory.getDio();
-
+  final navigatorKey = GlobalKey<NavigatorState>();
+  getIt.registerSingleton<GlobalKey<NavigatorState>>(navigatorKey);
   _signIn(dio);
   _signUp(dio);
-  print("✅ GetIt setup done");
+  _dashBoard(dio);
+  _uploadImage(dio);
+  debugPrint('✅ GetIt setup done');
+}
+
+void _uploadImage(Dio dio) {
+  getIt
+    ..registerLazySingleton(() => UploadImageApiServce(dio))
+    ..registerLazySingleton(() => UploadImageRemoteDataSource(getIt()))
+    ..registerLazySingleton<UploadImageRepository>(
+      () => UploadImageRepositoryImplmentation(getIt()),
+    )
+    ..registerLazySingleton(() => UploadImageUsecase(getIt()))
+    ..registerLazySingleton(
+      () => UploadImageCubit(
+        getIt(),
+        ImagePickerClass(
+          context: getIt<GlobalKey<NavigatorState>>().currentContext!,
+        ),
+      ),
+    );
+}
+
+void _dashBoard(Dio dio) {
+  getIt
+    ..registerLazySingleton(() => DashboardApiService(dio))
+    ..registerLazySingleton<DashboardRemoteDataSource>(
+      () => DashboardRemoteDataSource(getIt()),
+    )
+    ..registerLazySingleton<DashboardRepository>(
+      () => DashboardRepositoryImplmentation(getIt()),
+    )
+    ..registerLazySingleton<GetProductsLengthUsecase>(
+      () => GetProductsLengthUsecase(getIt()),
+    )
+    ..registerLazySingleton<GetUsersTotalNumberUseCase>(
+      () => GetUsersTotalNumberUseCase(getIt()),
+    )
+    ..registerLazySingleton<GetCategoriesLengthUsecase>(
+      () => GetCategoriesLengthUsecase(getIt()),
+    )
+    ..registerFactory<DashboardBloc>(
+      () => DashboardBloc(getIt(), getIt(), getIt()),
+    );
 }
 
 void _signUp(Dio dio) {
   getIt
-    ..registerLazySingleton<SignUpApiService>(() => SignUpApiService(dio))
-    ..registerLazySingleton<SignUpRemoteDataSource>(
-      () => SignUpRemoteDataSourceImpl(getIt()),
-    )
+    ..registerLazySingleton(() => SignUpApiService(dio))
+    ..registerLazySingleton(() => SignUpRemoteDataSourceImpl(getIt()))
     ..registerLazySingleton<SignUpRepository>(
       () => SignUpRepositoryImple(getIt()),
     )
     ..registerLazySingleton<SignUpUsecase>(() => SignUpUsecase(getIt()))
-    ..registerLazySingleton<SignUpCubit>(() => SignUpCubit(getIt()));
+    ..registerFactory<SignUpCubit>(() => SignUpCubit(getIt()));
 }
 
 void _signIn(Dio dio) {
