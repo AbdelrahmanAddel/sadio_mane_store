@@ -4,8 +4,8 @@ import 'package:sadio_mane_store/core/common/widget/custom_app_button.dart';
 import 'package:sadio_mane_store/core/common/widget/custom_text_form_field.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
 
-class ModalBottomSheetContent extends StatelessWidget {
-  const ModalBottomSheetContent({super.key});
+class AddCategoryModalBottomSheetContent extends StatelessWidget {
+  const AddCategoryModalBottomSheetContent({super.key});
 
   @override
   Widget build(BuildContext context) {

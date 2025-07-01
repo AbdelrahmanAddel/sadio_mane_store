@@ -2,8 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadio_mane_store/core/common/widget/custom_container_linear_admin.dart';
+import 'package:sadio_mane_store/core/common/widget/custom_show_modal_bottom_sheet.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
 import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
+import 'package:sadio_mane_store/features/categories/presentation/widget/edit/egit_category_modal_buttom_sheet_content.dart';
 import 'package:sadio_mane_store/features/dashboard/presentation/widgets/dashboard_loading.dart';
 
 class ProductContainer extends StatelessWidget {
@@ -42,7 +44,18 @@ class ProductContainer extends StatelessWidget {
                       const Icon(Icons.delete, color: Colors.red, size: 25),
                       horizontalSpace(20),
 
-                      const Icon(Icons.edit, color: Colors.green, size: 25),
+                      IconButton(
+                        icon: const Icon(
+                          Icons.edit,
+                          color: Colors.green,
+                          size: 25,
+                        ),
+                        onPressed:
+                            () => customShowModalBottomSheet(
+                              buttonWidget: EditModalBottomSheetContent(),
+                              context: context,
+                            ),
+                      ),
                     ],
                   ),
                 ],

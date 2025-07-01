@@ -15,7 +15,7 @@ class CategoriesView extends StatelessWidget {
         centerTitle: true,
         backgroundColor: context.theme.appColors.mainColor,
       ),
-      body:  const CategoriesBody(),
+      body: const CategoriesBody(),
     );
   }
 }
