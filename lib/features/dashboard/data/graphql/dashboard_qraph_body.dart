@@ -18,7 +18,7 @@ class DashboardQraphBody {
       'query': '''
 {
   users{
-		id
+		 id
 
   }
 }
@@ -32,7 +32,7 @@ class DashboardQraphBody {
       'query': '''
 {
   categories{
-    id
+     id
   }
 }
 

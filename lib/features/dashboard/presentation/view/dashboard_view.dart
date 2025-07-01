@@ -15,13 +15,9 @@ class DashBoardView extends StatelessWidget {
         title: 'DashBoard',
         isMain: true,
       ),
-      body: SingleChildScrollView(
-        child: RefreshIndicator(
-          onRefresh: () async {},
-
-          child: const DashBoardBody(),
-        ),
-      ),
-    );
+      body: const DashboardBody(),
+      );
+      
+  
   }
 }
