@@ -16,8 +16,6 @@ class DashBoardView extends StatelessWidget {
         isMain: true,
       ),
       body: const DashboardBody(),
-      );
-      
-  
+    );
   }
 }

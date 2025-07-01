@@ -7,7 +7,6 @@ import 'package:sadio_mane_store/core/routes/routes_string.dart';
 import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
 import 'package:sadio_mane_store/features/admin/customer_home_view.dart';
 import 'package:sadio_mane_store/features/dashboard/presentation/view/dashboard_view.dart';
-import 'package:sadio_mane_store/first_screen.dart';
 import 'package:sadio_mane_store/second_screen.dart';
 
 List<DrawerItemModel> drawerItem(BuildContext context) {
@@ -21,7 +20,7 @@ List<DrawerItemModel> drawerItem(BuildContext context) {
           fontSize: 17.sp,
         ),
       ),
-      page: const FirstScreen(),
+      page: const DashBoardView(),
     ),
     //Categories
     DrawerItemModel(

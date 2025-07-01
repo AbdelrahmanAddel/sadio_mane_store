@@ -4,9 +4,9 @@ import 'package:sadio_mane_store/app/upload_image/cubit/upload_image_cubit.dart'
 import 'package:sadio_mane_store/core/dependency_injection.dart/dependency_injection.dart';
 import 'package:sadio_mane_store/core/internet_connection/screen/no_internet_screen.dart';
 import 'package:sadio_mane_store/core/routes/routes_string.dart';
+import 'package:sadio_mane_store/features/admin/admin_home_view.dart';
 import 'package:sadio_mane_store/features/admin/customer_home_view.dart';
 import 'package:sadio_mane_store/features/dashboard/presentation/bloc/dashboard_bloc.dart';
-import 'package:sadio_mane_store/features/dashboard/presentation/view/dashboard_view.dart';
 import 'package:sadio_mane_store/features/sign_in/presentation/cubit/sign_in_cubit.dart';
 import 'package:sadio_mane_store/features/sign_in/presentation/view/sign_in_view.dart';
 import 'package:sadio_mane_store/features/sign_up/presentation/cubit/sign_up_cubit.dart';
@@ -24,7 +24,7 @@ class AppRoutes {
                 create:
                     (context) =>
                         getIt<DashboardBloc>()..add(GetAllDashboardDataEvent()),
-                child: const DashBoardView(),
+                child: const AdminHomeView(),
               ),
         );
       case RoutesString.userHome:
