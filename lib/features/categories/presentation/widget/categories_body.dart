@@ -1,0 +1,50 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
+import 'package:sadio_mane_store/features/categories/presentation/widget/get_all_categories_row.dart';
+import 'package:sadio_mane_store/features/categories/presentation/widget/product_container.dart';
+
+class CategoriesBody extends StatelessWidget {
+  const CategoriesBody({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 13.w),
+      child: Column(
+        children: [
+          verticalSpace(20),
+          const GetAllCategoriesAndAddCategoriesRow(),
+          verticalSpace(25),
+
+          Expanded(
+            child: RefreshIndicator(
+              onRefresh: () async {},
+              child: CustomScrollView(
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: ListView.separated(
+                      physics: const BouncingScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: 10,
+
+                      itemBuilder:
+                          (context, index) => const ProductContainer(
+                            categoryName: 'Sadio Mane',
+                            categoryImage:
+                                'https://upload.wikimedia.org/wikipedia/commons/e/e2/Sadio_Man%C3%A9_-_Persepolis_F.C._v_Al_Nassr_FC%2C_19_September_2023.jpg',
+                          ),
+                      separatorBuilder: (BuildContext context, int index) {
+                        return verticalSpace(20);
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

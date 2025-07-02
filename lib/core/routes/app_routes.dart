@@ -6,6 +6,7 @@ import 'package:sadio_mane_store/core/internet_connection/screen/no_internet_scr
 import 'package:sadio_mane_store/core/routes/routes_string.dart';
 import 'package:sadio_mane_store/features/admin/admin_home_view.dart';
 import 'package:sadio_mane_store/features/admin/customer_home_view.dart';
+import 'package:sadio_mane_store/features/categories/presentation/view/categories_view.dart';
 import 'package:sadio_mane_store/features/dashboard/presentation/bloc/dashboard_bloc.dart';
 import 'package:sadio_mane_store/features/sign_in/presentation/cubit/sign_in_cubit.dart';
 import 'package:sadio_mane_store/features/sign_in/presentation/view/sign_in_view.dart';
@@ -48,7 +49,8 @@ class AppRoutes {
                 child: const SignUpView(),
               ),
         );
-
+      case RoutesString.categories:
+        return MaterialPageRoute(builder: (_) => const CategoriesView());
       default:
         return null;
     }

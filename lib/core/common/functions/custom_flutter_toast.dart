@@ -11,7 +11,6 @@ Future<bool?> customFlutterToast({
     msg: errorMessage,
     toastLength: Toast.LENGTH_SHORT,
     gravity: ToastGravity.CENTER,
-    timeInSecForIosWeb: 1,
     backgroundColor: backgroundColor ?? Colors.red,
     textColor: textColor ?? Colors.white,
     fontSize: fontSize ?? 16,
