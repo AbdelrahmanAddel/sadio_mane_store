@@ -5,7 +5,7 @@ import 'package:sadio_mane_store/core/common/widget/custom_container_linear_admi
 import 'package:sadio_mane_store/core/common/widget/custom_show_modal_bottom_sheet.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
 import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
-import 'package:sadio_mane_store/features/categories/presentation/widget/edit/egit_category_modal_buttom_sheet_content.dart';
+import 'package:sadio_mane_store/features/categories/presentation/widget/edit_categories/egit_category_modal_buttom_sheet_content.dart';
 import 'package:sadio_mane_store/features/dashboard/presentation/widgets/dashboard_loading.dart';
 
 class ProductContainer extends StatelessWidget {
@@ -36,6 +36,7 @@ class ProductContainer extends StatelessWidget {
                     categoryName,
                     style: context.theme.textTheme.displaySmall?.copyWith(
                       fontSize: 20,
+                      overflow: TextOverflow.ellipsis
                     ),
                   ),
                   verticalSpace(20),
