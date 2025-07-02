@@ -2,7 +2,8 @@ class DashboardQraphBody {
   DashboardQraphBody._();
   static Map<String, dynamic> getProductsTotalLength() {
     return {
-      'query': r''' {
+      'query': '''
+ {
   products{
 		id 
 		}

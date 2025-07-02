@@ -99,7 +99,7 @@ List<DrawerItemModel> drawerItem(BuildContext context) {
                   children: [
                     TextButton(
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
+                        backgroundColor: WidgetStateProperty.all<Color>(
                           Colors.red,
                         ),
                       ),
@@ -116,7 +116,7 @@ List<DrawerItemModel> drawerItem(BuildContext context) {
                     ),
                     TextButton(
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
+                        backgroundColor: WidgetStateProperty.all<Color>(
                           Colors.green,
                         ),
                       ),

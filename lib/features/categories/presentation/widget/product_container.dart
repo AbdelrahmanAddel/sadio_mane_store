@@ -52,7 +52,7 @@ class ProductContainer extends StatelessWidget {
                         ),
                         onPressed:
                             () => customShowModalBottomSheet(
-                              buttonWidget: EditModalBottomSheetContent(),
+                              buttonWidget: const EditModalBottomSheetContent(),
                               context: context,
                             ),
                       ),
