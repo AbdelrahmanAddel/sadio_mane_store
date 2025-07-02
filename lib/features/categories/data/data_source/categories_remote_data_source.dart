@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:sadio_mane_store/features/categories/data/data_source/categories_api_service.dart';
 import 'package:sadio_mane_store/features/categories/data/graphql/categories_qraph_body.dart';
-import 'package:sadio_mane_store/features/categories/data/model/categories_responce_model.dart';
+import 'package:sadio_mane_store/features/categories/data/model/get_categories_responce_model.dart';
 
 class CategoriesRemoteDataSource {
   CategoriesRemoteDataSource(this._getCategoriesApiService);

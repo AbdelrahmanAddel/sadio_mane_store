@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'categories_responce_model.g.dart';
+part 'get_categories_responce_model.g.dart';
 
 @JsonSerializable()
 class GetCategoriesResponceModel {

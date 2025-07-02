@@ -1,4 +1,4 @@
-import 'package:sadio_mane_store/features/categories/data/model/categories_responce_model.dart';
+import 'package:sadio_mane_store/features/categories/data/model/get_categories_responce_model.dart';
 
 sealed class CategoriesState {}
 

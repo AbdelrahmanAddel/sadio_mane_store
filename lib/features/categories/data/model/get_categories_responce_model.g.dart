@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'categories_responce_model.dart';
+part of 'get_categories_responce_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
