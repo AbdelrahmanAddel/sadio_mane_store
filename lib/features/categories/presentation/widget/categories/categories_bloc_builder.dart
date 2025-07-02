@@ -18,7 +18,7 @@ class CategoriesBlocBuilder extends StatelessWidget {
     return BlocBuilder<CategoriesBloc, CategoriesState>(
       buildWhen: (previous, current) {
         switch (current) {
-          case LoadingToGetCategoriesState():
+          case GetCategoriesLoadingState():
             return true;
 
           case GetCategoriesSuccessState():
@@ -32,7 +32,7 @@ class CategoriesBlocBuilder extends StatelessWidget {
       },
       builder: (context, state) {
         return switch (state) {
-          LoadingToGetCategoriesState() => Expanded(
+          GetCategoriesLoadingState() => Expanded(
             child: loadingToGetCategoriesScreen(),
           ),
           GetCategoriesSuccessState() => Expanded(
@@ -58,7 +58,7 @@ class CategoriesBlocBuilder extends StatelessWidget {
   ) {
     return RefreshIndicator(
       onRefresh: () async {
-        getIt<CategoriesBloc>().add(GetCategoriesEvent());
+        getIt<CategoriesBloc>()..add(GetCategoriesEvent())..add(AddCategoriesEvent());
       },
       child: CustomScrollView(
         slivers: [
