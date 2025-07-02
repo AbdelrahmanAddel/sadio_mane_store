@@ -32,7 +32,9 @@ class CategoriesBlocBuilder extends StatelessWidget {
       },
       builder: (context, state) {
         return switch (state) {
-          LoadingToGetCategoriesState() => Expanded(child: loadingToGetCategoriesScreen()),
+          LoadingToGetCategoriesState() => Expanded(
+            child: loadingToGetCategoriesScreen(),
+          ),
           GetCategoriesSuccessState() => Expanded(
             child: getCategoriesSuccessScreen(state, context),
           ),

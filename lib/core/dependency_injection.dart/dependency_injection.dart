@@ -10,10 +10,10 @@ import 'package:sadio_mane_store/app/upload_image/logic/usecase/upload_image_use
 import 'package:sadio_mane_store/core/common/image_picker.dart';
 
 import 'package:sadio_mane_store/core/networking/dio_factory.dart';
-import 'package:sadio_mane_store/features/categories/data/data_source/get_categories_api_service.dart';
-import 'package:sadio_mane_store/features/categories/data/data_source/get_categories_remote_data_source.dart';
-import 'package:sadio_mane_store/features/categories/data/repository/get_categories_repository.dart';
-import 'package:sadio_mane_store/features/categories/logic/repository/get_categories_repository.dart';
+import 'package:sadio_mane_store/features/categories/data/data_source/categories_api_service.dart';
+import 'package:sadio_mane_store/features/categories/data/data_source/categories_remote_data_source.dart';
+import 'package:sadio_mane_store/features/categories/data/repository/categories_repository.dart';
+import 'package:sadio_mane_store/features/categories/logic/repository/categories_repository.dart';
 import 'package:sadio_mane_store/features/categories/logic/usecase/get_categories_usecase.dart';
 import 'package:sadio_mane_store/features/categories/presentation/bloc/categories_bloc.dart';
 import 'package:sadio_mane_store/features/dashboard/data/data_source/dashboard_api_service.dart';
@@ -53,13 +53,13 @@ void setUpGetIt() {
 
 void _categories(Dio dio) {
   getIt
-    ..registerLazySingleton<GetCategoriesApiService>(
-      () => GetCategoriesApiService(dio),
+    ..registerLazySingleton<CategoriesApiService>(
+      () => CategoriesApiService(dio),
     )
-    ..registerLazySingleton<GetCategoriesRemoteDataSource>(
-      () => GetCategoriesRemoteDataSource(getIt()),
+    ..registerLazySingleton<CategoriesRemoteDataSource>(
+      () => CategoriesRemoteDataSource(getIt()),
     )
-    ..registerLazySingleton<GetCategoriesRepository>(
+    ..registerLazySingleton<CategoriesRepository>(
       () => GetCategoriesRepositoryImpl(getIt()),
     )
     ..registerLazySingleton<GetCategoriesUsecase>(

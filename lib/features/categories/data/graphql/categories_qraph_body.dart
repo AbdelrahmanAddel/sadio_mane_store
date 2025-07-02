@@ -1,5 +1,5 @@
-class GetCategoriesQraphBody {
-  GetCategoriesQraphBody();
+class CategoriesQraphBody {
+  CategoriesQraphBody();
 
   static Map<String, dynamic> getCategoriesBody() {
     return {
