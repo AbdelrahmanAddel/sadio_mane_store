@@ -8,7 +8,6 @@ import 'package:sadio_mane_store/app/upload_image/data/repository/upload_image_r
 import 'package:sadio_mane_store/app/upload_image/logic/repository/upload_image_repository.dart';
 import 'package:sadio_mane_store/app/upload_image/logic/usecase/upload_image_usecase.dart';
 import 'package:sadio_mane_store/core/common/image_picker.dart';
-
 import 'package:sadio_mane_store/core/networking/dio_factory.dart';
 import 'package:sadio_mane_store/features/categories/data/data_source/categories_api_service.dart';
 import 'package:sadio_mane_store/features/categories/data/data_source/categories_remote_data_source.dart';
@@ -69,7 +68,9 @@ void _categories(Dio dio) {
     ..registerLazySingleton<AddCategoriesUsecase>(
       () => AddCategoriesUsecase(getIt()),
     )
-    ..registerLazySingleton<CategoriesBloc>(() => CategoriesBloc(getIt(),getIt()));
+    ..registerLazySingleton<CategoriesBloc>(
+      () => CategoriesBloc(getIt(),getIt()),
+    );
 }
 
 void _uploadImage(Dio dio) {
@@ -80,7 +81,7 @@ void _uploadImage(Dio dio) {
       () => UploadImageRepositoryImplmentation(getIt()),
     )
     ..registerLazySingleton(() => UploadImageUsecase(getIt()))
-    ..registerLazySingleton(
+    ..registerFactory(
       () => UploadImageCubit(
         getIt(),
         ImagePickerClass(

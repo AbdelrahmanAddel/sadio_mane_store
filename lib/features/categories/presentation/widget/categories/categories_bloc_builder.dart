@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sadio_mane_store/core/dependency_injection.dart/dependency_injection.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
 import 'package:sadio_mane_store/features/categories/presentation/bloc/categories_bloc.dart';
 import 'package:sadio_mane_store/features/categories/presentation/bloc/categories_event.dart';
@@ -58,7 +57,9 @@ class CategoriesBlocBuilder extends StatelessWidget {
   ) {
     return RefreshIndicator(
       onRefresh: () async {
-        getIt<CategoriesBloc>()..add(GetCategoriesEvent())..add(AddCategoriesEvent());
+        if (context.mounted) {
+          context.read<CategoriesBloc>().add(GetCategoriesEvent());
+        }
       },
       child: CustomScrollView(
         slivers: [

@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:sadio_mane_store/features/categories/data/model/add_categories_request_model.dart';
 import 'package:sadio_mane_store/features/categories/logic/usecase/add_categories_usecase.dart';
 import 'package:sadio_mane_store/features/categories/logic/usecase/get_categories_usecase.dart';
@@ -15,6 +17,8 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
   }
   final GetCategoriesUsecase _getCategoriesUsecase;
   final AddCategoriesUsecase _addCategoriesUsecase;
+  final addCategoryFormKey = GlobalKey<FormState>();
+  final addCategoryNameController = TextEditingController();
 
   FutureOr<void> _getCategories(
     GetCategoriesEvent event,
@@ -39,15 +43,16 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
     emit(AddCategoriesLoadingState());
     final response = await _addCategoriesUsecase.call(
       AddCategoriesRequestModel(
-        name: 'Test !',
-        image:
-            'https://i.guim.co.uk/img/media/851ba7dfe3a0972039039ba648ec6e1690460f17/0_248_3000_1800/master/3000.jpg?width=465&dpr=1&s=none&crop=none',
+        name: addCategoryNameController.text,
+        image: event.imageUrl,
       ),
     );
     response.fold(
       (failure) => emit(AddCategoriesFailureState(errorMessage: failure)),
-      (success) =>
-          emit(AddCategoriesSuccessState(successMessage: 'Added Successfully')),
+      (success) {
+        addCategoryNameController.clear();
+        emit(AddCategoriesSuccessState(successMessage: 'Added Successfully'));
+      },
     );
   }
 }

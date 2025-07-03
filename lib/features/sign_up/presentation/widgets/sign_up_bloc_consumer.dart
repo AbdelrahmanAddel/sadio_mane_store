@@ -19,10 +19,10 @@ class SignUpBlocListener extends StatelessWidget {
               current is SignUpSuccessState,
       listener: (context, state) {
         if (state is SignUpErrorState) {
-          customFlutterToast(errorMessage: state.error);
+          customFlutterToast(message: state.error);
         } else if (state is SignUpSuccessState) {
           customFlutterToast(
-            errorMessage: 'Account Created Successfully',
+            message: 'Account Created Successfully',
             backgroundColor: context.theme.appColors.mainColor,
           );
           context.pushReplacement(routeName: RoutesString.signIn);

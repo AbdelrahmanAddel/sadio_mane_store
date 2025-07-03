@@ -18,7 +18,7 @@ class SignUpCircleAvatar extends StatelessWidget {
       listenWhen: (previous, current) => current is UploadImageErrorState || current is UploadImageSuccessState,
       listener: (context, state) {
         if (state is UploadImageErrorState) {
-          customFlutterToast(errorMessage: state.message);
+          customFlutterToast(message: state.message);
         } else if (state is UploadImageSuccessState) {
           signUpCubit.urlImage = state.imageResponce.location!;
         }

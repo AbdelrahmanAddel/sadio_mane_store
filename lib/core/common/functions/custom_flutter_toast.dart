@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 Future<bool?> customFlutterToast({
-  required String errorMessage,
+  required String message,
   Color? backgroundColor,
   Color? textColor,
   double? fontSize,
 }) {
   return Fluttertoast.showToast(
-    msg: errorMessage,
+    msg: message,
     toastLength: Toast.LENGTH_SHORT,
     gravity: ToastGravity.CENTER,
     backgroundColor: backgroundColor ?? Colors.red,
