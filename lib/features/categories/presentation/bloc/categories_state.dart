@@ -30,3 +30,15 @@ final class AddCategoriesFailureState extends CategoriesState {
 
   final String errorMessage;
 }
+
+final class DeleteCategoryLoadingState extends CategoriesState {}
+
+final class DeleteCategorySuccessState extends CategoriesState {
+  DeleteCategorySuccessState({required this.successMessage});
+  final String successMessage;
+}
+
+final class DeleteCategoryFailureState extends CategoriesState {
+  DeleteCategoryFailureState({required this.errorMessage});
+  final String errorMessage;
+}

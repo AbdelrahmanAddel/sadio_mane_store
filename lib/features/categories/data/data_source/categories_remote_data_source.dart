@@ -23,11 +23,11 @@ class CategoriesRemoteDataSource {
     }
   }
 
-  Future<Either<String, AddCategoriesResponceModel>> addCategories(
+  Future<Either<String, AddCategoryResponceModel>> addCategories(
     AddCategoriesRequestModel addCategoriesModel,
   ) async {
     try {
-      final responce = await _CategoriesApiService.addCategories(
+      final responce = await _CategoriesApiService.addCategory(
         CategoriesQraphBody.addCategoriesBody(addCategoriesModel),
       );
       return Right(responce);
@@ -35,6 +35,19 @@ class CategoriesRemoteDataSource {
       debugPrint('Error in GetCategoriesRemoteDataSource: $error');
       debugPrint('StackTrace: $stackTrace');
       return Left('Failed to fetch categories: $error');
+    }
+  }
+
+  Future<Either<String, String>> deleteCategory(int id) async {
+    try {
+      await _CategoriesApiService.deleteCategory(
+        CategoriesQraphBody.deleteCategoryBody(id),
+      );
+      return const Right('Deleted successfully');
+    } catch (error, stackTrace) {
+      debugPrint('Error in DeleteCategoryRemoteDataSource: $error');
+      debugPrint('StackTrace: $stackTrace');
+      return Left('Failed to delete category: $error');
     }
   }
 }

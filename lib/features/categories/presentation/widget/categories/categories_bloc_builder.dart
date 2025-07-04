@@ -76,6 +76,10 @@ class CategoriesBlocBuilder extends StatelessWidget {
                         categoriesData.categoriesData[index].name ?? 'No Name',
                     categoryImage:
                         categoriesData.categoriesData[index].image ?? '',
+                    currentProductId: int.parse(
+                      categoriesData.categoriesData[index].id.toString()
+                    )
+                    
                   ),
               separatorBuilder: (BuildContext context, int index) {
                 return verticalSpace(20);

@@ -7,3 +7,9 @@ final class AddCategoriesEvent extends CategoriesEvent {
 
   final String imageUrl;
 }
+
+final class DeleteCategoryEvent extends CategoriesEvent {
+  DeleteCategoryEvent({required this.id});
+
+  final int id;
+}

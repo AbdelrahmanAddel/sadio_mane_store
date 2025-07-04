@@ -6,17 +6,17 @@ part of 'add_categories_responce_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AddCategoriesResponceModel _$AddCategoriesResponceModelFromJson(
+AddCategoryResponceModel _$AddCategoryResponceModelFromJson(
   Map<String, dynamic> json,
-) => AddCategoriesResponceModel(
+) => AddCategoryResponceModel(
   data:
       json['data'] == null
           ? null
           : AddCategoriesModel.fromJson(json['data'] as Map<String, dynamic>),
 );
 
-Map<String, dynamic> _$AddCategoriesResponceModelToJson(
-  AddCategoriesResponceModel instance,
+Map<String, dynamic> _$AddCategoryResponceModelToJson(
+  AddCategoryResponceModel instance,
 ) => <String, dynamic>{'data': instance.data};
 
 AddCategoriesModel _$AddCategoriesModelFromJson(Map<String, dynamic> json) =>

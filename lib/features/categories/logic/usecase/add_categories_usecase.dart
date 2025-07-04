@@ -7,7 +7,7 @@ import 'package:sadio_mane_store/features/categories/logic/repository/categories
 class AddCategoriesUsecase {
   AddCategoriesUsecase(this._categoriesRepository);
   final CategoriesRepository _categoriesRepository;
-  Future<Either<String, AddCategoriesResponceModel>> call(
+  Future<Either<String, AddCategoryResponceModel>> call(
     AddCategoriesRequestModel addCategoriesModel,
   ) {
     return _categoriesRepository.addCategories(addCategoriesModel);

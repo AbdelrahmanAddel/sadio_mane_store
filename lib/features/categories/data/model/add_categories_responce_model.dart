@@ -1,10 +1,11 @@
 import 'package:json_annotation/json_annotation.dart';
 part 'add_categories_responce_model.g.dart';
+
 @JsonSerializable()
-class AddCategoriesResponceModel {
-  AddCategoriesResponceModel({required this.data});
-  factory AddCategoriesResponceModel.fromJson(Map<String, dynamic> json) =>
-      _$AddCategoriesResponceModelFromJson(json);
+class AddCategoryResponceModel {
+  AddCategoryResponceModel({required this.data});
+  factory AddCategoryResponceModel.fromJson(Map<String, dynamic> json) =>
+      _$AddCategoryResponceModelFromJson(json);
 
   final AddCategoriesModel? data;
 }

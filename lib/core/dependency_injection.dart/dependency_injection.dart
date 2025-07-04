@@ -14,6 +14,7 @@ import 'package:sadio_mane_store/features/categories/data/data_source/categories
 import 'package:sadio_mane_store/features/categories/data/repository/categories_repository.dart';
 import 'package:sadio_mane_store/features/categories/logic/repository/categories_repository.dart';
 import 'package:sadio_mane_store/features/categories/logic/usecase/add_categories_usecase.dart';
+import 'package:sadio_mane_store/features/categories/logic/usecase/delete_category_usecase.dart';
 import 'package:sadio_mane_store/features/categories/logic/usecase/get_categories_usecase.dart';
 import 'package:sadio_mane_store/features/categories/presentation/bloc/categories_bloc.dart';
 import 'package:sadio_mane_store/features/dashboard/data/data_source/dashboard_api_service.dart';
@@ -68,8 +69,9 @@ void _categories(Dio dio) {
     ..registerLazySingleton<AddCategoriesUsecase>(
       () => AddCategoriesUsecase(getIt()),
     )
+    ..registerLazySingleton(() => DeleteCategoryUsecase(getIt()))
     ..registerLazySingleton<CategoriesBloc>(
-      () => CategoriesBloc(getIt(),getIt()),
+      () => CategoriesBloc(getIt(), getIt(), getIt()),
     );
 }
 

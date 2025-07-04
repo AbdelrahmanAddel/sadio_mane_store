@@ -5,7 +5,8 @@ import 'package:sadio_mane_store/features/categories/data/model/get_categories_r
 
 abstract class CategoriesRepository {
   Future<Either<String, GetCategoriesResponceModel>> getCategories();
-  Future<Either<String, AddCategoriesResponceModel>> addCategories(
+  Future<Either<String, AddCategoryResponceModel>> addCategories(
     AddCategoriesRequestModel addCategoriesModel,
   );
+  Future<Either<String, String>> deleteCategory(int id);
 }

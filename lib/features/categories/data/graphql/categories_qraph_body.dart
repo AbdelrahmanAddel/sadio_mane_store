@@ -40,4 +40,15 @@ mutation addCategories($name:String! ,$image:String!){
       },
     };
   }
+
+  static Map<String, dynamic> deleteCategoryBody(int id) {
+    return {
+      'query': r'''
+      mutation deleteProduct($id: ID!) {
+        deleteCategory(id: $id)
+      }
+    ''',
+      'variables': {'id': id},
+    };
+  }
 }

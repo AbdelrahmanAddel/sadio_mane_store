@@ -50,7 +50,7 @@ class _CategoriesApiService implements CategoriesApiService {
   }
 
   @override
-  Future<AddCategoriesResponceModel> addCategories(
+  Future<AddCategoryResponceModel> addCategory(
     Map<String, dynamic> query,
   ) async {
     final _extra = <String, dynamic>{};
@@ -58,7 +58,7 @@ class _CategoriesApiService implements CategoriesApiService {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(query);
-    final _options = _setStreamType<AddCategoriesResponceModel>(
+    final _options = _setStreamType<AddCategoryResponceModel>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -69,9 +69,39 @@ class _CategoriesApiService implements CategoriesApiService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late AddCategoriesResponceModel _value;
+    late AddCategoryResponceModel _value;
     try {
-      _value = AddCategoriesResponceModel.fromJson(_result.data!);
+      _value = AddCategoryResponceModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<DeleteCategoryResponceModel> deleteCategory(
+    Map<String, dynamic> query,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(query);
+    final _options = _setStreamType<DeleteCategoryResponceModel>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            'graphql',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late DeleteCategoryResponceModel _value;
+    try {
+      _value = DeleteCategoryResponceModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

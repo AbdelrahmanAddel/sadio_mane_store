@@ -3,6 +3,7 @@ import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 import 'package:sadio_mane_store/core/networking/api_strings_and_end_points.dart';
 import 'package:sadio_mane_store/features/categories/data/model/add_categories_responce_model.dart';
+import 'package:sadio_mane_store/features/categories/data/model/delete_category_responce_model.dart';
 import 'package:sadio_mane_store/features/categories/data/model/get_categories_responce_model.dart';
 part 'categories_api_service.g.dart';
 
@@ -15,7 +16,11 @@ abstract class CategoriesApiService {
     @Body() Map<String, dynamic> query,
   );
   @POST(ApiEndPoints.graphQl)
-  Future<AddCategoriesResponceModel> addCategories(
+  Future<AddCategoryResponceModel> addCategory(
+    @Body() Map<String, dynamic> query,
+  );
+  @POST(ApiEndPoints.graphQl)
+  Future<DeleteCategoryResponceModel> deleteCategory(
     @Body() Map<String, dynamic> query,
   );
 }

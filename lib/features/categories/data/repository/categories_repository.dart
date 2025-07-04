@@ -15,9 +15,14 @@ class GetCategoriesRepositoryImpl extends CategoriesRepository {
   }
 
   @override
-  Future<Either<String, AddCategoriesResponceModel>> addCategories(
+  Future<Either<String, AddCategoryResponceModel>> addCategories(
     AddCategoriesRequestModel addCategoriesModel,
   ) {
     return _categoriesRemoteDataSource.addCategories(addCategoriesModel);
+  }
+  
+  @override
+  Future<Either<String, String>> deleteCategory(int id) {
+    return _categoriesRemoteDataSource.deleteCategory(id);
   }
 }

@@ -1,10 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadio_mane_store/core/common/widget/custom_container_linear_admin.dart';
 import 'package:sadio_mane_store/core/common/widget/custom_show_modal_bottom_sheet.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
 import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
+import 'package:sadio_mane_store/features/categories/presentation/bloc/categories_bloc.dart';
+import 'package:sadio_mane_store/features/categories/presentation/bloc/categories_event.dart';
 import 'package:sadio_mane_store/features/categories/presentation/widget/edit_categories/egit_category_modal_buttom_sheet_content.dart';
 import 'package:sadio_mane_store/features/dashboard/presentation/widgets/dashboard_loading.dart';
 
@@ -12,13 +15,17 @@ class ProductContainer extends StatelessWidget {
   const ProductContainer({
     required this.categoryName,
     required this.categoryImage,
+    required this.currentProductId,
     super.key,
   });
   final String categoryName;
   final String categoryImage;
+  final int currentProductId;
 
   @override
   Widget build(BuildContext context) {
+    final categoriesBloc = context.read<CategoriesBloc>();
+
     return CustomContainerLinearAdmin(
       height: 130.h,
       width: double.infinity,
@@ -36,13 +43,26 @@ class ProductContainer extends StatelessWidget {
                     categoryName,
                     style: context.theme.textTheme.displaySmall?.copyWith(
                       fontSize: 20,
-                      overflow: TextOverflow.ellipsis
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   verticalSpace(20),
                   Row(
                     children: [
-                      const Icon(Icons.delete, color: Colors.red, size: 25),
+                      IconButton(
+                        icon: const Icon(
+                          Icons.delete,
+                          color: Colors.red,
+                          size: 25,
+                        ),
+                        onPressed: () {
+                          print('current =>>>>>>>>>>>> ${currentProductId.runtimeType}');
+                          categoriesBloc.add(
+                         
+                            DeleteCategoryEvent(id: currentProductId),
+                          );
+                        },
+                      ),
                       horizontalSpace(20),
 
                       IconButton(
