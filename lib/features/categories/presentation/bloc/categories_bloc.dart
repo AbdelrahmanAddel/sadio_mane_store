@@ -67,6 +67,7 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
     DeleteCategoryEvent event,
     Emitter<CategoriesState> emit,
   ) async {
+    add(GetCategoriesEvent());
     emit(DeleteCategoryLoadingState());
     await _deleteCategoryUsecase
         .call(event.id)

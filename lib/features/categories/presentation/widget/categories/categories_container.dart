@@ -4,10 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadio_mane_store/core/common/widget/custom_container_linear_admin.dart';
 import 'package:sadio_mane_store/core/common/widget/custom_show_modal_bottom_sheet.dart';
+import 'package:sadio_mane_store/core/helpers/extensions/navigation_extension.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
 import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
 import 'package:sadio_mane_store/features/categories/presentation/bloc/categories_bloc.dart';
 import 'package:sadio_mane_store/features/categories/presentation/bloc/categories_event.dart';
+import 'package:sadio_mane_store/features/categories/presentation/widget/categories/delete_category_dialog.dart';
 import 'package:sadio_mane_store/features/categories/presentation/widget/edit_categories/egit_category_modal_buttom_sheet_content.dart';
 import 'package:sadio_mane_store/features/dashboard/presentation/widgets/dashboard_loading.dart';
 
@@ -15,12 +17,12 @@ class ProductContainer extends StatelessWidget {
   const ProductContainer({
     required this.categoryName,
     required this.categoryImage,
-    required this.currentProductId,
+    required this.currentCategoryId,
     super.key,
   });
   final String categoryName;
   final String categoryImage;
-  final int currentProductId;
+  final int currentCategoryId;
 
   @override
   Widget build(BuildContext context) {
@@ -55,11 +57,11 @@ class ProductContainer extends StatelessWidget {
                           color: Colors.red,
                           size: 25,
                         ),
-                        onPressed: () {
-                          print('current =>>>>>>>>>>>> ${currentProductId.runtimeType}');
-                          categoriesBloc.add(
-                         
-                            DeleteCategoryEvent(id: currentProductId),
+                        onPressed: () async {
+                          await deleteCategoryDiaglog(
+                            context,
+                            currentCategoryId,
+                            categoriesBloc,
                           );
                         },
                       ),
