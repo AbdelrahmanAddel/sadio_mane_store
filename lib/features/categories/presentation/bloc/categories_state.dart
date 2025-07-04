@@ -42,3 +42,17 @@ final class DeleteCategoryFailureState extends CategoriesState {
   DeleteCategoryFailureState({required this.errorMessage});
   final String errorMessage;
 }
+
+final class UpdateCategoryLoading extends CategoriesState {}
+
+final class UpdateCategorySuccess extends CategoriesState {
+  UpdateCategorySuccess({required this.successMessage});
+
+  final String successMessage;
+}
+
+final class UpdateCategoryFailure extends CategoriesState {
+  UpdateCategoryFailure({required this.errorMessage});
+
+  final String errorMessage;
+}

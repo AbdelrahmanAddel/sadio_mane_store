@@ -4,6 +4,7 @@ import 'package:sadio_mane_store/features/categories/data/data_source/categories
 import 'package:sadio_mane_store/features/categories/data/model/add_categories_request_model.dart';
 import 'package:sadio_mane_store/features/categories/data/model/add_categories_responce_model.dart';
 import 'package:sadio_mane_store/features/categories/data/model/get_categories_responce_model.dart';
+import 'package:sadio_mane_store/features/categories/data/model/updata_category_request_model.dart';
 import 'package:sadio_mane_store/features/categories/logic/repository/categories_repository.dart';
 
 class GetCategoriesRepositoryImpl extends CategoriesRepository {
@@ -20,9 +21,16 @@ class GetCategoriesRepositoryImpl extends CategoriesRepository {
   ) {
     return _categoriesRemoteDataSource.addCategories(addCategoriesModel);
   }
-  
+
   @override
   Future<Either<String, String>> deleteCategory(int id) {
     return _categoriesRemoteDataSource.deleteCategory(id);
+  }
+
+  @override
+  Future<Either<String, String>> updateCategory(
+    UpdateCategoryRequestModel model,
+  ) {
+    return _categoriesRemoteDataSource.updateCategory(model);
   }
 }

@@ -13,3 +13,15 @@ final class DeleteCategoryEvent extends CategoriesEvent {
 
   final int id;
 }
+
+final class UpdateCategoryEvent extends CategoriesEvent {
+  UpdateCategoryEvent({
+    required this.id,
+    required this.image,
+    required this.name,
+  });
+
+  final int id;
+  final String name;
+  final String image;
+}
