@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:sadio_mane_store/core/common/widget/custom_container_linear_admin.dart';
+import 'package:sadio_mane_store/core/common/widget/custom_show_modal_bottom_sheet.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
+import 'package:sadio_mane_store/features/products/presentation/widgets/edit_products/edit_product_show_bottom_content.dart';
 
 class GetProductListItem extends StatelessWidget {
   const GetProductListItem({
@@ -13,6 +15,7 @@ class GetProductListItem extends StatelessWidget {
   final String productImageUrl;
   final String productName;
   final String productPrice;
+  //TODO I prefet To Create a model for this data instead of pass this arguments
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +28,14 @@ class GetProductListItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
 
           children: [
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Icon(Icons.edit, color: Colors.green),
-                Icon(Icons.delete, color: Colors.red),
+                IconButton(
+                  icon: const Icon(Icons.edit, color: Colors.green),
+                  onPressed: () => updateProducts(context),
+                ),
+                const Icon(Icons.delete, color: Colors.red),
               ],
             ),
             Expanded(
@@ -49,4 +55,11 @@ class GetProductListItem extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<dynamic> updateProducts(BuildContext context) {
+  return customShowModalBottomSheet(
+    buttonWidget: const EditProductBottomSheetContent(),
+    context: context,
+  );
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sadio_mane_store/features/products/presentation/widgets/get_products_list_item.dart';
+import 'package:sadio_mane_store/features/products/presentation/widgets/get_products/get_products_list_item.dart';
 
 class GetAllProductsListView extends StatelessWidget {
   const GetAllProductsListView({super.key});

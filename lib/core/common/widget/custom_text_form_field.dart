@@ -12,6 +12,7 @@ class CustomTextFormField extends StatelessWidget {
     this.keyboardType,
     this.textInputAction,
     this.suffixIcon,
+    this.maxlines,
   });
 
   final TextEditingController? controller;
@@ -22,10 +23,12 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputType? keyboardType;
   final TextInputAction? textInputAction;
   final Widget? suffixIcon;
+  final int? maxlines;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLines: maxlines,
       keyboardType: keyboardType ?? TextInputType.emailAddress,
       textInputAction: textInputAction ?? TextInputAction.next,
 
