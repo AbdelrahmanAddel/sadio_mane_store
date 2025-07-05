@@ -11,6 +11,7 @@ class UploadImageCubit extends Cubit<UploadImageState> {
     : super(UploadImageInitialState());
   final UploadImageUsecase _imageUsecase;
   final ImagePickerClass imagePickerClass;
+  String? imageUrl = '';
 
   Future<XFile?> pickImageFromGallery() async {
     final pickImage = await imagePickerClass.pickImage();
@@ -27,11 +28,20 @@ class UploadImageCubit extends Cubit<UploadImageState> {
     emit(UploadImageLoadingState());
 
     final response = await _imageUsecase.call(image);
+    if(isClosed)return;
     response.fold((error) => emit(UploadImageErrorState(message: error)), (
       success,
     ) {
+      imageUrl = success.location;
       emit(UploadImageSuccessState(success));
     });
+  }
+
+  Future<void> pickImageAndUpload() async {
+    final image = await pickImageFromGallery();
+    if (image != null) {
+      await getImageUrl(image);
+    }
   }
 
   void deleteImage() => emit(UploadImageInitialState());

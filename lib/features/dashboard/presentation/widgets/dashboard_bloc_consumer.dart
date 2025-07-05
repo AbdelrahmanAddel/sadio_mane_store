@@ -24,21 +24,21 @@ class DashboardBlocListener extends StatelessWidget {
       listener: (context, state) {
         if (state is FailureGetTotalCategoriesNumberState) {
           customFlutterToast(
-            errorMessage: state.errorMessage,
+            message: state.errorMessage,
             backgroundColor: Colors.red,
             textColor: Colors.white,
             fontSize: 16,
           );
         } else if (state is FailureGetTotalProductLengthState) {
           customFlutterToast(
-            errorMessage: state.failure,
+            message: state.failure,
             backgroundColor: Colors.red,
             textColor: Colors.white,
             fontSize: 16,
           );
         } else if (state is FailureGetTotalUsersNumberState) {
           customFlutterToast(
-            errorMessage: state.errorMessage,
+            message: state.errorMessage,
             backgroundColor: Colors.red,
             textColor: Colors.white,
             fontSize: 16,

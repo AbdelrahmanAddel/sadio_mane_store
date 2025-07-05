@@ -1,4 +1,4 @@
-enum TextFormFieldEnums { email, password, fullName }
+enum TextFormFieldEnums { email, password, fullName, categories }
 
 String? Function(String?)? textFormFieldValidator(TextFormFieldEnums field) {
   switch (field) {
@@ -22,6 +22,13 @@ String? Function(String?)? textFormFieldValidator(TextFormFieldEnums field) {
       return (value) {
         if (value == null || value.isEmpty) {
           return 'Please enter your Name';
+        }
+        return null;
+      };
+    case TextFormFieldEnums.categories:
+      return (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter the category name';
         }
         return null;
       };

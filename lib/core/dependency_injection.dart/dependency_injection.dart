@@ -8,8 +8,16 @@ import 'package:sadio_mane_store/app/upload_image/data/repository/upload_image_r
 import 'package:sadio_mane_store/app/upload_image/logic/repository/upload_image_repository.dart';
 import 'package:sadio_mane_store/app/upload_image/logic/usecase/upload_image_usecase.dart';
 import 'package:sadio_mane_store/core/common/image_picker.dart';
-
 import 'package:sadio_mane_store/core/networking/dio_factory.dart';
+import 'package:sadio_mane_store/features/categories/data/data_source/categories_api_service.dart';
+import 'package:sadio_mane_store/features/categories/data/data_source/categories_remote_data_source.dart';
+import 'package:sadio_mane_store/features/categories/data/repository/categories_repository.dart';
+import 'package:sadio_mane_store/features/categories/logic/repository/categories_repository.dart';
+import 'package:sadio_mane_store/features/categories/logic/usecase/add_categories_usecase.dart';
+import 'package:sadio_mane_store/features/categories/logic/usecase/delete_category_usecase.dart';
+import 'package:sadio_mane_store/features/categories/logic/usecase/get_categories_usecase.dart';
+import 'package:sadio_mane_store/features/categories/logic/usecase/updata_category_usecase.dart';
+import 'package:sadio_mane_store/features/categories/presentation/bloc/categories_bloc.dart';
 import 'package:sadio_mane_store/features/dashboard/data/data_source/dashboard_api_service.dart';
 import 'package:sadio_mane_store/features/dashboard/data/data_source/dashboard_remote_data_source.dart';
 import 'package:sadio_mane_store/features/dashboard/data/repository/dashboard_repository_implmentation.dart';
@@ -41,7 +49,32 @@ void setUpGetIt() {
   _signUp(dio);
   _dashBoard(dio);
   _uploadImage(dio);
+  _categories(dio);
   debugPrint('✅ GetIt setup done');
+}
+
+void _categories(Dio dio) {
+  getIt
+    ..registerLazySingleton<CategoriesApiService>(
+      () => CategoriesApiService(dio),
+    )
+    ..registerLazySingleton<CategoriesRemoteDataSource>(
+      () => CategoriesRemoteDataSource(getIt()),
+    )
+    ..registerLazySingleton<CategoriesRepository>(
+      () => GetCategoriesRepositoryImpl(getIt()),
+    )
+    ..registerLazySingleton<GetCategoriesUsecase>(
+      () => GetCategoriesUsecase(getIt()),
+    )
+    ..registerLazySingleton<AddCategoriesUsecase>(
+      () => AddCategoriesUsecase(getIt()),
+    )
+    ..registerLazySingleton(() => DeleteCategoryUsecase(getIt()))
+    ..registerLazySingleton(() => UpdataCategoryUsecase(getIt()))
+    ..registerLazySingleton<CategoriesBloc>(
+      () => CategoriesBloc(getIt(), getIt(), getIt(), getIt()),
+    );
 }
 
 void _uploadImage(Dio dio) {
@@ -52,7 +85,7 @@ void _uploadImage(Dio dio) {
       () => UploadImageRepositoryImplmentation(getIt()),
     )
     ..registerLazySingleton(() => UploadImageUsecase(getIt()))
-    ..registerLazySingleton(
+    ..registerFactory(
       () => UploadImageCubit(
         getIt(),
         ImagePickerClass(

@@ -32,7 +32,7 @@ class SignInBlocListener extends StatelessWidget {
         } else if (state is SignInFailure) {
           context.pop();
           customFlutterToast(
-            errorMessage: state.error ?? '',
+            message: state.error ?? '',
             backgroundColor: context.theme.appColors.bluePinkDark,
           );
         } else {

@@ -23,7 +23,7 @@ class ButtonAndText extends StatelessWidget {
             if (signUpCubit.formKey.currentState!.validate() == false) {
               return;
             } else if (signUpCubit.urlImage.isEmpty) {
-              customFlutterToast(errorMessage: context.tr.valid_pick_image);
+              customFlutterToast(message: context.tr.valid_pick_image);
               return;
             }
             signUpCubit.signUpWithEmailAndPassword();

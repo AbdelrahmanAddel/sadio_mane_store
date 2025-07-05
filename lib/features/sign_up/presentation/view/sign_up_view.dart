@@ -23,6 +23,7 @@ class SignUpView extends StatelessWidget {
                 context.theme.appColors.bluePinkLight,
                 context.theme.appColors.bluePinkLight,
               ],
+
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
             ),
