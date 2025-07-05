@@ -74,22 +74,16 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
   ) async {
     add(GetCategoriesEvent());
     emit(DeleteCategoryLoadingState());
-    await _deleteCategoryUsecase
-        .call(event.id)
-        .then((response) {
-          response.fold(
-            (failure) =>
-                emit(DeleteCategoryFailureState(errorMessage: failure)),
-            (success) {
-              emit(DeleteCategorySuccessState(successMessage: success));
+    await _deleteCategoryUsecase.call(event.id).then((response) {
+      response.fold(
+        (failure) => emit(DeleteCategoryFailureState(errorMessage: failure)),
+        (success) {
+          emit(DeleteCategorySuccessState(successMessage: success));
 
-              add(GetCategoriesEvent());
-            },
-          );
-        })
-        .catchError((error) {
-          emit(DeleteCategoryFailureState(errorMessage: error.toString()));
-        });
+          add(GetCategoriesEvent());
+        },
+      );
+    });
   }
 
   FutureOr<void> _updateCategory(
@@ -100,9 +94,12 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
     await _updataCategoryUsecase
         .call(
           UpdateCategoryRequestModel(
-            id: event.id,
-            name: event.name,
-            image: event.image,
+            id: event.updateCategoryModel.id,
+            image: event.updateCategoryModel.image,
+            name:
+                addCategoryNameController.text.isEmpty
+                    ? event.updateCategoryModel.name
+                    : addCategoryNameController.text,
           ),
         )
         .then((responce) {
@@ -111,6 +108,7 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
             (success) {
               emit(UpdateCategorySuccess(successMessage: success));
               add(GetCategoriesEvent());
+              addCategoryNameController.clear();
             },
           );
         });

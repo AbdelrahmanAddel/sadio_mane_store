@@ -33,7 +33,7 @@ Map<String, dynamic> _$DataCategortModelToJson(DataCategortModel instance) =>
     <String, dynamic>{'updateCategory': instance.updateCategory};
 
 UpdateCategoryModel _$UpdateCategoryModelFromJson(Map<String, dynamic> json) =>
-    UpdateCategoryModel(id: (json['id'] as num?)?.toInt());
+    UpdateCategoryModel(id: json['id'] as String?);
 
 Map<String, dynamic> _$UpdateCategoryModelToJson(
   UpdateCategoryModel instance,

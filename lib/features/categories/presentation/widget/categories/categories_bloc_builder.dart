@@ -39,7 +39,7 @@ class CategoriesBlocBuilder extends StatelessWidget {
             child: loadingToGetCategoriesScreen(),
           ),
           GetCategoriesSuccessState() => Expanded(
-            child: getCategoriesSuccessScreen(state, context),
+            child: getCategoriesSuccessScreen(state.categoriesData, context),
           ),
           GetCategoriesFailureState() => failureToGetCategoriesScreen(),
           DeleteCategoryLoadingState() => const Center(

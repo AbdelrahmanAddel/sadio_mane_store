@@ -1,3 +1,5 @@
+import 'package:sadio_mane_store/features/categories/data/model/updata_category_request_model.dart';
+
 sealed class CategoriesEvent {}
 
 final class GetCategoriesEvent extends CategoriesEvent {}
@@ -15,13 +17,7 @@ final class DeleteCategoryEvent extends CategoriesEvent {
 }
 
 final class UpdateCategoryEvent extends CategoriesEvent {
-  UpdateCategoryEvent({
-    required this.id,
-    required this.image,
-    required this.name,
-  });
+  UpdateCategoryEvent({required this.updateCategoryModel});
 
-  final int id;
-  final String name;
-  final String image;
+  UpdateCategoryRequestModel updateCategoryModel;
 }

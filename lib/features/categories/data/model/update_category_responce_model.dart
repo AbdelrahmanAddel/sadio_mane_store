@@ -25,5 +25,5 @@ class UpdateCategoryModel {
   factory UpdateCategoryModel.fromJson(Map<String, dynamic> json) =>
       _$UpdateCategoryModelFromJson(json);
 
-  final int? id;
+  final String? id;
 }
