@@ -2,8 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
 
-class EditBottomImagesList extends StatelessWidget {
-  const EditBottomImagesList({super.key});
+class BottomImagesList extends StatelessWidget {
+  const BottomImagesList({
+    required this.isEdit,
+    required this.imageUrl, super.key,
+    this.onPressed,
+  });
+  final bool isEdit;
+  final String imageUrl;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -18,15 +25,15 @@ class EditBottomImagesList extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: Colors.grey[400],
-            image: const DecorationImage(
-              image: NetworkImage(
-                'https://cpmr-islands.org/wp-content/uploads/sites/4/2019/07/Test-Logo-Small-Black-transparent-1.png',
-              ),
-            ),
+            image: DecorationImage(image: NetworkImage(imageUrl)),
           ),
           child: IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.edit, size: 50, color: Colors.white),
+            onPressed: onPressed,
+            icon: Icon(
+              isEdit ? Icons.edit : Icons.add_a_photo,
+              size: 50,
+              color: Colors.white,
+            ),
           ),
         );
       },
