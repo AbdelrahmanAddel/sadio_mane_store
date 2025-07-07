@@ -21,8 +21,9 @@ class GetProductListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomContainerLinearAdmin(
-      height: 200.h,
-      width: 200.w,
+      height: 100,
+      width: 100,
+
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
         child: Column(
@@ -38,13 +39,18 @@ class GetProductListItem extends StatelessWidget {
                 const Icon(Icons.delete, color: Colors.red),
               ],
             ),
-            Expanded(
+            Flexible(
               child: Center(
-                child: CachedNetworkImage(
-                  width: double.infinity,
-                  imageUrl: productImageUrl,
-                  fit: BoxFit.fill,
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20.r),
+                  child: CachedNetworkImage(
+                    width: 200.w,
+                    height: 120.h,
+                    imageUrl: productImageUrl,
+                    fit: BoxFit.fill,
+                    errorWidget:
+                        (context, url, error) => const Icon(Icons.error),
+                  ),
                 ),
               ),
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadio_mane_store/features/dashboard/presentation/widgets/dashboard_loading.dart';
 import 'package:sadio_mane_store/features/products/data/model/products_model.dart';
 import 'package:sadio_mane_store/features/products/presentation/bloc/product_bloc.dart';
@@ -71,10 +72,11 @@ Widget _buildGridView({
     physics: const NeverScrollableScrollPhysics(),
     shrinkWrap: true,
     itemCount: length,
-    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
       crossAxisCount: 2,
       crossAxisSpacing: 15,
       mainAxisSpacing: 15,
+      mainAxisExtent: 250.h,
     ),
 
     itemBuilder: itemBuilder,
