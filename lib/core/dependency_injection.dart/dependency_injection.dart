@@ -30,6 +30,7 @@ import 'package:sadio_mane_store/features/products/data/data_source/product_api_
 import 'package:sadio_mane_store/features/products/data/data_source/products_remote_data_source.dart';
 import 'package:sadio_mane_store/features/products/data/repository/product_repository_implmentation.dart';
 import 'package:sadio_mane_store/features/products/logic/repository/product_repository.dart';
+import 'package:sadio_mane_store/features/products/logic/usecase/add_product_usecase.dart';
 import 'package:sadio_mane_store/features/products/logic/usecase/get_product_usecase.dart';
 import 'package:sadio_mane_store/features/products/presentation/bloc/product_bloc.dart';
 import 'package:sadio_mane_store/features/sign_in/data/data_source/sign_in_api_service.dart';
@@ -68,7 +69,8 @@ void _products(Dio dio) {
       () => ProductRepositoryImplmentation(getIt()),
     )
     ..registerLazySingleton(() => GetProductUsecase(getIt()))
-    ..registerLazySingleton(() => ProductBloc(getIt()));
+    ..registerLazySingleton(() => AddProductUsecase(getIt()))
+    ..registerLazySingleton(() => ProductBloc(getIt(), getIt()));
 }
 
 void _categories(Dio dio) {

@@ -15,7 +15,18 @@ final class GetProductsErrorState extends ProductState {
   final String error;
 }
 
-final class AddProductState extends ProductState {}
+final class AddProductLoadingState extends ProductState {}
+
+final class AddProductSuccessState extends ProductState {
+  AddProductSuccessState({required this.product});
+
+  final String product;
+}
+
+final class AddProductErrorState extends ProductState {
+  AddProductErrorState({required this.error});
+  final String error;
+}
 
 final class EditProductState extends ProductState {}
 
