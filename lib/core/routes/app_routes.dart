@@ -10,6 +10,7 @@ import 'package:sadio_mane_store/features/categories/presentation/bloc/categorie
 import 'package:sadio_mane_store/features/categories/presentation/bloc/categories_event.dart';
 import 'package:sadio_mane_store/features/categories/presentation/view/categories_view.dart';
 import 'package:sadio_mane_store/features/dashboard/presentation/bloc/dashboard_bloc.dart';
+import 'package:sadio_mane_store/features/products/presentation/view/products_view.dart';
 import 'package:sadio_mane_store/features/sign_in/presentation/cubit/sign_in_cubit.dart';
 import 'package:sadio_mane_store/features/sign_in/presentation/view/sign_in_view.dart';
 import 'package:sadio_mane_store/features/sign_up/presentation/cubit/sign_up_cubit.dart';
@@ -61,6 +62,9 @@ class AppRoutes {
                 child: const CategoriesView(),
               ),
         );
+      case RoutesString.products:
+        return MaterialPageRoute(builder: (_) => const ProductsView());
+
       default:
         return null;
     }

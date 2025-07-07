@@ -13,7 +13,3 @@ SignUpResponceModel _$SignUpResponceModelFromJson(Map<String, dynamic> json) =>
               ? null
               : AddUserModel.fromJson(json['data'] as Map<String, dynamic>),
     );
-
-Map<String, dynamic> _$SignUpResponceModelToJson(
-  SignUpResponceModel instance,
-) => <String, dynamic>{'data': instance.data};
