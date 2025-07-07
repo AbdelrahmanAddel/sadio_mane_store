@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadio_mane_store/core/common/widget/custom_container_linear_admin.dart';
 import 'package:sadio_mane_store/core/common/widget/custom_show_modal_bottom_sheet.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
@@ -20,13 +21,12 @@ class GetProductListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomContainerLinearAdmin(
-      height: 200,
-      width: 200,
+      height: 200.h,
+      width: 200.w,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -41,7 +41,9 @@ class GetProductListItem extends StatelessWidget {
             Expanded(
               child: Center(
                 child: CachedNetworkImage(
+                  width: double.infinity,
                   imageUrl: productImageUrl,
+                  fit: BoxFit.fill,
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
               ),
@@ -49,7 +51,7 @@ class GetProductListItem extends StatelessWidget {
             verticalSpace(5),
             Text(productName, textAlign: TextAlign.left),
             verticalSpace(5),
-            Text(productPrice),
+            Text('$productPrice\$'),
           ],
         ),
       ),
