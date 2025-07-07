@@ -15,6 +15,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     GetProductEvent event,
     Emitter<ProductState> emit,
   ) async {
+    emit(GetProductsLoadingState());
     final responce = await _getProductUsecase.call();
     responce.fold(
       (error) => emit(GetProductsErrorState(error: error)),

@@ -57,7 +57,7 @@ class GetProductListItem extends StatelessWidget {
             verticalSpace(5),
             Text(productName, textAlign: TextAlign.left),
             verticalSpace(5),
-            Text('$productPrice\$'),
+            Text('$productPrice \$'),
           ],
         ),
       ),

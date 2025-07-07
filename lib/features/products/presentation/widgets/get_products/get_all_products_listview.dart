@@ -69,6 +69,7 @@ Widget _buildGridView({
   required IndexedWidgetBuilder itemBuilder,
 }) {
   return GridView.builder(
+    reverse: true,
     physics: const NeverScrollableScrollPhysics(),
     shrinkWrap: true,
     itemCount: length,
