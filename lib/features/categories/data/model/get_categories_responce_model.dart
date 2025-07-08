@@ -9,6 +9,13 @@ class GetCategoriesResponceModel {
       _$GetCategoriesResponceModelFromJson(json);
 
   final CategoriesModel? data;
+
+  List<String> get categoryDropdown {
+    final list =
+        data?.categories?.map((category) => category.name ?? '').toList();
+    return list ?? [''];
+  }
+  
 }
 
 @JsonSerializable()

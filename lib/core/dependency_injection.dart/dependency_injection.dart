@@ -70,7 +70,7 @@ void _products(Dio dio) {
     )
     ..registerLazySingleton(() => GetProductUsecase(getIt()))
     ..registerLazySingleton(() => AddProductUsecase(getIt()))
-    ..registerLazySingleton(() => ProductBloc(getIt(), getIt()));
+    ..registerFactory(() => ProductBloc(getIt(), getIt()));
 }
 
 void _categories(Dio dio) {
@@ -92,7 +92,7 @@ void _categories(Dio dio) {
     )
     ..registerLazySingleton(() => DeleteCategoryUsecase(getIt()))
     ..registerLazySingleton(() => UpdataCategoryUsecase(getIt()))
-    ..registerLazySingleton<CategoriesBloc>(
+    ..registerFactory<CategoriesBloc>(
       () => CategoriesBloc(getIt(), getIt(), getIt(), getIt()),
     );
 }
