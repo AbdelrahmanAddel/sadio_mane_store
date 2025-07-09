@@ -6,6 +6,7 @@ Widget buildLabeledTextField({
   required String text,
   int? maxline,
   TextEditingController? controller,
+  String? Function(String?)? validator,
 }) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -13,6 +14,7 @@ Widget buildLabeledTextField({
       Text(text),
       verticalSpace(10),
       CustomTextFormField(
+        validator: validator,
         maxlines: maxline,
         hintText: text,
         controller: controller,

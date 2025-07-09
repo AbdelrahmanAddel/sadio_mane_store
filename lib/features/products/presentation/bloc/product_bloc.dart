@@ -19,6 +19,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
   final TextEditingController titleController = TextEditingController();
   final TextEditingController priceController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
   List<String> imagesList = [];
 
   FutureOr<void> _getProduct(
@@ -27,7 +28,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
   ) async {
     emit(GetProductsLoadingState());
     final responce = await _getProductUsecase.call();
-    if (isClosed) return ;
+    if (isClosed) return;
     responce.fold(
       (error) => emit(GetProductsErrorState(error: error)),
       (products) => emit(GetProductsSuccessState(product: products)),
@@ -39,7 +40,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     Emitter<ProductState> emit,
   ) async {
     emit(AddProductLoadingState());
-   
+
     final responce = await _addProductUsecase.call(
       AddProductsModel(
         title: titleController.text,
@@ -49,10 +50,14 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         images: imagesList,
       ),
     );
-     if (isClosed) return ;
-    responce.fold(
-      (error) => emit(AddProductErrorState(error: error)),
-      (products) => emit(AddProductSuccessState(product: products)),
-    );
+    if (isClosed) return;
+    responce.fold((error) => emit(AddProductErrorState(error: error)), (
+      products,
+    ) {
+      titleController.clear();
+      priceController.clear();
+      descriptionController.clear();
+      emit(AddProductSuccessState(product: products));
+    });
   }
 }
