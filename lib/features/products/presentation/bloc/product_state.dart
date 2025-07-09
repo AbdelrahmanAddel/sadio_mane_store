@@ -30,4 +30,14 @@ final class AddProductErrorState extends ProductState {
 
 final class EditProductState extends ProductState {}
 
-final class DeleteProductState extends ProductState {}
+final class DeleteProductLoadingState extends ProductState {}
+
+final class DeleteProductFailureState extends ProductState {
+  DeleteProductFailureState({required this.error});
+  final String error;
+}
+
+final class DeleteProductSuccessState extends ProductState {
+  DeleteProductSuccessState({required this.message });
+  final String message;
+}

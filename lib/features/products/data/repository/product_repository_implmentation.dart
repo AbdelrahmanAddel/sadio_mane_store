@@ -9,12 +9,14 @@ class ProductRepositoryImplmentation extends ProductRepository {
   final ProductsRemoteDataSource _productsRemoteDataSource;
 
   @override
-  Future<Either<String, ProductsModel>> getProducts() {
-    return _productsRemoteDataSource.getProducts();
-  }
+  Future<Either<String, ProductsModel>> getProducts() =>
+      _productsRemoteDataSource.getProducts();
 
   @override
-  Future<Either<String, String>> addProduct(AddProductsModel productModel) {
-    return _productsRemoteDataSource.addProduct(productModel);
-  }
+  Future<Either<String, String>> addProduct(AddProductsModel productModel) =>
+      _productsRemoteDataSource.addProduct(productModel);
+
+  @override
+  Future<Either<String, String>> deleteProduct(int id) =>
+      _productsRemoteDataSource.deleteProduct(id);
 }

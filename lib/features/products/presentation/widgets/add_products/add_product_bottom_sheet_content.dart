@@ -6,7 +6,6 @@ import 'package:sadio_mane_store/features/categories/presentation/bloc/categorie
 import 'package:sadio_mane_store/features/products/presentation/bloc/product_bloc.dart';
 import 'package:sadio_mane_store/features/products/presentation/common/bottom_images_list.dart';
 import 'package:sadio_mane_store/features/products/presentation/common/build_label_text_form_filed.dart';
-import 'package:sadio_mane_store/features/products/presentation/widgets/add_products/add_product_bloc_listener.dart';
 import 'package:sadio_mane_store/features/products/presentation/widgets/add_products/select_and_product.dart';
 
 class AddProductBottomSheetContent extends StatelessWidget {
@@ -58,7 +57,7 @@ class AddProductBottomSheetContent extends StatelessWidget {
               ),
               verticalSpace(20),
               const SelectAndAddProduct(),
-              const ProductBlocListener(),
+          
             ],
           ),
         ),

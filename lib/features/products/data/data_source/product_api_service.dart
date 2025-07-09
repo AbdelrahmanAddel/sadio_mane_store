@@ -17,4 +17,6 @@ abstract class ProductApiService {
   Future<AddProductResponceModel> addProduct(
     @Body() Map<String, dynamic> query,
   );
+  @POST(ApiEndPoints.graphQl)
+  Future<void> deleteProduct(@Body() Map<String, dynamic> query);
 }

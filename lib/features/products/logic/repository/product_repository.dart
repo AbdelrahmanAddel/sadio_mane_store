@@ -5,4 +5,5 @@ import 'package:sadio_mane_store/features/products/data/model/products_model.dar
 abstract class ProductRepository {
   Future<Either<String, ProductsModel>> getProducts();
   Future<Either<String, String>> addProduct(AddProductsModel productModel);
+  Future<Either<String, String>> deleteProduct(int id);
 }

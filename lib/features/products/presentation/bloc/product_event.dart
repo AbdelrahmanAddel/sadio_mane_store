@@ -10,4 +10,8 @@ final class AddProductEvent extends ProductEvent {
 
 final class EditProductEvent extends ProductEvent {}
 
-final class DeleteProductEvent extends ProductEvent {}
+final class DeleteProductEvent extends ProductEvent {
+  DeleteProductEvent({required this.productId});
+
+  final int productId;
+}

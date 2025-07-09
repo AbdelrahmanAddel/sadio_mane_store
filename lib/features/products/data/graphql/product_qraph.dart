@@ -51,4 +51,17 @@ mutation addProduct ($title:String!,$price:Float!,$description:String!,$category
       },
     };
   }
+
+  static Map<String, dynamic> deleteProductBody(int id) {
+    return {
+      'query': r'''
+mutation deleteProduct($id:ID!){
+	deleteProduct(id: $id)
+}
+
+
+''',
+      'variables': {'id': id},
+    };
+  }
 }

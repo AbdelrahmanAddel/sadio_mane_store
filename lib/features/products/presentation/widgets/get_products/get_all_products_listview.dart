@@ -58,6 +58,7 @@ class GetAllProductsListView extends StatelessWidget {
           productImageUrl: productDetails[index].images?[0] ?? '',
           productName: productDetails[index].title ?? 'No Name',
           productPrice: productDetails[index].price?.toString() ?? '0',
+          productId: productDetails[index].id ?? '0',
         );
       },
     );

@@ -36,4 +36,20 @@ class ProductsRemoteDataSource {
       return Left(error.toString());
     }
   }
+
+  Future<Either<String, String>> deleteProduct(int id) async {
+    if (id <= 0) {
+      return const Left('Invalid product id');
+    }
+    try {
+      await _productApiService.deleteProduct(
+        ProductQraph.deleteProductBody(id),
+      );
+      return const Right('Product deleted successfully');
+    } catch (error, stackTrace) {
+      debugPrint('Error => $error');
+      debugPrint('Stack Trace => $stackTrace');
+      return Left(error.toString());
+    }
+  }
 }

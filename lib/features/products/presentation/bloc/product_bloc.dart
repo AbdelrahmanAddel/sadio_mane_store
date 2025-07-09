@@ -4,18 +4,24 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sadio_mane_store/features/products/data/model/add_products_model.dart';
 import 'package:sadio_mane_store/features/products/logic/usecase/add_product_usecase.dart';
+import 'package:sadio_mane_store/features/products/logic/usecase/delete_product_usecase.dart';
 import 'package:sadio_mane_store/features/products/logic/usecase/get_product_usecase.dart';
 import 'package:sadio_mane_store/features/products/presentation/bloc/product_event.dart';
 import 'package:sadio_mane_store/features/products/presentation/bloc/product_state.dart';
 
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
-  ProductBloc(this._getProductUsecase, this._addProductUsecase)
-    : super(GetProductsLoadingState()) {
+  ProductBloc(
+    this._getProductUsecase,
+    this._addProductUsecase,
+    this._deleteProductUsecase,
+  ) : super(GetProductsLoadingState()) {
     on<GetProductEvent>(_getProduct);
     on<AddProductEvent>(_addProduct);
+    on<DeleteProductEvent>(_deleteProduct);
   }
   final GetProductUsecase _getProductUsecase;
   final AddProductUsecase _addProductUsecase;
+  final DeleteProductUsecase _deleteProductUsecase;
   final TextEditingController titleController = TextEditingController();
   final TextEditingController priceController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
@@ -57,7 +63,24 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       titleController.clear();
       priceController.clear();
       descriptionController.clear();
+      add(GetProductEvent());
       emit(AddProductSuccessState(product: products));
     });
+  }
+
+  FutureOr<void> _deleteProduct(
+    DeleteProductEvent event,
+    Emitter<ProductState> emit,
+  ) async {
+    emit(DeleteProductLoadingState());
+    final responce = await _deleteProductUsecase.call(event.productId);
+    if (isClosed) return;
+    responce.fold(
+      (errorMessage) => emit(DeleteProductFailureState(error: errorMessage)),
+      (successMessage) {
+        add(GetProductEvent());
+        emit(DeleteProductSuccessState(message: successMessage));
+      },
+    );
   }
 }
