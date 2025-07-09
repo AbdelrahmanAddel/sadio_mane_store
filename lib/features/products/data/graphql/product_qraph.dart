@@ -1,4 +1,5 @@
 import 'package:sadio_mane_store/features/products/data/model/add_products_model.dart';
+import 'package:sadio_mane_store/features/products/data/model/update_product_model.dart';
 
 class ProductQraph {
   ProductQraph._();
@@ -62,6 +63,36 @@ mutation deleteProduct($id:ID!){
 
 ''',
       'variables': {'id': id},
+    };
+  }
+
+  static Map<String, dynamic> updateProductBody(
+    int productId,
+    UpdateProductModel updateProduct,
+  ) {
+    return {
+      'query': r'''
+mutation updateProduct($id:ID!,$title:String!,$price:Float!,$images:[String!],$description:String!){
+	updateProduct(id: $id, changes: {
+   title: "udpate",
+   price: ,
+   images ,
+   description ,
+   
+    }) {
+id
+	}
+}
+
+
+''',
+      'variables': {
+        'id': productId,
+        'title': updateProduct.title,
+        'price': updateProduct.price,
+        'images': updateProduct.images,
+        'description': updateProduct.description,
+      },
     };
   }
 }

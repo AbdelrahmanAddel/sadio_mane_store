@@ -39,7 +39,7 @@ Future<dynamic> addProduct(BuildContext context) {
           create:
               (context) => getIt<CategoriesBloc>()..add(GetCategoriesEvent()),
         ),
-        BlocProvider(create: (context) => getIt<ProductBloc>()),
+        BlocProvider.value(value: context.read<ProductBloc>()),
       ],
       child: const AddProductBottomSheetContent(),
     ),

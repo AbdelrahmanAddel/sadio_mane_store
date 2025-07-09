@@ -28,8 +28,6 @@ final class AddProductErrorState extends ProductState {
   final String error;
 }
 
-final class EditProductState extends ProductState {}
-
 final class DeleteProductLoadingState extends ProductState {}
 
 final class DeleteProductFailureState extends ProductState {
@@ -38,6 +36,18 @@ final class DeleteProductFailureState extends ProductState {
 }
 
 final class DeleteProductSuccessState extends ProductState {
-  DeleteProductSuccessState({required this.message });
+  DeleteProductSuccessState({required this.message});
   final String message;
+}
+
+final class UpdateProductLoadingState extends ProductState {}
+
+final class UpdateProductFailureState extends ProductState {
+  UpdateProductFailureState({required this.errorMessage});
+  final String errorMessage;
+}
+
+final class UpdateProductSuccessState extends ProductState {
+  UpdateProductSuccessState({required this.successMessage});
+  final String successMessage;
 }

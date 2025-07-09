@@ -2,10 +2,13 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sadio_mane_store/app/upload_image/cubit/upload_image_cubit.dart';
 import 'package:sadio_mane_store/core/common/widget/custom_container_linear_admin.dart';
 import 'package:sadio_mane_store/core/common/widget/custom_show_modal_bottom_sheet.dart';
+import 'package:sadio_mane_store/core/dependency_injection.dart/dependency_injection.dart';
 import 'package:sadio_mane_store/core/helpers/extensions/navigation_extension.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
+import 'package:sadio_mane_store/features/categories/presentation/bloc/categories_bloc.dart';
 import 'package:sadio_mane_store/features/products/presentation/bloc/product_bloc.dart';
 import 'package:sadio_mane_store/features/products/presentation/bloc/product_event.dart';
 import 'package:sadio_mane_store/features/products/presentation/widgets/edit_products/edit_product_show_bottom_content.dart';
@@ -16,12 +19,13 @@ class GetProductListItem extends StatelessWidget {
     required this.productName,
     required this.productPrice,
     required this.productId,
-    super.key,
+    super.key, required this.currentIndex,
   });
   final String productImageUrl;
   final String productName;
   final String productPrice;
   final String productId;
+  final int currentIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +43,7 @@ class GetProductListItem extends StatelessWidget {
               children: [
                 IconButton(
                   icon: const Icon(Icons.edit, color: Colors.green),
-                  onPressed: () => updateProducts(context),
+                  onPressed: () => updateProducts(context,currentIndex),
                 ),
                 IconButton(
                   icon: const Icon(Icons.delete, color: Colors.red),
@@ -124,9 +128,16 @@ class GetProductListItem extends StatelessWidget {
   }
 }
 
-Future<dynamic> updateProducts(BuildContext context) {
+Future<dynamic> updateProducts(BuildContext context, int currentIndex) {
   return customShowModalBottomSheet(
-    buttonWidget: const EditProductBottomSheetContent(),
+    buttonWidget: MultiBlocProvider(
+      providers: [
+        BlocProvider.value(value: context.read<ProductBloc>()),
+        BlocProvider(create: (context) => getIt<CategoriesBloc>()),
+        BlocProvider(create: (context) => getIt<UploadImageCubit>()),
+      ],
+      child: EditProductBottomSheetContent(currentProductIndex: currentIndex),
+    ),
     context: context,
   );
 }

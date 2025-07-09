@@ -18,5 +18,7 @@ abstract class ProductApiService {
     @Body() Map<String, dynamic> query,
   );
   @POST(ApiEndPoints.graphQl)
-  Future<void> deleteProduct(@Body() Map<String, dynamic> query);
+  Future<void> deleteProductById(@Body() Map<String, dynamic> query);
+  @POST(ApiEndPoints.graphQl)
+  Future<void> updateProductById(@Body() Map<String, dynamic> query);
 }

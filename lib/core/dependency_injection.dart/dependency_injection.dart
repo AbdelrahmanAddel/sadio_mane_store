@@ -33,6 +33,7 @@ import 'package:sadio_mane_store/features/products/logic/repository/product_repo
 import 'package:sadio_mane_store/features/products/logic/usecase/add_product_usecase.dart';
 import 'package:sadio_mane_store/features/products/logic/usecase/delete_product_usecase.dart';
 import 'package:sadio_mane_store/features/products/logic/usecase/get_product_usecase.dart';
+import 'package:sadio_mane_store/features/products/logic/usecase/update_product_usecase.dart';
 import 'package:sadio_mane_store/features/products/presentation/bloc/product_bloc.dart';
 import 'package:sadio_mane_store/features/sign_in/data/data_source/sign_in_api_service.dart';
 import 'package:sadio_mane_store/features/sign_in/data/data_source/sign_in_remote_data_source.dart';
@@ -72,7 +73,8 @@ void _products(Dio dio) {
     ..registerLazySingleton(() => GetProductUsecase(getIt()))
     ..registerLazySingleton(() => AddProductUsecase(getIt()))
     ..registerLazySingleton(() => DeleteProductUsecase(getIt()))
-    ..registerFactory(() => ProductBloc(getIt(), getIt(), getIt()));
+    ..registerLazySingleton(() => UpdateProductUsecase(getIt()))
+    ..registerFactory(() => ProductBloc(getIt(), getIt(), getIt(), getIt()));
 }
 
 void _categories(Dio dio) {
