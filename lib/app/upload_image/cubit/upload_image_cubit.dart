@@ -14,6 +14,7 @@ class UploadImageCubit extends Cubit<UploadImageState> {
   final ImagePickerClass imagePickerClass;
   String? imageUrl = '';
   List<String> images = ['', '', ''];
+  List<String> updateImages = [];
 
   Future<XFile?> pickImageFromGallery() async {
     final pickImage = await imagePickerClass.pickImage();
@@ -54,6 +55,26 @@ class UploadImageCubit extends Cubit<UploadImageState> {
       await pickImageAndUpload();
 
       images
+        ..removeAt(currentIndex)
+        ..insert(currentIndex, imageUrl ?? '');
+      imageUrl = '';
+      emit(UploadImageListSuccessState());
+    } catch (error) {
+      emit(UploadImageListFailureState(message: 'SomeThing Went Wrong !!'));
+      debugPrint(error.toString());
+    }
+  }
+
+  Future<void> updateImageList({
+    required int currentIndex,
+    required List<String> image,
+  }) async {
+    emit(UploadImageListLoadingState(currentIndex: currentIndex));
+
+    try {
+      await pickImageAndUpload();
+      updateImages = image;
+      updateImages
         ..removeAt(currentIndex)
         ..insert(currentIndex, imageUrl ?? '');
       imageUrl = '';

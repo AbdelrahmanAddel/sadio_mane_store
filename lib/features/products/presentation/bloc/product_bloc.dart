@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sadio_mane_store/features/products/data/model/add_products_model.dart';
+import 'package:sadio_mane_store/features/products/data/model/update_product_model.dart';
 import 'package:sadio_mane_store/features/products/logic/usecase/add_product_usecase.dart';
 import 'package:sadio_mane_store/features/products/logic/usecase/delete_product_usecase.dart';
 import 'package:sadio_mane_store/features/products/logic/usecase/get_product_usecase.dart';
@@ -94,9 +95,15 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     Emitter<ProductState> emit,
   ) async {
     emit(UpdateProductLoadingState());
+
     final responce = await _updateProductUsecase.call(
-      id: event.id,
-      product: event.updateProductModel,
+      id: int.parse(event.productId),
+      product: UpdateProductModel(
+        title: titleController.text,
+        price: double.parse(priceController.text),
+        description: descriptionController.text,
+        images: imagesList,
+      ),
     );
     if (isClosed) return;
     responce.fold(

@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sadio_mane_store/core/common/widget/custom_app_button.dart';
-import 'package:sadio_mane_store/core/common/widget/custom_create_drop_down.dart';
-import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
-import 'package:sadio_mane_store/features/products/data/model/products_model.dart';
+
 import 'package:sadio_mane_store/features/products/presentation/bloc/product_bloc.dart';
 import 'package:sadio_mane_store/features/products/presentation/bloc/product_state.dart';
-import 'package:sadio_mane_store/features/products/presentation/common/bottom_images_list.dart';
-import 'package:sadio_mane_store/features/products/presentation/common/build_label_text_form_filed.dart';
+import 'package:sadio_mane_store/features/products/presentation/widgets/edit_products/states/edit_product_success_state_screen.dart';
 
 class EditProductBottomSheetContent extends StatelessWidget {
   const EditProductBottomSheetContent({
@@ -41,9 +37,9 @@ class EditProductBottomSheetContent extends StatelessWidget {
                   child: CircularProgressIndicator(),
                 ),
 
-                GetProductsSuccessState() => _buildSuccessStateScreen(
-                  state.product.data?.products[currentProductIndex],
-                  context,
+                GetProductsSuccessState() => EditProductSuccessStateScreen(
+                  productData:
+                      state.product.data?.products[currentProductIndex],
                 ),
 
                 GetProductsErrorState() => const Center(
@@ -55,55 +51,6 @@ class EditProductBottomSheetContent extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildSuccessStateScreen(
-    ProductDataModel? productData,
-    BuildContext context,
-  ) {
-    final productBloc = context.read<ProductBloc>();
-    productBloc.titleController.text = productData?.title ?? '';
-    productBloc.priceController.text = productData?.price?.toString() ?? '';
-    productBloc.descriptionController.text = productData?.description ?? '';
-    productBloc.imagesList = productData?.images ?? [];
-
-    return Column(
-      children: [
-        const Center(
-          child: Text('Edit Product', style: TextStyle(fontSize: 30)),
-        ),
-        verticalSpace(20),
-        const Text('Edit a photo', style: TextStyle(fontSize: 20)),
-        verticalSpace(20),
-        const BottomImagesList(isEdit: true),
-        verticalSpace(20),
-        buildLabeledTextField(
-          controller: productBloc.titleController,
-          text: 'Title',
-        ),
-        verticalSpace(10),
-        buildLabeledTextField(
-          controller: productBloc.priceController,
-          text: 'Price',
-        ),
-        verticalSpace(10),
-        buildLabeledTextField(
-          controller: productBloc.descriptionController,
-          text: 'Description',
-          maxline: 5,
-        ),
-        verticalSpace(20),
-        CustomCreateDropDown(
-          items: const [],
-          hintText: 'Sadio',
-          onChanged: (string) {},
-          value: 'value',
-        ),
-        verticalSpace(20),
-
-        const CustomAppButton(width: double.infinity, child: Text('Done')),
-      ],
     );
   }
 }

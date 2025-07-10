@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:sadio_mane_store/features/products/data/data_source/product_api_service.dart';
-import 'package:sadio_mane_store/features/products/data/graphql/product_qraph.dart';
+import 'package:sadio_mane_store/features/products/data/graphql/product_graph.dart';
 import 'package:sadio_mane_store/features/products/data/model/add_products_model.dart';
 import 'package:sadio_mane_store/features/products/data/model/products_model.dart';
 import 'package:sadio_mane_store/features/products/data/model/update_product_model.dart';
@@ -13,7 +13,7 @@ class ProductsRemoteDataSource {
   Future<Either<String, ProductsModel>> getProducts() async {
     try {
       final responce = await _productApiService.getProducts(
-        ProductQraph.getProductsBody(),
+        ProductGraph.getProductsBody(),
       );
       return Right(responce);
     } catch (error, stackTrace) {
@@ -28,7 +28,7 @@ class ProductsRemoteDataSource {
   ) async {
     try {
       await _productApiService.addProduct(
-        ProductQraph.addProductBody(productModel),
+        ProductGraph.addProductBody(productModel),
       );
       return const Right('Product added successfully');
     } catch (error, stackTrace) {
@@ -44,7 +44,7 @@ class ProductsRemoteDataSource {
     }
     try {
       await _productApiService.deleteProductById(
-        ProductQraph.deleteProductBody(id),
+        ProductGraph.deleteProductBody(id),
       );
       return const Right('Product deleted successfully');
     } catch (error, stackTrace) {
@@ -63,7 +63,7 @@ class ProductsRemoteDataSource {
     }
     try {
       await _productApiService.updateProductById(
-        ProductQraph.updateProductBody(id, productModel),
+        ProductGraph.updateProductBody(id, productModel),
       );
       return const Right('Product updated successfully');
     } catch (error, stackTrace) {

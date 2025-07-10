@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sadio_mane_store/features/dashboard/presentation/widgets/dashboard_loading.dart';
-import 'package:sadio_mane_store/features/products/data/model/products_model.dart';
 import 'package:sadio_mane_store/features/products/presentation/bloc/product_bloc.dart';
 import 'package:sadio_mane_store/features/products/presentation/bloc/product_state.dart';
 
-import 'package:sadio_mane_store/features/products/presentation/widgets/get_products/get_products_list_item.dart';
+import 'package:sadio_mane_store/features/products/presentation/widgets/get_products/states/get_product_failure_state_screen.dart';
+import 'package:sadio_mane_store/features/products/presentation/widgets/get_products/states/get_product_loading_state_screen.dart';
+import 'package:sadio_mane_store/features/products/presentation/widgets/get_products/states/get_product_success_state_screem.dart';
 
 class GetAllProductsListView extends StatelessWidget {
   const GetAllProductsListView({super.key});
@@ -27,46 +27,22 @@ class GetAllProductsListView extends StatelessWidget {
       builder: (context, state) {
         switch (state) {
           case GetProductsLoadingState():
-            return _getProductLoadingScreen();
+            return const GetProductLoadingStateScreen();
           case GetProductsSuccessState():
-            return _getProductSuccessScreen(state.product.data?.products ?? []);
+            return GetProductSuccessStateScreen(
+              productDetails: state.product.data?.products ?? [],
+            );
           case GetProductsErrorState():
-            return _getProductErrorScreen();
+            return const GetProductFailureStateScreen();
           default:
             return const SizedBox.shrink();
         }
       },
     );
   }
-
-  Widget _getProductLoadingScreen() {
-    return _buildGridView(
-      length: 20,
-      itemBuilder: (context, index) => const LoadingShimmer(),
-    );
-  }
-
-  Widget _getProductErrorScreen() {
-    return const Center(child: Text('Error'));
-  }
-
-  Widget _getProductSuccessScreen(List<ProductDataModel> productDetails) {
-    return _buildGridView(
-      length: productDetails.length,
-      itemBuilder: (context, index) {
-        return GetProductListItem(
-          productImageUrl: productDetails[index].images?[0] ?? '',
-          productName: productDetails[index].title ?? 'No Name',
-          productPrice: productDetails[index].price?.toString() ?? '0',
-          productId: productDetails[index].id ?? '0',
-          currentIndex: index,
-        );
-      },
-    );
-  }
 }
 
-Widget _buildGridView({
+Widget buildGridView({
   required int length,
   required IndexedWidgetBuilder itemBuilder,
 }) {

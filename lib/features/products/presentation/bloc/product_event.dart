@@ -1,5 +1,3 @@
-import 'package:sadio_mane_store/features/products/data/model/update_product_model.dart';
-
 sealed class ProductEvent {}
 
 final class GetProductEvent extends ProductEvent {}
@@ -11,9 +9,9 @@ final class AddProductEvent extends ProductEvent {
 }
 
 final class UpdateProductEvent extends ProductEvent {
-  UpdateProductEvent(this.id, {required this.updateProductModel});
-  final UpdateProductModel updateProductModel;
-  final int id;
+  UpdateProductEvent({required this.productId});
+
+  final String productId;
 }
 
 final class DeleteProductEvent extends ProductEvent {

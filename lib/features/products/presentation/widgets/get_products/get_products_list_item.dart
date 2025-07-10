@@ -9,22 +9,20 @@ import 'package:sadio_mane_store/core/dependency_injection.dart/dependency_injec
 import 'package:sadio_mane_store/core/helpers/extensions/navigation_extension.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
 import 'package:sadio_mane_store/features/categories/presentation/bloc/categories_bloc.dart';
+import 'package:sadio_mane_store/features/categories/presentation/bloc/categories_event.dart';
+import 'package:sadio_mane_store/features/products/data/model/products_model.dart';
 import 'package:sadio_mane_store/features/products/presentation/bloc/product_bloc.dart';
 import 'package:sadio_mane_store/features/products/presentation/bloc/product_event.dart';
 import 'package:sadio_mane_store/features/products/presentation/widgets/edit_products/edit_product_show_bottom_content.dart';
 
 class GetProductListItem extends StatelessWidget {
   const GetProductListItem({
-    required this.productImageUrl,
-    required this.productName,
-    required this.productPrice,
-    required this.productId,
-    super.key, required this.currentIndex,
+    required this.currentIndex,
+    required this.productData,
+    super.key,
   });
-  final String productImageUrl;
-  final String productName;
-  final String productPrice;
-  final String productId;
+
+  final ProductDataModel productData;
   final int currentIndex;
 
   @override
@@ -43,14 +41,14 @@ class GetProductListItem extends StatelessWidget {
               children: [
                 IconButton(
                   icon: const Icon(Icons.edit, color: Colors.green),
-                  onPressed: () => updateProducts(context,currentIndex),
+                  onPressed: () => updateProducts(context, currentIndex),
                 ),
                 IconButton(
                   icon: const Icon(Icons.delete, color: Colors.red),
                   onPressed:
                       () => _showDeleteProductDialog(
                         context,
-                        productId,
+                        productData.id.toString(),
                         context.read<ProductBloc>(),
                       ),
                 ),
@@ -63,7 +61,7 @@ class GetProductListItem extends StatelessWidget {
                   child: CachedNetworkImage(
                     width: 200.w,
                     height: 120.h,
-                    imageUrl: productImageUrl,
+                    imageUrl: productData.images![0],
                     fit: BoxFit.fill,
                     errorWidget:
                         (context, url, error) => const Icon(Icons.error),
@@ -72,9 +70,9 @@ class GetProductListItem extends StatelessWidget {
               ),
             ),
             verticalSpace(5),
-            Text(productName, textAlign: TextAlign.left),
+            Text(productData.title.toString(), textAlign: TextAlign.left),
             verticalSpace(5),
-            Text('$productPrice \$'),
+            Text('${productData.price} \$'),
           ],
         ),
       ),
@@ -133,7 +131,10 @@ Future<dynamic> updateProducts(BuildContext context, int currentIndex) {
     buttonWidget: MultiBlocProvider(
       providers: [
         BlocProvider.value(value: context.read<ProductBloc>()),
-        BlocProvider(create: (context) => getIt<CategoriesBloc>()),
+        BlocProvider(
+          create:
+              (context) => getIt<CategoriesBloc>()..add(GetCategoriesEvent()),
+        ),
         BlocProvider(create: (context) => getIt<UploadImageCubit>()),
       ],
       child: EditProductBottomSheetContent(currentProductIndex: currentIndex),

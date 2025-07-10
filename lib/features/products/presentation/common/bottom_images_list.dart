@@ -17,7 +17,7 @@ class BottomImagesList extends StatelessWidget {
       child: ListView.separated(
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        itemCount: 3,
+        itemCount: productBloc.imagesList.length,
         itemBuilder: (context, index) {
           final uploadImageCubit = context.read<UploadImageCubit>();
 
@@ -29,7 +29,7 @@ class BottomImagesList extends StatelessWidget {
                     current is UploadImageSuccessState,
             builder: (context, state) {
               if (state is UploadImageInitialState) {
-                return _uploadImageInitalScree(
+                return _uploadImageInitalScreen(
                   uploadImageCubit,
                   index,
                   productBloc,
@@ -73,16 +73,18 @@ class BottomImagesList extends StatelessWidget {
         color: Colors.grey[400],
         image: DecorationImage(
           image: NetworkImage(
-            uploadImageCubit.images[index] == ''
+            uploadImageCubit.updateImages[index] == ''
                 ? 'https://thumb.ac-illust.com/b1/b170870007dfa419295d949814474ab2_t.jpeg'
-                : uploadImageCubit.images[index],
+                : uploadImageCubit.updateImages[index],
           ),
         ),
       ),
       child: IconButton(
         onPressed: () {
-          uploadImageCubit.uploadImageList(currentIndex: index);
-          productBloc.imagesList = uploadImageCubit.images;
+          uploadImageCubit.updateImageList(
+            currentIndex: index,
+            image: productBloc.imagesList,
+          );
         },
         icon: Icon(
           isEdit ? Icons.edit : Icons.add_a_photo,
@@ -129,7 +131,7 @@ class BottomImagesList extends StatelessWidget {
         );
   }
 
-  Widget _uploadImageInitalScree(
+  Widget _uploadImageInitalScreen(
     UploadImageCubit uploadImageCubit,
     int index,
     ProductBloc productBloc,
@@ -142,16 +144,19 @@ class BottomImagesList extends StatelessWidget {
         color: Colors.grey[400],
         image: DecorationImage(
           image: NetworkImage(
-            productBloc.imagesList[0] == ''
+            productBloc.imagesList[index] == '' ||
+                    productBloc.imagesList[index].isEmpty
                 ? 'https://thumb.ac-illust.com/b1/b170870007dfa419295d949814474ab2_t.jpeg'
-                : productBloc.imagesList[0],
+                : productBloc.imagesList[index],
           ),
         ),
       ),
       child: IconButton(
         onPressed: () {
-          uploadImageCubit.uploadImageList(currentIndex: index);
-          productBloc.imagesList = uploadImageCubit.images;
+          uploadImageCubit.updateImageList(
+            currentIndex: index,
+            image: productBloc.imagesList,
+          );
         },
         icon: Icon(
           isEdit ? Icons.edit : Icons.add_a_photo,
