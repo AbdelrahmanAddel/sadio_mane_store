@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
+import 'package:sadio_mane_store/features/users/presentation/bloc/users_bloc.dart';
+import 'package:sadio_mane_store/features/users/presentation/bloc/users_state.dart';
 import 'package:sadio_mane_store/features/users/presentation/widgets/custom_table_size_cell_title.dart';
 
 class UsersViewTable extends StatelessWidget {
@@ -36,17 +39,21 @@ class UsersViewTable extends StatelessWidget {
             children: [
               _usersViewContentTableCell(title: 'AbdelrahmanEzz'),
               _usersViewContentTableCell(title: 'AbdelrahmanEzze@gmail.com'),
-              TableCell(
-                verticalAlignment: TableCellVerticalAlignment.middle,
-                child: Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: IconButton(
-                    iconSize: 20,
-                    padding: EdgeInsets.zero,
-                    onPressed: () {},
-                    icon: const Icon(Icons.delete, color: Colors.red),
-                  ),
-                ),
+              BlocBuilder<UsersBloc, UsersState>(
+                builder: (context, state) {
+                  return TableCell(
+                    verticalAlignment: TableCellVerticalAlignment.middle,
+                    child: Padding(
+                      padding: const EdgeInsets.all(5),
+                      child: IconButton(
+                        iconSize: 20,
+                        padding: EdgeInsets.zero,
+                        onPressed: () {},
+                        icon: const Icon(Icons.delete, color: Colors.red),
+                      ),
+                    ),
+                  );
+                },
               ),
             ],
           );

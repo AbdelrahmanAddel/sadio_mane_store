@@ -48,6 +48,13 @@ import 'package:sadio_mane_store/features/sign_up/data/repository/sign_up_reposi
 import 'package:sadio_mane_store/features/sign_up/logic/repository/sign_up_repository.dart';
 import 'package:sadio_mane_store/features/sign_up/logic/usecase/sign_up_usecase.dart';
 import 'package:sadio_mane_store/features/sign_up/presentation/cubit/sign_up_cubit.dart';
+import 'package:sadio_mane_store/features/users/data/data_source/users_api_service.dart';
+import 'package:sadio_mane_store/features/users/data/data_source/users_remote_data_source.dart';
+import 'package:sadio_mane_store/features/users/data/repository/users_repository_implmentation.dart';
+import 'package:sadio_mane_store/features/users/logic/repository/users_repository.dart';
+import 'package:sadio_mane_store/features/users/logic/usecase/delete_users_usecase.dart';
+import 'package:sadio_mane_store/features/users/logic/usecase/get_users_usecase.dart';
+import 'package:sadio_mane_store/features/users/presentation/bloc/users_bloc.dart';
 
 final GetIt getIt = GetIt.instance;
 void setUpGetIt() {
@@ -60,7 +67,20 @@ void setUpGetIt() {
   _uploadImage(dio);
   _categories(dio);
   _products(dio);
+  _users(dio);
   debugPrint('✅ GetIt setup done');
+}
+
+void _users(Dio dio) {
+  getIt
+    ..registerLazySingleton(() => UsersApiService(dio))
+    ..registerLazySingleton(() => UsersRemoteDataSource(getIt()))
+    ..registerLazySingleton<UsersRepository>(
+      () => UsersRepositoryImplmentation(getIt()),
+    )
+    ..registerLazySingleton(() => GetUsersUsecase(getIt()))
+    ..registerLazySingleton(() => DeleteUsersUsecase(getIt()))
+    ..registerFactory(() => UsersBloc(getIt()));
 }
 
 void _products(Dio dio) {
