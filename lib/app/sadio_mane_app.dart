@@ -35,7 +35,7 @@ class SadioManeApp extends StatelessWidget {
             builder:
                 (context, child) => MaterialApp(
                   navigatorKey: getIt<GlobalKey<NavigatorState>>(),
-                  initialRoute: RoutesString.products,
+                  initialRoute: RoutesString.adminHome,
 
                   locale:
                       SharedPrefHelper.getBool(SharedPrefKey.language)
