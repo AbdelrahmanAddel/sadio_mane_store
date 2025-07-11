@@ -9,7 +9,7 @@ final class GetCategoriesLoadingState extends CategoriesState {}
 final class GetCategoriesSuccessState extends CategoriesState {
   GetCategoriesSuccessState({required this.categoriesData});
 
-  final List<CategoriesDataModel> categoriesData;
+  final GetCategoriesResponceModel categoriesData;
 }
 
 final class GetCategoriesFailureState extends CategoriesState {

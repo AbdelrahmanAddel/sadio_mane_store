@@ -26,6 +26,15 @@ import 'package:sadio_mane_store/features/dashboard/logic/usecase/get_categories
 import 'package:sadio_mane_store/features/dashboard/logic/usecase/get_products_length_usecase.dart';
 import 'package:sadio_mane_store/features/dashboard/logic/usecase/get_users_total_number_usecase.dart';
 import 'package:sadio_mane_store/features/dashboard/presentation/bloc/dashboard_bloc.dart';
+import 'package:sadio_mane_store/features/products/data/data_source/product_api_service.dart';
+import 'package:sadio_mane_store/features/products/data/data_source/products_remote_data_source.dart';
+import 'package:sadio_mane_store/features/products/data/repository/product_repository_implmentation.dart';
+import 'package:sadio_mane_store/features/products/logic/repository/product_repository.dart';
+import 'package:sadio_mane_store/features/products/logic/usecase/add_product_usecase.dart';
+import 'package:sadio_mane_store/features/products/logic/usecase/delete_product_usecase.dart';
+import 'package:sadio_mane_store/features/products/logic/usecase/get_product_usecase.dart';
+import 'package:sadio_mane_store/features/products/logic/usecase/update_product_usecase.dart';
+import 'package:sadio_mane_store/features/products/presentation/bloc/product_bloc.dart';
 import 'package:sadio_mane_store/features/sign_in/data/data_source/sign_in_api_service.dart';
 import 'package:sadio_mane_store/features/sign_in/data/data_source/sign_in_remote_data_source.dart';
 import 'package:sadio_mane_store/features/sign_in/data/repository/sign_in_repository_implementation.dart';
@@ -50,7 +59,22 @@ void setUpGetIt() {
   _dashBoard(dio);
   _uploadImage(dio);
   _categories(dio);
+  _products(dio);
   debugPrint('✅ GetIt setup done');
+}
+
+void _products(Dio dio) {
+  getIt
+    ..registerLazySingleton(() => ProductApiService(dio))
+    ..registerLazySingleton(() => ProductsRemoteDataSource(getIt()))
+    ..registerLazySingleton<ProductRepository>(
+      () => ProductRepositoryImplmentation(getIt()),
+    )
+    ..registerLazySingleton(() => GetProductUsecase(getIt()))
+    ..registerLazySingleton(() => AddProductUsecase(getIt()))
+    ..registerLazySingleton(() => DeleteProductUsecase(getIt()))
+    ..registerLazySingleton(() => UpdateProductUsecase(getIt()))
+    ..registerFactory(() => ProductBloc(getIt(), getIt(), getIt(), getIt()));
 }
 
 void _categories(Dio dio) {
@@ -72,7 +96,7 @@ void _categories(Dio dio) {
     )
     ..registerLazySingleton(() => DeleteCategoryUsecase(getIt()))
     ..registerLazySingleton(() => UpdataCategoryUsecase(getIt()))
-    ..registerLazySingleton<CategoriesBloc>(
+    ..registerFactory<CategoriesBloc>(
       () => CategoriesBloc(getIt(), getIt(), getIt(), getIt()),
     );
 }

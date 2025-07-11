@@ -38,11 +38,12 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
   ) async {
     emit(GetCategoriesLoadingState());
     final responce = await _getCategoriesUsecase.call();
+    if (isClosed) return;
     responce.fold(
       (failure) => emit(GetCategoriesFailureState(errorMessage: failure)),
       (success) => emit(
         GetCategoriesSuccessState(
-          categoriesData: success.data?.categories ?? [],
+          categoriesData: success,
         ),
       ),
     );

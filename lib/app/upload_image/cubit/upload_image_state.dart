@@ -23,3 +23,15 @@ class FailureToPickImageState extends UploadImageState {
 }
 
 class PickImageSuccessState extends UploadImageState {}
+
+class UploadImageListLoadingState extends UploadImageState {
+  UploadImageListLoadingState({required this.currentIndex});
+  final int currentIndex;
+}
+
+class UploadImageListSuccessState extends UploadImageState {}
+
+class UploadImageListFailureState extends UploadImageState {
+  UploadImageListFailureState({required this.message});
+  final String message;
+}
