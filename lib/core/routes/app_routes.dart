@@ -65,6 +65,7 @@ class AppRoutes {
       case RoutesString.products:
         return MaterialPageRoute(builder: (_) => const ProductsView());
 
+
       default:
         return null;
     }

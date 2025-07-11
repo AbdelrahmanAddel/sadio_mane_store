@@ -9,6 +9,8 @@ class RoutesString {
   static const String categories = 'categories';
   static const String products = 'products';
   static const String orders = 'orders';
+  static const String users = 'users';
+
   
 
 
