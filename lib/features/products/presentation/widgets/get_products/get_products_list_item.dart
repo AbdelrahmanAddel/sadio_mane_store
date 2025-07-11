@@ -41,7 +41,8 @@ class GetProductListItem extends StatelessWidget {
               children: [
                 IconButton(
                   icon: const Icon(Icons.edit, color: Colors.green),
-                  onPressed: () => updateProducts(context, currentIndex),
+                  onPressed:
+                      () => updateProducts(context, currentIndex, productData),
                 ),
                 IconButton(
                   icon: const Icon(Icons.delete, color: Colors.red),
@@ -126,18 +127,27 @@ class GetProductListItem extends StatelessWidget {
   }
 }
 
-Future<dynamic> updateProducts(BuildContext context, int currentIndex) {
+Future<dynamic> updateProducts(
+  BuildContext context,
+  int currentIndex,
+  ProductDataModel productData,
+) {
   return customShowModalBottomSheet(
     buttonWidget: MultiBlocProvider(
       providers: [
-        BlocProvider.value(value: context.read<ProductBloc>()),
+        BlocProvider.value(
+          value: context.read<ProductBloc>()..add(GetProductEvent()),
+        ),
         BlocProvider(
           create:
               (context) => getIt<CategoriesBloc>()..add(GetCategoriesEvent()),
         ),
         BlocProvider(create: (context) => getIt<UploadImageCubit>()),
       ],
-      child: EditProductBottomSheetContent(currentProductIndex: currentIndex),
+      child: EditProductBottomSheetContent(
+        currentProductIndex: currentIndex,
+        productData: productData,
+      ),
     ),
     context: context,
   );

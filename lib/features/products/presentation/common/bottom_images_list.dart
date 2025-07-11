@@ -3,24 +3,30 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadio_mane_store/app/upload_image/cubit/upload_image_cubit.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
+import 'package:sadio_mane_store/features/products/data/model/products_model.dart';
 import 'package:sadio_mane_store/features/products/presentation/bloc/product_bloc.dart';
 
 class BottomImagesList extends StatelessWidget {
-  const BottomImagesList({required this.isEdit, super.key});
+  const BottomImagesList({
+    required this.isEdit,
+    this.productDataModel,
+    super.key,
+  });
   final bool isEdit;
+  final ProductDataModel? productDataModel;
 
   @override
   Widget build(BuildContext context) {
     final productBloc = context.read<ProductBloc>();
+    final uploadImageCubit = context.read<UploadImageCubit>();
+
     return BlocProvider.value(
       value: context.read<UploadImageCubit>(),
       child: ListView.separated(
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        itemCount: productBloc.imagesList.length,
+        itemCount: isEdit ? productDataModel!.images!.length : 3,
         itemBuilder: (context, index) {
-          final uploadImageCubit = context.read<UploadImageCubit>();
-
           return BlocBuilder<UploadImageCubit, UploadImageState>(
             buildWhen:
                 (previous, current) =>
@@ -73,18 +79,25 @@ class BottomImagesList extends StatelessWidget {
         color: Colors.grey[400],
         image: DecorationImage(
           image: NetworkImage(
-            uploadImageCubit.updateImages[index] == ''
+            isEdit
+                ? uploadImageCubit.updateImages[index] == ''
+                    ? 'https://thumb.ac-illust.com/b1/b170870007dfa419295d949814474ab2_t.jpeg'
+                    : uploadImageCubit.updateImages[index]
+                : uploadImageCubit.images[index] == ''
                 ? 'https://thumb.ac-illust.com/b1/b170870007dfa419295d949814474ab2_t.jpeg'
-                : uploadImageCubit.updateImages[index],
+                : uploadImageCubit.images[index],
           ),
         ),
       ),
       child: IconButton(
         onPressed: () {
-          uploadImageCubit.updateImageList(
-            currentIndex: index,
-            image: productBloc.imagesList,
-          );
+ 
+          !isEdit
+              ? uploadImageCubit.uploadImageList(currentIndex: index)
+              : uploadImageCubit.updateImageList(
+                currentIndex: index,
+                image: productBloc.imagesList
+              );
         },
         icon: Icon(
           isEdit ? Icons.edit : Icons.add_a_photo,
@@ -144,19 +157,26 @@ class BottomImagesList extends StatelessWidget {
         color: Colors.grey[400],
         image: DecorationImage(
           image: NetworkImage(
-            productBloc.imagesList[index] == '' ||
+            isEdit
+                ? productDataModel!.images![index] == ''
+                    ? 'https://thumb.ac-illust.com/b1/b170870007dfa419295d949814474ab2_t.jpeg'
+                    : productDataModel!.images![index]
+                : uploadImageCubit.images[index] == '' ||
                     productBloc.imagesList[index].isEmpty
                 ? 'https://thumb.ac-illust.com/b1/b170870007dfa419295d949814474ab2_t.jpeg'
-                : productBloc.imagesList[index],
+                : uploadImageCubit.images[index],
           ),
         ),
       ),
       child: IconButton(
         onPressed: () {
-          uploadImageCubit.updateImageList(
-            currentIndex: index,
-            image: productBloc.imagesList,
-          );
+
+          !isEdit
+              ? uploadImageCubit.uploadImageList(currentIndex: index)
+              : uploadImageCubit.updateImageList(
+                currentIndex: index,
+                image: productBloc.imagesList
+              );
         },
         icon: Icon(
           isEdit ? Icons.edit : Icons.add_a_photo,

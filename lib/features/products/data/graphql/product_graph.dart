@@ -83,7 +83,6 @@ class ProductGraph {
           $title: String!,
           $price: Float!,
           $images: [String!],
-          $categoryId: Float!,
           $description: String!
         ) {
           updateProduct(
@@ -93,7 +92,6 @@ class ProductGraph {
               price: $price,
               images: $images,
               description: $description
-              categoryId: $categoryId
             }
           ) {
             id
@@ -106,7 +104,6 @@ class ProductGraph {
         'price': updateProduct.price,
         'images': updateProduct.images,
         'description': updateProduct.description,
-        'categoryId': updateProduct.category,
       },
     };
   }

@@ -59,7 +59,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         price: double.parse(priceController.text.toLowerCase()),
         description: descriptionController.text,
         categoryId: event.categoryId,
-        images: imagesList,
+        images: event.imagesList,
       ),
     );
     if (isClosed) return;
@@ -69,8 +69,8 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       titleController.clear();
       priceController.clear();
       descriptionController.clear();
-      add(GetProductEvent());
       emit(AddProductSuccessState(product: products));
+      add(GetProductEvent());
     });
   }
 
@@ -102,7 +102,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         title: titleController.text,
         price: double.parse(priceController.text),
         description: descriptionController.text,
-        images: imagesList,
+        images: event.images,
       ),
     );
     if (isClosed) return;

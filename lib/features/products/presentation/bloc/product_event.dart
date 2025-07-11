@@ -3,14 +3,15 @@ sealed class ProductEvent {}
 final class GetProductEvent extends ProductEvent {}
 
 final class AddProductEvent extends ProductEvent {
-  AddProductEvent({required this.categoryId});
+  AddProductEvent(this.imagesList, {required this.categoryId});
 
   final int categoryId;
+  final List<String> imagesList;
 }
 
 final class UpdateProductEvent extends ProductEvent {
-  UpdateProductEvent({required this.productId});
-
+  UpdateProductEvent(this.images, {required this.productId});
+  final List<String> images;
   final String productId;
 }
 

@@ -21,11 +21,14 @@ class AddProductBotton extends StatelessWidget {
             ? const Center(child: CircularProgressIndicator())
             : CustomAppButton(
               onTap: () {
-                if (uploadImageCubit.images.contains('')) {
-                  customFlutterToast(message: 'You Must Add 3 Images !');
+                if (!uploadImageCubit.images[0].contains('')) {
+                  customFlutterToast(message: 'You Must At Least 1 Image !');
                 } else if (productBloc.formKey.currentState!.validate()) {
                   productBloc.add(
-                    AddProductEvent(categoryId: int.parse(categoryId)),
+                    AddProductEvent(
+                      uploadImageCubit.images,
+                      categoryId: int.parse(categoryId),
+                    ),
                   );
                 }
               },

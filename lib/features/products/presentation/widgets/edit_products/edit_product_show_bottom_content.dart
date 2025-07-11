@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sadio_mane_store/features/products/data/model/products_model.dart';
 
 import 'package:sadio_mane_store/features/products/presentation/bloc/product_bloc.dart';
 import 'package:sadio_mane_store/features/products/presentation/bloc/product_state.dart';
@@ -8,9 +9,11 @@ import 'package:sadio_mane_store/features/products/presentation/widgets/edit_pro
 class EditProductBottomSheetContent extends StatelessWidget {
   const EditProductBottomSheetContent({
     required this.currentProductIndex,
+    required this.productData,
     super.key,
   });
   final int currentProductIndex;
+  final ProductDataModel productData;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +39,6 @@ class EditProductBottomSheetContent extends StatelessWidget {
                 GetProductsLoadingState() => const Center(
                   child: CircularProgressIndicator(),
                 ),
-
                 GetProductsSuccessState() => EditProductSuccessStateScreen(
                   productData:
                       state.product.data?.products[currentProductIndex],

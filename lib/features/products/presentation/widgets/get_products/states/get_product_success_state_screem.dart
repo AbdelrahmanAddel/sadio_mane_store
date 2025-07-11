@@ -4,12 +4,13 @@ import 'package:sadio_mane_store/features/products/presentation/widgets/get_prod
 import 'package:sadio_mane_store/features/products/presentation/widgets/get_products/get_products_list_item.dart';
 
 class GetProductSuccessStateScreen extends StatelessWidget {
-  const GetProductSuccessStateScreen({super.key, required this.productDetails});
+  const GetProductSuccessStateScreen({required this.productDetails, super.key});
   final List<ProductDataModel> productDetails;
 
   @override
   Widget build(BuildContext context) {
     return buildGridView(
+      
       length: productDetails.length,
       itemBuilder: (context, index) {
         return GetProductListItem(

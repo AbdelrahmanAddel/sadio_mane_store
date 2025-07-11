@@ -31,7 +31,7 @@ class AddProductBottomSheetContent extends StatelessWidget {
               verticalSpace(20),
               const Text('Add a photo', style: TextStyle(fontSize: 20)),
               verticalSpace(20),
-              const BottomImagesList(isEdit: true),
+              const BottomImagesList(isEdit: false),
               verticalSpace(20),
               buildLabeledTextField(
                 validator: textFormFieldValidator(TextFormFieldEnums.title),
@@ -57,7 +57,6 @@ class AddProductBottomSheetContent extends StatelessWidget {
               ),
               verticalSpace(20),
               const SelectAndAddProduct(),
-          
             ],
           ),
         ),

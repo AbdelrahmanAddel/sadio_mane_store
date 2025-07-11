@@ -30,7 +30,9 @@ class EditProductBotton extends StatelessWidget {
                 if (uploadImageCubit.updateImages.contains('')) {
                   customFlutterToast(message: 'You Must Add 3 Images !');
                 } else if (productBloc.formKey.currentState!.validate()) {
-                  productBloc.add(UpdateProductEvent(productId: productId));
+                  productBloc.add(UpdateProductEvent(
+                    uploadImageCubit.updateImages,
+                    productId: productId));
                 }
               },
               width: double.infinity,

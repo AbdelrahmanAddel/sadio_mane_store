@@ -15,12 +15,21 @@ class ProductsActionRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+           final productBloc = context.read<ProductBloc>();
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text('Get All Products ', style: TextStyle(fontSize: 20.sp)),
         CustomAppButton(
-          onTap: () => addProduct(context),
+          onTap: () {
+            productBloc.descriptionController.clear();
+            productBloc.priceController.clear();
+            productBloc.titleController.clear();
+            productBloc.imagesList.clear();
+            addProduct(context);
+
+          } ,
           width: 100.h,
           height: 40.w,
           child: const Text('Add'),

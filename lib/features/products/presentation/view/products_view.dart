@@ -15,7 +15,7 @@ class ProductsView extends StatelessWidget {
     return Scaffold(
       backgroundColor: context.theme.appColors.mainColor,
 
-      appBar: CustomAdminAppBar(
+      appBar: CustomAdminAppBar(        
         backGrounfColor: context.theme.appColors.mainColor,
         title: 'Products',
         isMain: true,
