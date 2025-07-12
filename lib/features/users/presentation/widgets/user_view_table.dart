@@ -1,85 +1,44 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
-import 'package:sadio_mane_store/features/users/presentation/widgets/custom_table_size_cell_title.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sadio_mane_store/features/users/presentation/bloc/users_bloc.dart';
+import 'package:sadio_mane_store/features/users/presentation/bloc/users_state.dart';
+import 'package:sadio_mane_store/features/users/presentation/widgets/get_users_success_screen.dart';
 
 class UsersViewTable extends StatelessWidget {
   const UsersViewTable({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Table(
-      border: TableBorder.all(color: context.theme.appColors.bluePinkLight),
-      defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-      columnWidths: {
-        0: const FlexColumnWidth(),
-        1: const FlexColumnWidth(),
-        2: FixedColumnWidth(80.w),
+    return BlocBuilder<UsersBloc, UsersState>(
+      buildWhen: (previous, current) {
+        return current is GetUsersSuccessState ||
+            current is GetUsersLoadingState ||
+            current is GetUsersErrorState ||
+            current is DeleteUserByIdLoadingState ||
+            current is SearchForUserSuccessState;
       },
-      children: [
-        TableRow(
-          decoration: BoxDecoration(
-            color: context.theme.appColors.bluePinkDark,
+      builder: (context, state) {
+        return switch (state) {
+          GetUsersLoadingState() => _getUserLoadingScreen(),
+          GetUsersSuccessState() => CustomUserTable(usersList: state.users),
+          GetUsersErrorState() => __getUsersFailureScreen(
+            errorMessage: state.errorMessage,
           ),
-          children: [
-            _usersViewTitleTableCell(title: 'Name', icon: Icons.person),
-            _usersViewTitleTableCell(title: 'Email', icon: Icons.email),
-            _usersViewTitleTableCell(
-              title: 'Delete',
-              icon: Icons.delete,
-              padding: 1,
-            ),
-          ],
-        ),
-        ...List.generate(100, (index) {
-          return TableRow(
-            children: [
-              _usersViewContentTableCell(title: 'AbdelrahmanEzz'),
-              _usersViewContentTableCell(title: 'AbdelrahmanEzze@gmail.com'),
-              TableCell(
-                verticalAlignment: TableCellVerticalAlignment.middle,
-                child: Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: IconButton(
-                    iconSize: 20,
-                    padding: EdgeInsets.zero,
-                    onPressed: () {},
-                    icon: const Icon(Icons.delete, color: Colors.red),
-                  ),
-                ),
-              ),
-            ],
-          );
-        }),
-      ],
+          DeleteUserByIdLoadingState() => _getUserLoadingScreen(),
+          SearchForUserSuccessState() => CustomUserTable(
+            usersList: state.users,
+          ),
+          _ => const SizedBox.shrink(),
+        };
+      },
     );
   }
 
-  TableCell _usersViewTitleTableCell({
-    required String title,
-    required IconData icon,
-    double? padding,
-  }) {
-    return TableCell(
-      verticalAlignment: TableCellVerticalAlignment.middle,
-
-      child: Padding(
-        padding: EdgeInsets.all(padding ?? 10),
-        child: CustomTableSizeCellTitle(icon: icon, title: title),
-      ),
-    );
+  Widget _getUserLoadingScreen() {
+    return const Center(child: CircularProgressIndicator());
   }
 
-  TableCell _usersViewContentTableCell({
-    required String title,
-    double? padding,
-  }) {
-    return TableCell(
-      verticalAlignment: TableCellVerticalAlignment.middle,
-      child: Padding(
-        padding: EdgeInsets.all(padding ?? 5),
-        child: Text(title, maxLines: 2, overflow: TextOverflow.ellipsis),
-      ),
-    );
+  Widget __getUsersFailureScreen({required String errorMessage}) {
+    return Center(child: Text(errorMessage));
   }
 }
