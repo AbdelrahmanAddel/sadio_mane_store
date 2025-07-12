@@ -12,17 +12,20 @@ class UsersView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: context.theme.appColors.mainColor,
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        backgroundColor: context.theme.appColors.mainColor,
 
-      appBar: CustomAdminAppBar(
-        backGrounfColor: context.theme.appColors.mainColor,
-        title: 'Users',
-        isMain: true,
-      ),
-      body: BlocProvider(
-        create: (context) => getIt<UsersBloc>()..add(GetUsersEvent()),
-        child: const UsersViewBody(),
+        appBar: CustomAdminAppBar(
+          backGrounfColor: context.theme.appColors.mainColor,
+          title: 'Users',
+          isMain: true,
+        ),
+        body: BlocProvider(
+          create: (context) => getIt<UsersBloc>()..add(GetUsersEvent()),
+          child: const UsersViewBody(),
+        ),
       ),
     );
   }

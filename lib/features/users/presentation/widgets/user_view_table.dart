@@ -14,18 +14,20 @@ class UsersViewTable extends StatelessWidget {
         return current is GetUsersSuccessState ||
             current is GetUsersLoadingState ||
             current is GetUsersErrorState ||
-            current is DeleteUserByIdLoadingState;
+            current is DeleteUserByIdLoadingState ||
+            current is SearchForUserSuccessState;
       },
       builder: (context, state) {
         return switch (state) {
           GetUsersLoadingState() => _getUserLoadingScreen(),
-          GetUsersSuccessState() => GetUsersSuccessScreen(
-            usersList: state.users,
-          ),
+          GetUsersSuccessState() => CustomUserTable(usersList: state.users),
           GetUsersErrorState() => __getUsersFailureScreen(
             errorMessage: state.errorMessage,
           ),
           DeleteUserByIdLoadingState() => _getUserLoadingScreen(),
+          SearchForUserSuccessState() => CustomUserTable(
+            usersList: state.users,
+          ),
           _ => const SizedBox.shrink(),
         };
       },

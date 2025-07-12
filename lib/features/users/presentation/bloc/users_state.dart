@@ -25,3 +25,13 @@ final class DeleteUserByIdErrorState extends UsersState {
   DeleteUserByIdErrorState({required this.errorMessage});
   final String errorMessage;
 }
+
+final class SearchForUserSuccessState extends UsersState {
+  SearchForUserSuccessState({required this.users});
+  List<UsersDataModel> users;
+}
+
+final class SearchForUserErrorState extends UsersState {
+  SearchForUserErrorState({required this.errorMessage});
+  final String errorMessage;
+}
