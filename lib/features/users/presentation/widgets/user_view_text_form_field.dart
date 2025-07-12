@@ -54,12 +54,10 @@ class UsersViewTextFormField extends StatelessWidget {
               hintText: 'Search For User',
             );
           case GetUsersErrorState():
-            return CustomTextFormField(
-              onChanged: (value) {
-                userBloc.add(SearchForUser(value, []));
-              },
+            return const CustomTextFormField(
+              readOnly: true,
 
-              hintText: 'Hmm something went wrong',
+              hintText: "Something Went Wrong ,We Can't Search Now",
             );
           default:
             return const SizedBox.shrink();
