@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
 import 'package:sadio_mane_store/features/users/presentation/bloc/users_bloc.dart';
 import 'package:sadio_mane_store/features/users/presentation/bloc/users_event.dart';
+import 'package:sadio_mane_store/features/users/presentation/view/users_view.dart';
 import 'package:sadio_mane_store/features/users/presentation/widgets/user_view_table.dart';
 import 'package:sadio_mane_store/features/users/presentation/widgets/user_view_text_form_field.dart';
 
@@ -27,6 +28,7 @@ class UsersViewBody extends StatelessWidget {
             ),
             SliverToBoxAdapter(child: verticalSpace(20)),
             const SliverToBoxAdapter(child: UsersViewTable()),
+            const SliverToBoxAdapter(child: UsersBolcListener()),
           ],
         ),
       ),

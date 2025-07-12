@@ -27,7 +27,11 @@ class UsersBloc extends Bloc<UsersEvent, UsersState> {
     if (isClosed) return;
     responce.fold(
       (errorMessage) {
-        emit(GetUsersErrorState(errorMessage: errorMessage));
+        emit(
+          GetUsersErrorState(
+            errorMessage: "We Can't Get Users Now , Please Try Again Later ",
+          ),
+        );
       },
       (users) {
         emit(GetUsersSuccessState(users: users.data!.users));
