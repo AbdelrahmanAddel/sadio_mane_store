@@ -10,6 +10,18 @@ final class GetUsersSuccessState extends UsersState {
 }
 
 final class GetUsersErrorState extends UsersState {
-  GetUsersErrorState({required this.message});
-  final String message;
+  GetUsersErrorState({required this.errorMessage});
+  final String errorMessage;
+}
+
+final class DeleteUserByIdLoadingState extends UsersState {}
+
+final class DeleteUserByIdSuccessState extends UsersState {
+  DeleteUserByIdSuccessState({required this.successMessage});
+  final String successMessage;
+}
+
+final class DeleteUserByIdErrorState extends UsersState {
+  DeleteUserByIdErrorState({required this.errorMessage});
+  final String errorMessage;
 }

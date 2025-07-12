@@ -17,10 +17,10 @@ class UsersGraphql {
   static Map<String, dynamic> deleteUserById({required int userId}) {
     return {
       'query': r'''
-{
- mutation deleteUser($id: Int!){
+
+ mutation deleteUser($id: ID!){
 	deleteUser(id:$id )
-}
+
 
 }
 ''',

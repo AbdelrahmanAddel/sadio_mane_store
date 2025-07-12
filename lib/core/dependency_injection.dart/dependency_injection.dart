@@ -80,7 +80,7 @@ void _users(Dio dio) {
     )
     ..registerLazySingleton(() => GetUsersUsecase(getIt()))
     ..registerLazySingleton(() => DeleteUsersUsecase(getIt()))
-    ..registerFactory(() => UsersBloc(getIt()));
+    ..registerFactory(() => UsersBloc(getIt(), getIt()));
 }
 
 void _products(Dio dio) {
