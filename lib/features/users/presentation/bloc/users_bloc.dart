@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sadio_mane_store/features/users/data/model/get_users_responce_model.dart';
 import 'package:sadio_mane_store/features/users/logic/usecase/delete_users_usecase.dart';
 import 'package:sadio_mane_store/features/users/logic/usecase/get_users_usecase.dart';
 import 'package:sadio_mane_store/features/users/presentation/bloc/users_event.dart';
@@ -17,6 +18,7 @@ class UsersBloc extends Bloc<UsersEvent, UsersState> {
   final GetUsersUsecase _getUsersUsecase;
   final DeleteUsersUsecase _deleteUsersUsecase;
   TextEditingController searchController = TextEditingController();
+  List<UsersDataModel> usersList = [];
 
   FutureOr<void> _getUsers(
     GetUsersEvent event,
@@ -34,7 +36,8 @@ class UsersBloc extends Bloc<UsersEvent, UsersState> {
         );
       },
       (users) {
-        emit(GetUsersSuccessState(users: users.data!.users));
+        usersList = users.data!.usersList;
+        emit(GetUsersSuccessState(users: users.data!.usersList));
       },
     );
   }
@@ -59,7 +62,7 @@ class UsersBloc extends Bloc<UsersEvent, UsersState> {
   FutureOr<void> _searchForUser(SearchForUser event, Emitter<UsersState> emit) {
     try {
       final usersSearchList =
-          event.users
+          usersList
               .where(
                 (users) =>
                     users.name.toLowerCase().startsWith(

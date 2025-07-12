@@ -5,12 +5,10 @@ import 'package:sadio_mane_store/features/users/presentation/bloc/users_bloc.dar
 import 'package:sadio_mane_store/features/users/presentation/bloc/users_event.dart';
 import 'package:sadio_mane_store/features/users/presentation/bloc/users_state.dart';
 
-// ignore: must_be_immutable
 class UsersViewTextFormField extends StatelessWidget {
-  UsersViewTextFormField({required this.userBloc, super.key});
+  const UsersViewTextFormField({required this.userBloc, super.key});
 
   final UsersBloc userBloc;
-  String value = '';
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<UsersBloc, UsersState>(
@@ -24,8 +22,6 @@ class UsersViewTextFormField extends StatelessWidget {
           case GetUsersSuccessState():
             return CustomTextFormField(
               onChanged: (value) {
-                this.value = value;
-                debugPrint(this.value);
                 userBloc.add(SearchForUser(value, state.users));
               },
               controller: userBloc.searchController,
@@ -35,21 +31,19 @@ class UsersViewTextFormField extends StatelessWidget {
           case SearchForUserSuccessState():
             return CustomTextFormField(
               onChanged: (value) {
-                this.value = value;
-                debugPrint(this.value);
                 userBloc.add(SearchForUser(value, state.users));
               },
               controller: userBloc.searchController,
-              suffixIcon:
-                  value.isEmpty || value == ''
-                      ? const SizedBox.shrink()
-                      : IconButton(
-                        onPressed: () {
-                          userBloc.searchController.clear();
-                          userBloc.add(GetUsersEvent());
-                        },
-                        icon: const Icon(Icons.clear),
-                      ),
+              suffixIcon: IconButton(
+                onPressed: () {
+                  userBloc.searchController.clear();
+                  userBloc.add(GetUsersEvent());
+                },
+                icon:
+                    userBloc.searchController.text.isEmpty
+                        ? const SizedBox.shrink()
+                        : const Icon(Icons.remove),
+              ),
 
               hintText: 'Search For User',
             );

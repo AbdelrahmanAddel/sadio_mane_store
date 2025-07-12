@@ -12,10 +12,10 @@ class GetUsersResponceModel {
 
 @JsonSerializable()
 class UsersModel {
-  UsersModel({required this.users});
+  UsersModel({required this.usersList});
   factory UsersModel.fromJson(Map<String, dynamic> json) =>
       _$UsersModelFromJson(json);
-  final List<UsersDataModel> users;
+  final List<UsersDataModel> usersList;
 }
 
 @JsonSerializable()

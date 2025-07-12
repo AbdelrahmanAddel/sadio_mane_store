@@ -20,14 +20,14 @@ Map<String, dynamic> _$GetUsersResponceModelToJson(
 ) => <String, dynamic>{'data': instance.data};
 
 UsersModel _$UsersModelFromJson(Map<String, dynamic> json) => UsersModel(
-  users:
+  usersList:
       (json['users'] as List<dynamic>)
           .map((e) => UsersDataModel.fromJson(e as Map<String, dynamic>))
           .toList(),
 );
 
 Map<String, dynamic> _$UsersModelToJson(UsersModel instance) =>
-    <String, dynamic>{'users': instance.users};
+    <String, dynamic>{'users': instance.usersList};
 
 UsersDataModel _$UsersDataModelFromJson(Map<String, dynamic> json) =>
     UsersDataModel(
