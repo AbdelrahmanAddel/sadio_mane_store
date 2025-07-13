@@ -38,6 +38,10 @@ dependencies:
   flutter_zoom_drawer: ^3.2.0
   shimmer: ^3.0.0
   cached_network_image: ^3.4.1
+  firebase_messaging: ^15.2.9
+  http: ^1.4.0
+  jose: ^0.3.4
+  googleapis_auth: ^2.0.0
 
 
 
@@ -60,6 +64,7 @@ flutter:
     - .env.prod
     - assets/images/png/
     - assets/images/svg/
+    - assets/dalel.json
 
   fonts:
     - family: Cairo
