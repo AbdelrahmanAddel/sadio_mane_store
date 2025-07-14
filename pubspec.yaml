@@ -64,7 +64,7 @@ flutter:
     - .env.prod
     - assets/images/png/
     - assets/images/svg/
-    - assets/dalel.json
+    - .secrets/dalel.json
 
   fonts:
     - family: Cairo
