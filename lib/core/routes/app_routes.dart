@@ -16,6 +16,7 @@ import 'package:sadio_mane_store/features/sign_in/presentation/view/sign_in_view
 import 'package:sadio_mane_store/features/sign_up/presentation/cubit/sign_up_cubit.dart';
 import 'package:sadio_mane_store/features/sign_up/presentation/view/sign_up_view.dart';
 import 'package:sadio_mane_store/features/users/presentation/view/users_view.dart';
+import 'package:sadio_mane_store/test_screen.dart';
 
 class AppRoutes {
   static Route<dynamic>? generateRoute(RouteSettings route) {
@@ -67,6 +68,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const ProductsView());
       case RoutesString.users:
         return MaterialPageRoute(builder: (_) => const UsersView());
+      case RoutesString.testScreen:
+        return MaterialPageRoute(builder: (_) => const MyTestScreen());
 
       default:
         return null;

@@ -60,11 +60,9 @@ flutter:
   uses-material-design: true
 
   assets:
-    - .env.dev
-    - .env.prod
+    - secrets/
     - assets/images/png/
     - assets/images/svg/
-    - .secrets/dalel.json
 
   fonts:
     - family: Cairo

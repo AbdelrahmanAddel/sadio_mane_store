@@ -3,6 +3,7 @@ class PushNotificationModel {
     required this.fcmToken,
     required this.title,
     required this.body,
+    this.topicName,
     this.userId,
     this.type,
   });
@@ -12,4 +13,5 @@ class PushNotificationModel {
   final String body;
   final String? userId;
   final String? type;
+  final String? topicName;
 }

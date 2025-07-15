@@ -16,9 +16,9 @@ class EnvVariable {
   Future<void> loadEnv({required EnvType envType}) async {
     switch (envType) {
       case EnvType.dev:
-        await dotenv.load(fileName: '.env.dev');
+        await dotenv.load(fileName: 'secrets/env/.env.dev');
       case EnvType.prod:
-        await dotenv.load(fileName: '.env.prod');
+        await dotenv.load(fileName: 'secrets/env/.env.prod');
     }
     _currentEnvType = dotenv.get('ENVTYPE');
     _notificationBaseUrl = dotenv.get('NOTIFICATION_BASE_URL');

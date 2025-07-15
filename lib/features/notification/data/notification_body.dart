@@ -5,7 +5,7 @@ Map<String, dynamic> getBody({
 }) {
   return {
     'message': {
-      'token': pushNotificationModel.fcmToken,
+    "topic": "news",
       'notification': {
         'title': pushNotificationModel.title,
         'body': pushNotificationModel.body,
