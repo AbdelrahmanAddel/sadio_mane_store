@@ -17,7 +17,7 @@ class NotificationContainerText extends StatelessWidget {
       children: [
         Text('$title :'),
         horizontalSpace(10),
-        Expanded(
+        Flexible(
           child: Text(
             content,
             maxLines: 3,

@@ -60,9 +60,11 @@ flutter:
   uses-material-design: true
 
   assets:
-    - secrets/
+    - secrets/env/
+    - secrets/firebase_messaging_secret_key/
     - assets/images/png/
     - assets/images/svg/
+
 
   fonts:
     - family: Cairo

@@ -21,7 +21,7 @@ class NotificationContinerContent extends StatelessWidget {
           const NotificationContainerText(
             title: 'Body',
             content:
-                'This is TitleThis is TitleThis is TitleThis is TitleThis is TitleThis is TitleThis is TitleThis is TitleThis is TitleThis is TitleThis is TitleThis is TitleThis is TitleThis is TitleThis is TitleThis is TitleThis is Title',
+                'THekkiw',
           ),
           verticalSpace(10),
           const NotificationContainerText(

@@ -5,8 +5,8 @@ import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
 import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
 
 class NotificationBottomSheetContent extends StatelessWidget {
-  const NotificationBottomSheetContent({super.key});
-
+  const NotificationBottomSheetContent({this.isEdit = false, super.key});
+  final bool isEdit;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -15,7 +15,7 @@ class NotificationBottomSheetContent extends StatelessWidget {
         children: [
           Center(
             child: Text(
-              'Add Notification ',
+              isEdit ? 'Edit Notification' : 'Add Notification ',
 
               style: context.theme.textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,

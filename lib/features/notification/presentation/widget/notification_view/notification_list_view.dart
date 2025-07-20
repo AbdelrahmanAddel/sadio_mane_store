@@ -10,8 +10,8 @@ class NotificationListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
+  shrinkWrap: true,
       itemCount: 10,
       itemBuilder: (context, index) {
         return CustomContainerLinearAdmin(
