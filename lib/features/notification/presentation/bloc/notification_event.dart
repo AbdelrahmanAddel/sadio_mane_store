@@ -1,2 +1,3 @@
 sealed class NotificationEvent {}
-class NotificationEventStarted extends NotificationEvent {}
+
+class SendNotificationEvent extends NotificationEvent {}

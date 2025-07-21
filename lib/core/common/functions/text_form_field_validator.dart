@@ -6,6 +6,8 @@ enum TextFormFieldEnums {
   title,
   price,
   description,
+  productId,
+  body,
 }
 
 String? Function(String?)? textFormFieldValidator(TextFormFieldEnums field) {
@@ -62,6 +64,20 @@ String? Function(String?)? textFormFieldValidator(TextFormFieldEnums field) {
       return (value) {
         if (value == null || value.isEmpty) {
           return 'Please enter the description';
+        }
+        return null;
+      };
+    case TextFormFieldEnums.productId:
+      return (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter the product id';
+        }
+        return null;
+      };
+    case TextFormFieldEnums.body:
+      return (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter the body';
         }
         return null;
       };
