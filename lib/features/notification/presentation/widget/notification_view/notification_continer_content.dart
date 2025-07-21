@@ -18,11 +18,7 @@ class NotificationContinerContent extends StatelessWidget {
             content: 'This is Title',
           ),
           verticalSpace(10),
-          const NotificationContainerText(
-            title: 'Body',
-            content:
-                'THekkiw',
-          ),
+          const NotificationContainerText(title: 'Body', content: 'THekkiw'),
           verticalSpace(10),
           const NotificationContainerText(
             title: 'Created At',

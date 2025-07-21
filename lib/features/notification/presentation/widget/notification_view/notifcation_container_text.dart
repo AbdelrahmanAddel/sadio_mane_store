@@ -15,7 +15,7 @@ class NotificationContainerText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text('$title :'),
+        Flexible(child: Text('$title :')),
         horizontalSpace(10),
         Flexible(
           child: Text(

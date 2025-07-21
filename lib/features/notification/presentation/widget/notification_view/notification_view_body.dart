@@ -28,7 +28,6 @@ class NotificationViewBody extends StatelessWidget {
                   width: double.infinity,
                   child: const NotificationContinerContent(),
                 );
-                ;
               },
               separatorBuilder: (BuildContext context, int index) {
                 return verticalSpace(20);
