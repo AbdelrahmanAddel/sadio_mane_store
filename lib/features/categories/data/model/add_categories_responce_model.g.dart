@@ -7,17 +7,18 @@ part of 'add_categories_responce_model.dart';
 // **************************************************************************
 
 AddCategoryResponceModel _$AddCategoryResponceModelFromJson(
-  Map<String, dynamic> json,
-) => AddCategoryResponceModel(
-  data:
-      json['data'] == null
+        Map<String, dynamic> json) =>
+    AddCategoryResponceModel(
+      data: json['data'] == null
           ? null
           : AddCategoriesModel.fromJson(json['data'] as Map<String, dynamic>),
-);
+    );
 
 Map<String, dynamic> _$AddCategoryResponceModelToJson(
-  AddCategoryResponceModel instance,
-) => <String, dynamic>{'data': instance.data};
+        AddCategoryResponceModel instance) =>
+    <String, dynamic>{
+      'data': instance.data,
+    };
 
 AddCategoriesModel _$AddCategoriesModelFromJson(Map<String, dynamic> json) =>
     AddCategoriesModel(

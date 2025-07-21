@@ -12,8 +12,7 @@ part of 'app_settings_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AppSettingsState {
@@ -22,47 +21,52 @@ mixin _$AppSettingsState {
     required TResult Function() initial,
     required TResult Function(bool isDarkMode) changeTheme,
     required TResult Function(bool isArabic) changeLanguage,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(bool isDarkMode)? changeTheme,
     TResult? Function(bool isArabic)? changeLanguage,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(bool isDarkMode)? changeTheme,
     TResult Function(bool isArabic)? changeLanguage,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(ChangeThemeState value) changeTheme,
     required TResult Function(ChangeLanguageState value) changeLanguage,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(ChangeThemeState value)? changeTheme,
     TResult? Function(ChangeLanguageState value)? changeLanguage,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(ChangeThemeState value)? changeTheme,
     TResult Function(ChangeLanguageState value)? changeLanguage,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $AppSettingsStateCopyWith<$Res> {
   factory $AppSettingsStateCopyWith(
-    AppSettingsState value,
-    $Res Function(AppSettingsState) then,
-  ) = _$AppSettingsStateCopyWithImpl<$Res, AppSettingsState>;
+          AppSettingsState value, $Res Function(AppSettingsState) then) =
+      _$AppSettingsStateCopyWithImpl<$Res, AppSettingsState>;
 }
 
 /// @nodoc
@@ -82,9 +86,8 @@ class _$AppSettingsStateCopyWithImpl<$Res, $Val extends AppSettingsState>
 /// @nodoc
 abstract class _$$InitialImplCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
-    _$InitialImpl value,
-    $Res Function(_$InitialImpl) then,
-  ) = __$$InitialImplCopyWithImpl<$Res>;
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -92,9 +95,8 @@ class __$$InitialImplCopyWithImpl<$Res>
     extends _$AppSettingsStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
-    _$InitialImpl _value,
-    $Res Function(_$InitialImpl) _then,
-  ) : super(_value, _then);
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AppSettingsState
   /// with the given fields replaced by the non-null parameter values.
@@ -194,10 +196,9 @@ abstract class _Initial implements AppSettingsState {
 
 /// @nodoc
 abstract class _$$ChangeThemeStateImplCopyWith<$Res> {
-  factory _$$ChangeThemeStateImplCopyWith(
-    _$ChangeThemeStateImpl value,
-    $Res Function(_$ChangeThemeStateImpl) then,
-  ) = __$$ChangeThemeStateImplCopyWithImpl<$Res>;
+  factory _$$ChangeThemeStateImplCopyWith(_$ChangeThemeStateImpl value,
+          $Res Function(_$ChangeThemeStateImpl) then) =
+      __$$ChangeThemeStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({bool isDarkMode});
 }
@@ -206,25 +207,23 @@ abstract class _$$ChangeThemeStateImplCopyWith<$Res> {
 class __$$ChangeThemeStateImplCopyWithImpl<$Res>
     extends _$AppSettingsStateCopyWithImpl<$Res, _$ChangeThemeStateImpl>
     implements _$$ChangeThemeStateImplCopyWith<$Res> {
-  __$$ChangeThemeStateImplCopyWithImpl(
-    _$ChangeThemeStateImpl _value,
-    $Res Function(_$ChangeThemeStateImpl) _then,
-  ) : super(_value, _then);
+  __$$ChangeThemeStateImplCopyWithImpl(_$ChangeThemeStateImpl _value,
+      $Res Function(_$ChangeThemeStateImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AppSettingsState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? isDarkMode = null}) {
-    return _then(
-      _$ChangeThemeStateImpl(
-        isDarkMode:
-            null == isDarkMode
-                ? _value.isDarkMode
-                : isDarkMode // ignore: cast_nullable_to_non_nullable
-                    as bool,
-      ),
-    );
+  $Res call({
+    Object? isDarkMode = null,
+  }) {
+    return _then(_$ChangeThemeStateImpl(
+      isDarkMode: null == isDarkMode
+          ? _value.isDarkMode
+          : isDarkMode // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
@@ -260,9 +259,7 @@ class _$ChangeThemeStateImpl implements ChangeThemeState {
   @pragma('vm:prefer-inline')
   _$$ChangeThemeStateImplCopyWith<_$ChangeThemeStateImpl> get copyWith =>
       __$$ChangeThemeStateImplCopyWithImpl<_$ChangeThemeStateImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -348,10 +345,9 @@ abstract class ChangeThemeState implements AppSettingsState {
 
 /// @nodoc
 abstract class _$$ChangeLanguageStateImplCopyWith<$Res> {
-  factory _$$ChangeLanguageStateImplCopyWith(
-    _$ChangeLanguageStateImpl value,
-    $Res Function(_$ChangeLanguageStateImpl) then,
-  ) = __$$ChangeLanguageStateImplCopyWithImpl<$Res>;
+  factory _$$ChangeLanguageStateImplCopyWith(_$ChangeLanguageStateImpl value,
+          $Res Function(_$ChangeLanguageStateImpl) then) =
+      __$$ChangeLanguageStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({bool isArabic});
 }
@@ -360,25 +356,23 @@ abstract class _$$ChangeLanguageStateImplCopyWith<$Res> {
 class __$$ChangeLanguageStateImplCopyWithImpl<$Res>
     extends _$AppSettingsStateCopyWithImpl<$Res, _$ChangeLanguageStateImpl>
     implements _$$ChangeLanguageStateImplCopyWith<$Res> {
-  __$$ChangeLanguageStateImplCopyWithImpl(
-    _$ChangeLanguageStateImpl _value,
-    $Res Function(_$ChangeLanguageStateImpl) _then,
-  ) : super(_value, _then);
+  __$$ChangeLanguageStateImplCopyWithImpl(_$ChangeLanguageStateImpl _value,
+      $Res Function(_$ChangeLanguageStateImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AppSettingsState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? isArabic = null}) {
-    return _then(
-      _$ChangeLanguageStateImpl(
-        isArabic:
-            null == isArabic
-                ? _value.isArabic
-                : isArabic // ignore: cast_nullable_to_non_nullable
-                    as bool,
-      ),
-    );
+  $Res call({
+    Object? isArabic = null,
+  }) {
+    return _then(_$ChangeLanguageStateImpl(
+      isArabic: null == isArabic
+          ? _value.isArabic
+          : isArabic // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
@@ -414,9 +408,7 @@ class _$ChangeLanguageStateImpl implements ChangeLanguageState {
   @pragma('vm:prefer-inline')
   _$$ChangeLanguageStateImplCopyWith<_$ChangeLanguageStateImpl> get copyWith =>
       __$$ChangeLanguageStateImplCopyWithImpl<_$ChangeLanguageStateImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   @optionalTypeArgs

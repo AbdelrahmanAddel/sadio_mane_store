@@ -6,10 +6,14 @@ part of 'upload_image_api_servce.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element
 
 class _UploadImageApiServce implements UploadImageApiServce {
-  _UploadImageApiServce(this._dio, {this.baseUrl, this.errorLogger}) {
+  _UploadImageApiServce(
+    this._dio, {
+    this.baseUrl,
+    this.errorLogger,
+  }) {
     baseUrl ??= 'https://api.escuelajs.co/';
   }
 
@@ -25,16 +29,22 @@ class _UploadImageApiServce implements UploadImageApiServce {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = imageFile;
-    final _options = _setStreamType<UploadImageResponceModel>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            'api/v1/files/upload',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
+    final _options = _setStreamType<UploadImageResponceModel>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'api/v1/files/upload',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late UploadImageResponceModel _value;
     try {
@@ -59,7 +69,10 @@ class _UploadImageApiServce implements UploadImageApiServce {
     return requestOptions;
   }
 
-  String _combineBaseUrls(String dioBaseUrl, String? baseUrl) {
+  String _combineBaseUrls(
+    String dioBaseUrl,
+    String? baseUrl,
+  ) {
     if (baseUrl == null || baseUrl.trim().isEmpty) {
       return dioBaseUrl;
     }
