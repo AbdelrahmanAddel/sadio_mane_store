@@ -10,14 +10,17 @@ import 'package:sadio_mane_store/features/notification/presentation/bloc/notific
 class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
   NotificationBloc() : super(NotificationInitial()) {
     clearAllControllers();
-    on<SendNotificationEvent>(_onNotificationEventStarted);
+    on<SendNotificationEvent>(_createNotification);
+    on<GetNotificationEvent>(_getNotificationFromLocalStorage);
+    // on<UpdateNotificationEvent>(_onNotificationEventStarted);
+    // on<DeleteNotificationEvent>(_onNotificationEventStarted);
   }
   TextEditingController titleController = TextEditingController();
   TextEditingController bodyController = TextEditingController();
   TextEditingController productIdController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
-  FutureOr<void> _onNotificationEventStarted(
+  FutureOr<void> _createNotification(
     SendNotificationEvent event,
     Emitter<NotificationState> emit,
   ) async {
@@ -31,7 +34,9 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
           productId: int.parse(productIdController.text),
         ),
       );
+
       clearAllControllers();
+      add(GetNotificationEvent());
 
       emit(
         AddNotificationSuccessState(message: 'Notification Added Successfully'),
@@ -53,5 +58,25 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
     bodyController.dispose();
     productIdController.dispose();
     return super.close();
+  }
+
+  FutureOr<void> _getNotificationFromLocalStorage(
+    GetNotificationEvent event,
+    Emitter<NotificationState> emit,
+  ) {
+    emit(GetNotificationLoadingState());
+    try {
+      final notificationContentModels = NotificationLocalDataSource
+          .notificationBox
+          .values
+          .toList();
+      emit(
+        GetNotificationSuccessState(
+          notificationContentModels: notificationContentModels,
+        ),
+      );
+    } catch (e) {
+      emit(GetNotificationErrorState(message: e.toString()));
+    }
   }
 }

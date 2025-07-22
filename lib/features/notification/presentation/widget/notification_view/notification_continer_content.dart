@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
+import 'package:sadio_mane_store/features/notification/data/model/notification_content_model.dart';
 import 'package:sadio_mane_store/features/notification/presentation/widget/notification_view/notifcation_container_text.dart';
 import 'package:sadio_mane_store/features/notification/presentation/widget/notification_view/notification_continer_actions.dart';
 
 class NotificationContinerContent extends StatelessWidget {
-  const NotificationContinerContent({super.key});
+  const NotificationContinerContent({
+    required this.notificationContentModel,
+    super.key,
+  });
+
+  final NotificationContentModel notificationContentModel;
 
   @override
   Widget build(BuildContext context) {
@@ -13,16 +19,19 @@ class NotificationContinerContent extends StatelessWidget {
       padding: EdgeInsets.only(left: 10.w, right: 12.w, top: 20.h),
       child: Column(
         children: [
-          const NotificationContainerText(
+          NotificationContainerText(
             title: 'Title',
-            content: 'This is Title',
+            content: notificationContentModel.title ?? '',
           ),
           verticalSpace(10),
-          const NotificationContainerText(title: 'Body', content: 'THekkiw'),
+          NotificationContainerText(
+            title: 'Body',
+            content: notificationContentModel.body ?? '',
+          ),
           verticalSpace(10),
-          const NotificationContainerText(
+          NotificationContainerText(
             title: 'Created At',
-            content: 'This is Title',
+            content: notificationContentModel.createdAt ?? '',
           ),
           verticalSpace(10),
           const NotificationContainerActions(),

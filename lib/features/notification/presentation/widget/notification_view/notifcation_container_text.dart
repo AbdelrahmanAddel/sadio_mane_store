@@ -22,7 +22,7 @@ class NotificationContainerText extends StatelessWidget {
             content,
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(color: context.theme.appColors.bluePinkLight),
+            style: TextStyle(color: context.theme.appColors.textColor),
           ),
         ),
       ],

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sadio_mane_store/core/common/widget/custom_container_linear_admin.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
 import 'package:sadio_mane_store/features/notification/presentation/widget/notification_add/add_notification_header.dart';
-import 'package:sadio_mane_store/features/notification/presentation/widget/notification_view/notification_continer_content.dart';
+import 'package:sadio_mane_store/features/notification/presentation/widget/notification_view/notification_list_view.dart';
 
 class NotificationViewBody extends StatelessWidget {
   const NotificationViewBody({super.key});
@@ -20,19 +19,7 @@ class NotificationViewBody extends StatelessWidget {
             SliverToBoxAdapter(child: verticalSpace(30)),
             const SliverToBoxAdapter(child: AddNotificationHeader()),
             SliverToBoxAdapter(child: verticalSpace(30)),
-            SliverList.separated(
-              itemCount: 10,
-              itemBuilder: (BuildContext context, int index) {
-                return CustomContainerLinearAdmin(
-                  height: 200.h,
-                  width: double.infinity,
-                  child: const NotificationContinerContent(),
-                );
-              },
-              separatorBuilder: (BuildContext context, int index) {
-                return verticalSpace(20);
-              },
-            ),
+            const SliverToBoxAdapter(child:  NotificationListView()),
           ],
         ),
       ),
