@@ -1,6 +1,6 @@
 sealed class NotificationEvent {}
 
-class SendNotificationEvent extends NotificationEvent {}
+class AddNotificationEvent extends NotificationEvent {}
 
 class GetNotificationEvent extends NotificationEvent {}
 
@@ -10,6 +10,6 @@ class UpdateNotificationEvent extends NotificationEvent {
 }
 
 class DeleteNotificationEvent extends NotificationEvent {
-  DeleteNotificationEvent({required this.id});
-  final int id;
+  DeleteNotificationEvent({required this.currentIndex});
+  final int currentIndex;
 }

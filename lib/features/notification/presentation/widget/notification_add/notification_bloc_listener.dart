@@ -18,6 +18,9 @@ class NotificationBlocListener extends StatelessWidget {
           case UpdateNotificationLoadingState():
           case UpdateNotificationSuccessState():
           case UpdateNotificationErrorState():
+          case DeleteNotificationLoadingState():
+          case DeleteNotificationSuccessState():
+          case DeleteNotificationErrorState():
             return true;
           default:
             return false;
@@ -41,6 +44,16 @@ class NotificationBlocListener extends StatelessWidget {
             backgroundColor: Colors.green,
           );
         } else if (state is UpdateNotificationErrorState) {
+          Navigator.pop(context);
+
+          customFlutterToast(message: state.message);
+        } else if (state is DeleteNotificationSuccessState) {
+          Navigator.pop(context);
+          customFlutterToast(
+            message: state.message,
+            backgroundColor: Colors.green,
+          );
+        } else if (state is DeleteNotificationErrorState) {
           Navigator.pop(context);
 
           customFlutterToast(message: state.message);

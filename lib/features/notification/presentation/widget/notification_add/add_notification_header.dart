@@ -24,7 +24,7 @@ class AddNotificationHeader extends StatelessWidget {
               context,
               BlocProvider.value(
                 value: context.read<NotificationBloc>(),
-                child: const NotificationBottomSheetContent(),
+                child: const NotificationBottomSheetContent(isEdit: false),
               ),
             );
           },

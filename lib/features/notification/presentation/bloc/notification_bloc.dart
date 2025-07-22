@@ -9,68 +9,29 @@ import 'package:sadio_mane_store/features/notification/presentation/bloc/notific
 
 class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
   NotificationBloc() : super(NotificationInitial()) {
+    _initialize();
+  }
+
+  // Controllers
+  final titleController = TextEditingController();
+  final bodyController = TextEditingController();
+  final productIdController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+
+  // Local list for optional use
+  late List<NotificationContentModel> notificationList;
+
+  // Bloc setup
+  void _initialize() {
     clearAllControllers();
 
-    print(NotificationLocalDataSource.notificationBox.values.toList());
-    print(NotificationLocalDataSource.notificationBox.keys.toList());
-    on<SendNotificationEvent>(_createNotification);
-    on<GetNotificationEvent>(_getNotificationFromLocalStorage);
+    on<AddNotificationEvent>(_createNotification);
+    on<GetNotificationEvent>(_getNotifications);
     on<UpdateNotificationEvent>(_updateNotification);
     on<DeleteNotificationEvent>(_deleteNotification);
   }
-  TextEditingController titleController = TextEditingController();
-  TextEditingController bodyController = TextEditingController();
-  TextEditingController productIdController = TextEditingController();
-  final formKey = GlobalKey<FormState>();
-  List<NotificationContentModel> notificationList = [];
 
-  FutureOr<void> _createNotification(
-    SendNotificationEvent event,
-    Emitter<NotificationState> emit,
-  ) async {
-    emit(AddNotificationLoadingState());
-    try {
-      await NotificationLocalDataSource.notificationBox.add(
-        NotificationContentModel(
-          title: titleController.text,
-          body: bodyController.text,
-          createdAt: DateTime.now().toString(),
-          productId: int.parse(productIdController.text),
-        ),
-      );
-
-      clearAllControllers();
-      add(GetNotificationEvent());
-
-      emit(
-        AddNotificationSuccessState(message: 'Notification Added Successfully'),
-      );
-    } catch (error) {
-      emit(AddNotificationErrorState(message: error.toString()));
-    }
-  }
-
-  FutureOr<void> _getNotificationFromLocalStorage(
-    GetNotificationEvent event,
-    Emitter<NotificationState> emit,
-  ) {
-    emit(GetNotificationLoadingState());
-    try {
-      final notificationContentModels = NotificationLocalDataSource
-          .notificationBox
-          .values
-          .toList();
-      notificationList = notificationContentModels;
-      emit(
-        GetNotificationSuccessState(
-          notificationContentModels: notificationContentModels,
-        ),
-      );
-    } catch (e) {
-      emit(GetNotificationErrorState(message: e.toString()));
-    }
-  }
-
+  // Clear all input fields
   void clearAllControllers() {
     titleController.clear();
     bodyController.clear();
@@ -85,21 +46,69 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
     return super.close();
   }
 
+  // ------------------ Bloc Handlers ------------------
+
+  FutureOr<void> _createNotification(
+    AddNotificationEvent event,
+    Emitter<NotificationState> emit,
+  ) async {
+    emit(AddNotificationLoadingState());
+    try {
+      await NotificationLocalDataSource.notificationBox.add(
+        NotificationContentModel(
+          title: titleController.text.trim(),
+          body: bodyController.text.trim(),
+          createdAt: DateTime.now().toIso8601String(),
+          productId: int.parse(productIdController.text),
+        ),
+      );
+
+      clearAllControllers();
+      add(GetNotificationEvent());
+
+      emit(
+        AddNotificationSuccessState(message: 'Notification Added Successfully'),
+      );
+    } catch (e) {
+      emit(AddNotificationErrorState(message: e.toString()));
+    }
+  }
+
+  FutureOr<void> _getNotifications(
+    GetNotificationEvent event,
+    Emitter<NotificationState> emit,
+  ) {
+    emit(GetNotificationLoadingState());
+    try {
+      final notifications = NotificationLocalDataSource.notificationBox.values
+          .toList();
+
+      notificationList = notifications;
+
+      emit(
+        GetNotificationSuccessState(notificationContentModels: notifications),
+      );
+    } catch (e) {
+      emit(GetNotificationErrorState(message: e.toString()));
+    }
+  }
+
   FutureOr<void> _updateNotification(
     UpdateNotificationEvent event,
     Emitter<NotificationState> emit,
   ) {
     emit(UpdateNotificationLoadingState());
     try {
-      NotificationLocalDataSource.notificationBox.put(
+      NotificationLocalDataSource.notificationBox.putAt(
         event.id,
         NotificationContentModel(
-          title: titleController.text,
-          body: bodyController.text,
-          createdAt: DateTime.now().toString(),
+          title: titleController.text.trim(),
+          body: bodyController.text.trim(),
+          createdAt: DateTime.now().toIso8601String(),
           productId: int.parse(productIdController.text),
         ),
       );
+
       emit(
         UpdateNotificationSuccessState(
           message: 'Notification Updated Successfully',
@@ -113,10 +122,14 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
   FutureOr<void> _deleteNotification(
     DeleteNotificationEvent event,
     Emitter<NotificationState> emit,
-  ) {
+  ) async {
     emit(DeleteNotificationLoadingState());
     try {
-      NotificationLocalDataSource.notificationBox.delete(event.id);
+      await NotificationLocalDataSource.notificationBox.deleteAt(
+        event.currentIndex,
+      );
+      add(GetNotificationEvent());
+
       emit(
         DeleteNotificationSuccessState(
           message: 'Notification Deleted Successfully',

@@ -12,10 +12,10 @@ import 'package:sadio_mane_store/features/notification/presentation/widget/notif
 
 class NotificationBottomSheetContent extends StatelessWidget {
   const NotificationBottomSheetContent({
+    required this.isEdit,
     this.currentIndex,
-    this.isEdit = false,
-    super.key,
     this.notificationContentModel,
+    super.key,
   });
   final bool isEdit;
   final NotificationContentModel? notificationContentModel;
@@ -77,7 +77,7 @@ class NotificationBottomSheetContent extends StatelessWidget {
                   if (isEdit) {
                     bloc.add(UpdateNotificationEvent(id: currentIndex!));
                   } else {
-                    bloc.add(SendNotificationEvent());
+                    bloc.add(AddNotificationEvent());
                   }
                   Navigator.pop(context);
                 }
