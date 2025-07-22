@@ -8,10 +8,12 @@ import 'package:sadio_mane_store/features/notification/presentation/widget/notif
 class NotificationContinerContent extends StatelessWidget {
   const NotificationContinerContent({
     required this.notificationContentModel,
+    required this.currentIndex,
     super.key,
   });
 
   final NotificationContentModel notificationContentModel;
+  final int currentIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,10 @@ class NotificationContinerContent extends StatelessWidget {
             content: notificationContentModel.createdAt ?? '',
           ),
           verticalSpace(10),
-          const NotificationContainerActions(),
+          NotificationContainerActions(
+            currentIndex: currentIndex,
+            notificationContentModel: notificationContentModel,
+          ),
         ],
       ),
     );

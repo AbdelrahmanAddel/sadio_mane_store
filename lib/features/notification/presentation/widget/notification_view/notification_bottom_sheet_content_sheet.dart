@@ -5,16 +5,29 @@ import 'package:sadio_mane_store/core/common/widget/custom_app_button.dart';
 import 'package:sadio_mane_store/core/common/widget/custom_text_form_field.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
 import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
+import 'package:sadio_mane_store/features/notification/data/model/notification_content_model.dart';
 import 'package:sadio_mane_store/features/notification/presentation/bloc/notification_bloc.dart';
 import 'package:sadio_mane_store/features/notification/presentation/bloc/notification_event.dart';
-import 'package:sadio_mane_store/features/notification/presentation/widget/notification_add/add_notification_bloc_listener.dart';
+import 'package:sadio_mane_store/features/notification/presentation/widget/notification_add/notification_bloc_listener.dart';
 
 class NotificationBottomSheetContent extends StatelessWidget {
-  const NotificationBottomSheetContent({this.isEdit = false, super.key});
+  const NotificationBottomSheetContent({
+    this.currentIndex,
+    this.isEdit = false,
+    super.key,
+    this.notificationContentModel,
+  });
   final bool isEdit;
+  final NotificationContentModel? notificationContentModel;
+  final int? currentIndex;
+
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<NotificationBloc>();
+    bloc.titleController.text = notificationContentModel?.title ?? '';
+    bloc.bodyController.text = notificationContentModel?.body ?? '';
+    bloc.productIdController.text =
+        notificationContentModel?.productId.toString() ?? '';
 
     return SingleChildScrollView(
       child: Form(
@@ -61,13 +74,18 @@ class NotificationBottomSheetContent extends StatelessWidget {
             CustomAppButton(
               onTap: () {
                 if (bloc.formKey.currentState!.validate()) {
-                  bloc.add(SendNotificationEvent());
+                  if (isEdit) {
+                    bloc.add(UpdateNotificationEvent(id: currentIndex!));
+                  } else {
+                    bloc.add(SendNotificationEvent());
+                  }
+                  Navigator.pop(context);
                 }
               },
               width: double.infinity,
-              child: const Text('Add'),
+              child: Text(isEdit ? 'Update' : 'Add'),
             ),
-            const AddNotificationBlocListener(),
+            const NotificationBlocListener(),
           ],
         ),
       ),

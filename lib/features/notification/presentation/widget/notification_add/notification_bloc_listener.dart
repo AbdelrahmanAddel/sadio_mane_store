@@ -4,8 +4,8 @@ import 'package:sadio_mane_store/core/common/functions/custom_flutter_toast.dart
 import 'package:sadio_mane_store/features/notification/presentation/bloc/notification_bloc.dart';
 import 'package:sadio_mane_store/features/notification/presentation/bloc/notification_state.dart';
 
-class AddNotificationBlocListener extends StatelessWidget {
-  const AddNotificationBlocListener({super.key});
+class NotificationBlocListener extends StatelessWidget {
+  const NotificationBlocListener({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +15,9 @@ class AddNotificationBlocListener extends StatelessWidget {
           case AddNotificationLoadingState():
           case AddNotificationSuccessState():
           case AddNotificationErrorState():
+          case UpdateNotificationLoadingState():
+          case UpdateNotificationSuccessState():
+          case UpdateNotificationErrorState():
             return true;
           default:
             return false;
@@ -28,6 +31,16 @@ class AddNotificationBlocListener extends StatelessWidget {
             backgroundColor: Colors.green,
           );
         } else if (state is AddNotificationErrorState) {
+          Navigator.pop(context);
+
+          customFlutterToast(message: state.message);
+        } else if (state is UpdateNotificationSuccessState) {
+          Navigator.pop(context);
+          customFlutterToast(
+            message: state.message,
+            backgroundColor: Colors.green,
+          );
+        } else if (state is UpdateNotificationErrorState) {
           Navigator.pop(context);
 
           customFlutterToast(message: state.message);

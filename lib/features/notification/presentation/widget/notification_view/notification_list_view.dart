@@ -38,6 +38,7 @@ class NotificationListView extends StatelessWidget {
                 height: 200.h,
                 width: double.infinity,
                 child: NotificationContinerContent(
+                  currentIndex: index,
                   notificationContentModel:
                       state.notificationContentModels[index],
                 ),
