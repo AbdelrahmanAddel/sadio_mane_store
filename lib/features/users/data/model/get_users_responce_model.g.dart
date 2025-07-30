@@ -21,14 +21,14 @@ Map<String, dynamic> _$GetUsersResponceModelToJson(
     };
 
 UsersModel _$UsersModelFromJson(Map<String, dynamic> json) => UsersModel(
-      usersList: (json['usersList'] as List<dynamic>)
+      usersList: (json['users'] as List<dynamic>)
           .map((e) => UsersDataModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
 Map<String, dynamic> _$UsersModelToJson(UsersModel instance) =>
     <String, dynamic>{
-      'usersList': instance.usersList,
+      'users': instance.usersList,
     };
 
 UsersDataModel _$UsersDataModelFromJson(Map<String, dynamic> json) =>

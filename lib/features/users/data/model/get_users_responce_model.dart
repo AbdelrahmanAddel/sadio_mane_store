@@ -15,6 +15,7 @@ class UsersModel {
   UsersModel({required this.usersList});
   factory UsersModel.fromJson(Map<String, dynamic> json) =>
       _$UsersModelFromJson(json);
+  @JsonKey(name: 'users')
   final List<UsersDataModel> usersList;
 }
 
