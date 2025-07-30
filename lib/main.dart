@@ -19,9 +19,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await _initApp();
-  await NotificationsHelper.getInstance.initFirebaseMessaging();
   await _hiveInit();
-  // if (!_isIOSSimulator()) {}
+  await NotificationsHelper.getInstance.initFirebaseMessaging();
+
   Bloc.observer = AppBlocObserver();
   await _lockOrientation();
   runApp(const SadioManeApp());

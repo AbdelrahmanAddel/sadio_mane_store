@@ -11,7 +11,7 @@ class DashBoardView extends StatelessWidget {
     return Scaffold(
       backgroundColor: context.theme.appColors.mainColor,
       appBar: CustomAdminAppBar(
-        backGrounfColor: context.theme.appColors.mainColor,
+        backGroundColor: context.theme.appColors.mainColor,
         title: 'DashBoard',
         isMain: true,
       ),

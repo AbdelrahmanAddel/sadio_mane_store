@@ -5,7 +5,7 @@ Map<String, dynamic> getBody({
 }) {
   return {
     'message': {
-    "topic": "news",
+      'topic': 'news',
       'notification': {
         'title': pushNotificationModel.title,
         'body': pushNotificationModel.body,

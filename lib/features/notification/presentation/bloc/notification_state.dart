@@ -51,3 +51,17 @@ class DeleteNotificationErrorState extends NotificationState {
   DeleteNotificationErrorState({required this.message});
   final String message;
 }
+
+class SendNotificationLoadingState extends NotificationState {}
+
+class SendNotificationSuccessState extends NotificationState {
+  SendNotificationSuccessState({required this.successMessage});
+
+  final String successMessage;
+}
+
+class SendNotificationErrorState extends NotificationState {
+  SendNotificationErrorState({required this.errorMessage});
+
+  final String errorMessage;
+}

@@ -8,7 +8,9 @@ import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart'
 import 'package:sadio_mane_store/features/admin/customer_home_view.dart';
 import 'package:sadio_mane_store/features/categories/presentation/view/categories_view.dart';
 import 'package:sadio_mane_store/features/dashboard/presentation/view/dashboard_view.dart';
+import 'package:sadio_mane_store/features/notification/presentation/view/notification_view.dart';
 import 'package:sadio_mane_store/features/products/presentation/view/products_view.dart';
+import 'package:sadio_mane_store/features/users/presentation/view/users_view.dart';
 
 List<DrawerItemModel> drawerItem(BuildContext context) {
   return <DrawerItemModel>[
@@ -66,7 +68,7 @@ List<DrawerItemModel> drawerItem(BuildContext context) {
           fontSize: 17.sp,
         ),
       ),
-      page: const CustomerHomeView(),
+      page: const UsersView(),
     ),
     //Notifications
     DrawerItemModel(
@@ -81,7 +83,7 @@ List<DrawerItemModel> drawerItem(BuildContext context) {
           fontSize: 17.sp,
         ),
       ),
-      page: const CustomerHomeView(),
+      page: const NotificationView(),
     ),
     DrawerItemModel(
       icon: GestureDetector(

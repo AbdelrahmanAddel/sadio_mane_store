@@ -4,6 +4,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sadio_mane_store/features/notification/data/data_source/notification_local_data_source.dart';
 import 'package:sadio_mane_store/features/notification/data/model/notification_content_model.dart';
+import 'package:sadio_mane_store/features/notification/data/model/push_notification_model.dart';
+import 'package:sadio_mane_store/features/notification/data/send_cloud_notification.dart';
 import 'package:sadio_mane_store/features/notification/presentation/bloc/notification_event.dart';
 import 'package:sadio_mane_store/features/notification/presentation/bloc/notification_state.dart';
 
@@ -19,7 +21,7 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
   final formKey = GlobalKey<FormState>();
 
   // Local list for optional use
-  late List<NotificationContentModel> notificationList;
+  NotificationsHelper notificationsHelper = NotificationsHelper.getInstance;
 
   // Bloc setup
   void _initialize() {
@@ -29,6 +31,7 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
     on<GetNotificationEvent>(_getNotifications);
     on<UpdateNotificationEvent>(_updateNotification);
     on<DeleteNotificationEvent>(_deleteNotification);
+    on<SendNotification>(_sendNotification);
   }
 
   // Clear all input fields
@@ -47,6 +50,36 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
   }
 
   // ------------------ Bloc Handlers ------------------
+
+  Future<void> _sendNotification(
+    SendNotification event,
+    Emitter<NotificationState> emit,
+  ) async {
+    emit(SendNotificationLoadingState());
+    try {
+      await NotificationsHelper.getInstance.sendNotifications(
+        pushNotificationModel: PushNotificationModel(
+          title: event.notification.title ?? '',
+          body: event.notification.body ?? '',
+          topicName: 'news',
+          userId: '1',
+          type: 'notification',
+          fcmToken: '1',
+        ),
+      );
+
+      clearAllControllers();
+      add(GetNotificationEvent());
+
+      emit(
+        SendNotificationSuccessState(
+          successMessage: 'Notification Sent Successfully',
+        ),
+      );
+    } catch (e) {
+      emit(SendNotificationErrorState(errorMessage: e.toString()));
+    }
+  }
 
   FutureOr<void> _createNotification(
     AddNotificationEvent event,
@@ -82,8 +115,6 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
     try {
       final notifications = NotificationLocalDataSource.notificationBox.values
           .toList();
-
-      notificationList = notifications;
 
       emit(
         GetNotificationSuccessState(notificationContentModels: notifications),

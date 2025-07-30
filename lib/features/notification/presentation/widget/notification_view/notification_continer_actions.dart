@@ -35,7 +35,9 @@ class NotificationContainerActions extends StatelessWidget {
         ),
         horizontalSpace(25),
         IconButton(
-          onPressed: () {},
+          onPressed: () => notificationBloc.add(
+            SendNotification(notification: notificationContentModel),
+          ),
           icon: const Icon(Icons.send, color: Colors.green),
         ),
       ],

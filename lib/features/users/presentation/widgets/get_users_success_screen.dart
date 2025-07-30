@@ -43,8 +43,12 @@ class CustomUserTable extends StatelessWidget {
             ...List.generate(usersList.length, (index) {
               return TableRow(
                 children: [
-                  _usersViewContentTableCell(title: usersList[index].name),
-                  _usersViewContentTableCell(title: usersList[index].email),
+                  _usersViewContentTableCell(
+                    title: usersList[index].name ?? '',
+                  ),
+                  _usersViewContentTableCell(
+                    title: usersList[index].email ?? '',
+                  ),
                   BlocBuilder<UsersBloc, UsersState>(
                     builder: (context, state) {
                       return TableCell(
@@ -57,7 +61,7 @@ class CustomUserTable extends StatelessWidget {
                             onPressed: () {
                               context.read<UsersBloc>().add(
                                 DeleteUserByIdEvent(
-                                  int.parse(usersList[index].id),
+                                  int.parse(usersList[index].id ?? ''),
                                 ),
                               );
                             },
