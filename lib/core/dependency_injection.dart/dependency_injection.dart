@@ -26,6 +26,7 @@ import 'package:sadio_mane_store/features/dashboard/logic/usecase/get_categories
 import 'package:sadio_mane_store/features/dashboard/logic/usecase/get_products_length_usecase.dart';
 import 'package:sadio_mane_store/features/dashboard/logic/usecase/get_users_total_number_usecase.dart';
 import 'package:sadio_mane_store/features/dashboard/presentation/bloc/dashboard_bloc.dart';
+import 'package:sadio_mane_store/features/notification/presentation/bloc/notification_bloc.dart';
 import 'package:sadio_mane_store/features/products/data/data_source/product_api_service.dart';
 import 'package:sadio_mane_store/features/products/data/data_source/products_remote_data_source.dart';
 import 'package:sadio_mane_store/features/products/data/repository/product_repository_implmentation.dart';
@@ -68,7 +69,12 @@ void setUpGetIt() {
   _categories(dio);
   _products(dio);
   _users(dio);
+  _notification();
   debugPrint('✅ GetIt setup done');
+}
+
+void _notification() {
+  getIt.registerFactory(NotificationBloc.new);
 }
 
 void _users(Dio dio) {

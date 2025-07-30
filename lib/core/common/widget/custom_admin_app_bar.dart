@@ -4,13 +4,13 @@ import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 
 class CustomAdminAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAdminAppBar({
-    required this.backGrounfColor,
+    required this.backGroundColor,
     required this.title,
     required this.isMain,
     super.key,
   });
   final bool isMain;
-  final Color backGrounfColor;
+  final Color backGroundColor;
   final String title;
 
   @override
@@ -18,7 +18,7 @@ class CustomAdminAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       surfaceTintColor: Colors.transparent,
       elevation: 0,
-      backgroundColor: backGrounfColor,
+      backgroundColor: backGroundColor,
       centerTitle: true,
       title: Text(title),
       leading:

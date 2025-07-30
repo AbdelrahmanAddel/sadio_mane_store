@@ -12,7 +12,7 @@ class MenuAdminScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: context.theme.appColors.bluePinkDark,
       appBar: CustomAdminAppBar(
-        backGrounfColor: context.theme.appColors.bluePinkDark,
+        backGroundColor: context.theme.appColors.bluePinkDark,
         title: 'Sadio Store',
 
         isMain: false,

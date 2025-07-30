@@ -18,7 +18,7 @@ class UsersView extends StatelessWidget {
         backgroundColor: context.theme.appColors.mainColor,
 
         appBar: CustomAdminAppBar(
-          backGrounfColor: context.theme.appColors.mainColor,
+          backGroundColor: context.theme.appColors.mainColor,
           title: 'Users',
           isMain: true,
         ),

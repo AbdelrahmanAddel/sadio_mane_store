@@ -11,4 +11,5 @@ class RoutesString {
   static const String orders = 'orders';
   static const String users = 'users';
   static const String testScreen = 'test_screen';
+  static const String notification = 'notification';
 }

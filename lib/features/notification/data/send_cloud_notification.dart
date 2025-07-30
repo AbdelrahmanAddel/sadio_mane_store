@@ -13,7 +13,7 @@ class NotificationsHelper {
   NotificationsHelper._();
   static final NotificationsHelper getInstance = NotificationsHelper._();
   EnvVariable envVariable = EnvVariable.getInstance;
-  bool isNotificationPermisionEnabled = false;
+  bool isNotificationPermissionEnabled = false;
   bool isSubscribedInNotification = false;
   final FirebaseMessaging messaging = FirebaseMessaging.instance;
 
@@ -45,27 +45,27 @@ class NotificationsHelper {
   }
 
   Future<void> _checkNotificationPermission() async {
-    final responce = await messaging.getNotificationSettings();
-    if (responce.authorizationStatus == AuthorizationStatus.authorized) {
-      isNotificationPermisionEnabled = true;
+    final response = await messaging.getNotificationSettings();
+    if (response.authorizationStatus == AuthorizationStatus.authorized) {
+      isNotificationPermissionEnabled = true;
       debugPrint('✅ Permission is granted');
 
       return;
     } else {
       isSubscribedInNotification = false;
-      isNotificationPermisionEnabled = false;
+      isNotificationPermissionEnabled = false;
       debugPrint('❌ Permission is not granted');
     }
   }
 
-  Future<void> notificationSubscribtionControll() async {
+  Future<void> notificationSubscriptionControl() async {
     await _checkNotificationPermission();
-    if (!isNotificationPermisionEnabled) {
+    if (!isNotificationPermissionEnabled) {
       await requestNotificationPermission();
       return;
     } else {
       if (isSubscribedInNotification) {
-        await unSubscrible();
+        await unSubscribe();
       } else {
         await subscribe();
       }
@@ -76,7 +76,7 @@ class NotificationsHelper {
     final settings = await messaging.requestPermission();
     if (settings.authorizationStatus == AuthorizationStatus.authorized) {
       await subscribe();
-      isNotificationPermisionEnabled = true;
+      isNotificationPermissionEnabled = true;
       return;
     } else {
       if (Platform.isAndroid) {
@@ -121,7 +121,7 @@ class NotificationsHelper {
     }
   }
 
-  Future<void> unSubscrible() async {
+  Future<void> unSubscribe() async {
     try {
       await FirebaseMessaging.instance.unsubscribeFromTopic('news');
       isSubscribedInNotification = false;

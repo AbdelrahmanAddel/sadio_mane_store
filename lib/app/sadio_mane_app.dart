@@ -32,31 +32,28 @@ class SadioManeApp extends StatelessWidget {
             designSize: const Size(390, 844),
             minTextAdapt: true,
             splitScreenMode: true,
-            builder:
-                (context, child) => MaterialApp(
-                  navigatorKey: getIt<GlobalKey<NavigatorState>>(),
-                  initialRoute: RoutesString.testScreen,
+            builder: (context, child) => MaterialApp(
+              navigatorKey: getIt<GlobalKey<NavigatorState>>(),
+              initialRoute: RoutesString.adminHome,
 
-                  locale:
-                      SharedPrefHelper.getBool(SharedPrefKey.language)
-                          ? const Locale('ar')
-                          : const Locale('en'),
+              locale: SharedPrefHelper.getBool(SharedPrefKey.language)
+                  ? const Locale('ar')
+                  : const Locale('en'),
 
-                  localizationsDelegates: const [
-                    S.delegate,
-                    GlobalMaterialLocalizations.delegate,
-                    GlobalWidgetsLocalizations.delegate,
-                    GlobalCupertinoLocalizations.delegate,
-                  ],
-                  supportedLocales: S.delegate.supportedLocales,
-                  theme:
-                      SharedPrefHelper.getBool(SharedPrefKey.isDarkMode)
-                          ? darkTheme
-                          : lightTheme,
-                  onGenerateRoute: AppRoutes.generateRoute,
+              localizationsDelegates: const [
+                S.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: S.delegate.supportedLocales,
+              theme: darkTheme,
+              // SharedPrefHelper.getBool(SharedPrefKey.isDarkMode)
+              // : lightTheme,
+              onGenerateRoute: AppRoutes.generateRoute,
 
-                  debugShowCheckedModeBanner: EnvVariable.getInstance.isDev,
-                ),
+              debugShowCheckedModeBanner: EnvVariable.getInstance.isDev,
+            ),
           );
         },
       ),

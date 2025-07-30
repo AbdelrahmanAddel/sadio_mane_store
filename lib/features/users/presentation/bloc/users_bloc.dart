@@ -61,18 +61,17 @@ class UsersBloc extends Bloc<UsersEvent, UsersState> {
 
   FutureOr<void> _searchForUser(SearchForUser event, Emitter<UsersState> emit) {
     try {
-      final usersSearchList =
-          usersList
-              .where(
-                (users) =>
-                    users.name.toLowerCase().startsWith(
-                      event.search?.toLowerCase() ?? '',
-                    ) ||
-                    users.email.toLowerCase().startsWith(
-                      event.search?.toLowerCase() ?? '',
-                    ),
-              )
-              .toList();
+      final usersSearchList = usersList
+          .where(
+            (users) =>
+                users.name.toLowerCase().startsWith(
+                  event.search?.toLowerCase() ?? '',
+                ) ||
+                users.email.toLowerCase().startsWith(
+                  event.search?.toLowerCase() ?? '',
+                ),
+          )
+          .toList();
       emit(SearchForUserSuccessState(users: usersSearchList));
       debugPrint(usersSearchList.toString());
     } catch (error) {

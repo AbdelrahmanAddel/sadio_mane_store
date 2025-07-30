@@ -8,8 +8,13 @@ part of 'sign_up_responce_model.dart';
 
 SignUpResponceModel _$SignUpResponceModelFromJson(Map<String, dynamic> json) =>
     SignUpResponceModel(
-      data:
-          json['data'] == null
-              ? null
-              : AddUserModel.fromJson(json['data'] as Map<String, dynamic>),
+      data: json['data'] == null
+          ? null
+          : AddUserModel.fromJson(json['data'] as Map<String, dynamic>),
     );
+
+Map<String, dynamic> _$SignUpResponceModelToJson(
+        SignUpResponceModel instance) =>
+    <String, dynamic>{
+      'data': instance.data,
+    };
