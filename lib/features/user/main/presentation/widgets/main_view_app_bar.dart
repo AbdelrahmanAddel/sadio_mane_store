@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:sadio_mane_store/core/common/widget/custom_app_button.dart';
 import 'package:sadio_mane_store/core/helpers/extensions/localization_extension.dart';
@@ -9,21 +10,23 @@ AppBar mainScreenAppBar(BuildContext context) {
   return AppBar(
     backgroundColor: theme.appColors.mainColor,
 
-    title: Row(
-      children: [
-        Text(
-          context.tr.choose_your_products,
-          style: theme.textTheme.titleLarge?.copyWith(
-            fontSize: 26,
-            fontWeight: FontWeight.bold,
+    title: FadeInLeft(
+      child: Row(
+        children: [
+          Text(
+            context.tr.choose_your_products,
+            style: theme.textTheme.titleLarge?.copyWith(
+              fontSize: 26,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        const Spacer(),
-        IconButton(
-          onPressed: () {},
-          icon: const CustomAppButton(child: Icon(Icons.search, size: 30)),
-        ),
-      ],
+          const Spacer(),
+          IconButton(
+            onPressed: () {},
+            icon: const CustomAppButton(child: Icon(Icons.search, size: 30)),
+          ),
+        ],
+      ),
     ),
   );
 }
