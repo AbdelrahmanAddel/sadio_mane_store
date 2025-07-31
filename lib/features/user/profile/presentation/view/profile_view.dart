@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sadio_mane_store/core/helpers/extensions/strings_extension.dart';
+import 'package:sadio_mane_store/core/helpers/extensions/localization_extension.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
+import 'package:sadio_mane_store/features/user/profile/presentation/widgets/profile_feature_item.dart';
+import 'package:sadio_mane_store/features/user/profile/presentation/widgets/profile_header.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -15,48 +17,19 @@ class ProfileView extends StatelessWidget {
           children: [
             verticalSpace(70),
             const ProfileHeader(),
-            verticalSpace(15),
+            verticalSpace(20),
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Application Features',
-                style: TextStyle(fontSize: 25.sp, fontWeight: FontWeight.w400),
+                context.tr.application_features,
+                style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w400),
               ),
             ),
-            verticalSpace(12),
+            verticalSpace(25),
             const ProfileFeatureItem(),
           ],
         ),
       ),
-    );
-  }
-}
-
-class ProfileFeatureItem extends StatelessWidget {
-  const ProfileFeatureItem({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const SizedBox.shrink();
-  }
-}
-
-class ProfileHeader extends StatelessWidget {
-  const ProfileHeader({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        CircleAvatar(radius: 50.r, child: const Icon(Icons.person, size: 50)),
-        verticalSpace(12),
-        Text('PROFILE'.capitalize, style: TextStyle(fontSize: 20.sp)),
-        verticalSpace(12),
-        Text(
-          'SadioMane@gmail.com',
-          style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.normal),
-        ),
-      ],
     );
   }
 }

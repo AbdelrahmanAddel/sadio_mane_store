@@ -60,6 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "no": MessageLookupByLibrary.simpleMessage("لا"),
+    "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "sign_up": MessageLookupByLibrary.simpleMessage("آنشاء حساب"),
     "sign_up_welcome": MessageLookupByLibrary.simpleMessage(
