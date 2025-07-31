@@ -11,4 +11,8 @@ abstract class RoutesString {
   static const String users = 'users';
   static const String testScreen = 'test_screen';
   static const String notification = 'notification';
+  static const String userCategories = 'user_categories';
+  static const String userFavorite = 'user_favorite';
+  static const String userCart = 'user_cart';
+  static const String userProfile = 'user_profile';
 }
