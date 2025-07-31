@@ -6,17 +6,17 @@ import 'package:sadio_mane_store/core/internet_connection/screen/no_internet_scr
 import 'package:sadio_mane_store/core/routes/routes_string.dart';
 import 'package:sadio_mane_store/features/admin/admin_home_view.dart';
 import 'package:sadio_mane_store/features/admin/customer_home_view.dart';
-import 'package:sadio_mane_store/features/categories/presentation/bloc/categories_bloc.dart';
-import 'package:sadio_mane_store/features/categories/presentation/bloc/categories_event.dart';
-import 'package:sadio_mane_store/features/categories/presentation/view/categories_view.dart';
-import 'package:sadio_mane_store/features/dashboard/presentation/bloc/dashboard_bloc.dart';
-import 'package:sadio_mane_store/features/notification/presentation/view/notification_view.dart';
-import 'package:sadio_mane_store/features/products/presentation/view/products_view.dart';
-import 'package:sadio_mane_store/features/sign_in/presentation/cubit/sign_in_cubit.dart';
-import 'package:sadio_mane_store/features/sign_in/presentation/view/sign_in_view.dart';
-import 'package:sadio_mane_store/features/sign_up/presentation/cubit/sign_up_cubit.dart';
-import 'package:sadio_mane_store/features/sign_up/presentation/view/sign_up_view.dart';
-import 'package:sadio_mane_store/features/users/presentation/view/users_view.dart';
+import 'package:sadio_mane_store/features/admin/categories/presentation/bloc/categories_bloc.dart';
+import 'package:sadio_mane_store/features/admin/categories/presentation/bloc/categories_event.dart';
+import 'package:sadio_mane_store/features/admin/categories/presentation/view/categories_view.dart';
+import 'package:sadio_mane_store/features/admin/dashboard/presentation/bloc/dashboard_bloc.dart';
+import 'package:sadio_mane_store/features/admin/notification/presentation/view/notification_view.dart';
+import 'package:sadio_mane_store/features/admin/products/presentation/view/products_view.dart';
+import 'package:sadio_mane_store/features/authentication/sign_in/presentation/cubit/sign_in_cubit.dart';
+import 'package:sadio_mane_store/features/authentication/sign_in/presentation/view/sign_in_view.dart';
+import 'package:sadio_mane_store/features/authentication/sign_up/presentation/cubit/sign_up_cubit.dart';
+import 'package:sadio_mane_store/features/authentication/sign_up/presentation/view/sign_up_view.dart';
+import 'package:sadio_mane_store/features/admin/users/presentation/view/users_view.dart';
 import 'package:sadio_mane_store/test_screen.dart';
 
 class AppRoutes {
