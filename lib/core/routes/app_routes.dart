@@ -17,6 +17,7 @@ import 'package:sadio_mane_store/features/authentication/sign_in/presentation/vi
 import 'package:sadio_mane_store/features/authentication/sign_up/presentation/cubit/sign_up_cubit.dart';
 import 'package:sadio_mane_store/features/authentication/sign_up/presentation/view/sign_up_view.dart';
 import 'package:sadio_mane_store/features/admin/users/presentation/view/users_view.dart';
+import 'package:sadio_mane_store/features/user/main/presentation/view/main_screen.dart';
 import 'package:sadio_mane_store/test_screen.dart';
 
 class AppRoutes {
@@ -34,8 +35,8 @@ class AppRoutes {
                 child: const AdminHomeView(),
               ),
         );
-      case RoutesString.userHome:
-        return MaterialPageRoute(builder: (_) => const CustomerHomeView());
+      case RoutesString.mainScreen:
+        return MaterialPageRoute(builder: (_) => const MainScreenView());
       case RoutesString.signIn:
         return MaterialPageRoute(
           builder:

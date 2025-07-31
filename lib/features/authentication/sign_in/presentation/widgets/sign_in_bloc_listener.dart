@@ -27,7 +27,7 @@ class SignInBlocListener extends StatelessWidget {
           } else {
             context
               ..pop()
-              ..pushName(routeName: RoutesString.userHome);
+              ..pushName(routeName: RoutesString.mainScreen);
           }
         } else if (state is SignInFailure) {
           context.pop();

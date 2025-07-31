@@ -35,6 +35,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "choose_products": MessageLookupByLibrary.simpleMessage(
       "Choose Your Products",
     ),
+    "choose_your_products": MessageLookupByLibrary.simpleMessage(
+      "Choose Your Products",
+    ),
     "create_account": MessageLookupByLibrary.simpleMessage("Create account"),
     "dark_mode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
     "full_name": MessageLookupByLibrary.simpleMessage("Full Name"),

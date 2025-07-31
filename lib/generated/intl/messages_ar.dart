@@ -35,6 +35,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "choose_products": MessageLookupByLibrary.simpleMessage(
       "اختر منتجاتك آلان",
     ),
+    "choose_your_products": MessageLookupByLibrary.simpleMessage(
+      "اختر منتجاتك",
+    ),
     "create_account": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "dark_mode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
     "full_name": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
