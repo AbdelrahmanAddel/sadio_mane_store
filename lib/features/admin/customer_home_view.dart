@@ -9,7 +9,9 @@ class CustomerHomeView extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(child: Text('Customer Screen', style: TextStyle(fontSize: 50))),
+          Center(
+            child: Text('Customer Screen', style: TextStyle(fontSize: 50)),
+          ),
         ],
       ),
     );

@@ -88,7 +88,7 @@ class Assets {
 
   /// Assets for assetsImagesSvgFavouriteTabIcon
   /// assets/images/svg/favourite_tab_icon.svg
-  static const String assetsImagesSvgFavouriteTabIcon = "assets/images/svg/favourite_tab_icon.svg";
+  static const String assetsImagesSvgFavoriteTabIcon = "assets/images/svg/favourite_tab_icon.svg";
 
   /// Assets for assetsImagesSvgHomeTabIcon
   /// assets/images/svg/home_tab_icon.svg

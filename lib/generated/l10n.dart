@@ -313,6 +313,16 @@ class S {
   String get lang_code {
     return Intl.message('English', name: 'lang_code', desc: '', args: []);
   }
+
+  /// `Choose Your Products`
+  String get choose_your_products {
+    return Intl.message(
+      'Choose Your Products',
+      name: 'choose_your_products',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

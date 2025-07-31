@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:sadio_mane_store/core/common/widget/custom_menu_admin_screen.dart';
 import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
-import 'package:sadio_mane_store/features/dashboard/presentation/view/dashboard_view.dart';
+import 'package:sadio_mane_store/features/admin/dashboard/presentation/view/dashboard_view.dart';
 
 class AdminHomeView extends StatefulWidget {
   const AdminHomeView({super.key});

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sadio_mane_store/app/upload_image/data/model/upload_image_responce_model.dart';
@@ -12,6 +13,8 @@ class UploadImageCubit extends Cubit<UploadImageState> {
   final UploadImageUsecase _imageUsecase;
   final ImagePickerClass imagePickerClass;
   String? imageUrl = '';
+  List<String> images = ['', '', ''];
+  List<String> updateImages = [];
 
   Future<XFile?> pickImageFromGallery() async {
     final pickImage = await imagePickerClass.pickImage();
@@ -28,7 +31,8 @@ class UploadImageCubit extends Cubit<UploadImageState> {
     emit(UploadImageLoadingState());
 
     final response = await _imageUsecase.call(image);
-    if(isClosed)return;
+    if (isClosed) return;
+
     response.fold((error) => emit(UploadImageErrorState(message: error)), (
       success,
     ) {
@@ -41,6 +45,43 @@ class UploadImageCubit extends Cubit<UploadImageState> {
     final image = await pickImageFromGallery();
     if (image != null) {
       await getImageUrl(image);
+    }
+  }
+
+  Future<void> uploadImageList({required int currentIndex}) async {
+    emit(UploadImageListLoadingState(currentIndex: currentIndex));
+
+    try {
+      await pickImageAndUpload();
+
+      images
+        ..removeAt(currentIndex)
+        ..insert(currentIndex, imageUrl ?? '');
+      imageUrl = '';
+      emit(UploadImageListSuccessState());
+    } catch (error) {
+      emit(UploadImageListFailureState(message: 'SomeThing Went Wrong !!'));
+      debugPrint(error.toString());
+    }
+  }
+
+  Future<void> updateImageList({
+    required int currentIndex,
+    required List<String> image,
+  }) async {
+    emit(UploadImageListLoadingState(currentIndex: currentIndex));
+
+    try {
+      await pickImageAndUpload();
+      updateImages = image;
+      updateImages
+        ..removeAt(currentIndex)
+        ..insert(currentIndex, imageUrl ?? '');
+      imageUrl = '';
+      emit(UploadImageListSuccessState());
+    } catch (error) {
+      emit(UploadImageListFailureState(message: 'SomeThing Went Wrong !!'));
+      debugPrint(error.toString());
     }
   }
 

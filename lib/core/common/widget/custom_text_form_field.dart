@@ -13,6 +13,8 @@ class CustomTextFormField extends StatelessWidget {
     this.textInputAction,
     this.suffixIcon,
     this.maxlines,
+    this.onChanged,
+    this.readOnly,
   });
 
   final TextEditingController? controller;
@@ -24,10 +26,14 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputAction? textInputAction;
   final Widget? suffixIcon;
   final int? maxlines;
+  final void Function(String)? onChanged;
+  final bool? readOnly;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      readOnly: readOnly ?? false,
+      onChanged: onChanged,
       maxLines: maxlines,
       keyboardType: keyboardType ?? TextInputType.emailAddress,
       textInputAction: textInputAction ?? TextInputAction.next,
