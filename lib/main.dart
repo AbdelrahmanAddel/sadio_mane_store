@@ -11,8 +11,8 @@ import 'package:sadio_mane_store/app/env_variable.dart';
 import 'package:sadio_mane_store/app/sadio_mane_app.dart';
 import 'package:sadio_mane_store/core/dependency_injection.dart/dependency_injection.dart';
 import 'package:sadio_mane_store/core/helpers/shared_prefrence/shared_prefrence.dart';
-import 'package:sadio_mane_store/features/notification/data/data_source/notification_local_data_source.dart';
-import 'package:sadio_mane_store/features/notification/data/send_cloud_notification.dart';
+import 'package:sadio_mane_store/features/admin/notification/data/data_source/notification_local_data_source.dart';
+import 'package:sadio_mane_store/features/admin/notification/data/send_cloud_notification.dart';
 import 'package:sadio_mane_store/firebase_options.dart';
 
 void main() async {

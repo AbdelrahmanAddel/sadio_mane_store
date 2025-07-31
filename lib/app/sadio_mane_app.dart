@@ -34,7 +34,7 @@ class SadioManeApp extends StatelessWidget {
             splitScreenMode: true,
             builder: (context, child) => MaterialApp(
               navigatorKey: getIt<GlobalKey<NavigatorState>>(),
-              initialRoute: RoutesString.adminHome,
+              initialRoute: RoutesString.mainScreen,
 
               locale: SharedPrefHelper.getBool(SharedPrefKey.language)
                   ? const Locale('ar')
@@ -67,7 +67,7 @@ String getInitRoute() {
   if (accessToken != '') {
     return userRole == 'admin'
         ? RoutesString.adminHome
-        : RoutesString.adminHome;
+        : RoutesString.mainScreen;
   } else {
     return RoutesString.signIn;
   }
