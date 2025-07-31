@@ -24,7 +24,7 @@ class IconTapNavBar extends StatelessWidget {
         color: isSelected
             ? context.theme.appColors.navBarSelectedTab
             : Colors.grey,
-        height: 25.h,
+        height: 27.h,
       ).animate(target: isSelected ? 1 : 0).scaleXY(end: 1.2),
     );
   }
