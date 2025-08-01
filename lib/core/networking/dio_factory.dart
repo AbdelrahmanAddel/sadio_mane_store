@@ -5,38 +5,38 @@ import 'package:sadio_mane_store/core/helpers/shared_prefrence/shared_prefrence.
 
 class DioFactory {
   DioFactory._();
-  static Dio? _dioInstace;
+  static Dio? _dioInstance;
   static Dio getDio() {
     const time = Duration(seconds: 30);
-    if (_dioInstace == null) {
-      _dioInstace = Dio();
-      prettyLoget();
-      _dioInstace!
+    if (_dioInstance == null) {
+      _dioInstance = Dio();
+      prettyLogger();
+      _dioInstance!
         ..options.connectTimeout = time
         ..options.receiveTimeout = time;
       _saveUserToken();
       _dioInterceptors();
-      return _dioInstace!;
+      return _dioInstance!;
     } else {
-      return _dioInstace!;
+      return _dioInstance!;
     }
   }
 
-  static void prettyLoget() {
-    _dioInstace!.interceptors.add(
+  static void prettyLogger() {
+    _dioInstance!.interceptors.add(
       PrettyDioLogger(requestHeader: true, requestBody: true),
     );
   }
 
   static void _saveUserToken() {
-    _dioInstace?.options.headers.addAll({
+    _dioInstance?.options.headers.addAll({
       'Authorization':
           'Bearer ${SharedPrefHelper.getString(SharedPrefKey.accessToken)}',
     });
   }
 
   static void _dioInterceptors() {
-    _dioInstace?.interceptors.add(
+    _dioInstance?.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) {
           final token = SharedPrefHelper.getString(SharedPrefKey.accessToken);
