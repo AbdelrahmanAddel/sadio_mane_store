@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sadio_mane_store/core/helpers/extensions/localization_extension.dart';
+import 'package:sadio_mane_store/core/helpers/extensions/navigation_extension.dart';
 import 'package:sadio_mane_store/core/helpers/shared_prefrence/shared_pref_key.dart';
 import 'package:sadio_mane_store/core/helpers/shared_prefrence/shared_prefrence.dart';
+
+import 'package:sadio_mane_store/core/routes/routes_string.dart';
 import 'package:sadio_mane_store/features/app_settings/cubit/app_settings_cubit.dart';
 import 'package:sadio_mane_store/features/user/profile/presentation/widgets/custom_feature_item.dart';
 
@@ -19,8 +22,8 @@ class ProfileFeatureItemsBuilder {
         suffixWidget: _languageIconButton(appSettingsCubit: appSettingsCubit),
       ),
       CustomFeatureItem(
-        prefixIcon: Icons.currency_exchange,
-        prefixText: context.tr.dark_mode,
+        prefixIcon: isDarkMode ? Icons.dark_mode : Icons.light_mode,
+        prefixText: context.tr.theme,
         suffixWidget: _darkModeIconButton(
           appSettingsCubit: appSettingsCubit,
           isDarkMode: isDarkMode,
@@ -30,6 +33,7 @@ class ProfileFeatureItemsBuilder {
         prefixIcon: Icons.computer,
         prefixText: context.tr.build_developer,
         suffixText: context.tr.app_name,
+        suffixWidget: _buildDeveloperIconButton(context),
       ),
       CustomFeatureItem(
         prefixIcon: Icons.notifications,
@@ -72,6 +76,18 @@ class ProfileFeatureItemsBuilder {
           appSettingsCubit.changeAppTheme();
         },
       ),
+    );
+  }
+
+  static Widget _buildDeveloperIconButton(BuildContext context) {
+    return IconButton(
+      onPressed: () {
+        context.pushName(
+          routeName: RoutesString.webView,
+          arguments: 'https://en.wikipedia.org/wiki/Sadio_Man%C3%A9',
+        );
+      },
+      icon: const Icon(Icons.arrow_forward_ios),
     );
   }
 }
