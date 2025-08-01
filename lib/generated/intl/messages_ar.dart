@@ -66,6 +66,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "sign_up_welcome": MessageLookupByLibrary.simpleMessage(
       "مرحبا، الرجاء إضافة المعلومات الخاصة بك",
     ),
+    "something_went_wrong": MessageLookupByLibrary.simpleMessage(
+      " حدث خطأ ما, يرجى المحاولة مرة أخرى لاحقاً  ",
+    ),
     "sure": MessageLookupByLibrary.simpleMessage("تآكيد"),
     "valid_email": MessageLookupByLibrary.simpleMessage(
       "من فضلك إدخال البريد الإلكتروني الصحيح",

@@ -33,5 +33,7 @@
     "dark_mode": "Dark Mode",
     "lang_code": "العربية",
     "choose_your_products": "اختر منتجاتك",
-    "notifications": "الإشعارات"
+    "notifications": "الإشعارات",
+    "something_went_wrong": " حدث خطأ ما, يرجى المحاولة مرة أخرى لاحقاً  "
+    
 }

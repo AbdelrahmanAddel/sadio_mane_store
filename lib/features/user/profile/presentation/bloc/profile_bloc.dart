@@ -4,7 +4,7 @@ import 'package:sadio_mane_store/features/user/profile/presentation/bloc/profile
 import 'package:sadio_mane_store/features/user/profile/presentation/bloc/profile_state.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
-  ProfileBloc(this._getProfileUsecase) : super(ProfileInitial()) {
+  ProfileBloc(this._getProfileUsecase) : super(ProfileLoadingState()) {
     on<GetProfileEvent>(_onGetProfileEvent);
   }
   final GetProfileUsecase _getProfileUsecase;

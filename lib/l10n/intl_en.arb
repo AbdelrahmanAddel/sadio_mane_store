@@ -33,5 +33,6 @@
     "dark_mode": "Dark Mode",
     "lang_code": "English",
     "choose_your_products": "Choose Your Products",
-    "notifications": "Notifications"
+    "notifications": "Notifications",
+    "something_went_wrong": "Something went wrong ,Please try again later"
 }
