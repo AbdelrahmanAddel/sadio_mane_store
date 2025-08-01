@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "application_features": MessageLookupByLibrary.simpleMessage(
       "Application Features",
     ),
+    "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
     "build_developer": MessageLookupByLibrary.simpleMessage("Build Developer"),
     "build_version": MessageLookupByLibrary.simpleMessage("Build Version"),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
@@ -40,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "create_account": MessageLookupByLibrary.simpleMessage("Create account"),
     "dark_mode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
+    "english": MessageLookupByLibrary.simpleMessage("English"),
     "full_name": MessageLookupByLibrary.simpleMessage("Full Name"),
     "image_removed": MessageLookupByLibrary.simpleMessage(
       "The image has been Deleted.",
@@ -48,8 +50,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "The image has been uploaded successfully.",
     ),
     "lang_code": MessageLookupByLibrary.simpleMessage("English"),
-    "language": MessageLookupByLibrary.simpleMessage("العربية"),
+    "language": MessageLookupByLibrary.simpleMessage("Language"),
     "language_tilte": MessageLookupByLibrary.simpleMessage("Language"),
+    "light_mode": MessageLookupByLibrary.simpleMessage("Light Mode"),
     "log_out": MessageLookupByLibrary.simpleMessage("Logout"),
     "log_out_from_app": MessageLookupByLibrary.simpleMessage(
       "Do you want log out?",
@@ -72,6 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Something went wrong ,Please try again later",
     ),
     "sure": MessageLookupByLibrary.simpleMessage("Sure"),
+    "theme": MessageLookupByLibrary.simpleMessage("Theme"),
     "valid_email": MessageLookupByLibrary.simpleMessage(
       "Please enter a valid email",
     ),

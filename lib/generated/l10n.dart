@@ -54,9 +54,9 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `العربية`
+  /// `Language`
   String get language {
-    return Intl.message('العربية', name: 'language', desc: '', args: []);
+    return Intl.message('Language', name: 'language', desc: '', args: []);
   }
 
   /// `Sadio Mane Store`
@@ -342,6 +342,26 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Arabic`
+  String get arabic {
+    return Intl.message('Arabic', name: 'arabic', desc: '', args: []);
+  }
+
+  /// `English`
+  String get english {
+    return Intl.message('English', name: 'english', desc: '', args: []);
+  }
+
+  /// `Light Mode`
+  String get light_mode {
+    return Intl.message('Light Mode', name: 'light_mode', desc: '', args: []);
+  }
+
+  /// `Theme`
+  String get theme {
+    return Intl.message('Theme', name: 'theme', desc: '', args: []);
   }
 }
 

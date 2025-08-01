@@ -39,7 +39,6 @@ class CustomFeatureItem extends StatelessWidget {
               color: context.theme.appColors.textColor,
             ),
           ),
-        horizontalSpace(8),
         suffixWidget ?? const SizedBox.shrink(),
       ],
     );

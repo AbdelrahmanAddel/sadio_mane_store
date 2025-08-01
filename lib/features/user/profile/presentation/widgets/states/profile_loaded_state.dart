@@ -8,26 +8,24 @@ import 'package:sadio_mane_store/features/user/profile/presentation/widgets/prof
 
 class ProfileLoadedWidget extends StatelessWidget {
   const ProfileLoadedWidget({required this.userProfile, super.key});
-  
+
   final UserProfileModel userProfile;
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment:
+          CrossAxisAlignment.start, 
       children: [
         verticalSpace(120),
-        ProfileHeader(userProfileData: userProfile),
-        verticalSpace(20),
-        Align(
-          alignment: Alignment.centerLeft,
-          child: Text(
-            context.tr.application_features,
-            style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w400),
-          ),
+        Center(child: ProfileHeader(userProfileData: userProfile)), 
+        verticalSpace(40),
+        Text(
+          context.tr.application_features,
+          style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w400),
         ),
-        verticalSpace(25),
         const ProfileFeatureItem(),
       ],
     );
   }
-} 
+}

@@ -62,7 +62,6 @@ class DioFactory {
       await SharedPrefHelper.removeData(SharedPrefKey.accessToken);
       await SharedPrefHelper.removeData(SharedPrefKey.refreshToken);
       await NotificationLocalDataSource.notificationBox.clear();
-      _dioInstance?.interceptors.clear();
       if (onUnauthorized != null) {
         onUnauthorized!.call();
       }
