@@ -20,15 +20,16 @@ class ProfileFeatureItemsBuilder {
       ),
       CustomFeatureItem(
         prefixIcon: Icons.currency_exchange,
-        prefixText: context.tr.theme,
-        suffixText: isDarkMode ? context.tr.light_mode : context.tr.dark_mode,
-        suffixWidget: _darkModeIconButton(appSettingsCubit: appSettingsCubit),
+        prefixText: context.tr.dark_mode,
+        suffixWidget: _darkModeIconButton(
+          appSettingsCubit: appSettingsCubit,
+          isDarkMode: isDarkMode,
+        ),
       ),
       CustomFeatureItem(
         prefixIcon: Icons.computer,
         prefixText: context.tr.build_developer,
         suffixText: context.tr.app_name,
-        suffixWidget: const Icon(Icons.arrow_forward_ios),
       ),
       CustomFeatureItem(
         prefixIcon: Icons.notifications,
@@ -60,10 +61,17 @@ class ProfileFeatureItemsBuilder {
 
   static Widget _darkModeIconButton({
     required AppSettingsCubit appSettingsCubit,
+    required bool isDarkMode,
   }) {
-    return IconButton(
-      onPressed: appSettingsCubit.changeAppTheme,
-      icon: const Icon(Icons.arrow_forward_ios),
+    return Transform.scale(
+      scale: 0.9,
+      child: Switch.adaptive(
+        value: isDarkMode,
+        activeColor: Colors.green,
+        onChanged: (value) {
+          appSettingsCubit.changeAppTheme();
+        },
+      ),
     );
   }
 }
