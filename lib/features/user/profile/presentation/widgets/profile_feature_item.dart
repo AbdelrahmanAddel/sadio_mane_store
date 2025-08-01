@@ -9,6 +9,7 @@ class ProfileFeatureItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final items = ProfileFeatureItemsBuilder.build(context);
     return ListView.separated(
+      physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) => items[index],
       itemCount: items.length,
       shrinkWrap: true,

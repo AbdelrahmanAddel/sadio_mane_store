@@ -5,6 +5,8 @@ import 'package:googleapis_auth/auth_io.dart' as auth;
 import 'package:http/http.dart' as http;
 import 'package:permission_handler/permission_handler.dart' as AppSettings;
 import 'package:sadio_mane_store/app/env_variable.dart';
+import 'package:sadio_mane_store/core/helpers/shared_prefrence/shared_pref_key.dart';
+import 'package:sadio_mane_store/core/helpers/shared_prefrence/shared_prefrence.dart';
 import 'package:sadio_mane_store/core/networking/dio_factory.dart';
 import 'package:sadio_mane_store/features/admin/notification/data/model/push_notification_model.dart';
 import 'package:sadio_mane_store/features/admin/notification/data/notification_body.dart';
@@ -13,8 +15,10 @@ class NotificationsHelper {
   NotificationsHelper._();
   static final NotificationsHelper getInstance = NotificationsHelper._();
   EnvVariable envVariable = EnvVariable.getInstance;
-  bool isNotificationPermissionEnabled = false;
-  bool isSubscribedInNotification = false;
+  bool get isNotificationPermissionEnabled =>
+      SharedPrefHelper.getBool(SharedPrefKey.isNotificationPermissionEnabled);
+  bool get isSubscribedInNotification =>
+      SharedPrefHelper.getBool(SharedPrefKey.isSubscribedInNotification);
   final FirebaseMessaging messaging = FirebaseMessaging.instance;
 
   Future<void> initFirebaseMessaging() async {
@@ -47,13 +51,23 @@ class NotificationsHelper {
   Future<void> _checkNotificationPermission() async {
     final response = await messaging.getNotificationSettings();
     if (response.authorizationStatus == AuthorizationStatus.authorized) {
-      isNotificationPermissionEnabled = true;
+      await SharedPrefHelper.setData(
+        SharedPrefKey.isNotificationPermissionEnabled,
+        true,
+      );
       debugPrint('✅ Permission is granted');
 
       return;
     } else {
-      isSubscribedInNotification = false;
-      isNotificationPermissionEnabled = false;
+      await SharedPrefHelper.setData(
+        SharedPrefKey.isNotificationPermissionEnabled,
+        false,
+      );
+      await SharedPrefHelper.setData(
+        SharedPrefKey.isSubscribedInNotification,
+        false,
+      );
+
       debugPrint('❌ Permission is not granted');
     }
   }
@@ -61,22 +75,25 @@ class NotificationsHelper {
   Future<void> notificationSubscriptionControl() async {
     await _checkNotificationPermission();
     if (!isNotificationPermissionEnabled) {
-      await requestNotificationPermission();
+      await _requestNotificationPermission();
       return;
     } else {
       if (isSubscribedInNotification) {
-        await unSubscribe();
+        await _unSubscribe();
       } else {
-        await subscribe();
+        await _subscribe();
       }
     }
   }
 
-  Future<void> requestNotificationPermission() async {
+  Future<void> _requestNotificationPermission() async {
     final settings = await messaging.requestPermission();
     if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-      await subscribe();
-      isNotificationPermissionEnabled = true;
+      await _subscribe();
+      await SharedPrefHelper.setData(
+        SharedPrefKey.isNotificationPermissionEnabled,
+        true,
+      );
       return;
     } else {
       if (Platform.isAndroid) {
@@ -87,7 +104,7 @@ class NotificationsHelper {
     }
   }
 
-  Future<String?> getAccessToken() async {
+  Future<String?> _getAccessToken() async {
     final serviceAccountJson = await envVariable.getServiceAccountJson();
 
     final scopes = <String>[
@@ -111,20 +128,26 @@ class NotificationsHelper {
     }
   }
 
-  Future<void> subscribe() async {
+  Future<void> _subscribe() async {
     try {
       await FirebaseMessaging.instance.subscribeToTopic('news');
-      isSubscribedInNotification = true;
+      await SharedPrefHelper.setData(
+        SharedPrefKey.isSubscribedInNotification,
+        true,
+      );
       debugPrint('=========== Subscribed ✅ ============');
     } on Exception catch (error) {
       debugPrint('error = >>>>>> $error');
     }
   }
 
-  Future<void> unSubscribe() async {
+  Future<void> _unSubscribe() async {
     try {
       await FirebaseMessaging.instance.unsubscribeFromTopic('news');
-      isSubscribedInNotification = false;
+      await SharedPrefHelper.setData(
+        SharedPrefKey.isSubscribedInNotification,
+        false,
+      );
       debugPrint('=========== Unsubscribed ❌ ============');
     } on Exception catch (error) {
       debugPrint('error = >>>>>> $error');
@@ -135,7 +158,7 @@ class NotificationsHelper {
     required PushNotificationModel pushNotificationModel,
   }) async {
     try {
-      final serverKeyAuthorization = await getAccessToken();
+      final serverKeyAuthorization = await _getAccessToken();
 
       final urlEndPoint = envVariable.notificationBaseUrl;
 

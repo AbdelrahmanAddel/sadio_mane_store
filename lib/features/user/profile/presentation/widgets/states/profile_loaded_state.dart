@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadio_mane_store/core/helpers/extensions/localization_extension.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
@@ -14,11 +15,10 @@ class ProfileLoadedWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment:
-          CrossAxisAlignment.start, 
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         verticalSpace(120),
-        Center(child: ProfileHeader(userProfileData: userProfile)), 
+        Center(child: ProfileHeader(userProfileData: userProfile)),
         verticalSpace(40),
         Text(
           context.tr.application_features,
