@@ -4,8 +4,10 @@ import 'package:sadio_mane_store/features/user/main/presentation/cubit/main_stat
 
 class MainCubit extends Cubit<MainState> {
   MainCubit() : super(const MainInitial(mainViewEnums: MainViewEnums.profile));
+  MainViewEnums mainViewEnums = MainViewEnums.profile;
 
   void changeMainView(MainViewEnums mainViewEnums) {
+    this.mainViewEnums = mainViewEnums;
     emit(ChangeMainViewState(mainViewEnums: mainViewEnums));
   }
 }

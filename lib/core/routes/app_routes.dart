@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sadio_mane_store/app/upload_image/cubit/upload_image_cubit.dart';
+import 'package:sadio_mane_store/core/common/screens/custom_web_view.dart';
 import 'package:sadio_mane_store/core/dependency_injection.dart/dependency_injection.dart';
 import 'package:sadio_mane_store/core/internet_connection/screen/no_internet_screen.dart';
 import 'package:sadio_mane_store/core/routes/routes_string.dart';
@@ -18,8 +19,9 @@ import 'package:sadio_mane_store/features/authentication/sign_up/presentation/cu
 import 'package:sadio_mane_store/features/authentication/sign_up/presentation/view/sign_up_view.dart';
 import 'package:sadio_mane_store/features/user/categories/presentation/view/categories_view.dart';
 import 'package:sadio_mane_store/features/user/favorite/presentation/view/favorite_view.dart';
-import 'package:sadio_mane_store/features/user/profile/presentation/view/profile_view.dart';
+import 'package:sadio_mane_store/features/user/main/presentation/cubit/main_cubit.dart';
 import 'package:sadio_mane_store/features/user/main/presentation/view/main_screen.dart';
+import 'package:sadio_mane_store/features/user/profile/presentation/view/profile_view.dart';
 import 'package:sadio_mane_store/test_screen.dart';
 
 class AppRoutes {
@@ -36,7 +38,12 @@ class AppRoutes {
           ),
         );
       case RoutesString.mainScreen:
-        return MaterialPageRoute(builder: (_) => const MainScreenView());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => MainCubit(),
+            child: const MainScreenView(),
+          ),
+        );
       case RoutesString.signIn:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
@@ -76,7 +83,10 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const FavoriteView());
       case RoutesString.userProfile:
         return MaterialPageRoute(builder: (_) => const ProfileView());
-
+      case RoutesString.webView:
+        return MaterialPageRoute(
+          builder: (_) => CustomWebView(url: route.arguments as String),
+        );
       default:
         return null;
     }

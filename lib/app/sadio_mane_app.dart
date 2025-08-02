@@ -19,6 +19,7 @@ class SadioManeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MultiBlocProvider(
       providers: [
         BlocProvider<InternetConnectionCubit>(
@@ -47,9 +48,9 @@ class SadioManeApp extends StatelessWidget {
                 GlobalCupertinoLocalizations.delegate,
               ],
               supportedLocales: S.delegate.supportedLocales,
-              theme: darkTheme,
-              // SharedPrefHelper.getBool(SharedPrefKey.isDarkMode)
-              // : lightTheme,
+              theme: SharedPrefHelper.getBool(SharedPrefKey.isDarkMode)
+                  ? darkTheme
+                  : lightTheme,
               onGenerateRoute: AppRoutes.generateRoute,
 
               debugShowCheckedModeBanner: EnvVariable.getInstance.isDev,

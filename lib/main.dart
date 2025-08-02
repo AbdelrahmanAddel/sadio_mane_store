@@ -11,6 +11,8 @@ import 'package:sadio_mane_store/app/env_variable.dart';
 import 'package:sadio_mane_store/app/sadio_mane_app.dart';
 import 'package:sadio_mane_store/core/dependency_injection.dart/dependency_injection.dart';
 import 'package:sadio_mane_store/core/helpers/shared_prefrence/shared_prefrence.dart';
+import 'package:sadio_mane_store/core/networking/dio_factory.dart';
+import 'package:sadio_mane_store/core/routes/routes_string.dart';
 import 'package:sadio_mane_store/features/admin/notification/data/data_source/notification_local_data_source.dart';
 import 'package:sadio_mane_store/features/admin/notification/data/send_cloud_notification.dart';
 import 'package:sadio_mane_store/firebase_options.dart';
@@ -21,10 +23,19 @@ void main() async {
   await _initApp();
   await _hiveInit();
   await NotificationsHelper.getInstance.initFirebaseMessaging();
-
   Bloc.observer = AppBlocObserver();
   await _lockOrientation();
+  await _onUnauthorized();
   runApp(const SadioManeApp());
+}
+
+Future<void> _onUnauthorized() async {
+  DioFactory.onUnauthorized = () {
+    getIt<GlobalKey<NavigatorState>>().currentState?.pushNamedAndRemoveUntil(
+      RoutesString.signIn,
+      (route) => false,
+    );
+  };
 }
 
 Future<void> _hiveInit() async {

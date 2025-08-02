@@ -56,6 +56,12 @@ import 'package:sadio_mane_store/features/admin/users/logic/repository/users_rep
 import 'package:sadio_mane_store/features/admin/users/logic/usecase/delete_users_usecase.dart';
 import 'package:sadio_mane_store/features/admin/users/logic/usecase/get_users_usecase.dart';
 import 'package:sadio_mane_store/features/admin/users/presentation/bloc/users_bloc.dart';
+import 'package:sadio_mane_store/features/user/profile/data/datasources/get_user_profile_api_service.dart';
+import 'package:sadio_mane_store/features/user/profile/data/datasources/get_user_profile_remote_data_source.dart';
+import 'package:sadio_mane_store/features/user/profile/data/repositories/profile_repository_impl.dart';
+import 'package:sadio_mane_store/features/user/profile/domain/repositories/profile_repository.dart';
+import 'package:sadio_mane_store/features/user/profile/domain/usecases/get_profile_usecase.dart';
+import 'package:sadio_mane_store/features/user/profile/presentation/bloc/profile_bloc.dart';
 
 final GetIt getIt = GetIt.instance;
 void setUpGetIt() {
@@ -70,6 +76,7 @@ void setUpGetIt() {
   _products(dio);
   _users(dio);
   _notification();
+  _profile(dio);
   debugPrint('✅ GetIt setup done');
 }
 
@@ -195,4 +202,15 @@ void _signIn(Dio dio) {
       () => SignInUsecase(signInRepository: getIt()),
     )
     ..registerFactory<SignInCubit>(() => SignInCubit(getIt(), getIt()));
+}
+
+void _profile(Dio dio) {
+  getIt
+    ..registerLazySingleton(() => GetUserProfileApiService(dio))
+    ..registerLazySingleton(() => GetUserProfileRemoteDataSource(getIt()))
+    ..registerLazySingleton<ProfileRepository>(
+      () => ProfileRepositoryImpl(getIt()),
+    )
+    ..registerLazySingleton(() => GetProfileUsecase(getIt()))
+    ..registerFactory(() => ProfileBloc(getIt()));
 }
