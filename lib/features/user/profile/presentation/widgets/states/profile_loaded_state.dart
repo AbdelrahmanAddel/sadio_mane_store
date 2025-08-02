@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,7 +25,7 @@ class ProfileLoadedWidget extends StatelessWidget {
           context.tr.application_features,
           style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w400),
         ),
-        const ProfileFeatureItem(),
+        FadeInRight(child: const ProfileFeatureItem()),
       ],
     );
   }

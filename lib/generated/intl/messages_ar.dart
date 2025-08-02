@@ -27,6 +27,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "مميزات التطبيق",
     ),
     "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+    "are_you_sure_you_want_to_log_out": MessageLookupByLibrary.simpleMessage(
+      "هل أنت متأكد من تسجيل الخروج؟",
+    ),
     "build_developer": MessageLookupByLibrary.simpleMessage("مطور التطبيق"),
     "build_version": MessageLookupByLibrary.simpleMessage("نسخة التطبيق"),
     "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),

@@ -7,14 +7,18 @@ class ProfileFeatureItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final items = ProfileFeatureItemsBuilder.build(context);
-    return ListView.separated(
-      physics: const NeverScrollableScrollPhysics(),
-      itemBuilder: (context, index) => items[index],
-      itemCount: items.length,
-      shrinkWrap: true,
-      separatorBuilder: (BuildContext context, int index) {
-        return verticalSpace(30);
+    return FutureBuilder(
+      future: ProfileFeatureItemsBuilder.build(context),
+      builder: (context, items) {
+        return ListView.separated(
+          physics: const NeverScrollableScrollPhysics(),
+          itemBuilder: (context, index) => items.data?[index],
+          itemCount: items.data?.length ?? 0,
+          shrinkWrap: true,
+          separatorBuilder: (BuildContext context, int index) {
+            return verticalSpace(30);
+          },
+        );
       },
     );
   }

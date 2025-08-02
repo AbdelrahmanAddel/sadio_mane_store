@@ -38,5 +38,6 @@
     "arabic": "Arabic",
     "english": "English",
     "light_mode": "Light Mode",
-    "theme": "Theme"
+    "theme": "Theme",
+    "are_you_sure_you_want_to_log_out": "Are you sure you want to log out?"
 }

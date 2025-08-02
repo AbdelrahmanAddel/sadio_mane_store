@@ -27,6 +27,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Application Features",
     ),
     "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
+    "are_you_sure_you_want_to_log_out": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to log out?",
+    ),
     "build_developer": MessageLookupByLibrary.simpleMessage("Build Developer"),
     "build_version": MessageLookupByLibrary.simpleMessage("Build Version"),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),

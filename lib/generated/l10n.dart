@@ -363,6 +363,16 @@ class S {
   String get theme {
     return Intl.message('Theme', name: 'theme', desc: '', args: []);
   }
+
+  /// `Are you sure you want to log out?`
+  String get are_you_sure_you_want_to_log_out {
+    return Intl.message(
+      'Are you sure you want to log out?',
+      name: 'are_you_sure_you_want_to_log_out',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
