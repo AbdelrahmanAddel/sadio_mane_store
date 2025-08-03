@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sadio_mane_store/features/user/home/presentation/view/home_page.dart';
 import 'package:sadio_mane_store/features/user/categories/presentation/view/categories_view.dart';
 import 'package:sadio_mane_store/features/user/favorite/presentation/view/favorite_view.dart';
-import 'package:sadio_mane_store/features/user/home/presentation/view/home_view.dart';
 import 'package:sadio_mane_store/features/user/main/enum/main_view_enums.dart';
 import 'package:sadio_mane_store/features/user/main/presentation/cubit/main_cubit.dart';
 import 'package:sadio_mane_store/features/user/main/presentation/cubit/main_state.dart';

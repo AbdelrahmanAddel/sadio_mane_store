@@ -19,7 +19,6 @@ class SadioManeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MultiBlocProvider(
       providers: [
         BlocProvider<InternetConnectionCubit>(
@@ -53,7 +52,7 @@ class SadioManeApp extends StatelessWidget {
                   : lightTheme,
               onGenerateRoute: AppRoutes.generateRoute,
 
-              debugShowCheckedModeBanner: EnvVariable.getInstance.isDev,
+              debugShowCheckedModeBanner: false,
             ),
           );
         },
