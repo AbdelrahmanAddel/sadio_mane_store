@@ -36,6 +36,13 @@ import 'package:sadio_mane_store/features/admin/products/logic/usecase/delete_pr
 import 'package:sadio_mane_store/features/admin/products/logic/usecase/get_product_usecase.dart';
 import 'package:sadio_mane_store/features/admin/products/logic/usecase/update_product_usecase.dart';
 import 'package:sadio_mane_store/features/admin/products/presentation/bloc/product_bloc.dart';
+import 'package:sadio_mane_store/features/admin/users/data/data_source/users_api_service.dart';
+import 'package:sadio_mane_store/features/admin/users/data/data_source/users_remote_data_source.dart';
+import 'package:sadio_mane_store/features/admin/users/data/repository/users_repository_implmentation.dart';
+import 'package:sadio_mane_store/features/admin/users/logic/repository/users_repository.dart';
+import 'package:sadio_mane_store/features/admin/users/logic/usecase/delete_users_usecase.dart';
+import 'package:sadio_mane_store/features/admin/users/logic/usecase/get_users_usecase.dart';
+import 'package:sadio_mane_store/features/admin/users/presentation/bloc/users_bloc.dart';
 import 'package:sadio_mane_store/features/authentication/sign_in/data/data_source/sign_in_api_service.dart';
 import 'package:sadio_mane_store/features/authentication/sign_in/data/data_source/sign_in_remote_data_source.dart';
 import 'package:sadio_mane_store/features/authentication/sign_in/data/repository/sign_in_repository_implementation.dart';
@@ -49,13 +56,6 @@ import 'package:sadio_mane_store/features/authentication/sign_up/data/repository
 import 'package:sadio_mane_store/features/authentication/sign_up/logic/repository/sign_up_repository.dart';
 import 'package:sadio_mane_store/features/authentication/sign_up/logic/usecase/sign_up_usecase.dart';
 import 'package:sadio_mane_store/features/authentication/sign_up/presentation/cubit/sign_up_cubit.dart';
-import 'package:sadio_mane_store/features/admin/users/data/data_source/users_api_service.dart';
-import 'package:sadio_mane_store/features/admin/users/data/data_source/users_remote_data_source.dart';
-import 'package:sadio_mane_store/features/admin/users/data/repository/users_repository_implmentation.dart';
-import 'package:sadio_mane_store/features/admin/users/logic/repository/users_repository.dart';
-import 'package:sadio_mane_store/features/admin/users/logic/usecase/delete_users_usecase.dart';
-import 'package:sadio_mane_store/features/admin/users/logic/usecase/get_users_usecase.dart';
-import 'package:sadio_mane_store/features/admin/users/presentation/bloc/users_bloc.dart';
 import 'package:sadio_mane_store/features/user/profile/data/datasources/get_user_profile_api_service.dart';
 import 'package:sadio_mane_store/features/user/profile/data/datasources/get_user_profile_remote_data_source.dart';
 import 'package:sadio_mane_store/features/user/profile/data/repositories/profile_repository_impl.dart';

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:sadio_mane_store/features/user/home/presentation/widgets/home_view_body.dart';
 import 'package:sadio_mane_store/features/user/home/presentation/widgets/home_view_floating_action_buttons.dart';
 

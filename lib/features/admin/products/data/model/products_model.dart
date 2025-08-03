@@ -13,10 +13,10 @@ class ProductsModel {
 @JsonSerializable()
 class ProductModel {
   ProductModel({required this.products});
-
-  final List<ProductDataModel> products;
   factory ProductModel.fromJson(Map<String, dynamic> json) =>
       _$ProductModelFromJson(json);
+
+  final List<ProductDataModel> products;
 }
 
 @JsonSerializable()
