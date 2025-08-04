@@ -1,3 +1,4 @@
+import 'package:sadio_mane_store/features/admin/categories/data/model/get_categories_responce_model.dart';
 import 'package:sadio_mane_store/features/user/home/data/models/banner_models/sub_models/banner_product_data_model.dart';
 
 sealed class HomeState {
@@ -16,6 +17,20 @@ final class GetBannersSuccessState extends HomeState {
 
 final class GetBannersErrorState extends HomeState {
   const GetBannersErrorState(this.error);
+
+  final String error;
+}
+
+final class GetCategoriesLoadingState extends HomeState {}
+
+final class GetCategoriesSuccessState extends HomeState {
+  const GetCategoriesSuccessState(this.categories);
+
+  final List<CategoriesDataModel> categories;
+}
+
+final class GetCategoriesErrorState extends HomeState {
+  const GetCategoriesErrorState(this.error);
 
   final String error;
 }

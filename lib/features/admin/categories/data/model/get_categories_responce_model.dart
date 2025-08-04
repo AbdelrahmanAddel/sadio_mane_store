@@ -1,4 +1,4 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'get_categories_responce_model.g.dart';
 
@@ -11,11 +11,11 @@ class GetCategoriesResponceModel {
   final CategoriesModel? data;
 
   List<String> get categoryDropdown {
-    final list =
-        data?.categories?.map((category) => category.name ?? '').toList();
+    final list = data?.categories
+        ?.map((category) => category.name ?? '')
+        .toList();
     return list ?? [''];
   }
-  
 }
 
 @JsonSerializable()

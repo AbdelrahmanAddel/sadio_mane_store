@@ -61,6 +61,7 @@ import 'package:sadio_mane_store/features/user/home/data/datasources/home_remote
 import 'package:sadio_mane_store/features/user/home/data/repositories/home_repository_impl.dart';
 import 'package:sadio_mane_store/features/user/home/domain/repositories/home_repositry.dart';
 import 'package:sadio_mane_store/features/user/home/domain/usecases/get_banners_usecase.dart';
+import 'package:sadio_mane_store/features/user/home/domain/usecases/get_categories_usecase.dart';
 import 'package:sadio_mane_store/features/user/home/presentation/bloc/home_bloc.dart';
 import 'package:sadio_mane_store/features/user/profile/data/datasources/get_user_profile_api_service.dart';
 import 'package:sadio_mane_store/features/user/profile/data/datasources/get_user_profile_remote_data_source.dart';
@@ -228,5 +229,9 @@ void _home(Dio dio) {
     ..registerLazySingleton(() => HomeRemoteDataSource(getIt()))
     ..registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl(getIt()))
     ..registerLazySingleton(() => GetBannersUsecase(getIt()))
-    ..registerFactory(() => HomeBloc(getBannersUsecase: getIt()));
+    ..registerLazySingleton(() => GetHomeCategoriesUsecase(getIt()))
+    ..registerFactory(() => HomeBloc(
+          getBannersUsecase: getIt(),
+          getCategoriesUsecase: getIt(),
+        ));
 }

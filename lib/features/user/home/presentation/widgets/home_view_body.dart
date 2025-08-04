@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sadio_mane_store/features/user/home/presentation/bloc/home_bloc.dart';
 import 'package:sadio_mane_store/features/user/home/presentation/bloc/home_event.dart';
 import 'package:sadio_mane_store/features/user/home/presentation/widgets/banner/home_view_banner.dart';
-import 'package:sadio_mane_store/features/user/home/presentation/widgets/categories/home_categories_list_view.dart';
+import 'package:sadio_mane_store/features/user/home/presentation/widgets/categories/home_view_categories.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({required this.scrollController, super.key});
@@ -17,7 +17,7 @@ class HomeViewBody extends StatelessWidget {
         slivers: const [
           SliverToBoxAdapter(child: HomeViewBanner()),
 
-          SliverToBoxAdapter(child: HomeCategoriesListView()),
+          SliverToBoxAdapter(child: HomeViewCategories()),
         ],
       ),
     );

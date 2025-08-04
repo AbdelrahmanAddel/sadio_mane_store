@@ -1,5 +1,5 @@
-sealed class HomeEvent {
-  const HomeEvent();
-}
+sealed class HomeEvent {}
 
 class GetBannersEvent extends HomeEvent {}
+
+class GetCategoriesEvent extends HomeEvent {}

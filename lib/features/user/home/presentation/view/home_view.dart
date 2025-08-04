@@ -27,7 +27,7 @@ class _HomeViewState extends State<HomeView> {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 10.w),
       child: BlocProvider(
-        create: (context) => getIt<HomeBloc>()..add(GetBannersEvent()),
+        create: (context) => getIt<HomeBloc>()..add(GetBannersEvent())..add(GetCategoriesEvent()),
         child: Stack(
           children: [
             HomeViewBody(scrollController: scrollController),
