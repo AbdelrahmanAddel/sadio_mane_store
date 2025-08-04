@@ -1,0 +1,13 @@
+import 'package:dio/dio.dart';
+import 'package:retrofit/retrofit.dart';
+import 'package:sadio_mane_store/core/networking/api_strings_and_end_points.dart';
+import 'package:sadio_mane_store/features/user/home/data/models/banner_models/banner_model.dart';
+
+part 'home_api_service.g.dart';
+
+@RestApi(baseUrl: ApiEndPoints.baseUrl)
+abstract class HomeApiService {
+  factory HomeApiService(Dio dio) = _HomeApiService;
+  @POST(ApiEndPoints.graphQl)
+  Future<BannerModel> getBanners(@Body() Map<String, dynamic> query);
+}

@@ -1,67 +1,54 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
-import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
-import 'package:sadio_mane_store/features/user/home/presentation/widgets/banner/home_view_banner_item.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:sadio_mane_store/features/user/home/presentation/bloc/home_bloc.dart';
+import 'package:sadio_mane_store/features/user/home/presentation/bloc/home_state.dart';
+import 'package:sadio_mane_store/features/user/home/presentation/widgets/banner/states/build_home_banner_success_state.dart';
 
-class HomeViewBanner extends StatefulWidget {
+class HomeViewBanner extends StatelessWidget {
   const HomeViewBanner({super.key});
-  @override
-  State<HomeViewBanner> createState() => _HomeViewBannerState();
-}
 
-class _HomeViewBannerState extends State<HomeViewBanner> {
-  int activeIndex = 0;
   @override
   Widget build(BuildContext context) {
+    return BlocBuilder<HomeBloc, HomeState>(
+      buildWhen: (previous, current) {
+        switch (current) {
+          case GetBannersLoadingState():
+          case GetBannersSuccessState():
+          case GetBannersErrorState():
+            return true;
+          default:
+            return false;
+        }
+      },
+      builder: (context, state) {
+        switch (state) {
+          case GetBannersLoadingState():
+            return _buildHomeViewLoadingState();
+          case GetBannersSuccessState():
+            return BuildHomeViewSuccessState(banners: state.banners);
+          case GetBannersErrorState():
+            return _buildHomeViewErrorState(error: state.error);
+          default:
+            return const SizedBox.shrink();
+        }
+      },
+    );
+  }
+
+  Widget _buildHomeViewErrorState({required String error}) {
+    return Center(
+      child: Text(error, style: TextStyle(fontSize: 20.sp)),
+    );
+  }
+
+  Widget _buildHomeViewLoadingState() {
     return Column(
       children: [
-        _buildHomeViewBanner(),
-        verticalSpace(15),
-        _buildAnimatedSmoothIndicator(),
+        const Center(child: CircularProgressIndicator()),
         verticalSpace(20),
       ],
-    );
-  }
-
-  Widget _buildHomeViewBanner() {
-    return CarouselSlider.builder(
-      itemCount: 3,
-      itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) {
-        return const HomeViewBannerItem();
-      },
-      options: _buildCarouselOptions(),
-    );
-  }
-
-  Widget _buildAnimatedSmoothIndicator() {
-    return AnimatedSmoothIndicator(
-      activeIndex: activeIndex,
-      count: 3,
-      effect: SlideEffect(
-        dotWidth: 20.w,
-        dotHeight: 4.h,
-        activeDotColor: context.theme.appColors.bluePinkDark,
-      ),
-    );
-  }
-
-  CarouselOptions _buildCarouselOptions() {
-    return CarouselOptions(
-      onPageChanged: (index, reason) {
-        setState(() {
-          activeIndex = index;
-        });
-      },
-      height: 150.h,
-      viewportFraction: 1,
-      autoPlay: true,
-      autoPlayInterval: const Duration(seconds: 3),
-      autoPlayAnimationDuration: const Duration(seconds: 2),
-      autoPlayCurve: Curves.bounceIn,
-      enlargeCenterPage: true,
     );
   }
 }
