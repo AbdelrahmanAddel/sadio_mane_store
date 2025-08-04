@@ -15,7 +15,7 @@ class BuildHomeViewSuccessState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final homeBloc = context.read<HomeBloc>();
+    final homeBloc = context.watch<HomeBloc>();
     return Column(
       children: [
         _buildHomeViewBanner(banners: banners, homeBloc: homeBloc),
