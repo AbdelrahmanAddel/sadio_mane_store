@@ -3,9 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadio_mane_store/core/common/widget/custom_container_linear_admin.dart';
 import 'package:sadio_mane_store/core/common/widget/custom_network_image.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
+import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
+import 'package:sadio_mane_store/features/admin/products/data/model/products_model.dart';
 
-class ProductItem extends StatelessWidget {
-  const ProductItem({super.key});
+class HomeViewProductItem extends StatelessWidget {
+  const HomeViewProductItem({required this.product, super.key});
+  final ProductDataModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -18,14 +21,14 @@ class ProductItem extends StatelessWidget {
             verticalSpace(5),
             _buildProductContainerRow(),
             verticalSpace(6),
-            Expanded(child: _buildProductImage()),
+            Expanded(child: _buildProductImage(context)),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildProductImage() {
+  Widget _buildProductImage(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -34,17 +37,12 @@ class ProductItem extends StatelessWidget {
             child: CustomCachedNetworkImage(
               width: double.infinity,
               height: 150.h,
-              imageUrl:
-                  'https://modenamotorsgmbh.com/63931-thickbox_default/porsche-911-992-carrera-4-gts-cabrio.jpg',
+              imageUrl: product.images?[0] ?? '',
             ),
           ),
         ),
-        verticalSpace(2),
-        const Text('Hello World 10'),
-        verticalSpace(2),
-        const Text('Electronics'),
-        verticalSpace(2),
-        const Text(r'price  $500'),
+        verticalSpace(4),
+        _buildProductTitles(context),
       ],
     );
   }
@@ -55,6 +53,30 @@ class ProductItem extends StatelessWidget {
       children: [
         Icon(Icons.share_rounded),
         Icon(Icons.favorite_border_rounded),
+      ],
+    );
+  }
+
+  Widget _buildProductTitles(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          product.title ?? '',
+          style: context.theme.textTheme.titleMedium,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
+        verticalSpace(2),
+        Text(
+          product.category?.name ?? '',
+          style: context.theme.textTheme.titleMedium,
+        ),
+        verticalSpace(2),
+        Text(
+          '\$${product.price}',
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
       ],
     );
   }

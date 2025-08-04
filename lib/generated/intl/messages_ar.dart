@@ -68,6 +68,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "no": MessageLookupByLibrary.simpleMessage("لا"),
     "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+    "see_all_products": MessageLookupByLibrary.simpleMessage(
+      "عرض جميع المنتجات",
+    ),
     "sign_up": MessageLookupByLibrary.simpleMessage("آنشاء حساب"),
     "sign_up_welcome": MessageLookupByLibrary.simpleMessage(
       "مرحبا، الرجاء إضافة المعلومات الخاصة بك",

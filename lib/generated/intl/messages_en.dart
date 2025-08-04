@@ -70,6 +70,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "no": MessageLookupByLibrary.simpleMessage("No"),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
+    "see_all_products": MessageLookupByLibrary.simpleMessage(
+      "See All Products",
+    ),
     "sign_up": MessageLookupByLibrary.simpleMessage("Sign Up"),
     "sign_up_welcome": MessageLookupByLibrary.simpleMessage(
       "Welcome, Please add your information",

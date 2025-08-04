@@ -373,6 +373,16 @@ class S {
       args: [],
     );
   }
+
+  /// `See All Products`
+  String get see_all_products {
+    return Intl.message(
+      'See All Products',
+      name: 'see_all_products',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
