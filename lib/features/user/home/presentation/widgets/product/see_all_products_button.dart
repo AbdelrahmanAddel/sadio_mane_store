@@ -7,13 +7,14 @@ class SeeAllProductsButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
+    return SliverToBoxAdapter(
+      child: MaterialButton(
       color: context.theme.appColors.bluePinkLight,
       onPressed: () {},
       child: Text(
         context.tr.see_all_products,
         style: const TextStyle(color: Colors.white, fontSize: 18),
       ),
-    );
+    ));
   }
 }

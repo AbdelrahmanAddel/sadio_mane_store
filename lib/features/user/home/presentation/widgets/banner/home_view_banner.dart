@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
+import 'package:sadio_mane_store/features/admin/dashboard/presentation/widgets/dashboard_loading.dart';
 import 'package:sadio_mane_store/features/user/home/presentation/bloc/home_bloc.dart';
 import 'package:sadio_mane_store/features/user/home/presentation/bloc/home_state.dart';
 import 'package:sadio_mane_store/features/user/home/presentation/widgets/banner/states/build_home_banner_success_state.dart';
@@ -44,11 +45,14 @@ class HomeViewBanner extends StatelessWidget {
   }
 
   Widget _buildHomeViewLoadingState() {
-    return Column(
-      children: [
-        const Center(child: CircularProgressIndicator()),
-        verticalSpace(20),
-      ],
+    return SizedBox(
+      height: 180.h,
+      child: Column(
+        children: [
+          LoadingShimmer(height: 150.h),
+          verticalSpace(10),
+        ],
+      ),
     );
   }
 }

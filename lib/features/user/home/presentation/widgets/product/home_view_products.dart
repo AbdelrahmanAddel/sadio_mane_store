@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sadio_mane_store/features/user/home/presentation/bloc/home_bloc.dart';
 import 'package:sadio_mane_store/features/user/home/presentation/bloc/home_state.dart';
+import 'package:sadio_mane_store/features/user/home/presentation/widgets/product/states/build_product_loading_state.dart';
 import 'package:sadio_mane_store/features/user/home/presentation/widgets/product/states/build_product_success_state.dart';
 
 class HomeViewProducts extends StatelessWidget {
@@ -16,9 +17,7 @@ class HomeViewProducts extends StatelessWidget {
           current is GetProductsErrorState,
       builder: (context, state) {
         return switch (state) {
-          GetProductsLoadingState() => const SliverToBoxAdapter(
-            child: Center(child: CircularProgressIndicator()),
-          ),
+          GetProductsLoadingState() => const BuildProductsLoadingState(),
           GetProductsSuccessState() => BuildProductSuccessState(
             products: state.products,
           ),

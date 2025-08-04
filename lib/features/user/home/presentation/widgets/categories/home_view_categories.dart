@@ -4,6 +4,7 @@ import 'package:sadio_mane_store/core/helpers/extensions/localization_extension.
 import 'package:sadio_mane_store/features/user/home/presentation/bloc/home_bloc.dart';
 import 'package:sadio_mane_store/features/user/home/presentation/bloc/home_state.dart';
 import 'package:sadio_mane_store/features/user/home/presentation/widgets/categories/states/buid_categories_succes_state.dart';
+import 'package:sadio_mane_store/features/user/home/presentation/widgets/categories/states/build_categories_loading_state.dart';
 
 class HomeViewCategories extends StatelessWidget {
   const HomeViewCategories({super.key});
@@ -26,7 +27,7 @@ class HomeViewCategories extends StatelessWidget {
           case GetCategoriesSuccessState():
             return BuildCategorySuccessState(categories: state.categories);
           case GetCategoriesLoadingState():
-            return const Center(child: CircularProgressIndicator());
+            return const BuildCategoriesLoadingState();
           case GetCategoriesErrorState():
             return Center(child: Text(context.tr.something_went_wrong));
           default:
