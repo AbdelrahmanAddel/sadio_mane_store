@@ -20,13 +20,16 @@ class CustomCachedNetworkImage extends StatelessWidget {
   final double? borderRadius;
   @override
   Widget build(BuildContext context) {
-    return CachedNetworkImage(
-      width: width ?? 100.w,
-      height: height ?? 100.h,
-      imageUrl: imageUrl == '' ? errorImage! : imageUrl,
-      fit: BoxFit.fill,
-      placeholder: (context, url) => _buildLoadingImage(),
-      errorWidget: (context, url, error) => const Icon(Icons.error),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(borderRadius ?? 14),
+      child: CachedNetworkImage(
+        width: width ?? 100.w,
+        height: height ?? 100.h,
+        imageUrl: imageUrl == '' ? errorImage! : imageUrl,
+        fit: BoxFit.fill,
+        placeholder: (context, url) => _buildLoadingImage(),
+        errorWidget: (context, url, error) => const Icon(Icons.error),
+      ),
     );
   }
 
