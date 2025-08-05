@@ -36,6 +36,13 @@ import 'package:sadio_mane_store/features/admin/products/logic/usecase/delete_pr
 import 'package:sadio_mane_store/features/admin/products/logic/usecase/get_product_usecase.dart';
 import 'package:sadio_mane_store/features/admin/products/logic/usecase/update_product_usecase.dart';
 import 'package:sadio_mane_store/features/admin/products/presentation/bloc/product_bloc.dart';
+import 'package:sadio_mane_store/features/admin/users/data/data_source/users_api_service.dart';
+import 'package:sadio_mane_store/features/admin/users/data/data_source/users_remote_data_source.dart';
+import 'package:sadio_mane_store/features/admin/users/data/repository/users_repository_implmentation.dart';
+import 'package:sadio_mane_store/features/admin/users/logic/repository/users_repository.dart';
+import 'package:sadio_mane_store/features/admin/users/logic/usecase/delete_users_usecase.dart';
+import 'package:sadio_mane_store/features/admin/users/logic/usecase/get_users_usecase.dart';
+import 'package:sadio_mane_store/features/admin/users/presentation/bloc/users_bloc.dart';
 import 'package:sadio_mane_store/features/authentication/sign_in/data/data_source/sign_in_api_service.dart';
 import 'package:sadio_mane_store/features/authentication/sign_in/data/data_source/sign_in_remote_data_source.dart';
 import 'package:sadio_mane_store/features/authentication/sign_in/data/repository/sign_in_repository_implementation.dart';
@@ -49,13 +56,14 @@ import 'package:sadio_mane_store/features/authentication/sign_up/data/repository
 import 'package:sadio_mane_store/features/authentication/sign_up/logic/repository/sign_up_repository.dart';
 import 'package:sadio_mane_store/features/authentication/sign_up/logic/usecase/sign_up_usecase.dart';
 import 'package:sadio_mane_store/features/authentication/sign_up/presentation/cubit/sign_up_cubit.dart';
-import 'package:sadio_mane_store/features/admin/users/data/data_source/users_api_service.dart';
-import 'package:sadio_mane_store/features/admin/users/data/data_source/users_remote_data_source.dart';
-import 'package:sadio_mane_store/features/admin/users/data/repository/users_repository_implmentation.dart';
-import 'package:sadio_mane_store/features/admin/users/logic/repository/users_repository.dart';
-import 'package:sadio_mane_store/features/admin/users/logic/usecase/delete_users_usecase.dart';
-import 'package:sadio_mane_store/features/admin/users/logic/usecase/get_users_usecase.dart';
-import 'package:sadio_mane_store/features/admin/users/presentation/bloc/users_bloc.dart';
+import 'package:sadio_mane_store/features/user/home/data/datasources/home_api_service.dart';
+import 'package:sadio_mane_store/features/user/home/data/datasources/home_remote_data_source.dart';
+import 'package:sadio_mane_store/features/user/home/data/repositories/home_repository_impl.dart';
+import 'package:sadio_mane_store/features/user/home/domain/repositories/home_repositry.dart';
+import 'package:sadio_mane_store/features/user/home/domain/usecases/get_banners_usecase.dart';
+import 'package:sadio_mane_store/features/user/home/domain/usecases/get_categories_usecase.dart';
+import 'package:sadio_mane_store/features/user/home/domain/usecases/get_products_usecase.dart';
+import 'package:sadio_mane_store/features/user/home/presentation/bloc/home_bloc.dart';
 import 'package:sadio_mane_store/features/user/profile/data/datasources/get_user_profile_api_service.dart';
 import 'package:sadio_mane_store/features/user/profile/data/datasources/get_user_profile_remote_data_source.dart';
 import 'package:sadio_mane_store/features/user/profile/data/repositories/profile_repository_impl.dart';
@@ -77,6 +85,7 @@ void setUpGetIt() {
   _users(dio);
   _notification();
   _profile(dio);
+  _home(dio);
   debugPrint('✅ GetIt setup done');
 }
 
@@ -213,4 +222,19 @@ void _profile(Dio dio) {
     )
     ..registerLazySingleton(() => GetProfileUsecase(getIt()))
     ..registerFactory(() => ProfileBloc(getIt()));
+}
+
+void _home(Dio dio) {
+  getIt
+    ..registerLazySingleton(() => HomeApiService(dio))
+    ..registerLazySingleton(() => HomeRemoteDataSource(getIt()))
+    ..registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl(getIt()))
+    ..registerLazySingleton(() => GetBannersUsecase(getIt()))
+    ..registerLazySingleton(() => GetHomeCategoriesUsecase(getIt()))
+    ..registerLazySingleton(() => GetHomeProductsUsecase(getIt()))
+    ..registerFactory(() => HomeBloc(
+          getBannersUsecase: getIt(),
+          getCategoriesUsecase: getIt(),
+          getProductsUsecase: getIt(),
+        ));
 }

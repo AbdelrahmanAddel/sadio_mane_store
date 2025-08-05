@@ -5,7 +5,7 @@ import 'package:sadio_mane_store/features/admin/categories/data/model/get_catego
 import 'package:sadio_mane_store/features/admin/categories/data/model/updata_category_request_model.dart';
 
 abstract class CategoriesRepository {
-  Future<Either<String, GetCategoriesResponceModel>> getCategories();
+  Future<Either<String, GetCategoriesResponseModel>> getCategories();
   Future<Either<String, AddCategoryResponceModel>> addCategories(
     AddCategoriesRequestModel addCategoriesModel,
   );

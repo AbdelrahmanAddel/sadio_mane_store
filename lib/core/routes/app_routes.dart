@@ -85,7 +85,7 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const ProfileView());
       case RoutesString.webView:
         return MaterialPageRoute(
-          builder: (_) => CustomWebView(url: route.arguments as String),
+          builder: (_) => CustomWebView(url: route.arguments! as String),
         );
       default:
         return null;

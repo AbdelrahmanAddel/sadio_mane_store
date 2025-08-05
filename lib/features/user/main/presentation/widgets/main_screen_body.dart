@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
 import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
 import 'package:sadio_mane_store/features/user/main/presentation/widgets/current_screen_display.dart';
 
@@ -17,11 +18,12 @@ class MainScreenBody extends StatelessWidget {
           image: AssetImage(context.theme.appImage.mainBackGround),
         ),
       ),
-      child: const Column(
+      child: Column(
         children: [
-          Expanded(child: CurrentDisplayScreen()),
+          verticalSpace(20),
+          const Expanded(child: CurrentDisplayScreen()),
 
-          MainScreenBottomBar(),
+          const MainScreenBottomBar(),
         ],
       ),
     );

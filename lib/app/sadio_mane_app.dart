@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sadio_mane_store/app/env_variable.dart';
 import 'package:sadio_mane_store/core/dependency_injection.dart/dependency_injection.dart';
 import 'package:sadio_mane_store/core/helpers/shared_prefrence/shared_pref_key.dart';
 import 'package:sadio_mane_store/core/helpers/shared_prefrence/shared_prefrence.dart';
@@ -19,7 +18,6 @@ class SadioManeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MultiBlocProvider(
       providers: [
         BlocProvider<InternetConnectionCubit>(
@@ -53,7 +51,7 @@ class SadioManeApp extends StatelessWidget {
                   : lightTheme,
               onGenerateRoute: AppRoutes.generateRoute,
 
-              debugShowCheckedModeBanner: EnvVariable.getInstance.isDev,
+              debugShowCheckedModeBanner: false,
             ),
           );
         },
