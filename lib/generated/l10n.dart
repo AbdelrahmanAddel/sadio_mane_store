@@ -383,6 +383,11 @@ class S {
       args: [],
     );
   }
+
+  /// `Add to Cart`
+  String get add_to_cart {
+    return Intl.message('Add to Cart', name: 'add_to_cart', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

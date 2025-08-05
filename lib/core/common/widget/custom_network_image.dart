@@ -33,6 +33,8 @@ class CustomCachedNetworkImage extends StatelessWidget {
     );
   }
 
+ 
+
   Widget _buildLoadingImage() {
     return Center(
       child: Shimmer.fromColors(
