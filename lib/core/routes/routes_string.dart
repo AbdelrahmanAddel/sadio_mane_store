@@ -16,4 +16,5 @@ abstract class RoutesString {
   static const String userCart = 'user_cart';
   static const String userProfile = 'user_profile';
   static const String webView = 'web_view';
+  static const String productDetails = 'product_details';
 }

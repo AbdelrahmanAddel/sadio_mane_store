@@ -11,6 +11,7 @@ import 'package:sadio_mane_store/features/admin/categories/presentation/bloc/cat
 import 'package:sadio_mane_store/features/admin/categories/presentation/view/categories_view.dart';
 import 'package:sadio_mane_store/features/admin/dashboard/presentation/bloc/dashboard_bloc.dart';
 import 'package:sadio_mane_store/features/admin/notification/presentation/view/notification_view.dart';
+import 'package:sadio_mane_store/features/admin/products/data/model/products_model.dart';
 import 'package:sadio_mane_store/features/admin/products/presentation/view/products_view.dart';
 import 'package:sadio_mane_store/features/admin/users/presentation/view/users_view.dart';
 import 'package:sadio_mane_store/features/authentication/sign_in/presentation/cubit/sign_in_cubit.dart';
@@ -21,6 +22,7 @@ import 'package:sadio_mane_store/features/user/categories/presentation/view/cate
 import 'package:sadio_mane_store/features/user/favorite/presentation/view/favorite_view.dart';
 import 'package:sadio_mane_store/features/user/main/presentation/cubit/main_cubit.dart';
 import 'package:sadio_mane_store/features/user/main/presentation/view/main_screen.dart';
+import 'package:sadio_mane_store/features/user/product_details/presentation/view/product_details_page.dart';
 import 'package:sadio_mane_store/features/user/profile/presentation/view/profile_view.dart';
 import 'package:sadio_mane_store/test_screen.dart';
 
@@ -86,6 +88,12 @@ class AppRoutes {
       case RoutesString.webView:
         return MaterialPageRoute(
           builder: (_) => CustomWebView(url: route.arguments! as String),
+        );
+      case RoutesString.productDetails:
+        return MaterialPageRoute(
+          builder: (_) =>
+              ProductDetailsView(
+                  product: route.arguments! as ProductDataModel),
         );
       default:
         return null;
