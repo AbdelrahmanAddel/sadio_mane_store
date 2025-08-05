@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sadio_mane_store/core/common/widget/custom_network_image.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
 import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
 import 'package:sadio_mane_store/features/admin/products/data/model/products_model.dart';
-import 'package:sadio_mane_store/features/user/product_details/presentation/widgets/product_details_appbar.dart';
+import 'package:sadio_mane_store/features/user/product_details/presentation/widgets/build_product_image.dart';
 import 'package:sadio_mane_store/features/user/product_details/presentation/widgets/product_details_custom_painter.dart';
 
 class ProductDetailsBody extends StatelessWidget {
@@ -19,17 +18,34 @@ class ProductDetailsBody extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.w),
           child: SafeArea(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                 ProductDetailsAppBar(title : product.title),
-                _buildProductImage(imageUrl: product.images?[0] ?? ''),
-                verticalSpace(20),
-                _buildProductDetails(),
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  verticalSpace(20),
+                  _buildShareAndAddToFavWidget(),
+                  verticalSpace(10),
+                  BuildProductImage(images: product.images ?? []),
+                  verticalSpace(20),
+                  _buildProductStrings(),
+                ],
+              ),
             ),
           ),
         ),
+      ],
+    );
+  }
+
+  Widget _buildShareAndAddToFavWidget() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.favorite_border, size: 40),
+        ),
+        IconButton(onPressed: () {}, icon: const Icon(Icons.share, size: 40)),
       ],
     );
   }
@@ -48,7 +64,7 @@ class ProductDetailsBody extends StatelessWidget {
     );
   }
 
-  Widget _buildProductDetails() {
+  Widget _buildProductStrings() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -58,25 +74,12 @@ class ProductDetailsBody extends StatelessWidget {
         ),
         verticalSpace(10),
         Text(
-          maxLines: 16,
+          maxLines: 300,
           product.description ?? 'This Product Has No Description',
           style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w400),
           overflow: TextOverflow.ellipsis,
         ),
       ],
-    );
-  }
-
-  Widget _buildProductImage({required String imageUrl}) {
-    return Center(
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(10.r),
-        child: CustomCachedNetworkImage(
-          width: 250.w,
-          height: 250.h,
-          imageUrl: imageUrl,
-        ),
-      ),
     );
   }
 }
