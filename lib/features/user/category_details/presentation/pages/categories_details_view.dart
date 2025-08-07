@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:sadio_mane_store/core/networking/dio_factory.dart';
 import 'package:sadio_mane_store/features/user/category_details/data/datasources/category_api_service.dart';
 import 'package:sadio_mane_store/features/user/category_details/data/datasources/category_remote_data_source.dart';
 import 'package:sadio_mane_store/features/user/category_details/data/repositories/category_details_repository_impl.dart';

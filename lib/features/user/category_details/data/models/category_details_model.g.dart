@@ -1,53 +1,47 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'category_details_model.dart';
+part of 'get_product_by_category_id.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-GetCategoriesDetailsResponseModel _$GetCategoriesDetailsResponseModelFromJson(
+GetCategoriesByIdResponseModel _$GetCategoriesByIdResponseModelFromJson(
         Map<String, dynamic> json) =>
-    GetCategoriesDetailsResponseModel(
+    GetCategoriesByIdResponseModel(
       json['data'] == null
           ? null
-          : CategoriesDetailsModel.fromJson(
-              json['data'] as Map<String, dynamic>),
+          : ProductModels.fromJson(json['data'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$GetCategoriesDetailsResponseModelToJson(
-        GetCategoriesDetailsResponseModel instance) =>
+Map<String, dynamic> _$GetCategoriesByIdResponseModelToJson(
+        GetCategoriesByIdResponseModel instance) =>
     <String, dynamic>{
       'data': instance.data,
     };
 
-CategoriesDetailsModel _$CategoriesDetailsModelFromJson(
-        Map<String, dynamic> json) =>
-    CategoriesDetailsModel(
+ProductModels _$ProductModelsFromJson(Map<String, dynamic> json) =>
+    ProductModels(
       products: (json['products'] as List<dynamic>?)
-          ?.map((e) =>
-              CategoriesDetailsDataModel.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ProductsData.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$CategoriesDetailsModelToJson(
-        CategoriesDetailsModel instance) =>
+Map<String, dynamic> _$ProductModelsToJson(ProductModels instance) =>
     <String, dynamic>{
       'products': instance.products,
     };
 
-CategoriesDetailsDataModel _$CategoriesDetailsDataModelFromJson(
-        Map<String, dynamic> json) =>
-    CategoriesDetailsDataModel(
+ProductsData _$ProductsDataFromJson(Map<String, dynamic> json) => ProductsData(
       title: json['title'] as String?,
       price: (json['price'] as num?)?.toInt(),
-      image: json['image'] as String?,
+      images:
+          (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
 
-Map<String, dynamic> _$CategoriesDetailsDataModelToJson(
-        CategoriesDetailsDataModel instance) =>
+Map<String, dynamic> _$ProductsDataToJson(ProductsData instance) =>
     <String, dynamic>{
       'title': instance.title,
       'price': instance.price,
-      'image': instance.image,
+      'images': instance.images,
     };
