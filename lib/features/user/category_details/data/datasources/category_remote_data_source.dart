@@ -8,10 +8,10 @@ class CategoryRemoteDataSource {
   CategoryRemoteDataSource(this.apiService);
   final CategoriesDetailsApiService apiService;
 
-  Future<List<CategoriesDetailsDataModel>> getCategoryDetails(String id) async {
-    final response = await apiService.getCategories(
-      CategoryGraph.categoryDetails(96 as Float),
+  Future<List<CategoriesDetailsDataModel>> getProductsByCategoryId(double id) async {
+    final response = await apiService.getProductByCategories(
+      CategoryGraph.getProductByCategory(id),
     );
-    return response.data?.categories ?? [];
+    return response.data?.products ?? [];
   }
 }

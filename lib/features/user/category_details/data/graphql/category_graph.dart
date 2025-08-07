@@ -1,20 +1,16 @@
-import 'dart:ffi';
-
 class CategoryGraph {
-  static Map<String, dynamic> categoryDetails(Float id) {
+  static Map<String, dynamic> getProductByCategory(double id) {
     return {
       'query': r'''
-  query CategoryDetails($id: Float!) {
-	products( categoryId: $id) {
-		title
-		price
-        images
-
-	}
-}
-
-''',
-      'variable': {'id': id},
+        query CategoryDetails($id: Float!) {
+          products(categoryId: $id) {
+            title
+            price
+            images
+          }
+        }
+      ''',
+      'variables': {'id': id},
     };
   }
 }

@@ -14,10 +14,10 @@ class GetCategoriesDetailsResponseModel {
 
 @JsonSerializable()
 class CategoriesDetailsModel {
-  CategoriesDetailsModel({this.categories});
+  CategoriesDetailsModel({this.products});
   factory CategoriesDetailsModel.fromJson(Map<String, dynamic> json) =>
       _$CategoriesDetailsModelFromJson(json);
-  List<CategoriesDetailsDataModel>? categories;
+  List<CategoriesDetailsDataModel>? products;
 }
 
 @JsonSerializable()
@@ -31,6 +31,6 @@ class CategoriesDetailsDataModel {
       _$CategoriesDetailsDataModelFromJson(json);
 
   final String? title;
-  final String? price;
+  final int? price;
   final String? image;
 }

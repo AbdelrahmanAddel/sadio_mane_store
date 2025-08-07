@@ -6,7 +6,7 @@ class GetCategoryDetailsUsecase {
   GetCategoryDetailsUsecase(this.repository);
   final CategoryDetailsRepository repository;
 
-  Future<Either<String, List<CategoriesDetailsDataModel>>> call(String id) async {
-    return repository.getCategoryDetails(id);
+  Future<Either<String, List<CategoriesDetailsDataModel>>> call(double id) async {
+    return repository.getProductsByCategoryId(id);
   }
 }

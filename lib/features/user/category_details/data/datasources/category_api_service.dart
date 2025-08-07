@@ -10,7 +10,7 @@ abstract class CategoriesDetailsApiService {
   factory CategoriesDetailsApiService(Dio dio) = _CategoriesDetailsApiService;
 
   @POST(ApiEndPoints.graphQl)
-  Future<GetCategoriesDetailsResponseModel> getCategories(
+  Future<GetCategoriesDetailsResponseModel> getProductByCategories(
     @Body() Map<String, dynamic> query,
   );
 }

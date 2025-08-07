@@ -9,11 +9,11 @@ class CategoryDetailsRepositoryImpl extends CategoryDetailsRepository {
   final CategoryRemoteDataSource remoteDataSource;
 
   @override
-  Future<Either<String, List<CategoriesDetailsDataModel>>> getCategoryDetails(
-    String id,
+  Future<Either<String, List<CategoriesDetailsDataModel>>> getProductsByCategoryId(
+    double id,
   ) async {
     try {
-      final result = await remoteDataSource.getCategoryDetails(id);
+      final result = await remoteDataSource.getProductsByCategoryId(id);
       return Right(result);
     } on Exception catch (error, stackTrace) {
       debugPrint(error.toString());

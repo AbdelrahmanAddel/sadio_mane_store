@@ -11,16 +11,35 @@ class CategoryDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: GetCategoryDetailsUsecase(
-        CategoryDetailsRepositoryImpl(
-          CategoryRemoteDataSource(CategoriesDetailsApiService(DioFactory.getDio())),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            MaterialButton(
+              onPressed: () async {
+                final response = await GetCategoryDetailsUsecase(
+                  CategoryDetailsRepositoryImpl(
+                    CategoryRemoteDataSource(
+                      CategoriesDetailsApiService(Dio()),
+                    ),
+                  ),
+                ).call(10.0);
+                response.fold(
+                  (error) {
+                    print(error);
+                  },
+                  (success) {
+                    print(success);
+                  },
+                );
+              },
+              child: Icon(Icons.abc, size: 50, color: Colors.black),
+            ),
+          ],
         ),
-      ).call('3'),
-      builder: (context, asyncSnapshot) {
-        print(asyncSnapshot.data);
-        return const Scaffold();
-      },
+      ),
     );
   }
 }

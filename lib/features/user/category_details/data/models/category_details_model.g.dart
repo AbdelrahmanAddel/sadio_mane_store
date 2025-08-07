@@ -24,7 +24,7 @@ Map<String, dynamic> _$GetCategoriesDetailsResponseModelToJson(
 CategoriesDetailsModel _$CategoriesDetailsModelFromJson(
         Map<String, dynamic> json) =>
     CategoriesDetailsModel(
-      categories: (json['categories'] as List<dynamic>?)
+      products: (json['products'] as List<dynamic>?)
           ?.map((e) =>
               CategoriesDetailsDataModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -33,14 +33,14 @@ CategoriesDetailsModel _$CategoriesDetailsModelFromJson(
 Map<String, dynamic> _$CategoriesDetailsModelToJson(
         CategoriesDetailsModel instance) =>
     <String, dynamic>{
-      'categories': instance.categories,
+      'products': instance.products,
     };
 
 CategoriesDetailsDataModel _$CategoriesDetailsDataModelFromJson(
         Map<String, dynamic> json) =>
     CategoriesDetailsDataModel(
       title: json['title'] as String?,
-      price: json['price'] as String?,
+      price: (json['price'] as num?)?.toInt(),
       image: json['image'] as String?,
     );
 
