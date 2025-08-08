@@ -1,0 +1,18 @@
+class GetAllProductGraph {
+  static Map<String, dynamic> getAllProductBody({required int offset}) {
+    return {
+      'query':
+          '''
+{
+  products(limit: 2, offset: $offset){
+    title
+    price
+    description
+    id
+  }
+}
+
+''',
+    };
+  }
+}

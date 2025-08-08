@@ -13,7 +13,7 @@ class HomeViewBody extends StatelessWidget {
   final ScrollController scrollController;
   @override
   Widget build(BuildContext context) {
-    final homeBloc = context.read<HomeBloc>();
+    final homeBloc = context.watch<HomeBloc>();
     return RefreshIndicator(
       onRefresh: () async => homeBloc.add(GetHomeDetailsEvent()),
       child: CustomScrollView(
@@ -24,7 +24,7 @@ class HomeViewBody extends StatelessWidget {
           SliverToBoxAdapter(child: verticalSpace(20)),
           const HomeViewProducts(),
           SliverToBoxAdapter(child: verticalSpace(20)),
-          if (homeBloc.productsLength >= 11)
+          if (homeBloc.productsLength >= 10)
             const SeeAllProductsButton()
           else
             const SliverToBoxAdapter(),
