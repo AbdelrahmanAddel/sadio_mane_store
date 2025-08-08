@@ -56,6 +56,12 @@ import 'package:sadio_mane_store/features/authentication/sign_up/data/repository
 import 'package:sadio_mane_store/features/authentication/sign_up/logic/repository/sign_up_repository.dart';
 import 'package:sadio_mane_store/features/authentication/sign_up/logic/usecase/sign_up_usecase.dart';
 import 'package:sadio_mane_store/features/authentication/sign_up/presentation/cubit/sign_up_cubit.dart';
+import 'package:sadio_mane_store/features/user/category_products/data/datasources/category_api_service.dart';
+import 'package:sadio_mane_store/features/user/category_products/data/datasources/category_remote_data_source.dart';
+import 'package:sadio_mane_store/features/user/category_products/data/repositories/category_details_repository_impl.dart';
+import 'package:sadio_mane_store/features/user/category_products/domain/repositories/category_details_repository.dart';
+import 'package:sadio_mane_store/features/user/category_products/domain/usecases/get_product_by_category_id_usecase.dart';
+import 'package:sadio_mane_store/features/user/category_products/presentation/bloc/category_details_bloc.dart';
 import 'package:sadio_mane_store/features/user/home/data/datasources/home_api_service.dart';
 import 'package:sadio_mane_store/features/user/home/data/datasources/home_remote_data_source.dart';
 import 'package:sadio_mane_store/features/user/home/data/repositories/home_repository_impl.dart';
@@ -86,7 +92,19 @@ void setUpGetIt() {
   _notification();
   _profile(dio);
   _home(dio);
+  _categoryDetails(dio);
   debugPrint('✅ GetIt setup done');
+}
+
+void _categoryDetails(Dio dio) {
+  getIt
+    ..registerLazySingleton(() => CategoriesDetailsApiService(dio))
+    ..registerLazySingleton(() => CategoryRemoteDataSource(getIt()))
+    ..registerLazySingleton<CategoryDetailsRepository>(
+      () => CategoryDetailsRepositoryImpl(getIt()),
+    )
+    ..registerLazySingleton(() => GetProductByCategoryIdUsecase(getIt()))
+    ..registerFactory(() => CategoryDetailsBloc(getIt()));
 }
 
 void _notification() {
@@ -232,9 +250,11 @@ void _home(Dio dio) {
     ..registerLazySingleton(() => GetBannersUsecase(getIt()))
     ..registerLazySingleton(() => GetHomeCategoriesUsecase(getIt()))
     ..registerLazySingleton(() => GetHomeProductsUsecase(getIt()))
-    ..registerFactory(() => HomeBloc(
-          getBannersUsecase: getIt(),
-          getCategoriesUsecase: getIt(),
-          getProductsUsecase: getIt(),
-        ));
+    ..registerFactory(
+      () => HomeBloc(
+        getBannersUsecase: getIt(),
+        getCategoriesUsecase: getIt(),
+        getProductsUsecase: getIt(),
+      ),
+    );
 }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'get_product_by_category_id.dart';
+part of 'get_product_by_category_id_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -33,6 +33,7 @@ Map<String, dynamic> _$ProductModelsToJson(ProductModels instance) =>
     };
 
 ProductsData _$ProductsDataFromJson(Map<String, dynamic> json) => ProductsData(
+      description: json['description'] as String?,
       title: json['title'] as String?,
       price: (json['price'] as num?)?.toInt(),
       images:
@@ -44,4 +45,5 @@ Map<String, dynamic> _$ProductsDataToJson(ProductsData instance) =>
       'title': instance.title,
       'price': instance.price,
       'images': instance.images,
+      'description': instance.description,
     };

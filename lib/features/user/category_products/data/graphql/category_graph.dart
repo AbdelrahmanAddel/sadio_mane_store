@@ -7,6 +7,7 @@ class CategoryGraph {
             title
             price
             images
+            description
           }
         }
       ''',

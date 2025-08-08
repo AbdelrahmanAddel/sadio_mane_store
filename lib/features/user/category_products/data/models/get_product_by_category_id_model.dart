@@ -5,9 +5,8 @@ part 'get_product_by_category_id_model.g.dart';
 @JsonSerializable()
 class GetCategoriesByIdResponseModel {
   GetCategoriesByIdResponseModel(this.data);
-  factory GetCategoriesByIdResponseModel.fromJson(
-    Map<String, dynamic> json,
-  ) => _$GetCategoriesByIdResponseModelFromJson(json);
+  factory GetCategoriesByIdResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$GetCategoriesByIdResponseModelFromJson(json);
 
   final ProductModels? data;
 }
@@ -23,6 +22,7 @@ class ProductModels {
 @JsonSerializable()
 class ProductsData {
   ProductsData({
+    required this.description,
     required this.title,
     required this.price,
     required this.images,
@@ -33,4 +33,5 @@ class ProductsData {
   final String? title;
   final int? price;
   final List<String>? images;
+  final String? description;
 }

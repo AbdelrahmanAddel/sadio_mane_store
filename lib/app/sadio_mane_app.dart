@@ -33,7 +33,7 @@ class SadioManeApp extends StatelessWidget {
             splitScreenMode: true,
             builder: (context, child) => MaterialApp(
               navigatorKey: getIt<GlobalKey<NavigatorState>>(),
-              initialRoute: RoutesString.categoryDetails,
+              initialRoute: RoutesString.mainScreen,
 
               locale: SharedPrefHelper.getBool(SharedPrefKey.language)
                   ? const Locale('ar')

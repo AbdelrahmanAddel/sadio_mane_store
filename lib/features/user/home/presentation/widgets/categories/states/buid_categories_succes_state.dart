@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadio_mane_store/core/common/widget/custom_network_image.dart';
+import 'package:sadio_mane_store/core/helpers/extensions/navigation_extension.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
+import 'package:sadio_mane_store/core/routes/app_routes.dart';
+import 'package:sadio_mane_store/core/routes/routes_string.dart';
 import 'package:sadio_mane_store/features/admin/categories/data/model/get_categories_responce_model.dart';
 
 class BuildCategorySuccessState extends StatelessWidget {
@@ -28,18 +31,26 @@ class BuildCategorySuccessState extends StatelessWidget {
     int index,
     CategoriesDataModel category,
   ) {
-    return Column(
-      children: [
-        Padding(
-          padding: EdgeInsets.only(left: index == 0 ? 6.w : 0),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(10.r),
-            child: CustomCachedNetworkImage(imageUrl: category.image ?? ''),
+    return GestureDetector(
+      onTap: () {
+        context.pushName(routeName: RoutesString.productsById ,arguments: (
+          categoryName:category.name ,
+          categoryId:double.parse(category.id ?? '')
+        ));
+      },
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(left: index == 0 ? 6.w : 0),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10.r),
+              child: CustomCachedNetworkImage(imageUrl: category.image ?? ''),
+            ),
           ),
-        ),
-        verticalSpace(10),
-        Text('${category.name}'),
-      ],
+          verticalSpace(10),
+          Text('${category.name}'),
+        ],
+      ),
     );
   }
 

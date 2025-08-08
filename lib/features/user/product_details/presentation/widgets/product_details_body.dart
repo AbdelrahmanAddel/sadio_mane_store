@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sadio_mane_store/core/common/widget/build_custom_paint.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
-import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
 import 'package:sadio_mane_store/features/admin/products/data/model/products_model.dart';
 import 'package:sadio_mane_store/features/user/product_details/presentation/widgets/build_product_image.dart';
-import 'package:sadio_mane_store/features/user/product_details/presentation/widgets/product_details_custom_painter.dart';
 
 class ProductDetailsBody extends StatelessWidget {
   const ProductDetailsBody({required this.product, super.key});
@@ -14,7 +13,7 @@ class ProductDetailsBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        _buildCustomPaint(context),
+        const BuildCustomPaint(),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.w),
           child: SafeArea(
@@ -50,19 +49,6 @@ class ProductDetailsBody extends StatelessWidget {
     );
   }
 
-  CustomPaint _buildCustomPaint(BuildContext context) {
-    return CustomPaint(
-      size: Size.infinite,
-      painter: ProductDetailsCustomPainter(
-        gradient: LinearGradient(
-          colors: [
-            context.theme.appColors.bluePinkDark,
-            context.theme.appColors.bluePinkLight,
-          ],
-        ),
-      ),
-    );
-  }
 
   Widget _buildProductStrings() {
     return Column(
@@ -83,3 +69,4 @@ class ProductDetailsBody extends StatelessWidget {
     );
   }
 }
+
