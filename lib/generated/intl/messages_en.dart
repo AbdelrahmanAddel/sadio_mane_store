@@ -22,9 +22,14 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "add_to_cart": MessageLookupByLibrary.simpleMessage("Add to Cart"),
     "app_name": MessageLookupByLibrary.simpleMessage("Sadio Mane Store"),
     "application_features": MessageLookupByLibrary.simpleMessage(
       "Application Features",
+    ),
+    "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
+    "are_you_sure_you_want_to_log_out": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to log out?",
     ),
     "build_developer": MessageLookupByLibrary.simpleMessage("Build Developer"),
     "build_version": MessageLookupByLibrary.simpleMessage("Build Version"),
@@ -40,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "create_account": MessageLookupByLibrary.simpleMessage("Create account"),
     "dark_mode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
+    "english": MessageLookupByLibrary.simpleMessage("English"),
     "full_name": MessageLookupByLibrary.simpleMessage("Full Name"),
     "image_removed": MessageLookupByLibrary.simpleMessage(
       "The image has been Deleted.",
@@ -48,8 +54,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "The image has been uploaded successfully.",
     ),
     "lang_code": MessageLookupByLibrary.simpleMessage("English"),
-    "language": MessageLookupByLibrary.simpleMessage("العربية"),
+    "language": MessageLookupByLibrary.simpleMessage("Language"),
     "language_tilte": MessageLookupByLibrary.simpleMessage("Language"),
+    "light_mode": MessageLookupByLibrary.simpleMessage("Light Mode"),
     "log_out": MessageLookupByLibrary.simpleMessage("Logout"),
     "log_out_from_app": MessageLookupByLibrary.simpleMessage(
       "Do you want log out?",
@@ -62,12 +69,20 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
     "no": MessageLookupByLibrary.simpleMessage("No"),
+    "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
+    "see_all_products": MessageLookupByLibrary.simpleMessage(
+      "See All Products",
+    ),
     "sign_up": MessageLookupByLibrary.simpleMessage("Sign Up"),
     "sign_up_welcome": MessageLookupByLibrary.simpleMessage(
       "Welcome, Please add your information",
     ),
+    "something_went_wrong": MessageLookupByLibrary.simpleMessage(
+      "Something went wrong ,Please try again later",
+    ),
     "sure": MessageLookupByLibrary.simpleMessage("Sure"),
+    "theme": MessageLookupByLibrary.simpleMessage("Theme"),
     "valid_email": MessageLookupByLibrary.simpleMessage(
       "Please enter a valid email",
     ),

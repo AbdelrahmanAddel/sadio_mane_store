@@ -3,21 +3,21 @@ import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart'
 
 class CustomContainerLinearAdmin extends StatelessWidget {
   const CustomContainerLinearAdmin({
-    required this.height,
-    required this.width,
-    required this.child,
+    this.height,
+    this.width,
+    this.child,
     super.key,
   });
 
-  final double height;
-  final double width;
-  final Widget child;
+  final double? height;
+  final double? width;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: width,
-      height: height,
+      width: width ?? double.infinity,
+      height: height ?? 200,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         gradient: LinearGradient(

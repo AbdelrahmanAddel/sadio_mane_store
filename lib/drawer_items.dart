@@ -5,7 +5,6 @@ import 'package:sadio_mane_store/core/helpers/shared_prefrence/shared_pref_key.d
 import 'package:sadio_mane_store/core/helpers/shared_prefrence/shared_prefrence.dart';
 import 'package:sadio_mane_store/core/routes/routes_string.dart';
 import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
-import 'package:sadio_mane_store/features/admin/customer_home_view.dart';
 import 'package:sadio_mane_store/features/admin/categories/presentation/view/categories_view.dart';
 import 'package:sadio_mane_store/features/admin/dashboard/presentation/view/dashboard_view.dart';
 import 'package:sadio_mane_store/features/admin/notification/presentation/view/notification_view.dart';

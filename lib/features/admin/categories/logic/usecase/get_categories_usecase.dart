@@ -5,7 +5,7 @@ import 'package:sadio_mane_store/features/admin/categories/logic/repository/cate
 class GetCategoriesUsecase {
   GetCategoriesUsecase( this.getCategoriesRepository);
   CategoriesRepository getCategoriesRepository;
-  Future<Either<String, GetCategoriesResponceModel>> call() {
+  Future<Either<String, GetCategoriesResponseModel>> call() {
     return getCategoriesRepository.getCategories();
   }
 }

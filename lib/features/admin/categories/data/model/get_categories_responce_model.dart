@@ -1,21 +1,21 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'get_categories_responce_model.g.dart';
 
 @JsonSerializable()
-class GetCategoriesResponceModel {
-  GetCategoriesResponceModel(this.data);
-  factory GetCategoriesResponceModel.fromJson(Map<String, dynamic> json) =>
-      _$GetCategoriesResponceModelFromJson(json);
+class GetCategoriesResponseModel {
+  GetCategoriesResponseModel(this.data);
+  factory GetCategoriesResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$GetCategoriesResponseModelFromJson(json);
 
   final CategoriesModel? data;
 
   List<String> get categoryDropdown {
-    final list =
-        data?.categories?.map((category) => category.name ?? '').toList();
+    final list = data?.categories
+        ?.map((category) => category.name ?? '')
+        .toList();
     return list ?? [''];
   }
-  
 }
 
 @JsonSerializable()

@@ -6,10 +6,7 @@ class UserCategoriesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text(
-        'Categories View\nFile: categories_view.dart\nFolder: categories',
-        textAlign: TextAlign.center,
-      ),
+      child: Text('Category'),
     );
   }
 }

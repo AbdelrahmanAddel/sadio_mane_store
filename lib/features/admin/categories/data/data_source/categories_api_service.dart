@@ -13,7 +13,7 @@ abstract class CategoriesApiService {
   factory CategoriesApiService(Dio dio) = _CategoriesApiService;
 
   @POST(ApiEndPoints.graphQl)
-  Future<GetCategoriesResponceModel> getCategories(
+  Future<GetCategoriesResponseModel> getCategories(
     @Body() Map<String, dynamic> query,
   );
   @POST(ApiEndPoints.graphQl)

@@ -21,7 +21,7 @@ class CustomTextFormField extends StatelessWidget {
   final String? hintText;
   final String? labelText;
   final String? Function(String?)? validator;
-  final bool obscureText;
+  final bool ? obscureText;
   final TextInputType? keyboardType;
   final TextInputAction? textInputAction;
   final Widget? suffixIcon;
@@ -34,13 +34,13 @@ class CustomTextFormField extends StatelessWidget {
     return TextFormField(
       readOnly: readOnly ?? false,
       onChanged: onChanged,
-      maxLines: maxlines,
+      maxLines: maxlines ?? 1,
       keyboardType: keyboardType ?? TextInputType.emailAddress,
       textInputAction: textInputAction ?? TextInputAction.next,
 
       controller: controller,
       validator: validator,
-      obscureText: obscureText,
+      obscureText: obscureText ?? false,
       decoration: InputDecoration(
         hintStyle: context.theme.textTheme.displaySmall,
         suffixIcon: suffixIcon,

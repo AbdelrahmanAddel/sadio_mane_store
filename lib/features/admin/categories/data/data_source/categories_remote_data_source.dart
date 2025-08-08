@@ -11,7 +11,7 @@ class CategoriesRemoteDataSource {
   CategoriesRemoteDataSource(this._categoriesApiService);
   final CategoriesApiService _categoriesApiService;
 
-  Future<Either<String, GetCategoriesResponceModel>> getCategories() async {
+  Future<Either<String, GetCategoriesResponseModel>> getCategories() async {
     try {
       final response = await _categoriesApiService.getCategories(
         CategoriesGraphBody.getCategoriesBody(),

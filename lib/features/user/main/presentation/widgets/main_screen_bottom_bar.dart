@@ -18,20 +18,21 @@ class MainScreenBottomBar extends StatelessWidget {
         children: [
           const BottomBarIcons(),
           Positioned(
-            left: -13,
-            top: 13,
+            left: -24.w,
+            top: 13.h,
             child: Container(
               width: 110.w,
               height: 110.h,
               decoration: BoxDecoration(
                 image: DecorationImage(
+                  fit: BoxFit.fill,
                   image: AssetImage(context.theme.appImage.bigNavBar),
                 ),
               ),
             ),
           ),
           Positioned(
-            left: 33.w,
+            left: 25.w,
             top: 37.h,
             child: SvgPicture.asset(
               Assets.assetsImagesSvgCarShop,
@@ -45,4 +46,4 @@ class MainScreenBottomBar extends StatelessWidget {
       ),
     );
   }
-} 
+}

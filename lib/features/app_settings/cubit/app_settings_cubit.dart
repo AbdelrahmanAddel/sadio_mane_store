@@ -21,7 +21,7 @@ class AppSettingsCubit extends Cubit<AppSettingsState> {
     emit(AppSettingsState.changeLanguage(isArabic: isArabic));
   }
 
-  Future<void> changeAppThmem() async {
+  Future<void> changeAppTheme() async {
     await SharedPrefHelper.setData(
       SharedPrefKey.isDarkMode,
       !SharedPrefHelper.getBool(SharedPrefKey.isDarkMode),
