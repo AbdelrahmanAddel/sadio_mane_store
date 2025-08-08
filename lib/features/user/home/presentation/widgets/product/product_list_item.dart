@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadio_mane_store/core/common/widget/custom_container_linear_admin.dart';
 import 'package:sadio_mane_store/core/common/widget/custom_network_image.dart';
+import 'package:sadio_mane_store/core/common/widget/share_and_add_to_favorite_widget.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
 import 'package:sadio_mane_store/core/routes/routes_string.dart';
 import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
@@ -26,7 +27,7 @@ class HomeViewProductItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               verticalSpace(5),
-              _buildProductContainerRow(),
+              const ShareAndAddToFavoriteWidget(),
               verticalSpace(6),
               Expanded(child: _buildProductImage(context)),
             ],
@@ -51,16 +52,6 @@ class HomeViewProductItem extends StatelessWidget {
         ),
         verticalSpace(4),
         _buildProductTitles(context),
-      ],
-    );
-  }
-
-  Widget _buildProductContainerRow() {
-    return const Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Icon(Icons.share_rounded),
-        Icon(Icons.favorite_border_rounded),
       ],
     );
   }

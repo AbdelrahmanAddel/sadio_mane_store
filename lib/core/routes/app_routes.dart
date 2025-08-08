@@ -19,10 +19,11 @@ import 'package:sadio_mane_store/features/authentication/sign_in/presentation/vi
 import 'package:sadio_mane_store/features/authentication/sign_up/presentation/cubit/sign_up_cubit.dart';
 import 'package:sadio_mane_store/features/authentication/sign_up/presentation/view/sign_up_view.dart';
 import 'package:sadio_mane_store/features/user/categories/presentation/view/categories_view.dart';
+import 'package:sadio_mane_store/features/user/category_products/presentation/view/categories_details_view.dart';
 import 'package:sadio_mane_store/features/user/favorite/presentation/view/favorite_view.dart';
 import 'package:sadio_mane_store/features/user/main/presentation/cubit/main_cubit.dart';
 import 'package:sadio_mane_store/features/user/main/presentation/view/main_screen.dart';
-import 'package:sadio_mane_store/features/user/product_details/presentation/view/product_details_page.dart';
+import 'package:sadio_mane_store/features/user/product_details/presentation/pages/product_details_page.dart';
 import 'package:sadio_mane_store/features/user/profile/presentation/view/profile_view.dart';
 import 'package:sadio_mane_store/test_screen.dart';
 
@@ -92,8 +93,14 @@ class AppRoutes {
       case RoutesString.productDetails:
         return MaterialPageRoute(
           builder: (_) =>
-              ProductDetailsView(
-                  product: route.arguments! as ProductDataModel),
+              ProductDetailsView(product: route.arguments! as ProductDataModel),
+        );
+      case RoutesString.productsById:
+        return MaterialPageRoute(
+          builder: (_) => ProductByIdView(
+            categoryDetails:
+                route.arguments! as ({String categoryName, double categoryId}),
+          ),
         );
       default:
         return null;
