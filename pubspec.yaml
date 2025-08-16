@@ -45,6 +45,14 @@ dependencies:
   hive_flutter: ^1.1.0
   connectivity_plus: ^6.1.4
   flutter_animate: ^4.5.2
+  webview_flutter: ^4.13.0
+  package_info_plus: ^8.3.0
+  carousel_slider: ^5.1.1
+  smooth_page_indicator: ^1.2.1
+  bloc_concurrency: ^0.3.0
+
+
+
 
 
 

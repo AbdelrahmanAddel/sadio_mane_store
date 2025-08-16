@@ -17,7 +17,7 @@ class ChangeThemeAndLanguageRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         CustomAppButton(
-          onTap: () => context.read<AppSettingsCubit>().changeAppThmem(),
+          onTap: () => context.read<AppSettingsCubit>().changeAppTheme(),
 
           child:
               SharedPrefHelper.getBool(SharedPrefKey.isDarkMode)

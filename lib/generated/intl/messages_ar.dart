@@ -22,9 +22,14 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "app_name": MessageLookupByLibrary.simpleMessage("متجر آسرو"),
+    "add_to_cart": MessageLookupByLibrary.simpleMessage("إضافة للسلة"),
+    "app_name": MessageLookupByLibrary.simpleMessage("متجر ساديو ماني"),
     "application_features": MessageLookupByLibrary.simpleMessage(
       "مميزات التطبيق",
+    ),
+    "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+    "are_you_sure_you_want_to_log_out": MessageLookupByLibrary.simpleMessage(
+      "هل أنت متأكد من تسجيل الخروج؟",
     ),
     "build_developer": MessageLookupByLibrary.simpleMessage("مطور التطبيق"),
     "build_version": MessageLookupByLibrary.simpleMessage("نسخة التطبيق"),
@@ -39,15 +44,17 @@ class MessageLookup extends MessageLookupByLibrary {
       "اختر منتجاتك",
     ),
     "create_account": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
-    "dark_mode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
+    "dark_mode": MessageLookupByLibrary.simpleMessage("الوضع الداكن"),
+    "english": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
     "full_name": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
     "image_removed": MessageLookupByLibrary.simpleMessage("تم مسح الصورة"),
     "image_uploaded": MessageLookupByLibrary.simpleMessage(
       "تم تحميل الصورة بنجاح",
     ),
     "lang_code": MessageLookupByLibrary.simpleMessage("العربية"),
-    "language": MessageLookupByLibrary.simpleMessage("English"),
+    "language": MessageLookupByLibrary.simpleMessage("اللغة"),
     "language_tilte": MessageLookupByLibrary.simpleMessage("اللغة"),
+    "light_mode": MessageLookupByLibrary.simpleMessage("الوضع الفاتح"),
     "log_out": MessageLookupByLibrary.simpleMessage("تسجيل خروج"),
     "log_out_from_app": MessageLookupByLibrary.simpleMessage(
       "هل تريد تسجيل الخروج؟",
@@ -60,12 +67,20 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "no": MessageLookupByLibrary.simpleMessage("لا"),
+    "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+    "see_all_products": MessageLookupByLibrary.simpleMessage(
+      "عرض جميع المنتجات",
+    ),
     "sign_up": MessageLookupByLibrary.simpleMessage("آنشاء حساب"),
     "sign_up_welcome": MessageLookupByLibrary.simpleMessage(
       "مرحبا، الرجاء إضافة المعلومات الخاصة بك",
     ),
+    "something_went_wrong": MessageLookupByLibrary.simpleMessage(
+      " حدث خطأ ما, يرجى المحاولة مرة أخرى لاحقاً  ",
+    ),
     "sure": MessageLookupByLibrary.simpleMessage("تآكيد"),
+    "theme": MessageLookupByLibrary.simpleMessage("السمة"),
     "valid_email": MessageLookupByLibrary.simpleMessage(
       "من فضلك إدخال البريد الإلكتروني الصحيح",
     ),

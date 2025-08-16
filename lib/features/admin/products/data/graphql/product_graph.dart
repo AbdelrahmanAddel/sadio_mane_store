@@ -4,7 +4,6 @@ import 'package:sadio_mane_store/features/admin/products/data/model/update_produ
 class ProductGraph {
   ProductGraph._();
 
-  /// 📦 Query: Get all products
   static Map<String, dynamic> getProductsBody() {
     return {
       'query': '''

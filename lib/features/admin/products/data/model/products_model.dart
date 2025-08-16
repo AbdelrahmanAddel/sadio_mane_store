@@ -1,4 +1,5 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:json_annotation/json_annotation.dart';
+
 part 'products_model.g.dart';
 
 @JsonSerializable()
@@ -13,10 +14,10 @@ class ProductsModel {
 @JsonSerializable()
 class ProductModel {
   ProductModel({required this.products});
-
-  final List<ProductDataModel> products;
   factory ProductModel.fromJson(Map<String, dynamic> json) =>
       _$ProductModelFromJson(json);
+
+  final List<ProductDataModel> products;
 }
 
 @JsonSerializable()

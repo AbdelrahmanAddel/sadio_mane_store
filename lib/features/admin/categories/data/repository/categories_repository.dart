@@ -11,7 +11,7 @@ class GetCategoriesRepositoryImpl extends CategoriesRepository {
   GetCategoriesRepositoryImpl(this._categoriesRemoteDataSource);
   final CategoriesRemoteDataSource _categoriesRemoteDataSource;
   @override
-  Future<Either<String, GetCategoriesResponceModel>> getCategories() {
+  Future<Either<String, GetCategoriesResponseModel>> getCategories() {
     return _categoriesRemoteDataSource.getCategories();
   }
 
