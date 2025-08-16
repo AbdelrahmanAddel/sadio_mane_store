@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadio_mane_store/core/common/widget/custom_app_button.dart';
 import 'package:sadio_mane_store/core/helpers/extensions/localization_extension.dart';
+import 'package:sadio_mane_store/features/user/search/presentation/bloc/search_bloc.dart';
 import 'package:sadio_mane_store/features/user/search/presentation/widgets/search_view_body.dart';
 
 class SearchView extends StatelessWidget {
@@ -18,7 +20,10 @@ class SearchView extends StatelessWidget {
         ),
         title: Text(context.tr.search, style: const TextStyle(fontSize: 30)),
       ),
-      body: const SearchViewBody(),
+      body: BlocProvider(
+        create: (context) => SearchBloc(),
+        child: const SearchViewBody(),
+      ),
     );
   }
 }
