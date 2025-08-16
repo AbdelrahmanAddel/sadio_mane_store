@@ -7,8 +7,9 @@ import 'package:sadio_mane_store/features/user/search/presentation/bloc/search_b
 import 'package:sadio_mane_store/features/user/search/presentation/enums/search_type.dart';
 
 class BuildChooseSearchType extends StatelessWidget {
-  const BuildChooseSearchType({super.key, required this.type});
+  const BuildChooseSearchType({required this.type, super.key});
   final SearchType type;
+  
 
   @override
   Widget build(BuildContext context) {

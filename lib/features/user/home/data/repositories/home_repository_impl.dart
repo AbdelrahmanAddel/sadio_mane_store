@@ -48,7 +48,7 @@ class HomeRepositoryImpl extends HomeRepository {
   Future<Either<String, List<ProductDataModel>>> getProducts() async {
     try {
       final response = await homeRemoteDataSource.getProducts();
-      return Right(response.data?.products?.reversed.toList() ?? []);
+      return Right(response.data?.products.reversed.toList() ?? []);
     } on Exception catch (error, stackTrace) {
       debugPrint('Error => $error');
       debugPrint('Stack Trace => $stackTrace');

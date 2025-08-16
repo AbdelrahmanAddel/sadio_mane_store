@@ -4,8 +4,13 @@ import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
 import 'package:sadio_mane_store/features/user/search/presentation/enums/search_type.dart';
 
 class SearchTextFormFields extends StatelessWidget {
-  const SearchTextFormFields({required this.searchType, super.key});
+  const SearchTextFormFields({
+    required this.searchType,
+    required this.minPriceController, required this.maxPriceController, super.key,
+  });
   final SearchType searchType;
+  final TextEditingController minPriceController;
+  final TextEditingController maxPriceController;
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +23,19 @@ class SearchTextFormFields extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Expanded(child: CustomTextFormField(hintText: 'Min Price')),
+        Expanded(
+          child: CustomTextFormField(
+            hintText: 'Min Price',
+            controller: minPriceController,
+          ),
+        ),
         horizontalSpace(10),
-        const Expanded(child: CustomTextFormField(hintText: 'Max Price')),
+        Expanded(
+          child: CustomTextFormField(
+            hintText: 'Max Price',
+            controller: maxPriceController,
+          ),
+        ),
       ],
     );
   }

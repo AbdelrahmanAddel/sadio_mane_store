@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sadio_mane_store/core/common/widget/custom_app_button.dart';
+import 'package:sadio_mane_store/core/dependency_injection.dart/dependency_injection.dart';
 import 'package:sadio_mane_store/core/helpers/spacer_helper.dart';
 import 'package:sadio_mane_store/features/user/search/presentation/bloc/search_bloc.dart';
 import 'package:sadio_mane_store/features/user/search/presentation/enums/search_type.dart';
@@ -8,7 +9,9 @@ import 'package:sadio_mane_store/features/user/search/presentation/widgets/build
 import 'package:sadio_mane_store/features/user/search/presentation/widgets/search_text_form_fields.dart';
 
 class SearchViewContent extends StatelessWidget {
-  const SearchViewContent({super.key});
+  SearchViewContent({super.key});
+  TextEditingController minPriceController = TextEditingController();
+  TextEditingController maxPriceController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +27,7 @@ class SearchViewContent extends StatelessWidget {
               if (state.searchType == SearchType.none)
                 _buildInitSearchState()
               else
-                _buildSearchBody(state.searchType),
+                _buildSearchBody(state.searchType, context),
             ],
           );
         },
@@ -32,13 +35,28 @@ class SearchViewContent extends StatelessWidget {
     );
   }
 
-  Widget _buildSearchBody(SearchType searchType) {
+  Widget _buildSearchBody(SearchType searchType, BuildContext context) {
+    final searchBloc = getIt<SearchBloc>();
     return Column(
       children: [
-        SearchTextFormFields(searchType: searchType),
+        SearchTextFormFields(
+          searchType: searchType,
+          minPriceController: minPriceController,
+          maxPriceController: maxPriceController,
+        ),
         verticalSpace(20),
 
-        const CustomAppButton(width: 120, height: 35, child: Text('Save')),
+        CustomAppButton(
+          onTap: () => searchBloc.add(
+            SearchByPriceEvent(
+              minPrice: int.parse(minPriceController.text),
+              maxPrice: int.parse(maxPriceController.text),
+            ),
+          ),
+          width: 120,
+          height: 35,
+          child: const Text('Search'),
+        ),
       ],
     );
   }

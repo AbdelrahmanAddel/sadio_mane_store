@@ -82,6 +82,12 @@ import 'package:sadio_mane_store/features/user/profile/data/repositories/profile
 import 'package:sadio_mane_store/features/user/profile/domain/repositories/profile_repository.dart';
 import 'package:sadio_mane_store/features/user/profile/domain/usecases/get_profile_usecase.dart';
 import 'package:sadio_mane_store/features/user/profile/presentation/bloc/profile_bloc.dart';
+import 'package:sadio_mane_store/features/user/search/data/datasources/search_api_service.dart';
+import 'package:sadio_mane_store/features/user/search/data/datasources/search_remote_datasource.dart';
+import 'package:sadio_mane_store/features/user/search/data/repositories/search_repository_imp.dart';
+import 'package:sadio_mane_store/features/user/search/domain/repositories/search_repository.dart';
+import 'package:sadio_mane_store/features/user/search/domain/usecases/search_by_price_usecase.dart';
+import 'package:sadio_mane_store/features/user/search/presentation/bloc/search_bloc.dart';
 
 final GetIt getIt = GetIt.instance;
 void setUpGetIt() {
@@ -100,6 +106,8 @@ void setUpGetIt() {
   _home(dio);
   _categoryDetails(dio);
   _getAllProduct(dio);
+  _search(dio);
+
   debugPrint('✅ GetIt setup done');
 }
 
@@ -275,4 +283,15 @@ void _home(Dio dio) {
         getProductsUsecase: getIt(),
       ),
     );
+}
+
+void _search(Dio dio) {
+  getIt
+    ..registerLazySingleton(() => SearchApiService(dio))
+    ..registerLazySingleton(() => SearchRemoteDataSource(getIt()))
+    ..registerLazySingleton<SearchRepository>(
+      () => SearchRepositoryImp(getIt()),
+    )
+    ..registerLazySingleton(() => SearchByPriceUsecase(getIt()))
+    ..registerFactory(() => SearchBloc(getIt()));
 }

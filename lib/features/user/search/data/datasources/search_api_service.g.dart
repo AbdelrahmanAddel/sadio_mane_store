@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'get_all_product_api_service.dart';
+part of 'search_api_service.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'get_all_product_api_service.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element
 
-class _GetAllProductApiService implements GetAllProductApiService {
-  _GetAllProductApiService(
+class _SearchApiService implements SearchApiService {
+  _SearchApiService(
     this._dio, {
     this.baseUrl,
     this.errorLogger,
@@ -24,8 +24,7 @@ class _GetAllProductApiService implements GetAllProductApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<ProductsModel> getProductByCategories(
-      Map<String, dynamic> query) async {
+  Future<ProductsModel> searchByPrice(Map<String, dynamic> query) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

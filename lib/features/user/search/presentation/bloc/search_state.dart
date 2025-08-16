@@ -13,3 +13,20 @@ final class SearchInitial extends SearchState {
 final class ChangeSearchType extends SearchState {
   ChangeSearchType({required super.searchType});
 }
+
+final class SearchByPriceSuccessState extends SearchState {
+  SearchByPriceSuccessState({
+    required super.searchType,
+    required this.products,
+  });
+  final ProductsModel products;
+}
+
+final class SearchByPriceLoadingState extends SearchState {
+  SearchByPriceLoadingState({required super.searchType});
+}
+
+final class SearchByPriceErrorState extends SearchState {
+  SearchByPriceErrorState({required super.searchType, required this.error});
+  final String error;
+}
