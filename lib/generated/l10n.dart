@@ -388,6 +388,11 @@ class S {
   String get add_to_cart {
     return Intl.message('Add to Cart', name: 'add_to_cart', desc: '', args: []);
   }
+
+  /// `Search`
+  String get search {
+    return Intl.message('Search', name: 'search', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -19,4 +19,5 @@ abstract class RoutesString {
   static const String productDetails = 'product_details';
   static const String productsById = 'category_details';
   static const String getAllProduct = 'get_all_products';
+  static const String searchView = 'search';
 }
