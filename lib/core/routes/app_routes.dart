@@ -21,6 +21,7 @@ import 'package:sadio_mane_store/features/authentication/sign_up/presentation/vi
 import 'package:sadio_mane_store/features/user/categories/presentation/view/categories_view.dart';
 import 'package:sadio_mane_store/features/user/category_products/presentation/view/categories_details_view.dart';
 import 'package:sadio_mane_store/features/user/favorite/presentation/view/favorite_view.dart';
+import 'package:sadio_mane_store/features/user/get_all_products/presentation/view/get_all_products_view.dart';
 import 'package:sadio_mane_store/features/user/main/presentation/cubit/main_cubit.dart';
 import 'package:sadio_mane_store/features/user/main/presentation/view/main_screen.dart';
 import 'package:sadio_mane_store/features/user/product_details/presentation/pages/product_details_page.dart';
@@ -102,6 +103,8 @@ class AppRoutes {
                 route.arguments! as ({String categoryName, double categoryId}),
           ),
         );
+      case RoutesString.getAllProduct:
+        return MaterialPageRoute(builder: (_) => const GetAllProductsView());
       default:
         return null;
     }

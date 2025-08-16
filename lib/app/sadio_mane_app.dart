@@ -44,7 +44,7 @@ class SadioManeApp extends StatelessWidget {
                 GlobalMaterialLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
                 GlobalCupertinoLocalizations.delegate,
-              ],
+              ],        
               supportedLocales: S.delegate.supportedLocales,
               theme: SharedPrefHelper.getBool(SharedPrefKey.isDarkMode)
                   ? darkTheme

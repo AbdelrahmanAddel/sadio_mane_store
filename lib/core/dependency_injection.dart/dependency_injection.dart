@@ -62,6 +62,12 @@ import 'package:sadio_mane_store/features/user/category_products/data/repositori
 import 'package:sadio_mane_store/features/user/category_products/domain/repositories/category_details_repository.dart';
 import 'package:sadio_mane_store/features/user/category_products/domain/usecases/get_product_by_category_id_usecase.dart';
 import 'package:sadio_mane_store/features/user/category_products/presentation/bloc/category_details_bloc.dart';
+import 'package:sadio_mane_store/features/user/get_all_products/data/datasources/get_all_product_api_service.dart';
+import 'package:sadio_mane_store/features/user/get_all_products/data/datasources/get_all_product_remote_data_source.dart';
+import 'package:sadio_mane_store/features/user/get_all_products/data/repositories/get_all_product_repository_impl.dart';
+import 'package:sadio_mane_store/features/user/get_all_products/domain/repositories/get_all_products_repository.dart';
+import 'package:sadio_mane_store/features/user/get_all_products/domain/usecases/get_all_products_usecase.dart';
+import 'package:sadio_mane_store/features/user/get_all_products/presentation/bloc/get_all_products_bloc.dart';
 import 'package:sadio_mane_store/features/user/home/data/datasources/home_api_service.dart';
 import 'package:sadio_mane_store/features/user/home/data/datasources/home_remote_data_source.dart';
 import 'package:sadio_mane_store/features/user/home/data/repositories/home_repository_impl.dart';
@@ -93,7 +99,19 @@ void setUpGetIt() {
   _profile(dio);
   _home(dio);
   _categoryDetails(dio);
+  _getAllProduct(dio);
   debugPrint('✅ GetIt setup done');
+}
+
+void _getAllProduct(Dio dio) {
+  getIt
+    ..registerLazySingleton(() => GetAllProductApiService(dio))
+    ..registerLazySingleton(() => GetAllProductRemoteDataSource(getIt()))
+    ..registerLazySingleton<GetAllProductsRepository>(
+      () => GetAllProductsRepositoryImpl(getIt()),
+    )
+    ..registerLazySingleton(() => GetAllProductsUsecase(getIt()))
+    ..registerFactory(() => GetAllProductsBloc(getIt()));
 }
 
 void _categoryDetails(Dio dio) {
