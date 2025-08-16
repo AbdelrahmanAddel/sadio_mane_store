@@ -16,9 +16,7 @@ class GetAllProductsRepositoryImpl extends GetAllProductsRepository {
       final response = await _getAllProductRemoteDataSource.getAllProducts(
         offset: offset,
       );
-      if (response.data!.products.isEmpty) {
-        return const Left('There Is No Products');
-      }
+
       return Right(response.data?.products ?? []);
     } catch (error) {
       return Left(error.toString());

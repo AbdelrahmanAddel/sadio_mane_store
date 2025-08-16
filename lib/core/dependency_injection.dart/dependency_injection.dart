@@ -111,7 +111,7 @@ void _getAllProduct(Dio dio) {
       () => GetAllProductsRepositoryImpl(getIt()),
     )
     ..registerLazySingleton(() => GetAllProductsUsecase(getIt()))
-    ..registerLazySingleton(() => GetAllProductsBloc(getIt()));
+    ..registerFactory(() => GetAllProductsBloc(getIt()));
 }
 
 void _categoryDetails(Dio dio) {

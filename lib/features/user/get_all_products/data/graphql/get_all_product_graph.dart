@@ -4,7 +4,7 @@ class GetAllProductGraph {
       'query':
           '''
 {
-  products(limit: 2, offset: $offset){
+  products(limit: 6, offset: $offset){
     title
     price
     description
