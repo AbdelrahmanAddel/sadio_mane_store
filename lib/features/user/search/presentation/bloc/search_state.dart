@@ -19,7 +19,7 @@ final class SearchByPriceSuccessState extends SearchState {
     required super.searchType,
     required this.products,
   });
-  final ProductsModel products;
+  final List<ProductDataModel> products;
 }
 
 final class SearchByPriceLoadingState extends SearchState {

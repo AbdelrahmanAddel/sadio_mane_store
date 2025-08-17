@@ -17,7 +17,7 @@ class BuildProductSuccessState extends StatelessWidget {
         childAspectRatio: 0.7,
       ),
       itemBuilder: (context, index) =>
-          HomeViewProductItem(product: products[index]),
+          ProductCart(product: products[index]),
     );
   }
 }

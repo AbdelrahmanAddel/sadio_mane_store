@@ -6,16 +6,23 @@ import 'package:sadio_mane_store/features/user/search/presentation/enums/search_
 class SearchTextFormFields extends StatelessWidget {
   const SearchTextFormFields({
     required this.searchType,
-    required this.minPriceController, required this.maxPriceController, super.key,
+    required this.minPriceController,
+    required this.maxPriceController,
+    required this.searchNameController,
+    super.key,
   });
   final SearchType searchType;
   final TextEditingController minPriceController;
   final TextEditingController maxPriceController;
+  final TextEditingController searchNameController;
 
   @override
   Widget build(BuildContext context) {
     return searchType == SearchType.name
-        ? const CustomTextFormField(hintText: 'Search For Products Name')
+        ? CustomTextFormField(
+            hintText: 'Search For Products Name',
+            controller: searchNameController,
+          )
         : _buildSearchByPriceTextFormFields();
   }
 

@@ -8,8 +8,8 @@ import 'package:sadio_mane_store/core/routes/routes_string.dart';
 import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
 import 'package:sadio_mane_store/features/admin/products/data/model/products_model.dart';
 
-class HomeViewProductItem extends StatelessWidget {
-  const HomeViewProductItem({required this.product, super.key});
+class ProductCart extends StatelessWidget {
+  const ProductCart({required this.product, super.key});
   final ProductDataModel product;
 
   @override

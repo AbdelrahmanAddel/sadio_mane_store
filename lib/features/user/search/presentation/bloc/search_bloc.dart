@@ -47,7 +47,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           emit(
             SearchByPriceSuccessState(
               searchType: state.searchType,
-              products: products,
+              products: products.data!.products,
             ),
           );
         },
