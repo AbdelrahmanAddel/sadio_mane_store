@@ -2,6 +2,8 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:sadio_mane_store/core/common/widget/custom_app_button.dart';
 import 'package:sadio_mane_store/core/helpers/extensions/localization_extension.dart';
+import 'package:sadio_mane_store/core/helpers/extensions/navigation_extension.dart';
+import 'package:sadio_mane_store/core/routes/routes_string.dart';
 import 'package:sadio_mane_store/core/theme/extensions/app_theme_extension.dart';
 
 AppBar mainScreenAppBar(BuildContext context) {
@@ -22,7 +24,9 @@ AppBar mainScreenAppBar(BuildContext context) {
           ),
           const Spacer(),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              context.pushName(routeName: RoutesString.searchView);
+            },
             icon: const CustomAppButton(child: Icon(Icons.search, size: 30)),
           ),
         ],

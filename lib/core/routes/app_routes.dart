@@ -26,6 +26,7 @@ import 'package:sadio_mane_store/features/user/main/presentation/cubit/main_cubi
 import 'package:sadio_mane_store/features/user/main/presentation/view/main_screen.dart';
 import 'package:sadio_mane_store/features/user/product_details/presentation/pages/product_details_page.dart';
 import 'package:sadio_mane_store/features/user/profile/presentation/view/profile_view.dart';
+import 'package:sadio_mane_store/features/user/search/presentation/view/search_view.dart';
 import 'package:sadio_mane_store/test_screen.dart';
 
 class AppRoutes {
@@ -105,6 +106,8 @@ class AppRoutes {
         );
       case RoutesString.getAllProduct:
         return MaterialPageRoute(builder: (_) => const GetAllProductsView());
+      case RoutesString.searchView:
+        return MaterialPageRoute(builder: (_) => const SearchView());
       default:
         return null;
     }
