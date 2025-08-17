@@ -87,6 +87,7 @@ import 'package:sadio_mane_store/features/user/search/data/datasources/search_re
 import 'package:sadio_mane_store/features/user/search/data/repositories/search_repository_imp.dart';
 import 'package:sadio_mane_store/features/user/search/domain/repositories/search_repository.dart';
 import 'package:sadio_mane_store/features/user/search/domain/usecases/search_by_price_usecase.dart';
+import 'package:sadio_mane_store/features/user/search/domain/usecases/search_by_title_usecase.dart';
 import 'package:sadio_mane_store/features/user/search/presentation/bloc/search_bloc.dart';
 
 final GetIt getIt = GetIt.instance;
@@ -293,5 +294,6 @@ void _search(Dio dio) {
       () => SearchRepositoryImp(getIt()),
     )
     ..registerLazySingleton(() => SearchByPriceUsecase(getIt()))
-    ..registerFactory(() => SearchBloc(getIt()));
+    ..registerLazySingleton(() => SearchByTitleUsecase(getIt()))
+    ..registerFactory(() => SearchBloc(getIt(), getIt()));
 }

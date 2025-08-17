@@ -6,4 +6,7 @@ abstract class SearchRepository {
     required int minPrice,
     required int maxPrice,
   });
+  Future<Either<String, ProductsModel>> searchByTitle({
+    required String title,
+  });
 }

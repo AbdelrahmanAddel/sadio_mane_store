@@ -9,5 +9,7 @@ part 'search_api_service.g.dart';
 abstract class SearchApiService {
   factory SearchApiService(Dio dio) = _SearchApiService;
   @POST(ApiEndPoints.graphQl)
-  Future<ProductsModel> searchByPrice(@Body() Map<String, dynamic> query);
+  Future<ProductsModel> searchByPriceOrTitle(
+    @Body() Map<String, dynamic> query,
+  );
 }

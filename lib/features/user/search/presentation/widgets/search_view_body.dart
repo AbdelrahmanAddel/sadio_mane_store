@@ -7,6 +7,6 @@ class SearchViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [const BuildCustomPaint(), SearchViewContent()]);
+    return const Stack(children: [BuildCustomPaint(), SearchViewContent()]);
   }
 }

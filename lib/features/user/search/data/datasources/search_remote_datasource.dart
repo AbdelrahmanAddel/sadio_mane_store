@@ -9,7 +9,12 @@ class SearchRemoteDataSource {
   Future<ProductsModel> searchByPrice({
     required int minPrice,
     required int maxPrice,
-  }) async => _searchApiService.searchByPrice(
+  }) async => _searchApiService.searchByPriceOrTitle(
     SearchBody.searchByPriceBody(minPrice: minPrice, maxPrice: maxPrice),
   );
+  Future<ProductsModel> searchByTitle({required String title}) {
+    return _searchApiService.searchByPriceOrTitle(
+      SearchBody.searchByProductTitle(title: title),
+    );
+  }
 }

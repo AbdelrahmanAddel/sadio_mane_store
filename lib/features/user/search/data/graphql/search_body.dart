@@ -10,10 +10,25 @@ class SearchBody {
           products(price_min: $minPrice, price_max: $maxPrice) {
             title
             price
+            images
           }
         }
 
-''',
+        ''',
+    };
+  }
+
+  static Map<String, dynamic> searchByProductTitle({required String title}) {
+    return {
+      'query': '''
+          {
+      products(title: "$title"){
+          title
+          price
+          images
+        }
+      } 
+          ''',
     };
   }
 }

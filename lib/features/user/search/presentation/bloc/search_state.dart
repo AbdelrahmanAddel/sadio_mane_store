@@ -11,22 +11,20 @@ final class SearchInitial extends SearchState {
 }
 
 final class ChangeSearchType extends SearchState {
-  ChangeSearchType({required super.searchType});
+  ChangeSearchType({required this.cachedProduct, required super.searchType});
+  final List<ProductDataModel> cachedProduct;
 }
 
-final class SearchByPriceSuccessState extends SearchState {
-  SearchByPriceSuccessState({
-    required super.searchType,
-    required this.products,
-  });
+final class SearchSuccessState extends SearchState {
+  SearchSuccessState({required super.searchType, required this.products});
   final List<ProductDataModel> products;
 }
 
-final class SearchByPriceLoadingState extends SearchState {
-  SearchByPriceLoadingState({required super.searchType});
+final class SearchLoadingState extends SearchState {
+  SearchLoadingState({required super.searchType});
 }
 
-final class SearchByPriceErrorState extends SearchState {
-  SearchByPriceErrorState({required super.searchType, required this.error});
+final class SearchErrorState extends SearchState {
+  SearchErrorState({required super.searchType, required this.error});
   final String error;
 }

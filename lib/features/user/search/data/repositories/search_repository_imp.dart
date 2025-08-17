@@ -21,4 +21,16 @@ class SearchRepositoryImp extends SearchRepository {
       return left(error.toString());
     }
   }
+
+  @override
+  Future<Either<String, ProductsModel>> searchByTitle({
+    required String title,
+  }) async {
+    try {
+      final response = await _searchDataSource.searchByTitle(title: title);
+      return Right(response);
+    } catch (error) {
+      return left(error.toString());
+    }
+  }
 }

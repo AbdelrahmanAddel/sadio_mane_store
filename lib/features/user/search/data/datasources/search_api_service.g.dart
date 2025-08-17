@@ -24,7 +24,7 @@ class _SearchApiService implements SearchApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<ProductsModel> searchByPrice(Map<String, dynamic> query) async {
+  Future<ProductsModel> searchByPriceOrTitle(Map<String, dynamic> query) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

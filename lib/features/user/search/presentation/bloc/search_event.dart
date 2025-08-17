@@ -12,3 +12,7 @@ final class SearchByPriceEvent extends SearchEvent {
   int minPrice;
   int maxPrice;
 }
+final class SearchByTitleEvent extends SearchEvent {
+  SearchByTitleEvent({required this.title});
+  String title;
+}
