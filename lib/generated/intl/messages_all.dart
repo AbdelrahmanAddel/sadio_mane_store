@@ -16,8 +16,8 @@ import 'package:intl/intl.dart';
 import 'package:intl/message_lookup_by_library.dart';
 import 'package:intl/src/intl_helpers.dart';
 
-import 'package:sadio_mane_store/generated/intl/messages_ar.dart' as messages_ar;
-import 'package:sadio_mane_store/generated/intl/messages_en.dart' as messages_en;
+import 'messages_ar.dart' as messages_ar;
+import 'messages_en.dart' as messages_en;
 
 typedef Future<dynamic> LibraryLoader();
 Map<String, LibraryLoader> _deferredLibraries = {
@@ -38,7 +38,7 @@ MessageLookupByLibrary? _findExact(String localeName) {
 
 /// User programs should call this before using [localeName] for messages.
 Future<bool> initializeMessages(String localeName) {
-  final availableLocale = Intl.verifiedLocale(
+  var availableLocale = Intl.verifiedLocale(
     localeName,
     (locale) => _deferredLibraries[locale] != null,
     onFailure: (_) => null,
@@ -46,9 +46,9 @@ Future<bool> initializeMessages(String localeName) {
   if (availableLocale == null) {
     return new SynchronousFuture(false);
   }
-  final lib = _deferredLibraries[availableLocale];
+  var lib = _deferredLibraries[availableLocale];
   lib == null ? new SynchronousFuture(false) : lib();
-  initializeInternalMessageLookup(CompositeMessageLookup.new);
+  initializeInternalMessageLookup(() => new CompositeMessageLookup());
   messageLookup.addLocale(availableLocale, _findGeneratedMessagesFor);
   return new SynchronousFuture(true);
 }
@@ -62,7 +62,7 @@ bool _messagesExistFor(String locale) {
 }
 
 MessageLookupByLibrary? _findGeneratedMessagesFor(String locale) {
-  final actualLocale = Intl.verifiedLocale(
+  var actualLocale = Intl.verifiedLocale(
     locale,
     _messagesExistFor,
     onFailure: (_) => null,

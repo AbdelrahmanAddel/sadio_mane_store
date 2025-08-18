@@ -10,7 +10,11 @@ class GetAllProductsBloc
     extends Bloc<GetAllProductsEvent, GetAllProductsState> {
   GetAllProductsBloc(this._getAllProductsUsecase)
     : super(
-        const GetAllProductsInitialState(hasMoreData: true, productsList: []),
+        const GetAllProductsInitialState(
+          hasMoreData: true,
+          productsList: [],
+          noMoreData: false,
+        ),
       ) {
     on<GetAllProductsViewEvent>(_getAllProducts);
     on<LoadMoreProductEvent>(_loadMoreProducts, transformer: droppable());
@@ -25,7 +29,13 @@ class GetAllProductsBloc
     Emitter<GetAllProductsState> emit,
   ) async {
     offset = 0;
-    emit(const GetAllProductLoadingState(hasMoreData: true, productsList: []));
+    emit(
+      GetAllProductLoadingState(
+        hasMoreData: true,
+        productsList: [],
+        noMoreData: state.noMoreData,
+      ),
+    );
 
     final response = await _getAllProductsUsecase.call(offset: offset);
     response.fold(
@@ -34,6 +44,7 @@ class GetAllProductsBloc
           error,
           hasMoreData: true,
           productsList: const [],
+          noMoreData: false,
         ),
       ),
       (products) {
@@ -41,6 +52,7 @@ class GetAllProductsBloc
           GetAllProductSuccessState(
             hasMoreData: products.length == limit,
             productsList: products,
+            noMoreData: products.length != limit,
           ),
         );
       },
@@ -51,12 +63,11 @@ class GetAllProductsBloc
     LoadMoreProductEvent event,
     Emitter<GetAllProductsState> emit,
   ) async {
-
-
     emit(
       GetAllProductLoadingMoreState(
         hasMoreData: state.hasMoreData,
         productsList: state.productsList,
+        noMoreData: state.noMoreData,
       ),
     );
 
@@ -69,6 +80,7 @@ class GetAllProductsBloc
           error,
           hasMoreData: state.hasMoreData,
           productsList: state.productsList,
+          noMoreData: false,
         ),
       ),
       (products) {
@@ -77,6 +89,7 @@ class GetAllProductsBloc
           GetAllProductSuccessState(
             hasMoreData: products.length == limit,
             productsList: newList,
+            noMoreData: products.length != limit,
           ),
         );
       },

@@ -22,9 +22,8 @@ class _BuildGetAllProductsBodyState extends State<BuildGetAllProductsBody> {
     super.initState();
     _scrollController = ScrollController()
       ..addListener(() {
-        if (_scrollController.position.pixels >=
-            _scrollController.position.maxScrollExtent -
-                MediaQuery.of(context).size.height * 0.15) {
+        if (_scrollController.position.pixels==
+            _scrollController.position.maxScrollExtent ) {
           context.read<GetAllProductsBloc>().add(LoadMoreProductEvent());
         }
       });
@@ -65,17 +64,19 @@ class _BuildGetAllProductsBodyState extends State<BuildGetAllProductsBody> {
                     products: state.productsList,
                     hasMoreData: state.hasMoreData,
                   ),
-                  if (state is GetAllProductLoadingMoreState)
-                    SliverToBoxAdapter(
+                  if (state is GetAllProductLoadingMoreState &&
+                      state.hasMoreData)
+                    const SliverToBoxAdapter(
+                      child: Center(child: CircularProgressIndicator()),
+                    ),
+                  if (
+                      state.noMoreData)
+                    const SliverToBoxAdapter(
                       child: Center(
-                        child: state.hasMoreData
-                            ? const CircularProgressIndicator()
-                            : const Center(
-                                child: Text(
-                                  'No More Data',
-                                  style: TextStyle(fontSize: 20),
-                                ),
-                              ),
+                        child: Text(
+                          'No more data to load',
+                          style: TextStyle(fontSize: 30),
+                        ),
                       ),
                     ),
                 ],
